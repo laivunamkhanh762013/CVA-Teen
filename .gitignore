@@ -11,6 +11,10 @@ chrome_profile*/
 node_modules/
 .vercel/
 
+# Git Worktrees for Antigravity & parallel branching
+.worktrees/
+*.worktree/
+
 # OS metadata
 .DS_Store
 Thumbs.db

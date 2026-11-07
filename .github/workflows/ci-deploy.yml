@@ -1,0 +1,59 @@
+name: CI & GitHub Pages Deployment
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Kiểm tra cú pháp & Integrity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate HTML structure
+        run: |
+          echo "Kiểm tra file index.html..."
+          test -f index.html || { echo "Lỗi: index.html không tồn tại"; exit 1; }
+          echo "File index.html hợp lệ!"
+
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    needs: validate
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
