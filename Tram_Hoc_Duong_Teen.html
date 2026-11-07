@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Trạm Học Đường Teen • THCS Chu Văn An</title>
-  <meta name="description" content="Trạm Học Đường Teen - THCS Chu Văn An: Tìm kiếm đồ thất lạc qua Check VAR chính chủ, chợ phiên sách 0đ truyền lửa và đấu trường trắc nghiệm săn điểm vào 10.">
+  <meta name="description" content="Trạm Học Đường Teen - THCS Chu Văn An: Tìm kiếm đồ thất lạc qua Check VAR chính chủ, chợ phiên sách 0đ truyền lửa và bốc quẻ may mắn học đường.">
   <meta name="theme-color" content="#ffffff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -97,10 +97,7 @@
     #landing-stat-lost,
     #landing-stat-books,
     #landing-stat-cheers,
-    .stat-counter-num,
-    #quiz-score-val,
-    #quiz-timer-text,
-    #quiz-streak-count {
+    .stat-counter-num {
       font-family: 'Space Grotesk', 'Be Vietnam Pro', sans-serif !important;
       letter-spacing: -0.03em !important;
     }
@@ -293,23 +290,7 @@
       pointer-events: none !important;
     }
 
-    /* QUIZ ARENA STYLES */
-    .quiz-timer-bar {
-      transition: width 1s linear, background-color 0.3s ease;
-    }
-    .quiz-opt-btn {
-      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .quiz-opt-btn:hover {
-      transform: translateY(-1px);
-    }
-    .quiz-opt-btn:active {
-      transform: translateY(1px) scale(0.99);
-    }
-    .terminal-code-font {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-    @keyframes pulseGlow {
+        @keyframes pulseGlow {
       0%, 100% { opacity: 0.8; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.02); }
     }
@@ -562,8 +543,8 @@
       </span>
       <span class="text-slate-300">•</span>
       <span class="mx-5 inline-flex items-center gap-2">
-        <span class="px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-transparent dark:border-purple-800/60 text-[10px] font-black uppercase tracking-wider">Đấu Trường Quiz</span>
-        <span>Đấu trường trắc nghiệm 60FPS &amp; Check VAR chính chủ nhận ngay +1000 Aura! ⚡</span>
+        <span class="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-transparent dark:border-amber-800/60 text-[10px] font-black uppercase tracking-wider">Quẻ May Mắn</span>
+        <span>Bốc quẻ may mắn học đường &amp; Check VAR chính chủ nhận ngay +1000 Aura! ⚡</span>
       </span>
       <span class="text-slate-300">•</span>
       <span class="mx-5 inline-flex items-center gap-2">
@@ -611,18 +592,12 @@
 
             <!-- Editorial Subtitle -->
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-              Không gian kết nối học trò THCS Chu Văn An: tìm nhanh đồ thất lạc qua Check VAR chính chủ, chợ phiên sách 0đ truyền lửa và đấu trường trắc nghiệm săn điểm vào 10.
+              Không gian kết nối học trò THCS Chu Văn An: tìm nhanh đồ thất lạc qua Check VAR chính chủ, chợ phiên sách 0đ truyền lửa và bốc quẻ may mắn học đường.
             </p>
           </div>
 
           <!-- Quick Action Buttons (CVA Ecosystem) -->
           <div class="pt-5 flex flex-wrap gap-2.5 relative z-10">
-            <button 
-              onclick="switchTab('quiz')" 
-              class="bg-gradient-to-r from-rose-500 to-purple-600 hover:from-rose-600 hover:to-purple-700 text-white text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-md shadow-rose-500/25 transition flex items-center gap-2 active:scale-95"
-            >
-              <span>🎯</span> Đấu Trường Trắc Nghiệm
-            </button>
             <button 
               onclick="switchTab('lost-found')" 
               class="hero-btn-lost bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/70 text-rose-700 dark:text-rose-200 border border-rose-200 dark:border-rose-800/80 text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 active:scale-95 shadow-sm"
@@ -681,7 +656,7 @@
           </div>
           <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-sm text-center transition hover:border-purple-300">
             <p class="text-xl sm:text-2xl font-black text-purple-600" id="landing-stat-cheers">15.000+</p>
-            <p class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-0.5">🎯 Lượt làm Quiz</p>
+            <p class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-0.5">💬 Lượt chia sẻ CVA</p>
           </div>
           <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-sm text-center transition hover:border-amber-300">
             <p class="text-xl sm:text-2xl font-black text-amber-500">100%</p>
@@ -724,8 +699,8 @@
               Thiết kế dành riêng cho học trò THCS Chu Văn An: giải quyết rơi đồ, chia sẻ sách vở và rèn luyện tư duy mỗi ngày.
             </p>
           </div>
-          <button onclick="switchTab('quiz')" class="self-start sm:self-auto bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition active:scale-95 flex items-center gap-1.5 shadow-sm">
-            <span>Khám phá Đấu Trường</span> <span>→</span>
+          <button onclick="switchTab('lost-found')" class="self-start sm:self-auto bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition active:scale-95 flex items-center gap-1.5 shadow-sm">
+            <span>Khám phá Check VAR</span> <span>→</span>
           </button>
         </div>
 
@@ -774,23 +749,23 @@
             </div>
           </div>
 
-          <!-- Pillar 3: Đấu Trường Trắc Nghiệm 60FPS -->
-          <div class="bg-gradient-to-br from-indigo-50/70 via-white to-white dark:from-indigo-950/20 dark:via-slate-900 dark:to-slate-900 border border-indigo-200/80 dark:border-indigo-900/40 rounded-3xl p-5 shadow-sm flex flex-col justify-between space-y-3 transition hover:shadow-md">
+          <!-- Pillar 3: Quẻ May Mắn & Điểm Aura -->
+          <div class="bg-gradient-to-br from-amber-50/70 via-white to-white dark:from-amber-950/20 dark:via-slate-900 dark:to-slate-900 border border-amber-200/80 dark:border-amber-900/40 rounded-3xl p-5 shadow-sm flex flex-col justify-between space-y-3 transition hover:shadow-md">
             <div class="space-y-2">
-              <div class="w-10 h-10 rounded-2xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl shadow-sm">
-                🎯
+              <div class="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl shadow-sm">
+                🥠
               </div>
               <h4 class="text-sm font-extrabold text-slate-900 dark:text-white">
-                Đấu Trường Trắc Nghiệm Online
+                Quẻ May Mắn &amp; Điểm Aura
               </h4>
               <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Đồng hồ 15s kịch tính, chuỗi <b>Streak Combo 🔥</b> nhân đôi điểm Aura, giải thích mẹo thi cử tức thì và bảng vàng tranh tài Top học sinh CVA.
+                Mỗi ngày 1 quẻ tâm linh học đường chuẩn GenZ Chu Văn An. Tự động reset 00:00 hằng ngày, cộng +10 Aura tích lũy danh hiệu học bá!
               </p>
             </div>
-            <div class="pt-2 border-t border-indigo-100 dark:border-slate-800 flex items-center justify-between">
-              <span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-100/60 dark:bg-indigo-950/60 px-2 py-0.5 rounded-full">+1000 Aura/Vòng</span>
-              <button onclick="switchTab('quiz')" class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
-                Vào Thi Đấu →
+            <div class="pt-2 border-t border-amber-100 dark:border-slate-800 flex items-center justify-between">
+              <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-100/60 dark:bg-amber-950/60 px-2 py-0.5 rounded-full">Reset 00:00 ⏰</span>
+              <button onclick="scrollToVibeCheck()" class="text-xs font-extrabold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1">
+                Bốc Quẻ Ngay →
               </button>
             </div>
           </div>
@@ -851,208 +826,17 @@
           <!-- Accordion 3 -->
           <div class="accordion-item border border-slate-200/80 dark:border-slate-800 rounded-2xl overflow-hidden transition" id="accordion-item-3">
             <button onclick="toggleAccordion(3)" class="w-full p-3.5 text-left flex items-center justify-between text-slate-800 dark:text-slate-200 hover:bg-slate-50/80 dark:hover:bg-slate-800/80 transition font-bold">
-              <span class="flex items-center gap-2"><span>🎯</span> Đấu Trường Trắc Nghiệm Kiến thức thi cử &amp; Check VAR hoạt động thế nào?</span>
+              <span class="flex items-center gap-2"><span>🥠</span> Quẻ May Mắn Mỗi Ngày &amp; Thẻ Học Sinh CVA hoạt động thế nào?</span>
               <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 accordion-chevron"></i>
             </button>
             <div class="accordion-content bg-slate-50/50 dark:bg-slate-800/50 px-4 pb-3 pt-1 text-slate-600 dark:text-slate-300 font-normal leading-relaxed border-t border-slate-100 dark:border-slate-800">
-              Đấu trường trắc nghiệm mở 24/7 với đồng hồ 15s kịch tính, hệ thống nhân điểm <b>Streak Combo 🔥</b> và bảng vàng vinh danh Top học sinh CVA. Bạn có thể chọn chủ đề <b>Kiến thức thi khảo sát vào 10</b>, <b>Văn hóa học đường CVA</b> hoặc <b>Vibe Check</b> để tích lũy hàng ngàn điểm Aura tỏa sáng trên Thẻ học sinh!
+              Mỗi ngày vào lúc 00:00 hệ thống tự động làm mới quẻ tâm linh học đường. Bạn bấm <b>Rút Quẻ Ngay</b> để nhận thông điệp may mắn GenZ và cộng <b>+10 Aura</b> tích lũy danh hiệu học sinh ưu tú trên thẻ CVA!
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-    <!-- ==================== TAB QUIZ: ĐẤU TRƯỜNG TRẮC NGHIỆM ONLINE (60FPS QUIZ ARENA) ==================== -->
-    <section id="tab-quiz" class="tab-pane hidden space-y-5 animate-fade-in max-w-4xl mx-auto">
-      
-      <!-- Top Quiz Arena Banner -->
-      <div class="bg-gradient-to-r from-rose-600 via-purple-700 to-indigo-800 rounded-3xl p-5 sm:p-7 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div class="space-y-1 relative z-10">
-          <div class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider">
-            <span>🔥</span> Đấu Trường Trắc Nghiệm Chu Văn An
-          </div>
-          <h2 class="text-xl sm:text-3xl font-black tracking-tight">Thử Thách Kỹ Năng Số &amp; Check VAR</h2>
-          <p class="text-xs sm:text-sm text-purple-100 max-w-xl">
-            15 giây mỗi câu hỏi • Chuỗi Streak nhân đôi Aura • Tranh tài bảng vàng chiến thần cùng hơn 1.800+ bạn học CVA!
-          </p>
-        </div>
-
-        <div class="flex items-center gap-3 relative z-10">
-          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 text-center min-w-[90px]">
-            <p class="text-[10px] font-bold text-purple-200 uppercase">Aura Đang Có</p>
-            <p class="text-lg font-black text-amber-300" id="quiz-user-aura-display">7.180 ⚡</p>
-          </div>
-          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 text-center min-w-[90px]">
-            <p class="text-[10px] font-bold text-purple-200 uppercase">Kỷ Lục Streak</p>
-            <p class="text-lg font-black text-rose-300" id="quiz-max-streak-display">x8 🔥</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category Selection Tabs (3 Topics) -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="quiz-category-selector">
-        <button onclick="selectQuizCategory('exam')" id="cat-card-exam" class="quiz-cat-card p-4 rounded-2xl border-2 border-indigo-500 bg-indigo-50/70 dark:bg-indigo-950/40 text-left transition active:scale-98 relative shadow-sm">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">📚</span>
-            <span class="quiz-cat-active-dot w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-indigo-400"></span>
-          </div>
-          <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mt-2">Đấu Trí Săn Điểm Vào 10</h4>
-          <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Toán, Văn, Anh &amp; Mẹo Khoanh Trắc Nghiệm</p>
-          <span class="mt-2 inline-block text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/60 px-2 py-0.5 rounded-full">10 câu • +1000 Aura</span>
-        </button>
-
-        <button onclick="selectQuizCategory('cva')" id="cat-card-cva" class="quiz-cat-card p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-left transition active:scale-98 relative shadow-sm">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">🎒</span>
-            <span class="quiz-cat-active-dot w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-indigo-400 hidden"></span>
-          </div>
-          <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mt-2">CVA &amp; Check VAR</h4>
-          <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Bảo bối Casio, văn hóa học đường</p>
-          <span class="mt-2 inline-block text-[10px] font-bold text-rose-600 dark:text-rose-400 bg-rose-100 dark:bg-rose-900/60 px-2 py-0.5 rounded-full">8 câu • +800 Aura</span>
-        </button>
-
-        <button onclick="selectQuizCategory('vibe')" id="cat-card-vibe" class="quiz-cat-card p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-left transition active:scale-98 relative shadow-sm">
-          <div class="flex items-center justify-between">
-            <span class="text-2xl">🔮</span>
-            <span class="quiz-cat-active-dot w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-indigo-400 hidden"></span>
-          </div>
-          <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mt-2">Vibe Check Teen</h4>
-          <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Tâm lý Gen Z, xả stress mùa thi</p>
-          <span class="mt-2 inline-block text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/60 px-2 py-0.5 rounded-full">6 câu • +600 Aura</span>
-        </button>
-      </div>
-
-      <!-- MAIN QUIZ ARENA CARD -->
-      <div id="quiz-playing-container" class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-5 sm:p-7 shadow-lg space-y-5 transition-colors">
-        
-        <!-- HUD Header: Timer Bar, Streak Multiplier, Score -->
-        <div class="space-y-2">
-          <div class="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-300">
-            <span class="flex items-center gap-1.5" id="quiz-question-counter">
-              <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Câu 1 / 10
-            </span>
-
-            <div class="flex items-center gap-2">
-              <!-- Streak Badge -->
-              <span id="quiz-streak-badge" class="inline-flex items-center gap-1 bg-gradient-to-r from-amber-500 to-rose-500 text-white px-2.5 py-0.5 rounded-full text-[11px] font-black shadow-sm">
-                🔥 <span id="quiz-streak-text">Streak x1</span>
-              </span>
-
-              <!-- Live Score -->
-              <span class="font-black text-indigo-600 dark:text-indigo-400" id="quiz-live-score">+0 Aura</span>
-            </div>
-          </div>
-
-          <!-- Progress / Timer Bar -->
-          <div class="relative w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-            <div id="quiz-timer-bar" class="quiz-timer-bar h-full bg-emerald-500 rounded-full w-full"></div>
-          </div>
-          <div class="flex justify-between items-center text-[10px] text-slate-400 font-medium">
-            <span>Thời gian còn lại:</span>
-            <span id="quiz-timer-text" class="font-bold font-mono text-slate-700 dark:text-slate-300">15s</span>
-          </div>
-        </div>
-
-        <!-- Question Card -->
-        <div class="space-y-3 pt-2">
-          <h3 id="quiz-question-title" class="text-base sm:text-lg font-black text-slate-900 dark:text-white leading-snug">
-            Đang tải câu hỏi...
-          </h3>
-
-          <!-- Code Snippet Box (Optional) -->
-          <div id="quiz-code-box" class="hidden bg-[#0D1117] border border-slate-800 rounded-xl p-3 text-xs font-mono text-emerald-400 overflow-x-auto">
-            <pre><code id="quiz-code-content">f(x) = ax² + bx + c ➔ Mode 7 (Casio 580)</code></pre>
-          </div>
-        </div>
-
-        <!-- Options Grid -->
-        <div id="quiz-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <!-- Dynamically injected option buttons -->
-        </div>
-
-        <!-- Explanation & Feedback Card -->
-        <div id="quiz-explanation-card" class="hidden p-4 rounded-2xl border transition-all space-y-1">
-          <div class="flex items-center gap-2">
-            <span id="quiz-feedback-icon" class="text-base">🎉</span>
-            <h5 id="quiz-feedback-title" class="font-bold text-xs">Chính xác!</h5>
-          </div>
-          <p id="quiz-feedback-text" class="text-xs leading-relaxed"></p>
-        </div>
-
-        <!-- Action Next Button -->
-        <div id="quiz-action-bar" class="hidden flex justify-end pt-2">
-          <button 
-            id="quiz-next-btn"
-            onclick="nextQuizQuestion()" 
-            class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-md transition active:scale-95 flex items-center gap-1.5"
-          >
-            <span>Câu Tiếp Theo</span> <span>→</span>
-          </button>
-        </div>
-
-      </div>
-
-      <!-- RESULT / VICTORY SUMMARY CARD (Hidden until finished) -->
-      <div id="quiz-result-container" class="hidden bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl text-center space-y-5">
-        <div class="space-y-2">
-          <span class="text-5xl block animate-bounce">🏆</span>
-          <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white" id="quiz-result-rank-title">
-            Chiến Thần CVA Chu Văn An!
-          </h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400" id="quiz-result-subtitle">
-            Em đã hoàn thành xuất sắc thử thách trắc nghiệm công nghệ!
-          </p>
-        </div>
-
-        <!-- Result Stats Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto">
-          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
-            <p class="text-[10px] text-slate-400 font-bold uppercase">Điểm Đúng</p>
-            <p class="text-lg font-black text-emerald-600" id="res-score">10/10</p>
-          </div>
-          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
-            <p class="text-[10px] text-slate-400 font-bold uppercase">Độ Chính Xác</p>
-            <p class="text-lg font-black text-indigo-600" id="res-accuracy">100%</p>
-          </div>
-          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
-            <p class="text-[10px] text-slate-400 font-bold uppercase">Max Streak</p>
-            <p class="text-lg font-black text-rose-500" id="res-max-streak">x10 🔥</p>
-          </div>
-          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
-            <p class="text-[10px] text-slate-400 font-bold uppercase">Aura Nhận Được</p>
-            <p class="text-lg font-black text-amber-500" id="res-aura">+1.250 ⚡</p>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-3 pt-2">
-          <button onclick="restartCurrentQuiz()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-md">
-            Chơi Lại Vòng Này 🔄
-          </button>
-          <button onclick="switchTab('landing')" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition active:scale-95">
-            Về Trang Chủ 🏠
-          </button>
-        </div>
-      </div>
-
-      <!-- Real-time Leaderboard for Quiz -->
-      <div class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-3">
-        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-          <div class="flex items-center gap-2">
-            <span class="text-lg">👑</span>
-            <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">Bảng Vàng Chiến Thần Tuần Này</h4>
-          </div>
-          <span class="text-[10px] font-bold text-slate-400">Cập nhật thời gian thực</span>
-        </div>
-
-        <div class="space-y-2" id="quiz-leaderboard-list">
-          <!-- Dynamically populated leaderboard rows -->
-        </div>
-      </div>
-
-    </section>
-
-    
 
     <!-- ==================== TAB 1: TÍNH NĂNG 1: "ĐỒ ƠI VỀ ĐI" ==================== -->
     <section id="tab-lost-found" class="tab-view hidden space-y-3">
@@ -1222,22 +1006,6 @@
         </div>
       </div>
 
-      <!-- QUIZ ARENA STATS CARD -->
-      <div class="bg-gradient-to-r from-indigo-50 via-purple-50 to-white dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900 border border-indigo-200/80 dark:border-indigo-800/80 rounded-2xl p-3.5 shadow-sm space-y-2">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-base shadow-sm">🎯</span>
-            <div>
-              <h4 class="text-xs font-bold text-slate-900 dark:text-white">Thành Tích Đấu Trường Trắc Nghiệm</h4>
-              <p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Bảng vàng trí tuệ học trò Chu Văn An</p>
-            </div>
-          </div>
-          <button onclick="switchTab('quiz')" class="px-2.5 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-sm">
-            Vào Thi Đấu →
-          </button>
-        </div>
-      </div>
-
       <!-- Counter -->
       <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold">
         <div class="bg-white border border-slate-100 p-2.5 rounded-2xl shadow-card">
@@ -1302,31 +1070,17 @@
         </div>
       </button>
 
-      <button onclick="switchTab('quiz'); toggleFabMenu()" class="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition text-left">
-        <span class="w-8 h-8 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-300 flex items-center justify-center text-sm shadow-sm">🎯</span>
-        <div>
-          <p>Đấu trường trắc nghiệm</p>
-          <p class="text-[10px] text-slate-400 font-normal">Săn điểm vào 10 &amp; tăng Aura</p>
-        </div>
-      </button>
+      
     </div>
   </div>
 
   <!-- ==================== BOTTOM NAVIGATION (CLEAN AIRY THREADS STYLE) ==================== -->
-  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border-t border-slate-200/90 dark:border-slate-800 px-3 py-2 sm:py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] transition-colors">
-    <div class="max-w-md md:max-w-xl lg:max-w-2xl mx-auto grid grid-cols-5 gap-1 sm:gap-4 text-center">
+  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border-t border-slate-200/90 dark:border-slate-800 px-4 py-2 sm:py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] transition-colors">
+    <div class="max-w-md md:max-w-lg mx-auto grid grid-cols-4 gap-2 sm:gap-6 text-center">
       
       <button onclick="switchTab('landing')" id="nav-landing" class="nav-btn active flex flex-col items-center justify-center py-1 rounded-xl transition text-rose-500 font-bold">
         <svg class="w-5 h-5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
         <span class="text-[10px] mt-0.5 tracking-tight">Trang Chủ</span>
-      </button>
-
-      <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
-        <div class="relative">
-          <svg class="w-5 h-5 text-amber-500 fill-amber-400/20 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          <span class="absolute -top-1.5 -right-2.5 text-[7px] bg-gradient-to-r from-rose-500 to-purple-600 text-white font-extrabold px-1 rounded-full animate-pulse shadow-sm">HOT</span>
-        </div>
-        <span class="text-[10px] mt-0.5 tracking-tight">Quiz VAR</span>
       </button>
 
       <button onclick="switchTab('lost-found')" id="nav-lost-found" class="nav-btn flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
@@ -1996,627 +1750,18 @@
     /* Sandbox removed */
 
     /* =====================================================================
-       ONLINE QUIZ ENGINE: QUESTION BANK, TIMER, STREAK & LEADERBOARD
+       QUẺ MAY MẮN & HỆ THỐNG VIBE CHECK (RESET 00:00 HẰNG NGÀY)
        ===================================================================== */
-    const QUIZ_BANKS = {
-      exam: [
-        {
-          q: "Bảo bối nào là 'trợ thủ tối thượng' của học sinh Chu Văn An khi giải nhanh phương trình bậc 2 và bảng giá trị hàm số?",
-          code: "f(x) = ax² + bx + c ➔ Mode 7 (hoặc Menu 8 Table)",
-          options: [
-            "Máy tính Casio FX-580VNX thần thánh",
-            "Bút chì 2B mài nhọn",
-            "Tập giấy nháp kẻ ô ly",
-            "Cục tẩy hình phi hành gia"
-          ],
-          correct: 0,
-          exp: "Casio FX-580VNX sở hữu tốc độ vi xử lý cực nhanh và tính năng Table/Equation Solver, là vũ khí không thể thiếu trong phòng thi của học trò CVA!"
-        },
-        {
-          q: "Trong phòng thi khảo sát vào 10, chiến thuật làm bài trắc nghiệm thông minh và chuẩn xác nhất là gì?",
-          code: null,
-          options: [
-            "Ngồi suy nghĩ câu khó 15 phút đến khi tìm ra mới làm tiếp",
-            "Quét làm trọn vẹn các câu cơ bản trước, đánh dấu câu phân hóa làm sau, không bỏ trống câu nào",
-            "Khoanh toàn bộ phương án C ngay từ phút đầu tiên",
-            "Đợi bạn bàn bên làm xong để hỏi đáp án"
-          ],
-          correct: 1,
-          exp: "Chiến thuật 'Ăn chắc điểm dễ, săn điểm phân hóa' giúp bạn nắm trọn 8+ điểm trong tay mà không bị áp lực thời gian pressing!"
-        },
-        {
-          q: "Bài thơ 'Ánh trăng' của nhà thơ Nguyễn Duy dạy cho học sinh bài học nhân sinh sâu sắc nào?",
-          code: null,
-          options: [
-            "Trăng tròn vào rằm hàng tháng",
-            "Đạo lý 'Uống nước nhớ nguồn', không bao giờ bội bạc quá khứ gian lao và ân tình cha anh",
-            "Điện thoại thông minh tốt hơn đèn dầu",
-            "Mùa hè nên đi ngắm trăng ở Hồ Tây"
-          ],
-          correct: 1,
-          exp: "Hình ảnh vầng trăng tròn thức tỉnh con người về lối sống ân nghĩa thủy chung, một trong những tác phẩm trọng tâm ôn thi vào 10."
-        },
-        {
-          q: "Muốn tính nhanh cạnh huyền tam giác vuông có hai cạnh góc vuông lần lượt là 3cm và 4cm, định lý nào cho kết quả 5cm trong 1 nốt nhạc?",
-          code: "a² + b² = c² (3² + 4² = 9 + 16 = 25 = 5²)",
-          options: [
-            "Định lý Thales",
-            "Hệ thức lượng trong tam giác",
-            "Định lý Pythagore (Bộ ba số 3 - 4 - 5)",
-            "Bất đẳng thức Cauchy"
-          ],
-          correct: 2,
-          exp: "Bộ ba số Pythagore kinh điển (3 - 4 - 5, 5 - 12 - 13, 6 - 8 - 10) giúp bạn khoanh ngay đáp án trắc nghiệm hình học trong 3 giây!"
-        },
-        {
-          q: "Thành ngữ tiếng Anh nào diễn tả trạng thái 'cố gắng hết sức mình, cháy hết mình trong phòng thi'?",
-          code: null,
-          options: [
-            "Give it my all / Do one's best",
-            "Break a leg",
-            "Piece of cake",
-            "Cả A và B đều mang ý nghĩa cổ vũ nỗ lực tuyệt vời"
-          ],
-          correct: 3,
-          exp: "'Give it your all' là nỗ lực hết mình, còn 'Break a leg' là lời chúc may mắn quen thuộc trước giờ thi đấu hoặc biểu diễn!"
-        },
-        {
-          q: "Khi gặp một câu hỏi trắc nghiệm tiếng Anh phân vân giữa hai phương án, thao tác loại trừ nào khoa học nhất?",
-          code: null,
-          options: [
-            "Tung đồng xu hoặc đếm số cúc áo",
-            "Xét thì của động từ, dấu hiệu nhận biết thời gian và cấu trúc ngữ pháp trước/sau chỗ trống",
-            "Chọn từ nào dài hơn",
-            "Bỏ qua không làm"
-          ],
-          correct: 1,
-          exp: "Phương pháp loại trừ dựa trên cấu trúc ngữ pháp và ngữ cảnh là chìa khóa vàng giúp bạn ghi điểm tuyệt đối phần trắc nghiệm tiếng Anh."
-        },
-        {
-          q: "Công thức tính diện tích hình tròn có bán kính R là gì để không bao giờ bị mất điểm đáng tiếc?",
-          code: null,
-          options: [
-            "S = 2 × π × R",
-            "S = π × R²",
-            "S = π × d",
-            "S = 4/3 × π × R³"
-          ],
-          correct: 1,
-          exp: "S = π × R² là diện tích hình tròn; còn 2πR là chu vi. Rất nhiều bạn thi vội vàng nhầm lẫn giữa hai công thức này!"
-        },
-        {
-          q: "Để bài văn nghị luận xã hội đạt điểm 9+, thao tác dẫn chứng nào mang tính thuyết phục cao nhất?",
-          code: null,
-          options: [
-            "Dẫn chứng cụ thể, thời sự, tiêu biểu và có sức truyền cảm hứng mạnh mẽ",
-            "Lấy ví dụ về chính bản thân mình ngủ dậy muộn",
-            "Liệt kê thật nhiều tên nhưng không phân tích",
-            "Chép lại toàn bộ phần đọc hiểu vào thân bài"
-          ],
-          correct: 0,
-          exp: "Dẫn chứng xác thực, mang tính thời đại và phân tích sắc sảo giúp bài văn của bạn nổi bật giữa hàng ngàn bài thi."
-        },
-        {
-          q: "Học sinh THCS Chu Văn An học tập hăng say nhưng cần duy trì thói quen nào để não bộ hoạt động tối ưu 100%?",
-          code: null,
-          options: [
-            "Thức trắng đêm trước ngày thi để cày đề",
-            "Ngủ đủ 7-8 tiếng, uống đủ nước và tập thể dục giờ ra chơi",
-            "Uống nước ngọt thay cơm",
-            "Không bao giờ giải lao"
-          ],
-          correct: 1,
-          exp: "Giấc ngủ chất lượng giúp não bộ củng cố trí nhớ dài hạn và phục hồi tư duy nhạy bén cho các bài thi phức tạp."
-        },
-        {
-          q: "Ý nghĩa thực sự của việc rèn luyện trắc nghiệm và tích lũy điểm Aura mỗi ngày tại Trạm là gì?",
-          code: null,
-          options: [
-            "Chỉ để lấy huy hiệu khoe với bạn bè",
-            "Rèn luyện phản xạ tư duy nhanh, tự tin trước mọi áp lực thi cử và lan tỏa tinh thần hiếu học CVA",
-            "Để được miễn thi học kỳ",
-            "Không có ý nghĩa gì"
-          ],
-          correct: 1,
-          exp: "Tự hào truyền thống học trò Chu Văn An: Bản lĩnh, tự tin, sẵn sàng chinh phục mọi đỉnh cao tri thức!"
-        }
-      ],
-      cva: [
-        {
-          q: "Bảo bối thần kỳ nào hay bị thất lạc nhất tại các phòng học Chu Văn An?",
-          code: null,
-          options: [
-            "Máy tính Casio FX-580VNX dán sticker anime",
-            "Bình giữ nhiệt màu hồng pastel",
-            "Áo khoác đồng phục CVA size M",
-            "Tất cả các món trên!"
-          ],
-          correct: 3,
-          exp: "Đây là 'bộ 3 quyền lực' đứng đầu danh sách Check VAR tại Trạm Học Đường Teen!"
-        },
-        {
-          q: "Tính năng 'Check VAR Chính Chủ' tại Trạm bảo vệ chủ nhân món đồ như thế nào?",
-          code: null,
-          options: [
-            "Ai đến trước thì được lấy trước",
-            "Người nhặt đặt câu hỏi bí mật (mặt sau dán gì, vết xước ở đâu), người mất trả lời đúng mới được nhận",
-            "Phải nộp tiền chuộc",
-            "Nhờ giáo viên chủ nhiệm bốc thăm"
-          ],
-          correct: 1,
-          exp: "Câu hỏi bí mật Check VAR giúp xác minh chính chủ 100%, bảo mật tuyệt đối không lo bị nhận nhầm."
-        },
-        {
-          q: "Khi nhặt được đồ rơi trong trường CVA và đăng lên Trạm, bạn được thưởng gì?",
-          code: null,
-          options: [
-            "+50 Aura danh dự, lời cảm ơn từ bạn bè và huy hiệu Người Tốt Việc Tốt",
-            "Một điểm 10 môn Toán",
-            "Được miễn trực nhật cả tháng",
-            "Không được gì"
-          ],
-          correct: 0,
-          exp: "Aura là thước đo uy tín học trò Chu Văn An, giúp bạn tỏa sáng trên Thẻ học sinh số!"
-        },
-        {
-          q: "Giờ ra chơi tại THCS Chu Văn An, món ăn vặt nào tại căn-tin có sức hút nhất?",
-          code: null,
-          options: [
-            "Bánh tráng cuộn sốt bơ & trà sữa trân châu",
-            "Bánh mì que cay nóng hổi",
-            "Kem ốc quế mát lạnh",
-            "Cả 3 món tuỳ theo độ đói của từng khối lớp"
-          ],
-          correct: 3,
-          exp: "Căn-tin Chu Văn An là thiên đường nạp năng lượng sau những tiết kiểm tra 1 tiết căng thẳng!"
-        },
-        {
-          q: "Chợ Phiên Sách 0đ của Trạm hoạt động với tinh thần gì?",
-          code: null,
-          options: [
-            "Bán sách giá đắt kiếm lời",
-            "Anh chị Khối 9 truyền lửa SGK và tài liệu ôn thi vào 10 miễn phí cho các em khối dưới",
-            "Thuê truyện tranh tính phí theo ngày",
-            "Đổi sách lấy đồ chơi điện tử"
-          ],
-          correct: 1,
-          exp: "Tinh thần Chu Văn An là 'Lá lành đùm lá rách', chia sẻ tri thức và truyền lửa đỗ nguyện vọng 1!"
-        },
-        {
-          q: "Biểu tượng nào gắn liền với ngôi trường Chu Văn An cổ kính ven Hồ Tây?",
-          code: null,
-          options: [
-            "Hàng cây xà cừ cổ thụ và sân cờ rợp bóng mát",
-            "Cổng trường trang nghiêm và truyền thống hiếu học ngàn năm",
-            "Tượng người thầy mẫu mực Chu Văn An",
-            "Tất cả các biểu tượng trên"
-          ],
-          correct: 3,
-          exp: "Tự hào học sinh Chu Văn An: 'Trường là nhà, bạn bè là tri kỷ, thầy cô là ngọn đuốc soi đường'!"
-        },
-        {
-          q: "Phím tắt để mở nhanh 'Command Palette' tìm kiếm mọi thứ trong Trạm là gì?",
-          code: null,
-          options: [
-            "Ctrl + K (hoặc Cmd + K trên Mac)",
-            "Alt + F4",
-            "Ctrl + W",
-            "Shift + Delete"
-          ],
-          correct: 0,
-          exp: "Bấm Ctrl + K bất cứ lúc nào để mở thanh tìm kiếm siêu tốc chuẩn phong cách coder!"
-        },
-        {
-          q: "Mỗi ngày vào Trạm Học Đường Teen, bạn có thể nhận thêm 10 Aura bằng cách nào?",
-          code: null,
-          options: [
-            "Rút Quẻ May Mắn Mỗi Ngày ở mục Vibe Check",
-            "Đăng status than vãn",
-            "Bật tắt wifi liên tục",
-            "F5 lại trang 100 lần"
-          ],
-          correct: 0,
-          exp: "Bốc quẻ may mắn mỗi sáng mang lại lời chúc năng lượng tích cực và +10 Aura tức thì!"
-        }
-      ],
-      vibe: [
-        {
-          q: "Hôm nay trước giờ kiểm tra 15 phút, tâm trạng của bạn đang ở mức nào?",
-          code: null,
-          options: [
-            "Tâm bất biến giữa dòng đời vạn biến, đề gì cũng cân!",
-            "Não đang loading 99% công thức Toán",
-            "Cầu trời khấn phật đừng gọi tên em lên bảng",
-            "Vừa bốc quẻ may mắn nên tự tin 1000%"
-          ],
-          correct: 0,
-          exp: "Tự tin là 50% chiến thắng! Hít thở sâu và tin vào bản thân nhé học trò CVA!"
-        },
-        {
-          q: "Khi làm bài tập nhóm mà cả nhóm 'đã xem' nhưng không ai phản hồi, bạn sẽ:",
-          code: null,
-          options: [
-            "Tung ulti tag @all kèm sticker bốc hỏa",
-            "Lên Trạm đổi đề cương 0đ và tự làm bài nộp luôn để out trình",
-            "Gửi quẻ tâm lý vào nhóm kéo mood mọi người lên",
-            "Hẹn gặp trực tiếp ở ghế đá sân trường để phân vai rõ ràng"
-          ],
-          correct: 3,
-          exp: "Giao tiếp trực tiếp và phân công minh bạch là chìa khóa giải quyết mọi khúc mắc học đường!"
-        },
-        {
-          q: "Màu sắc giao diện nào giúp mắt bạn dễ chịu nhất khi ôn bài đêm khuya?",
-          code: null,
-          options: [
-            "Midnight Cyber (Giao diện Tối) bấm Ctrl + D",
-            "Màn hình trắng tinh sáng hết cỡ",
-            "Vàng chanh chói lóa",
-            "Đỏ rực nhấp nháy"
-          ],
-          correct: 0,
-          exp: "Giao diện tối Midnight Cyber triệt tiêu ánh sáng xanh, chống mỏi mắt và bảo vệ giấc ngủ học sinh."
-        },
-        {
-          q: "Định luật bảo toàn bút viết trong lớp học CVA phát biểu thế nào?",
-          code: null,
-          options: [
-            "Bút không tự nhiên sinh ra và cũng không tự nhiên mất đi, chỉ chuyển từ hộp bút bạn này sang túi bạn khác",
-            "Mua 10 cây bút thì sau 3 ngày chỉ còn đúng 1 cái nắp",
-            "Càng cho mượn bút thì tỉ lệ đỗ cấp 3 càng cao",
-            "Cả câu A và B đều chuẩn 100%!"
-          ],
-          correct: 3,
-          exp: "Chính vì thế tính năng Check VAR đồ thất lạc mới ra đời để trả lại bút cho chính chủ!"
-        },
-        {
-          q: "Bí kíp để không bao giờ bị 'pressing' khi bị cô giáo bất ngờ gọi lên bảng?",
-          code: null,
-          options: [
-            "Ngồi im không dám thở",
-            "Luôn hoàn thành bài tập về nhà từ tối hôm trước",
-            "Giơ tay xung phong trước để được quyền chọn câu dễ",
-            "Cả B và C đều là chiến thuật cao thủ"
-          ],
-          correct: 3,
-          exp: "Chủ động xung phong thể hiện tinh thần dũng cảm và luôn ghi điểm cực cao trong mắt thầy cô!"
-        },
-        {
-          q: "Nguồn động lực lớn nhất giúp bạn thức khuya dậy sớm ôn thi vào lớp 10 là gì?",
-          code: null,
-          options: [
-            "Màu áo đồng phục ngôi trường cấp 3 mơ ước",
-            "Tự hào gia đình và thầy cô",
-            "Một mùa hè du lịch xả láng không âu lo",
-            "Tất cả những điều tuyệt vời trên!"
-          ],
-          correct: 3,
-          exp: "Chu Văn An luôn đồng hành cùng ước mơ của bạn. Cố gắng hết mình, tương lai rạng ngời đang chờ đón!"
-        }
-      ]
-    };
-
-    const LEADERBOARD_DEFAULT = [
-      { name: "Minh Anh", class: "8A3", score: 9850, badge: "Chiến Thần CVA ⚡", avatar: "🐱" },
-      { name: "Khánhh", class: "8A1", score: 8920, badge: "Thủ Khoa Khảo Sát 📝", avatar: "⚡" },
-      { name: "Hoàng Nam", class: "8A9", score: 7850, badge: "Thánh Check VAR 🔍", avatar: "🦊" },
-      { name: "Bảo Trâm", class: "9C1", score: 6940, badge: "Thủ Khoa Sách 0đ 📚", avatar: "🦄" },
-      { name: "Gia Huy", class: "7B2", score: 5820, badge: "Tân Binh Triển Vọng 🌱", avatar: "🐶" }
-    ];
-
-    let currentQuizCat = 'cva';
-    let currentQuizIdx = 0;
-    let quizScore = 0;
-    let quizStreak = 0;
-    let quizMaxStreak = 0;
-    let quizTimer = null;
-    let quizTimeLeft = 15;
-    let quizAnswered = false;
-
-    function selectQuizCategory(cat) {
-      currentQuizCat = cat;
-      try { playCuteSound('pop'); } catch(e){}
-
-      // Update cat cards
-      ['exam', 'cva', 'vibe'].forEach(c => {
-        const card = document.getElementById(`cat-card-${c}`);
-        if (!card) return;
-        const dot = card.querySelector('.quiz-cat-active-dot');
-        if (c === cat) {
-          card.classList.add('border-2', 'border-indigo-500', 'bg-indigo-50/70', 'dark:bg-indigo-950/40');
-          card.classList.remove('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900');
-          if (dot) dot.classList.remove('hidden');
-        } else {
-          card.classList.remove('border-2', 'border-indigo-500', 'bg-indigo-50/70', 'dark:bg-indigo-950/40');
-          card.classList.add('border', 'border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900');
-          if (dot) dot.classList.add('hidden');
-        }
-      });
-
-      startQuiz();
-    }
-    window.selectQuizCategory = selectQuizCategory;
-
-    function startQuiz() {
-      currentQuizIdx = 0;
-      quizScore = 0;
-      quizStreak = 0;
-      quizMaxStreak = 0;
-
-      const playingCont = document.getElementById('quiz-playing-container');
-      const resCont = document.getElementById('quiz-result-container');
-      if (playingCont) playingCont.classList.remove('hidden');
-      if (resCont) resCont.classList.add('hidden');
-
-      loadQuestion(0);
-      renderLeaderboard();
-    }
-    window.startQuiz = startQuiz;
-
-    function restartCurrentQuiz() {
-      startQuiz();
-    }
-    window.restartCurrentQuiz = restartCurrentQuiz;
-
-    function loadQuestion(idx) {
-      if (quizTimer) clearInterval(quizTimer);
-      quizAnswered = false;
-
-      const bank = QUIZ_BANKS[currentQuizCat] || QUIZ_BANKS.cva;
-      if (idx >= bank.length) {
-        showQuizVictory();
-        return;
-      }
-
-      const qData = bank[idx];
-      currentQuizIdx = idx;
-
-      // Update HUD
-      const counterEl = document.getElementById('quiz-question-counter');
-      if (counterEl) counterEl.textContent = `Câu ${idx + 1} / ${bank.length}`;
-
-      const streakText = document.getElementById('quiz-streak-text');
-      if (streakText) streakText.textContent = `Streak x${quizStreak}`;
-
-      const scoreEl = document.getElementById('quiz-live-score');
-      if (scoreEl) scoreEl.textContent = `${quizScore} Aura`;
-
-      // Update Question & Code
-      const titleEl = document.getElementById('quiz-question-title');
-      if (titleEl) titleEl.textContent = qData.q;
-
-      const codeBox = document.getElementById('quiz-code-box');
-      const codeContent = document.getElementById('quiz-code-content');
-      if (qData.code) {
-        if (codeBox) codeBox.classList.remove('hidden');
-        if (codeContent) codeContent.textContent = qData.code;
-      } else {
-        if (codeBox) codeBox.classList.add('hidden');
-      }
-
-      // Hide Explanation & Next button
-      const expCard = document.getElementById('quiz-explanation-card');
-      if (expCard) expCard.classList.add('hidden');
-      const actBar = document.getElementById('quiz-action-bar');
-      if (actBar) actBar.classList.add('hidden');
-
-      // Render Options
-      const optContainer = document.getElementById('quiz-options-container');
-      if (optContainer) {
-        optContainer.innerHTML = '';
-        const letters = ['A', 'B', 'C', 'D'];
-        qData.options.forEach((optText, oIdx) => {
-          const btn = document.createElement('button');
-          btn.className = `quiz-opt-btn text-left p-3.5 sm:p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/80 dark:hover:bg-slate-800 font-semibold text-xs text-slate-800 dark:text-slate-100 transition active:scale-98 flex items-start gap-2.5`;
-          btn.innerHTML = `<span class="w-6 h-6 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 flex items-center justify-center font-black text-[11px] text-slate-700 dark:text-slate-200 flex-shrink-0">${letters[oIdx]}</span><span class="mt-0.5 leading-snug">${optText}</span>`;
-          btn.onclick = () => selectQuizOption(oIdx);
-          optContainer.appendChild(btn);
-        });
-      }
-
-      // Start 15s Timer
-      quizTimeLeft = 15;
-      updateTimerUI();
-      quizTimer = setInterval(() => {
-        quizTimeLeft--;
-        updateTimerUI();
-        if (quizTimeLeft <= 0) {
-          clearInterval(quizTimer);
-          handleTimeOut();
-        }
-      }, 1000);
-    }
-
-    function updateTimerUI() {
-      const textEl = document.getElementById('quiz-timer-text');
-      const barEl = document.getElementById('quiz-timer-bar');
-      if (textEl) textEl.textContent = `${quizTimeLeft}s`;
-      if (barEl) {
-        const pct = (quizTimeLeft / 15) * 100;
-        barEl.style.width = `${pct}%`;
-        if (quizTimeLeft <= 4) {
-          barEl.className = 'quiz-timer-bar h-full bg-rose-500 rounded-full animate-pulse';
-        } else if (quizTimeLeft <= 8) {
-          barEl.className = 'quiz-timer-bar h-full bg-amber-500 rounded-full';
-        } else {
-          barEl.className = 'quiz-timer-bar h-full bg-emerald-500 rounded-full';
-        }
+    function scrollToVibeCheck() {
+      switchTab('landing');
+      const card = document.getElementById('bento-vibe-card');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.classList.add('ring-4', 'ring-amber-400');
+        setTimeout(() => card.classList.remove('ring-4', 'ring-amber-400'), 2000);
       }
     }
-
-    function selectQuizOption(choiceIdx) {
-      if (quizAnswered) return;
-      quizAnswered = true;
-      if (quizTimer) clearInterval(quizTimer);
-
-      const bank = QUIZ_BANKS[currentQuizCat] || QUIZ_BANKS.cva;
-      const qData = bank[currentQuizIdx];
-      const optBtns = document.querySelectorAll('.quiz-opt-btn');
-
-      const isCorrect = (choiceIdx === qData.correct);
-
-      if (isCorrect) {
-        try { playCuteSound('ting'); } catch(e){}
-        quizStreak++;
-        if (quizStreak > quizMaxStreak) quizMaxStreak = quizStreak;
-
-        const multiplier = quizStreak >= 5 ? 2.0 : quizStreak >= 3 ? 1.5 : 1.0;
-        const pointsEarned = Math.round(100 * multiplier);
-        quizScore += pointsEarned;
-        addAuraPoints(pointsEarned, 'Đấu trường Quiz');
-
-        // Highlight selected
-        if (optBtns[choiceIdx]) {
-          optBtns[choiceIdx].classList.add('border-2', 'border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/50');
-          optBtns[choiceIdx].querySelector('span').classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
-        }
-
-        showExplanation(true, qData.exp, `Chính xác! (+${pointsEarned} Aura) 🔥 Streak x${quizStreak}`);
-
-        if (typeof confetti === 'function' && quizStreak % 3 === 0) {
-          confetti({ particleCount: 40, spread: 60, origin: { y: 0.7 } });
-        }
-      } else {
-        try { playCuteSound('pop'); } catch(e){}
-        quizStreak = 0;
-
-        // Highlight selected as wrong
-        if (optBtns[choiceIdx]) {
-          optBtns[choiceIdx].classList.add('border-2', 'border-rose-500', 'bg-rose-50', 'dark:bg-rose-950/50', 'animate-shake');
-          optBtns[choiceIdx].querySelector('span').classList.add('bg-rose-500', 'text-white', 'border-rose-600');
-        }
-
-        // Highlight correct
-        if (optBtns[qData.correct]) {
-          optBtns[qData.correct].classList.add('border-2', 'border-emerald-500', 'bg-emerald-50/50', 'dark:bg-emerald-950/40');
-        }
-
-        showExplanation(false, qData.exp, "Chưa chính xác rồi nè!");
-      }
-
-      // Update score HUD
-      const scoreEl = document.getElementById('quiz-live-score');
-      if (scoreEl) scoreEl.textContent = `${quizScore} Aura`;
-      const streakText = document.getElementById('quiz-streak-text');
-      if (streakText) streakText.textContent = `Streak x${quizStreak}`;
-
-      // Show Action Bar
-      const actBar = document.getElementById('quiz-action-bar');
-      if (actBar) actBar.classList.remove('hidden');
-    }
-
-    function handleTimeOut() {
-      if (quizAnswered) return;
-      quizAnswered = true;
-      quizStreak = 0;
-      try { playCuteSound('pop'); } catch(e){}
-
-      const bank = QUIZ_BANKS[currentQuizCat] || QUIZ_BANKS.cva;
-      const qData = bank[currentQuizIdx];
-      const optBtns = document.querySelectorAll('.quiz-opt-btn');
-
-      if (optBtns[qData.correct]) {
-        optBtns[qData.correct].classList.add('border-2', 'border-emerald-500', 'bg-emerald-50/50');
-      }
-
-      showExplanation(false, qData.exp, "Hết giờ rồi chiến thần ơi! ⏱️");
-
-      const actBar = document.getElementById('quiz-action-bar');
-      if (actBar) actBar.classList.remove('hidden');
-    }
-
-    function showExplanation(isCorrect, expText, title) {
-      const expCard = document.getElementById('quiz-explanation-card');
-      const icon = document.getElementById('quiz-feedback-icon');
-      const titleEl = document.getElementById('quiz-feedback-title');
-      const textEl = document.getElementById('quiz-feedback-text');
-
-      if (!expCard) return;
-      expCard.classList.remove('hidden');
-
-      if (isCorrect) {
-        expCard.className = 'p-4 rounded-2xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50/80 dark:bg-emerald-950/40 space-y-1 transition-all';
-        if (icon) icon.textContent = '🎉';
-        if (titleEl) {
-          titleEl.textContent = title;
-          titleEl.className = 'font-bold text-xs text-emerald-800 dark:text-emerald-200';
-        }
-      } else {
-        expCard.className = 'p-4 rounded-2xl border border-rose-300 dark:border-rose-800 bg-rose-50/80 dark:bg-rose-950/40 space-y-1 transition-all';
-        if (icon) icon.textContent = '💡';
-        if (titleEl) {
-          titleEl.textContent = title;
-          titleEl.className = 'font-bold text-xs text-rose-800 dark:text-rose-200';
-        }
-      }
-
-      if (textEl) textEl.textContent = expText;
-    }
-
-    function nextQuizQuestion() {
-      loadQuestion(currentQuizIdx + 1);
-    }
-    window.nextQuizQuestion = nextQuizQuestion;
-
-    function showQuizVictory() {
-      const playingCont = document.getElementById('quiz-playing-container');
-      const resCont = document.getElementById('quiz-result-container');
-      if (playingCont) playingCont.classList.add('hidden');
-      if (resCont) resCont.classList.remove('hidden');
-
-      try { playCuteSound('chime'); } catch(e){}
-      if (typeof confetti === 'function') {
-        confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
-      }
-
-      const bank = QUIZ_BANKS[currentQuizCat] || QUIZ_BANKS.cva;
-      const total = bank.length;
-      const pct = Math.round((quizScore / (total * 150)) * 100);
-
-      document.getElementById('res-score').textContent = `${Math.min(total, Math.round(quizScore / 120))}/${total}`;
-      document.getElementById('res-accuracy').textContent = `${Math.min(100, pct)}%`;
-      document.getElementById('res-max-streak').textContent = `x${quizMaxStreak} 🔥`;
-      document.getElementById('res-aura').textContent = `+${quizScore} ⚡`;
-
-      const rankTitle = document.getElementById('quiz-result-rank-title');
-      if (rankTitle) {
-        if (quizMaxStreak >= 8 || quizScore >= 900) {
-          rankTitle.textContent = "🏆 Đại Kiện Tướng Tri Thức & Chiến Thần CVA!";
-        } else if (quizScore >= 600) {
-          rankTitle.textContent = "⚡ Thủ Khoa Đấu Trường Trắc Nghiệm!";
-        } else {
-          rankTitle.textContent = "🌱 Chiến Binh Tri Thức Triển Vọng CVA!";
-        }
-      }
-    }
-
-    function renderLeaderboard() {
-      const list = document.getElementById('quiz-leaderboard-list');
-      if (!list) return;
-
-      list.innerHTML = '';
-      LEADERBOARD_DEFAULT.forEach((user, idx) => {
-        const medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
-        const row = document.createElement('div');
-        row.className = 'flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800';
-        row.innerHTML = `
-          <div class="flex items-center gap-2.5">
-            <span class="text-base font-black">${medals[idx]}</span>
-            <div>
-              <p class="font-extrabold text-slate-800 dark:text-slate-100">${user.name} <span class="font-semibold text-slate-400">(${user.class})</span></p>
-              <p class="text-[10px] text-indigo-500 font-bold">${user.badge}</p>
-            </div>
-          </div>
-          <div class="text-right">
-            <span class="font-black text-amber-500">${user.score}</span> <span class="text-[10px] text-slate-400">Aura</span>
-          </div>
-        `;
-        list.appendChild(row);
-      });
-    }
-
-    
-
-    
+    window.scrollToVibeCheck = scrollToVibeCheck;
 
     function getTodayDateKey() {
       const d = new Date();
@@ -2754,7 +1899,7 @@
        5. UI NAVIGATION & MODALS
        ===================================================================== */
     function switchTab(tabId) {
-      if (tabId === 'mailbox') tabId = 'quiz';
+      if (tabId === 'mailbox' || tabId === 'quiz') tabId = 'landing';
       playCuteSound('pop');
       currentTab = tabId;
       document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
@@ -3854,8 +2999,7 @@
         { icon: '📚', title: 'Pass đề thi thử vào 10 môn Toán giá 0đ', desc: 'Chợ phiên học trò • Khối 9 tặng', action: () => { switchTab('books'); } },
                 { icon: '🥠', title: 'Bốc quẻ may mắn học đường (+10 Aura)', desc: 'Vibe check hàng ngày', action: () => { switchTab('landing'); rollVibeCheck(); } },
         { icon: '🌓', title: 'Đổi giao diện Tối / Sáng (Dark / Light Mode)', desc: 'Phím tắt Ctrl+D • Midnight Cyber hoặc Clean Pastel', action: () => { toggleThemeMode(); } },
-        { icon: '🎯', title: 'Đấu trường trắc nghiệm Online', desc: 'Đấu trường trắc nghiệm, Check VAR & tăng Aura', action: () => { switchTab('quiz'); } },
-        { icon: '💳', title: 'Xem thẻ học sinh & điểm Aura cá nhân', desc: 'Góc của em • Đổi Avatar', action: () => { switchTab('profile'); } }
+                { icon: '💳', title: 'Xem thẻ học sinh & điểm Aura cá nhân', desc: 'Góc của em • Đổi Avatar', action: () => { switchTab('profile'); } }
       ];
 
       // Add dynamic matching items from data
@@ -3879,7 +3023,7 @@
         container.innerHTML = `
           <div class="py-8 text-center text-xs text-slate-400">
             <span class="text-2xl block mb-1">🔍</span>
-            Không tìm thấy kết quả nào cho "${escapeHTML(query)}". Thử gõ "Casio", "Toán", "Văn", "Quiz"...
+            Không tìm thấy kết quả nào cho "${escapeHTML(query)}". Thử gõ "Casio", "Toán", "Văn", "Đồng phục"...
           </div>
         `;
         return;
