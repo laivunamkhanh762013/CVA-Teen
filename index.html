@@ -30,18 +30,8 @@
       } catch(e) {}
     })();
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Plus Jakarta Sans & Nunito (Chuẩn giao diện hiện đại, thanh thoát, sang xịn) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <script>
-    tailwind.config = {
+    <script>
+    tailwind = {
       darkMode: 'class',
       theme: {
         extend: {
@@ -70,8 +60,9 @@
           }
         }
       }
-    }
+    };
   </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body {
@@ -331,8 +322,72 @@
     }
     html.dark #bottom-nav,
     [data-theme="dark"] #bottom-nav {
-      background-color: rgba(15, 23, 42, 0.95) !important;
+      background-color: rgba(15, 23, 42, 0.98) !important;
       border-top-color: #1E293B !important;
+    }
+
+    /* HIGH CONTRAST TEXT IN DARK MODE (PREVENT INVISIBLE TEXT) */
+    html.dark .text-slate-900,
+    html.dark .text-slate-800,
+    html.dark .text-slate-700,
+    [data-theme="dark"] .text-slate-900,
+    [data-theme="dark"] .text-slate-800,
+    [data-theme="dark"] .text-slate-700 {
+      color: #F8FAFC !important;
+    }
+    html.dark .text-slate-600,
+    html.dark .text-slate-500,
+    [data-theme="dark"] .text-slate-600,
+    [data-theme="dark"] .text-slate-500 {
+      color: #CBD5E1 !important;
+    }
+    html.dark .text-slate-400,
+    [data-theme="dark"] .text-slate-400 {
+      color: #94A3B8 !important;
+    }
+    html.dark .bg-slate-50,
+    html.dark .bg-slate-100,
+    [data-theme="dark"] .bg-slate-50,
+    [data-theme="dark"] .bg-slate-100 {
+      background-color: #1E293B !important;
+      border-color: #334155 !important;
+      color: #E2E8F0 !important;
+    }
+    html.dark input,
+    html.dark select,
+    html.dark textarea,
+    [data-theme="dark"] input,
+    [data-theme="dark"] select,
+    [data-theme="dark"] textarea {
+      background-color: #1E293B !important;
+      color: #F8FAFC !important;
+      border-color: #334155 !important;
+    }
+    html.dark input::placeholder,
+    [data-theme="dark"] input::placeholder {
+      color: #94A3B8 !important;
+    }
+    html.dark .hero-btn-lost,
+    [data-theme="dark"] .hero-btn-lost {
+      background-color: rgba(225, 29, 72, 0.2) !important;
+      color: #FDA4AF !important;
+      border-color: rgba(225, 29, 72, 0.45) !important;
+    }
+    html.dark .hero-btn-book,
+    [data-theme="dark"] .hero-btn-book {
+      background-color: rgba(16, 185, 129, 0.2) !important;
+      color: #6EE7B7 !important;
+      border-color: rgba(16, 185, 129, 0.45) !important;
+    }
+    html.dark .hero-btn-profile,
+    [data-theme="dark"] .hero-btn-profile {
+      background-color: rgba(245, 158, 11, 0.2) !important;
+      color: #FCD34D !important;
+      border-color: rgba(245, 158, 11, 0.45) !important;
+    }
+    html.dark #bottom-nav .nav-btn:not(.active),
+    [data-theme="dark"] #bottom-nav .nav-btn:not(.active) {
+      color: #94A3B8 !important;
     }
 
     /* NAMETHATUI COMPONENT: COMMAND PALETTE */
@@ -393,11 +448,11 @@
         </div>
         <div>
           <div class="flex items-center gap-1.5">
-            <h1 class="text-sm sm:text-base font-extrabold text-slate-900 leading-tight">Trạm Tuổi Teen</h1>
-            <span class="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 border border-slate-200">Threads</span>
+            <h1 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">Trạm Tuổi Teen</h1>
+            <span class="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Threads</span>
           </div>
-          <p id="greeting-text" class="text-[11px] font-semibold text-rose-500 leading-none mt-0.5">
-            <span>Chào buổi sáng</span> <span id="user-pill-name" class="font-bold text-slate-700">Minh Anh 8A3</span>
+          <p id="greeting-text" class="text-[11px] font-semibold text-rose-500 dark:text-rose-400 leading-none mt-0.5">
+            <span>Chào buổi sáng</span> <span id="user-pill-name" class="font-bold text-slate-700 dark:text-slate-200">Minh Anh 8A3</span>
           </p>
         </div>
       </div>
@@ -461,7 +516,7 @@
           type="text" 
           placeholder="Tìm kiếm hoặc nhấn Ctrl+K để mở Command Palette..." 
           oninput="handleGlobalSearch(this.value)"
-          class="w-full bg-slate-100/80 border border-transparent focus:border-slate-300 rounded-full pl-9 pr-8 py-1.5 text-xs font-medium focus:outline-none focus:bg-white transition placeholder:text-slate-400"
+          class="w-full bg-slate-100/90 dark:bg-slate-800/90 border border-transparent dark:border-slate-700/60 focus:border-slate-300 dark:focus:border-slate-600 rounded-full pl-9 pr-8 py-1.5 text-xs font-medium text-slate-800 dark:text-slate-100 focus:outline-none focus:bg-white dark:focus:bg-slate-800 transition placeholder:text-slate-400 dark:placeholder:text-slate-500 shadow-inner"
         />
         <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
           <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -527,12 +582,12 @@
             </div>
 
             <!-- Clean Hero Title -->
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Trạm Học Đường Teen
             </h2>
 
             <!-- Editorial Subtitle -->
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
               Không gian kết nối học trò THCS Chu Văn An: tìm nhanh đồ thất lạc qua Check VAR chính chủ, chợ phiên sách 0đ truyền lửa và đấu trường trắc nghiệm săn điểm vào 10.
             </p>
           </div>
@@ -541,25 +596,25 @@
           <div class="pt-5 flex flex-wrap gap-2.5 relative z-10">
             <button 
               onclick="switchTab('quiz')" 
-              class="bg-gradient-to-r from-rose-500 to-purple-600 hover:from-rose-600 hover:to-purple-700 text-white text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-md shadow-rose-500/20 transition flex items-center gap-2 active:scale-95"
+              class="bg-gradient-to-r from-rose-500 to-purple-600 hover:from-rose-600 hover:to-purple-700 text-white text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-md shadow-rose-500/25 transition flex items-center gap-2 active:scale-95"
             >
               <span>🎯</span> Đấu Trường Trắc Nghiệm
             </button>
             <button 
               onclick="switchTab('lost-found')" 
-              class="bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-800 text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 active:scale-95"
+              class="hero-btn-lost bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/70 text-rose-700 dark:text-rose-200 border border-rose-200 dark:border-rose-800/80 text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 active:scale-95 shadow-sm"
             >
               <span>🔍</span> Check VAR Tìm Đồ
             </button>
             <button 
               onclick="switchTab('books')" 
-              class="bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 active:scale-95"
+              class="hero-btn-book bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800/80 text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 active:scale-95 shadow-sm"
             >
               <span>📚</span> Chợ Phiên Sách 0đ
             </button>
             <button 
               onclick="openProfileModal()" 
-              class="bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 active:scale-95"
+              class="hero-btn-profile bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-800/80 text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 active:scale-95 shadow-sm"
             >
               <span>🎟️</span> Thẻ Học Sinh CVA
             </button>
@@ -595,19 +650,19 @@
         <div class="md:col-span-3 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-sm text-center transition hover:border-rose-300">
             <p class="text-xl sm:text-2xl font-black text-rose-500" id="landing-stat-lost">1.850+</p>
-            <p class="text-[11px] font-semibold text-slate-600 mt-0.5">🎒 Đồ đã về chủ</p>
+            <p class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-0.5">🎒 Đồ đã về chủ</p>
           </div>
           <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-sm text-center transition hover:border-emerald-300">
             <p class="text-xl sm:text-2xl font-black text-emerald-600" id="landing-stat-books">4.200+</p>
-            <p class="text-[11px] font-semibold text-slate-600 mt-0.5">📚 Sách 0đ trao tay</p>
+            <p class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-0.5">📚 Sách 0đ trao tay</p>
           </div>
           <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-sm text-center transition hover:border-purple-300">
             <p class="text-xl sm:text-2xl font-black text-purple-600" id="landing-stat-cheers">15.000+</p>
-            <p class="text-[11px] font-semibold text-slate-600 mt-0.5">🎯 Lượt làm Quiz</p>
+            <p class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-0.5">🎯 Lượt làm Quiz</p>
           </div>
           <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-sm text-center transition hover:border-amber-300">
             <p class="text-xl sm:text-2xl font-black text-amber-500">100%</p>
-            <p class="text-[11px] font-semibold text-slate-600 mt-0.5">✨ Học sinh CVA</p>
+            <p class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-0.5">✨ Học sinh CVA</p>
           </div>
         </div>
 
@@ -622,7 +677,7 @@
             <span class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-emerald-100 text-[11px] flex items-center justify-center font-bold">🐼</span>
             <span class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-sky-100 text-[11px] flex items-center justify-center font-bold">🐶</span>
           </div>
-          <span class="text-xs font-semibold text-slate-700">Minh Anh, Hải Đăng &amp; <span class="font-bold text-rose-600">38 bạn CVA</span> đang trực tuyến</span>
+          <span class="text-xs font-semibold text-slate-700 dark:text-slate-200">Minh Anh, Hải Đăng &amp; <span class="font-bold text-rose-600 dark:text-rose-400">38 bạn CVA</span> đang trực tuyến</span>
         </div>
         <div class="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 px-2.5 py-1 rounded-full shadow-sm">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
