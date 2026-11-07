@@ -13,6 +13,23 @@
   <meta property="og:description" content="Nền tảng kết nối học trò CVA: Check VAR tìm đồ, chia sẻ sách 0đ và tâm sự học đường.">
   
   <!-- Tailwind CSS -->
+    <script>
+    // Early theme & cleanup script to prevent flashes & purge legacy vibes
+    (function() {
+      try {
+        localStorage.removeItem('cva_active_vibe');
+        document.documentElement.removeAttribute('data-vibe');
+        const savedTheme = localStorage.getItem('cva_theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Plus Jakarta Sans & Nunito (Chuẩn giao diện hiện đại, thanh thoát, sang xịn) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -285,102 +302,37 @@
 
 
     /* ==========================================================================
-       NAMETHATUI: VISUAL STYLES ATLAS & VIBE ENGINE (namethatui.com)
-       5 Iconic Themes: Neo-Brutalism Pastel, Glassmorphism, Claymorphism, 
-       Midnight Threads, and Minimalist Swiss.
+       THEME ENGINE: CLEAN SLATE & MIDNIGHT OBSIDIAN (ZERO GLARE, HIGH CONTRAST)
        ========================================================================== */
-
-    /* VIBE 1: NEO-BRUTALISM PASTEL (Default Gen Z School Vibe) */
-    [data-vibe="pastel"] {
-      --vibe-bg: #F8FAFC;
+    html {
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
-
-    /* VIBE 2: GLASSMORPHISM / LIQUID GLASS (Apple VisionOS / Frosted Glass) */
-    [data-vibe="glass"] body {
-      background: radial-gradient(circle at 10% 20%, #fee2e2 0%, #f3e8ff 45%, #e0f2fe 90%) !important;
-      background-attachment: fixed !important;
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
     }
-    [data-vibe="glass"] .bg-white,
-    [data-vibe="glass"] .thread-card,
-    [data-vibe="glass"] header,
-    [data-vibe="glass"] #bottom-nav,
-    [data-vibe="glass"] .modal-sheet {
-      background: rgba(255, 255, 255, 0.75) !important;
-      backdrop-filter: blur(20px) saturate(180%) !important;
-      -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-      border: 1px solid rgba(255, 255, 255, 0.85) !important;
-      box-shadow: 0 10px 32px 0 rgba(148, 163, 184, 0.12), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9) !important;
-    }
-    [data-vibe="glass"] #bottom-nav {
-      background: rgba(255, 255, 255, 0.85) !important;
-    }
-
-    /* VIBE 3: CLAYMORPHISM 3D (Tactile, Puffy, Play-doh Shapes) */
-    [data-vibe="clay"] body {
-      background-color: #EEF2F6 !important;
-    }
-    [data-vibe="clay"] .thread-card,
-    [data-vibe="clay"] .bg-white:not(.no-clay) {
-      background-color: #F7F9FC !important;
-      border: none !important;
-      border-radius: 26px !important;
-      box-shadow: 6px 6px 16px rgba(166, 175, 195, 0.35), -6px -6px 16px rgba(255, 255, 255, 0.85), inset 2px 2px 4px rgba(255, 255, 255, 0.7), inset -2px -2px 4px rgba(0, 0, 0, 0.03) !important;
-    }
-    [data-vibe="clay"] button {
-      border-radius: 18px !important;
-    }
-
-    /* VIBE 4: MIDNIGHT THREADS (Deep Dark Mode with Vibrant Neon Highlights) */
-    [data-vibe="midnight"] body {
-      background-color: #080D1A !important;
-      color: #F1F5F9 !important;
-    }
-    [data-vibe="midnight"] .text-slate-900,
-    [data-vibe="midnight"] .text-slate-800,
-    [data-vibe="midnight"] .text-slate-700 {
+    html.dark body,
+    [data-theme="dark"] body {
+      background-color: #0B0F19 !important;
       color: #F8FAFC !important;
     }
-    [data-vibe="midnight"] .text-slate-600,
-    [data-vibe="midnight"] .text-slate-500 {
-      color: #94A3B8 !important;
-    }
-    [data-vibe="midnight"] .bg-white,
-    [data-vibe="midnight"] .thread-card,
-    [data-vibe="midnight"] header,
-    [data-vibe="midnight"] .modal-sheet {
-      background-color: #0F172A !important;
-      border-color: rgba(255, 255, 255, 0.1) !important;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7) !important;
-    }
-    [data-vibe="midnight"] #bottom-nav {
-      background: rgba(15, 23, 42, 0.95) !important;
-      border-top-color: rgba(255, 255, 255, 0.1) !important;
-    }
-    [data-vibe="midnight"] .bg-slate-50,
-    [data-vibe="midnight"] .bg-slate-100 {
-      background-color: #1E293B !important;
-    }
-    [data-vibe="midnight"] input,
-    [data-vibe="midnight"] select,
-    [data-vibe="midnight"] textarea {
-      background-color: #1E293B !important;
-      color: #F8FAFC !important;
-      border-color: rgba(255, 255, 255, 0.15) !important;
-    }
 
-    /* VIBE 5: MINIMALIST SWISS / NOTION (Pure Typography & Hairline Restraint) */
-    [data-vibe="minimal"] body {
-      background-color: #FFFFFF !important;
+    /* Clean Card Surfaces */
+    html.dark .bg-white,
+    [data-theme="dark"] .bg-white {
+      background-color: #111827 !important;
+      border-color: #1F2937 !important;
+      color: #F8FAFC;
     }
-    [data-vibe="minimal"] .thread-card,
-    [data-vibe="minimal"] .bg-white {
-      background-color: #FFFFFF !important;
-      border: 1px solid #E5E7EB !important;
-      box-shadow: none !important;
-      border-radius: 12px !important;
+    html.dark header,
+    [data-theme="dark"] header {
+      background-color: rgba(17, 24, 39, 0.9) !important;
+      border-bottom-color: #1F2937 !important;
     }
-    [data-vibe="minimal"] button {
-      border-radius: 8px !important;
+    html.dark #bottom-nav,
+    [data-theme="dark"] #bottom-nav {
+      background-color: rgba(15, 23, 42, 0.95) !important;
+      border-top-color: #1E293B !important;
     }
 
     /* NAMETHATUI COMPONENT: COMMAND PALETTE */
@@ -487,15 +439,7 @@
 
 
 
-        <!-- Vibe Studio Button (Name That Vibe) -->
-        <button 
-          onclick="openVibeStudio()" 
-          title="Đổi phong cách giao diện (Name That Vibe)" 
-          class="flex items-center gap-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-200/80 px-2.5 py-1 rounded-xl text-xs font-bold text-rose-700 transition active:scale-95 shadow-sm"
-        >
-          <span class="text-sm">🎨</span>
-          <span class="hidden sm:inline" id="header-vibe-name">Vibe UI</span>
-        </button>
+        <!-- Vibe studio removed -->
 
         <!-- Profile & Aura Badge -->
         <button onclick="openProfileModal()" class="flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-2.5 py-1 rounded-xl text-xs font-bold text-amber-900 transition">
@@ -511,7 +455,7 @@
     <!-- Search input -->
     <div class="max-w-6xl xl:max-w-7xl mx-auto mt-2.5">
       <div class="relative">
-        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <svg class="w-4 h-4 text-slate-400 stroke-2 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="M21 21l-4.35-4.35"/></svg>
         <input 
           id="global-search-input" onclick="openCommandPalette()"
           type="text" 
@@ -680,9 +624,10 @@
           </div>
           <span class="text-xs font-semibold text-slate-700">Minh Anh, Hải Đăng &amp; <span class="font-bold text-rose-600">38 bạn CVA</span> đang trực tuyến</span>
         </div>
-        <button onclick="openVibeStudio()" class="text-[11px] font-bold text-slate-500 hover:text-slate-800 transition flex items-center gap-1">
-          <span>🎨 Style</span>
-        </button>
+        <div class="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 px-2.5 py-1 rounded-full shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Online</span>
+        </div>
       </div>
 
       <!-- ==================== CVA 3 TRỤ CỘT ĐỘT PHÁ (HIGH-DESIGN BENTO SHOWCASE) ==================== -->
@@ -1252,11 +1197,11 @@
     <button 
       id="fab-button"
       onclick="toggleFabMenu()"
-      class="w-13 h-13 w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-lg shadow-slate-900/30 hover:bg-slate-800 active:scale-95 transition duration-150 relative group"
+      class="w-12 h-12 bg-gradient-to-r from-rose-500 to-purple-600 hover:from-rose-600 hover:to-purple-700 text-white rounded-full flex items-center justify-center shadow-lg shadow-rose-500/30 hover:shadow-rose-500/50 hover:scale-105 active:scale-95 transition-all relative group"
     >
-      <i id="fab-icon" data-lucide="plus" class="w-6 h-6 text-white stroke-[2.5] transition-transform duration-200"></i>
+      <svg id="fab-icon" class="w-6 h-6 stroke-[2.5] text-white transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
       <span class="absolute -top-0.5 -right-0.5 flex h-3 w-3">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-300 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-3 w-3 bg-rose-500 border-2 border-white"></span>
       </span>
     </button>
@@ -1290,147 +1235,44 @@
   </div>
 
   <!-- ==================== BOTTOM NAVIGATION (CLEAN AIRY THREADS STYLE) ==================== -->
-  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-slate-200/80 dark:border-slate-800 px-2 py-2 shadow-lg transition-colors">
-    <div class="max-w-md md:max-w-xl lg:max-w-2xl mx-auto grid grid-cols-5 gap-2 sm:gap-4 text-center">
+  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border-t border-slate-200/90 dark:border-slate-800 px-3 py-2 sm:py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] transition-colors">
+    <div class="max-w-md md:max-w-xl lg:max-w-2xl mx-auto grid grid-cols-5 gap-1 sm:gap-4 text-center">
       
-      <button onclick="switchTab('landing')" id="nav-landing" class="nav-btn active flex flex-col items-center py-1 rounded-xl transition text-rose-500 font-bold">
-        <i data-lucide="home" class="w-5 h-5"></i>
-        <span class="text-[10px] mt-0.5">Trang Chủ</span>
+      <button onclick="switchTab('landing')" id="nav-landing" class="nav-btn active flex flex-col items-center justify-center py-1 rounded-xl transition text-rose-500 font-bold">
+        <svg class="w-5 h-5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span class="text-[10px] mt-0.5 tracking-tight">Trang Chủ</span>
       </button>
 
-      <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn flex flex-col items-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
+      <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
         <div class="relative">
-          <i data-lucide="zap" class="w-5 h-5 text-amber-500"></i>
-          <span class="absolute -top-1 -right-2 text-[7px] bg-gradient-to-r from-rose-500 to-purple-600 text-white font-extrabold px-1 rounded-full animate-pulse">HOT</span>
+          <svg class="w-5 h-5 text-amber-500 fill-amber-400/20 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="absolute -top-1.5 -right-2.5 text-[7px] bg-gradient-to-r from-rose-500 to-purple-600 text-white font-extrabold px-1 rounded-full animate-pulse shadow-sm">HOT</span>
         </div>
-        <span class="text-[10px] mt-0.5">Quiz VAR</span>
+        <span class="text-[10px] mt-0.5 tracking-tight">Quiz VAR</span>
       </button>
 
-      <button onclick="switchTab('lost-found')" id="nav-lost-found" class="nav-btn flex flex-col items-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
+      <button onclick="switchTab('lost-found')" id="nav-lost-found" class="nav-btn flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
         <div class="relative">
-          <i data-lucide="compass" class="w-5 h-5"></i>
-          <span class="absolute -top-1 -right-2 text-[8px] bg-rose-500 text-white font-bold px-1 rounded-full">VAR</span>
+          <svg class="w-5 h-5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg>
+          <span class="absolute -top-1.5 -right-2 text-[7px] bg-rose-500 text-white font-bold px-1 rounded-full">VAR</span>
         </div>
-        <span class="text-[10px] mt-0.5">Tìm Đồ</span>
+        <span class="text-[10px] mt-0.5 tracking-tight">Tìm Đồ</span>
       </button>
 
-      <button onclick="switchTab('books')" id="nav-books" class="nav-btn flex flex-col items-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
-        <i data-lucide="book-open" class="w-5 h-5"></i>
-        <span class="text-[10px] mt-0.5">Đổi Sách</span>
+      <button onclick="switchTab('books')" id="nav-books" class="nav-btn flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
+        <svg class="w-5 h-5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span class="text-[10px] mt-0.5 tracking-tight">Đổi Sách</span>
       </button>
 
-      <button onclick="switchTab('profile')" id="nav-profile" class="nav-btn flex flex-col items-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
-        <i data-lucide="user" class="w-5 h-5"></i>
-        <span class="text-[10px] mt-0.5">Góc Của Em</span>
+      <button onclick="switchTab('profile')" id="nav-profile" class="nav-btn flex flex-col items-center justify-center py-1 rounded-xl transition text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium">
+        <svg class="w-5 h-5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        <span class="text-[10px] mt-0.5 tracking-tight">Góc Của Em</span>
       </button>
 
     </div>
   </nav>
 
   <!-- ==================== MODALS ==================== -->
-
-  <!-- MODAL: NAME THAT VIBE STUDIO (namethatui.com) -->
-  <div id="modal-vibe-studio" onclick="handleBackdropClick(event, 'modal-vibe-studio')" class="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-white border border-slate-200 rounded-3xl p-6 max-w-2xl w-full shadow-2xl my-auto relative animate-scale-up">
-      <button onclick="closeModal('modal-vibe-studio')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition">
-        <i data-lucide="x" class="w-4 h-4"></i>
-      </button>
-
-      <div class="flex items-center gap-2.5 mb-1">
-        <span class="text-2xl">🎨</span>
-        <div>
-          <h3 class="text-base font-extrabold text-slate-900">Name That Vibe • Bộ Sưu Tập UI</h3>
-          <p class="text-xs text-slate-500">Tuyển tập phong cách giao diện từ namethatui.com</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-4" id="vibe-cards-container">
-        
-        <!-- Vibe 1: Pastel -->
-        <div onclick="selectVibe('pastel')" class="vibe-option-card cursor-pointer p-3.5 rounded-2xl border-2 transition relative flex flex-col justify-between border-rose-500 bg-rose-50/40" data-vibe-id="pastel">
-          <div>
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-xs font-black text-slate-900 flex items-center gap-1.5">🌸 Neo-Brutalism Pastel</span>
-              <span class="text-[10px] bg-rose-500 text-white font-bold px-1.5 py-0.2 rounded-full vibe-active-badge">Mặc định</span>
-            </div>
-            <p class="text-[11px] text-slate-600 leading-snug">Đổ bóng sắc sảo, màu tươi sáng, vibe Gen Z Chu Văn An.</p>
-          </div>
-          <div class="mt-2.5 flex items-center gap-1.5">
-            <span class="w-3.5 h-3.5 rounded-full bg-rose-400 border border-white"></span>
-            <span class="w-3.5 h-3.5 rounded-full bg-purple-400 border border-white"></span>
-            <span class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-white"></span>
-            <span class="text-[10px] font-bold text-slate-400 ml-auto">Vibe Code</span>
-          </div>
-        </div>
-
-        <!-- Vibe 2: Glassmorphism -->
-        <div onclick="selectVibe('glass')" class="vibe-option-card cursor-pointer p-3.5 rounded-2xl border-2 transition relative flex flex-col justify-between border-slate-200 hover:border-purple-400 bg-white" data-vibe-id="glass">
-          <div>
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-xs font-black text-slate-900 flex items-center gap-1.5">🫧 Glassmorphism</span>
-              <span class="text-[10px] bg-purple-500 text-white font-bold px-1.5 py-0.2 rounded-full hidden vibe-active-badge">Đang bật</span>
-            </div>
-            <p class="text-[11px] text-slate-600 leading-snug">Kính mờ bóng bẩy, viền ánh sáng lấp lánh như Apple VisionOS.</p>
-          </div>
-          <div class="mt-2.5 flex items-center gap-1.5">
-            <span class="w-3.5 h-3.5 rounded-full bg-purple-200/80 border border-white backdrop-blur"></span>
-            <span class="w-3.5 h-3.5 rounded-full bg-sky-200/80 border border-white backdrop-blur"></span>
-            <span class="text-[10px] font-bold text-slate-400 ml-auto">Liquid Glass</span>
-          </div>
-        </div>
-
-        <!-- Vibe 3: Claymorphism -->
-        <div onclick="selectVibe('clay')" class="vibe-option-card cursor-pointer p-3.5 rounded-2xl border-2 transition relative flex flex-col justify-between border-slate-200 hover:border-emerald-400 bg-white" data-vibe-id="clay">
-          <div>
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-xs font-black text-slate-900 flex items-center gap-1.5">🧸 Claymorphism 3D</span>
-              <span class="text-[10px] bg-emerald-500 text-white font-bold px-1.5 py-0.2 rounded-full hidden vibe-active-badge">Đang bật</span>
-            </div>
-            <p class="text-[11px] text-slate-600 leading-snug">Nút phồng 3D mềm mại, cảm giác đất nặn hoạt hình đáng yêu.</p>
-          </div>
-          <div class="mt-2.5 flex items-center gap-1.5">
-            <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 border border-white shadow-inner"></span>
-            <span class="w-3.5 h-3.5 rounded-full bg-teal-400 border border-white shadow-inner"></span>
-            <span class="text-[10px] font-bold text-slate-400 ml-auto">Puffy UI</span>
-          </div>
-        </div>
-
-        <!-- Vibe 4: Midnight Threads -->
-        <div onclick="selectVibe('midnight')" class="vibe-option-card cursor-pointer p-3.5 rounded-2xl border-2 transition relative flex flex-col justify-between border-slate-200 hover:border-indigo-400 bg-slate-900 text-white" data-vibe-id="midnight">
-          <div>
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-xs font-black text-white flex items-center gap-1.5">🖤 Midnight Threads</span>
-              <span class="text-[10px] bg-indigo-500 text-white font-bold px-1.5 py-0.2 rounded-full hidden vibe-active-badge">Đang bật</span>
-            </div>
-            <p class="text-[11px] text-slate-300 leading-snug">Giao diện tối huyền bí, điểm sáng Neon công nghệ sắc sảo.</p>
-          </div>
-          <div class="mt-2.5 flex items-center gap-1.5">
-            <span class="w-3.5 h-3.5 rounded-full bg-indigo-500 border border-slate-800"></span>
-            <span class="w-3.5 h-3.5 rounded-full bg-cyan-400 border border-slate-800"></span>
-            <span class="text-[10px] font-bold text-slate-400 ml-auto">Dark Cyber</span>
-          </div>
-        </div>
-
-        <!-- Vibe 5: Minimalist Swiss (Full span) -->
-        <div onclick="selectVibe('minimal')" class="sm:col-span-2 vibe-option-card cursor-pointer p-3.5 rounded-2xl border-2 transition relative flex items-center justify-between border-slate-200 hover:border-slate-400 bg-white" data-vibe-id="minimal">
-          <div>
-            <div class="flex items-center gap-2 mb-0.5">
-              <span class="text-xs font-black text-slate-900 flex items-center gap-1.5">📰 Minimalist Swiss / Notion</span>
-              <span class="text-[10px] bg-slate-900 text-white font-bold px-1.5 py-0.2 rounded-full hidden vibe-active-badge">Đang bật</span>
-            </div>
-            <p class="text-[11px] text-slate-600">Đơn sắc tối giản, không đổ bóng, tập trung 100% vào nội dung bài viết.</p>
-          </div>
-          <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-1 rounded-lg font-bold">Thanh Lịch</span>
-        </div>
-
-      </div>
-
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-        <span>Được hỗ trợ bởi NameThatUI.com</span>
-        <button onclick="closeModal('modal-vibe-studio')" class="px-4 py-1.5 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">Hoàn tất</button>
-      </div>
-    </div>
-  </div>
 
   <!-- MODAL: COMMAND PALETTE (CMD+K / CTRL+K SPOTLIGHT SEARCH) -->
   <div id="modal-command-palette" onclick="handleBackdropClick(event, 'modal-command-palette')" class="fixed inset-0 z-[80] command-palette-backdrop hidden flex items-start justify-center pt-16 sm:pt-24 p-4 overflow-y-auto">
@@ -3846,60 +3688,15 @@
 
     
     /* =====================================================================
-       NAMETHATUI ENGINE: VIBE STUDIO, COMMAND PALETTE, ACCORDION & COMPONENTS
-       Reference: namethatui.com Visual Styles Atlas & Component Patterns
+       VIBE CLEANUP & THEME CONSISTENCY
        ===================================================================== */
-    let activeVibe = 'pastel';
-
-    function initVibeEngine() {
-      const saved = localStorage.getItem('cva_active_vibe') || 'pastel';
-      setVibe(saved, false);
+    function purgeLegacyVibe() {
+      try {
+        localStorage.removeItem('cva_active_vibe');
+        document.documentElement.removeAttribute('data-vibe');
+      } catch(e) {}
     }
-
-    function setVibe(vibeId, playSound = true) {
-      activeVibe = vibeId;
-      document.documentElement.setAttribute('data-vibe', vibeId);
-      localStorage.setItem('cva_active_vibe', vibeId);
-
-      const headerVibeName = document.getElementById('header-vibe-name');
-      const names = {
-        pastel: 'Pastel',
-        glass: 'Glass',
-        clay: 'Clay 3D',
-        midnight: 'Midnight',
-        minimal: 'Minimal'
-      };
-      if (headerVibeName) headerVibeName.textContent = names[vibeId] || 'Vibe UI';
-
-      // Update active cards in Vibe Studio modal
-      document.querySelectorAll('.vibe-option-card').forEach(card => {
-        const id = card.getAttribute('data-vibe-id');
-        const badge = card.querySelector('.vibe-active-badge');
-        if (id === vibeId) {
-          card.classList.add('border-rose-500', 'bg-rose-50/40');
-          card.classList.remove('border-slate-200');
-          if (badge) badge.classList.remove('hidden');
-        } else {
-          card.classList.remove('border-rose-500', 'bg-rose-50/40');
-          card.classList.add('border-slate-200');
-          if (badge) badge.classList.add('hidden');
-        }
-      });
-
-      if (playSound) {
-        try { playCuteSound('pop'); } catch(e){}
-        showTeenToast(`Đã chuyển sang phong cách: ${names[vibeId]} ✨`, '🎨');
-      }
-    }
-
-    function openVibeStudio() {
-      try { playCuteSound('pop'); } catch(e){}
-      openModal('modal-vibe-studio');
-    }
-
-    function selectVibe(vibeId) {
-      setVibe(vibeId, true);
-    }
+    purgeLegacyVibe();
 
     /* COMMAND PALETTE (CMD+K / CTRL+K SPOTLIGHT SEARCH) */
     function openCommandPalette() {
@@ -3938,7 +3735,7 @@
         { icon: '🎒', title: 'Tìm máy tính Casio FX-580VNX', desc: 'Đồ thất lạc gần đây • Cần cứu giá', action: () => { switchTab('lost-found'); } },
         { icon: '📚', title: 'Pass đề thi thử vào 10 môn Toán giá 0đ', desc: 'Chợ phiên học trò • Khối 9 tặng', action: () => { switchTab('books'); } },
                 { icon: '🥠', title: 'Bốc quẻ may mắn học đường (+10 Aura)', desc: 'Vibe check hàng ngày', action: () => { switchTab('landing'); rollVibeCheck(); } },
-        { icon: '🎨', title: 'Đổi phong cách giao diện NameThatUI', desc: 'Pastel, Glass, Clay 3D, Midnight, Minimal', action: () => { openVibeStudio(); } },
+        { icon: '🌓', title: 'Đổi giao diện Tối / Sáng (Dark / Light Mode)', desc: 'Phím tắt Ctrl+D • Midnight Cyber hoặc Clean Pastel', action: () => { toggleThemeMode(); } },
         { icon: '🎯', title: 'Đấu trường trắc nghiệm Online', desc: 'Đấu trường trắc nghiệm, Check VAR & tăng Aura', action: () => { switchTab('quiz'); } },
         { icon: '💳', title: 'Xem thẻ học sinh & điểm Aura cá nhân', desc: 'Góc của em • Đổi Avatar', action: () => { switchTab('profile'); } }
       ];
@@ -4016,7 +3813,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       initThemeEngine();
-      initVibeEngine();
+      purgeLegacyVibe();
             setupGreeting();
       updateProfileUI();
       checkDailyVibeStatus();
