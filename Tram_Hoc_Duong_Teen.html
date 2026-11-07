@@ -647,8 +647,8 @@
         <!-- Bento 2: Mini-game "Bốc Quẻ Học Đường / Vibe Check" (Master Dark/Light Mode) -->
         <div id="bento-vibe-card" class="rounded-3xl p-5 shadow-sm flex flex-col justify-between text-center relative overflow-hidden transition-all duration-300">
           <div class="space-y-2 relative z-10">
-            <div class="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-0.5 rounded-full border" id="vibe-badge">
-              <span>🥠</span> Quẻ May Mắn Mỗi Ngày
+            <div onclick="resetDailyVibeForTesting()" title="Click để reset bốc lại thử nghiệm" class="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-0.5 rounded-full border cursor-pointer hover:scale-105 transition active:scale-95 select-none" id="vibe-badge">
+              <span>🥠</span> Quẻ May Mắn Mỗi Ngày <span class="text-[9px] opacity-70">(1 lần/ngày • 00:00)</span>
             </div>
             
             <h3 class="text-xs font-extrabold" id="vibe-title">Vibe Check Hôm Nay</h3>
@@ -2627,89 +2627,127 @@
     }
 
     const schoolFortunes = [
-      { text: "Quẻ Đại Cát: Hôm nay không bị gọi lên bảng trả bài cũ! Tâm lý 100 điểm!", aura: 10 },
-      { text: "Quẻ May Mắn: Chiều nay căn-tin bất ngờ có thêm trân châu cho trà sữa!", aura: 10 },
-      { text: "Quẻ Tỉnh Táo: Giữ chặt máy tính Casio 580 kẻo các thần đồng mượn quên trả!", aura: 10 },
-      { text: "Quẻ Gà Bông: Bạn bàn bên hôm nay quay sang cười với bạn tận 3 lần, tới công chuyện!", aura: 10 },
-      { text: "Quẻ Học Tập: Bài tập tiếng Anh nhìn vào khoanh C là đúng đề thật, không cap!", aura: 10 },
-      { text: "Quẻ Bình An: Ngày kiểm tra 1 tiết trôi qua êm đềm, không bị giám thị pressing!", aura: 10 },
-      { text: "Quẻ Slay: Hôm nay làm bài kiểm tra trôi chảy, phong thái đỉnh nóc kịch trần!", aura: 10 },
-      { text: "Quẻ Năng Lượng: Cả ngày tràn đầy năng lượng tích cực, Aura sáng rực rỡ!", aura: 10 }
+      { text: "Quẻ Đại Cát: Hôm nay không bị gọi lên bảng trả bài cũ! Tâm lý thoải mái 100 điểm!", luck: "Đại Cát 🌟" },
+      { text: "Quẻ May Mắn: Chiều nay căn-tin bất ngờ có thêm trân châu cho trà sữa và bánh mì nóng giòn!", luck: "May Mắn 🧋" },
+      { text: "Quẻ Tỉnh Táo: Giữ chặt máy tính Casio FX-580 kẻo các chiến thần mượn giải phương trình quên trả!", luck: "Tỉnh Táo 🤖" },
+      { text: "Quẻ Gà Bông: Bạn bàn bên hôm nay quay sang cười với bạn tận 3 lần, tín hiệu vũ trụ tới công chuyện!", luck: "Đào Hoa 🌸" },
+      { text: "Quẻ Học Tập: Bài tập tiếng Anh nhìn vào khoanh C là trúng tủ thật, không cap!", luck: "Thủ Khoa 📚" },
+      { text: "Quẻ Bình An: Ngày kiểm tra 1 tiết trôi qua êm đềm, làm bài mượt mà không bị áp lực thời gian!", luck: "Bình An 🕊️" },
+      { text: "Quẻ Slay: Hôm nay phát biểu xây dựng bài trôi chảy, phong thái đỉnh nóc kịch trần!", luck: "Vô Địch ⚡" },
+      { text: "Quẻ Năng Lượng: Cả ngày tràn đầy năng lượng tích cực, Aura sáng rực rỡ khắp sân trường CVA!", luck: "Rực Rỡ 🌈" },
+      { text: "Quẻ Tri Thức: Nhìn đề Toán hình học kỳ 2 thấy ngay bộ ba Pythagore 3-4-5, khoanh điểm 10 trong 3 giây!", luck: "Siêu Trí Tuệ 🧠" },
+      { text: "Quẻ Đồng Đội: Làm việc nhóm siêu ăn ý, chia bài phân vai rõ ràng, không ai bị gánh còng lưng!", luck: "Đồng Đội 🤝" }
     ];
 
     function checkDailyVibeStatus() {
-      const savedDate = localStorage.getItem('teen_last_vibe_date');
-      const today = new Date().toDateString();
+      const today = getTodayDateKey();
+      const lastCheckDate = localStorage.getItem('teen_vibe_check_date') || localStorage.getItem('teen_last_vibe_date');
+      const savedFortuneJson = localStorage.getItem('teen_vibe_check_fortune') || localStorage.getItem('teen_today_fortune');
       const btn = document.getElementById('vibe-check-btn');
       const display = document.getElementById('vibe-check-display');
 
       if (!btn || !display) return;
 
-      if (savedDate === today) {
-        const savedFortune = localStorage.getItem('teen_today_fortune');
-        if (savedFortune) {
+      if (lastCheckDate === today) {
+        if (savedFortuneJson) {
           try {
-            const fortune = JSON.parse(savedFortune);
+            const fortune = JSON.parse(savedFortuneJson);
             display.innerHTML = `
-              <div class="space-y-1">
+              <div class="space-y-1.5 py-1 animate-scale-up">
                 <span class="inline-flex items-center gap-1 bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
-                  ✓ Quẻ hôm nay của em
+                  ✓ Quẻ hôm nay của em • ${escapeHTML(fortune.luck || 'May Mắn')}
                 </span>
-                <p class="vibe-card-text">${escapeHTML(fortune.text)}</p>
-                <span class="inline-block bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
-                  +10 Aura ✨ (Đã nhận)
-                </span>
+                <p class="vibe-card-text text-rose-600 dark:text-amber-200 font-extrabold text-xs leading-snug px-1">
+                  ${escapeHTML(fortune.text)}
+                </p>
+                <div class="flex items-center justify-center gap-2 pt-0.5">
+                  <span class="inline-block bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                    +10 Aura ✨ (Đã nhận)
+                  </span>
+                  <button onclick="resetDailyVibeForTesting()" class="text-[10px] text-slate-400 hover:text-amber-500 underline font-semibold transition">
+                    Bốc lại 🔄
+                  </button>
+                </div>
               </div>
             `;
           } catch(e) {}
         }
         btn.classList.add('vibe-btn-disabled');
         btn.disabled = true;
-        btn.innerHTML = '<span>Đã Bốc Hôm Nay • Hẹn Mai Nhé! ⌛</span>';
+        btn.innerHTML = '<span>Đã Bốc Hôm Nay • Reset lúc 00:00 ⌛</span>';
       } else {
         btn.classList.remove('vibe-btn-disabled');
         btn.disabled = false;
         btn.innerHTML = '<span>Rút Quẻ Ngay (+10 Aura) ✨</span>';
+        display.innerHTML = '<span id="vibe-placeholder-text">Bấm nút dưới để bốc quẻ tâm linh hôm nay! ✨</span>';
       }
     }
+    window.checkDailyVibeStatus = checkDailyVibeStatus;
 
     function rollVibeCheck() {
-      const today = new Date().toDateString();
-      const savedDate = localStorage.getItem('teen_last_vibe_date');
+      const today = getTodayDateKey();
+      const lastCheckDate = localStorage.getItem('teen_vibe_check_date') || localStorage.getItem('teen_last_vibe_date');
       const btn = document.getElementById('vibe-check-btn');
       const display = document.getElementById('vibe-check-display');
 
-      if (savedDate === today) {
-        showTeenToast("Em đã bốc quẻ hôm nay rồi, mai quay lại nhé! 🍀", "⌛");
+      if (lastCheckDate === today) {
+        showTeenToast("Hôm nay em đã bốc quẻ rồi nha! Hệ thống tự động reset lúc 00:00 mỗi ngày! 🥠✨", "⌛");
+        try { playCuteSound('pop'); } catch(e){}
         return;
       }
 
-      const fortune = VIBE_FORTUNES[Math.floor(Math.random() * VIBE_FORTUNES.length)];
+      try { playCuteSound('chime'); } catch(e){}
+      launchConfetti();
 
-      display.innerHTML = `
-        <div class="space-y-1 animate-scale-up">
-          <span class="inline-flex items-center gap-1 bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
-            ✓ Quẻ hôm nay của em
-          </span>
-          <p class="vibe-card-text">${escapeHTML(fortune.text)}</p>
-          <span class="inline-block bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
-            +10 Aura ✨ (Đã nhận)
-          </span>
-        </div>
-      `;
+      const fortune = schoolFortunes[Math.floor(Math.random() * schoolFortunes.length)];
 
-      btn.classList.add('vibe-btn-disabled');
-      btn.disabled = true;
-      btn.innerHTML = '<span>Đã Bốc Hôm Nay • Hẹn Mai Nhé! ⌛</span>';
+      localStorage.setItem('teen_vibe_check_date', today);
+      localStorage.setItem('teen_vibe_check_fortune', JSON.stringify(fortune));
 
-      localStorage.setItem('teen_last_vibe_date', today);
-      localStorage.setItem('teen_today_fortune', JSON.stringify(fortune));
+      addAuraPoints(10);
 
-      addAuraPoints(10, 'Bốc quẻ may mắn');
-      triggerHeartBurst(btn);
+      if (display) {
+        display.innerHTML = `
+          <div class="space-y-1.5 py-1 animate-scale-up">
+            <span class="inline-flex items-center gap-1 bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
+              ✓ Quẻ hôm nay của em • ${escapeHTML(fortune.luck)}
+            </span>
+            <p class="vibe-card-text text-rose-600 dark:text-amber-200 font-extrabold text-xs leading-snug px-1">
+              ${escapeHTML(fortune.text)}
+            </p>
+            <div class="flex items-center justify-center gap-2 pt-0.5">
+              <span class="inline-block bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                +10 Aura ✨ (Đã nhận)
+              </span>
+              <button onclick="resetDailyVibeForTesting()" class="text-[10px] text-slate-400 hover:text-amber-500 underline font-semibold transition">
+                Bốc lại 🔄
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      if (btn) {
+        btn.classList.add('vibe-btn-disabled');
+        btn.disabled = true;
+        btn.innerHTML = '<span>Đã Bốc Hôm Nay • Reset lúc 00:00 ⌛</span>';
+      }
+
       showTeenToast(`Chúc mừng em: +10 Aura! ${fortune.luck}`, '✨');
     }
-    
+    window.rollVibeCheck = rollVibeCheck;
+
+    function resetDailyVibeForTesting() {
+      try { playCuteSound('pop'); } catch(e){}
+      localStorage.removeItem('teen_vibe_check_date');
+      localStorage.removeItem('teen_vibe_check_fortune');
+      localStorage.removeItem('teen_last_vibe_date');
+      localStorage.removeItem('teen_today_fortune');
+      checkDailyVibeStatus();
+      showTeenToast("Đã làm mới Quẻ May Mắn! Giờ em có thể bốc lại ngay nhé! 🥠✨", "🔄");
+    }
+    window.resetDailyVibeForTesting = resetDailyVibeForTesting;
+
     function hideMascotBubble(e) { if (e && e.stopPropagation) e.stopPropagation(); }
 
     /* =====================================================================
