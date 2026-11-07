@@ -4,30 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Trạm Học Đường Teen • THCS Chu Văn An</title>
-  <meta name="description" content="Trạm Học Đường Teen - THCS Chu Văn An: Tìm kiếm đồ thất lạc qua Check VAR chính chủ, chợ phiên sách 0đ truyền lửa và đấu trường trắc nghiệm săn điểm vào 10.">>
+  <meta name="description" content="Trạm Học Đường Teen - THCS Chu Văn An: Tìm kiếm đồ thất lạc qua Check VAR chính chủ, chợ phiên sách 0đ truyền lửa và đấu trường trắc nghiệm săn điểm vào 10.">
   <meta name="theme-color" content="#ffffff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Trạm Học Đường Teen • THCS Chu Văn An">
   <meta property="og:description" content="Nền tảng kết nối học trò CVA: Check VAR tìm đồ, chia sẻ sách 0đ và tâm sự học đường.">
-  <!-- Google Fonts: Space Grotesk (Signature Display), Plus Jakarta Sans (Modern UI) & Be Vietnam Pro (Vietnamese Precision) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Lucide Icons & Canvas Confetti -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  
-  <!-- Tailwind CSS -->
-    <script>
-    // Early theme & cleanup script to prevent flashes & purge legacy vibes
+  <!-- Early Theme Mode Init (Prevents White Flashes & Purges Legacy Vibes) -->
+  <script>
     (function() {
       try {
         localStorage.removeItem('cva_active_vibe');
         document.documentElement.removeAttribute('data-vibe');
-        const savedTheme = localStorage.getItem('cva_theme');
+        var savedTheme = localStorage.getItem('cva_theme');
         if (savedTheme === 'dark' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark');
           document.documentElement.setAttribute('data-theme', 'dark');
@@ -38,8 +30,16 @@
       } catch(e) {}
     })();
   </script>
-    <script>
-    tailwind = {
+
+  <!-- Google Fonts: Space Grotesk (Signature Display), Plus Jakarta Sans (Modern UI) & Be Vietnam Pro (Vietnamese Precision) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Play CDN (Loaded First) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
@@ -72,7 +72,10 @@
       }
     };
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons & Canvas Confetti -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     body {
@@ -2707,10 +2710,7 @@
       showTeenToast(`Chúc mừng em: +10 Aura! ${fortune.luck}`, '✨');
     }
     
-    function hideMascotBubble(e) {
-      e.stopPropagation();
-      document.getElementById('mascot-speech-bubble').classList.add('hidden');
-    }
+    function hideMascotBubble(e) { if (e && e.stopPropagation) e.stopPropagation(); }
 
     /* =====================================================================
        5. UI NAVIGATION & MODALS
@@ -3404,7 +3404,8 @@
       isBreatheRunning = true;
       breathePhase = 0;
       breatheTimer = 4;
-      document.getElementById('breathe-ctrl-btn').textContent = "⏹️ Dừng lại";
+      const btn = document.getElementById('breathe-ctrl-btn');
+      if (btn) btn.textContent = "⏹️ Dừng lại";
       stepBreathe();
       breatheInterval = setInterval(stepBreathe, 1000);
     }
@@ -3414,17 +3415,19 @@
       const countEl = document.getElementById('breathe-countdown');
       const guideEl = document.getElementById('breathe-guide-text');
 
-      if (breathePhase === 0) {
-        guideEl.textContent = `Hít vào thật sâu bằng mũi... (${breatheTimer}s)`;
-        bubble.style.transform = "scale(1.55)";
-      } else if (breathePhase === 1) {
-        guideEl.textContent = `Nín thở giữ hơi lại nào... (${breatheTimer}s)`;
-      } else {
-        guideEl.textContent = `Thở ra từ từ bằng miệng thật êm... (${breatheTimer}s)`;
-        bubble.style.transform = "scale(1)";
+      if (guideEl) {
+        if (breathePhase === 0) {
+          guideEl.textContent = `Hít vào thật sâu bằng mũi... (${breatheTimer}s)`;
+          if (bubble) bubble.style.transform = "scale(1.55)";
+        } else if (breathePhase === 1) {
+          guideEl.textContent = `Nín thở giữ hơi lại nào... (${breatheTimer}s)`;
+        } else {
+          guideEl.textContent = `Thở ra từ từ bằng miệng thật êm... (${breatheTimer}s)`;
+          if (bubble) bubble.style.transform = "scale(1)";
+        }
       }
 
-      countEl.textContent = breatheTimer + "s";
+      if (countEl) countEl.textContent = breatheTimer + "s";
       breatheTimer--;
 
       if (breatheTimer < 0) {
@@ -3448,9 +3451,11 @@
 
     function openHealingRoom(contentSample = "") {
       const box = document.getElementById('ai-response-box');
-      const text = decodeURIComponent(contentSample);
-      const advice = generateSmartGenZAdvice(text, "stress");
-      box.innerHTML = `<p class="leading-relaxed font-semibold text-slate-800">"${advice}"</p>`;
+      if (box) {
+        const text = decodeURIComponent(contentSample);
+        const advice = generateSmartGenZAdvice(text, "stress");
+        box.innerHTML = `<p class="leading-relaxed font-semibold text-slate-800">"${advice}"</p>`;
+      }
       openModal('modal-healing-room');
     }
 
@@ -3887,17 +3892,19 @@
 
 
     window.addEventListener('DOMContentLoaded', () => {
-      initThemeEngine();
-      purgeLegacyVibe();
-            setupGreeting();
-      updateProfileUI();
-      checkDailyVibeStatus();
-      renderLandingFeed();
-      renderLostFound();
-      renderBooks();
-      // renderMailbox removed;
-      renderMyActivities();
-      safeCreateLucideIcons();
+      const safeRun = (fn, name) => {
+        try { fn(); } catch(err) { console.warn(`Error running ${name}:`, err); }
+      };
+      safeRun(initThemeEngine, 'initThemeEngine');
+      safeRun(purgeLegacyVibe, 'purgeLegacyVibe');
+      safeRun(setupGreeting, 'setupGreeting');
+      safeRun(updateProfileUI, 'updateProfileUI');
+      safeRun(checkDailyVibeStatus, 'checkDailyVibeStatus');
+      safeRun(renderLandingFeed, 'renderLandingFeed');
+      safeRun(renderLostFound, 'renderLostFound');
+      safeRun(renderBooks, 'renderBooks');
+      safeRun(renderMyActivities, 'renderMyActivities');
+      safeRun(safeCreateLucideIcons, 'safeCreateLucideIcons');
     });
   </script>
 </body>
