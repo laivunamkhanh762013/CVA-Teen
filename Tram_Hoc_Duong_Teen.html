@@ -11,6 +11,14 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Trạm Học Đường Teen • THCS Chu Văn An">
   <meta property="og:description" content="Nền tảng kết nối học trò CVA: Check VAR tìm đồ, chia sẻ sách 0đ và tâm sự học đường.">
+  <!-- Google Fonts: Space Grotesk (Signature Display), Plus Jakarta Sans (Modern UI) & Be Vietnam Pro (Vietnamese Precision) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons & Canvas Confetti -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   
   <!-- Tailwind CSS -->
     <script>
@@ -50,7 +58,9 @@
             }
           },
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'Nunito', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', '"Be Vietnam Pro"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['"Space Grotesk"', '"Be Vietnam Pro"', 'sans-serif'],
+            heading: ['"Space Grotesk"', '"Be Vietnam Pro"', 'sans-serif'],
           },
           boxShadow: {
             'card': '0 2px 12px -2px rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.02)',
@@ -66,9 +76,30 @@
 
   <style>
     body {
-      font-family: 'Plus Jakarta Sans', 'Nunito', sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.012em;
       background-color: #F8FAFC;
+    }
+
+    /* Signature High-Aura Display Headings (Space Grotesk) */
+    h1, h2, h3, h4,
+    .font-display,
+    .font-heading,
+    #cva-pillars-showcase h3,
+    #cva-pillars-showcase h4,
+    #bento-vibe-card h3,
+    #landing-stat-lost,
+    #landing-stat-books,
+    #landing-stat-cheers,
+    .stat-counter-num,
+    #quiz-score-val,
+    #quiz-timer-text,
+    #quiz-streak-count {
+      font-family: 'Space Grotesk', 'Be Vietnam Pro', sans-serif !important;
+      letter-spacing: -0.03em !important;
     }
 
     @keyframes floatGentle {
