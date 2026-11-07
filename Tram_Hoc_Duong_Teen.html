@@ -467,7 +467,7 @@
             <span class="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Threads</span>
           </div>
           <p id="greeting-text" class="text-[11px] font-semibold text-rose-500 dark:text-rose-400 leading-none mt-0.5">
-            <span>Chào buổi sáng</span> <span id="user-pill-name" class="font-bold text-slate-700 dark:text-slate-200">Minh Anh 8A3</span>
+            <span>Chào buổi sáng</span> <span id="user-pill-name" class="font-bold text-slate-700 dark:text-slate-200">Dev Khánhh 8A1</span>
           </p>
         </div>
       </div>
@@ -675,7 +675,7 @@
             <span class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-emerald-100 text-[11px] flex items-center justify-center font-bold">🐼</span>
             <span class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-sky-100 text-[11px] flex items-center justify-center font-bold">🐶</span>
           </div>
-          <span class="text-xs font-semibold text-slate-700 dark:text-slate-200">Minh Anh, Hải Đăng &amp; <span class="font-bold text-rose-600 dark:text-rose-400">38 bạn CVA</span> đang trực tuyến</span>
+          <span class="text-xs font-semibold text-slate-700 dark:text-slate-200">Dev Khánhh, Hải Đăng &amp; <span class="font-bold text-rose-600 dark:text-rose-400">38 bạn CVA</span> đang trực tuyến</span>
         </div>
         <div class="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 px-2.5 py-1 rounded-full shadow-sm">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -971,10 +971,10 @@
             </div>
             <div>
               <div class="flex items-center gap-1.5">
-                <h3 id="profile-card-name" class="text-base sm:text-lg font-extrabold text-slate-900">Minh Anh</h3>
-                <span id="profile-card-class" class="text-xs font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-lg border border-amber-200">8A3</span>
+                <h3 id="profile-card-name" class="text-base sm:text-lg font-extrabold text-slate-900">Dev Khánhh</h3>
+                <span id="profile-card-class" class="text-xs font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-lg border border-amber-200">8A1</span>
               </div>
-              <p id="profile-card-nick" class="text-xs font-semibold text-rose-500">"Mèo Mướp Chăm Học"</p>
+              <p id="profile-card-nick" class="text-xs font-semibold text-rose-500">"Chiến Thần Code CVA"</p>
               <p class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1.5">
                 <img src="logo.png" onerror="this.onerror=null; this.src=CVA_LOGO;" alt="CVA" class="w-4 h-4 rounded-full object-contain inline-block" />
                 <span id="profile-card-school" class="font-semibold text-slate-600">Trường THCS Chu Văn An</span>
@@ -1534,10 +1534,10 @@
        2. QUẢN LÝ DỮ LIỆU & THREADS STATE
        ===================================================================== */
     const DEFAULT_USER = {
-      name: "Minh Anh",
-      class: "8A3",
+      name: "Dev Khánhh",
+      class: "8A1",
       grade: "8",
-      nickname: "Mèo Mướp Chăm Học",
+      nickname: "Chiến Thần Code CVA",
       avatar: "🐱",
       school: "Trường THCS Chu Văn An",
       aura: 1000
@@ -1654,6 +1654,10 @@
     }
   
     let currentUser = safeLoadJSON('teen_user_threads', DEFAULT_USER);
+    if (!currentUser || currentUser.name === 'Minh Anh') {
+      currentUser = { ...DEFAULT_USER, aura: (currentUser && currentUser.aura) || DEFAULT_USER.aura };
+      try { localStorage.setItem('teen_user_threads', JSON.stringify(currentUser)); } catch (e) {}
+    }
     let lostFoundData = safeLoadJSON('teen_lf_threads', DEFAULT_LF);
     let booksData = safeLoadJSON('teen_books_threads', DEFAULT_BOOKS);
     let mailboxData = [];
@@ -2785,8 +2789,8 @@
     }
 
     function saveUserProfile() {
-      currentUser.name = document.getElementById('edit-user-name').value.trim() || "Minh Anh";
-      currentUser.class = document.getElementById('edit-user-class').value.trim() || "8A3";
+      currentUser.name = document.getElementById('edit-user-name').value.trim() || "Dev Khánhh";
+      currentUser.class = document.getElementById('edit-user-class').value.trim() || "8A1";
       currentUser.grade = document.getElementById('edit-user-grade').value;
       currentUser.nickname = document.getElementById('edit-user-nick').value.trim() || "Mèo Con";
       currentUser.avatar = pendingAvatar || currentUser.avatar || '🐱';
