@@ -1,0 +1,17 @@
+# Temporary Chrome profiles & test artifacts
+temp_chrome_profile/
+chrome_profile*/
+*.log
+
+# Backups
+*.backup.html
+*.bak
+
+# Node & deployment caches
+node_modules/
+.vercel/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
