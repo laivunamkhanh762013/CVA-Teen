@@ -102,6 +102,37 @@
       letter-spacing: -0.03em !important;
     }
 
+    /* Quizizz Live Lobby Floating Reactions & Pulse */
+    @keyframes quizizzFloatUp {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.8) rotate(0deg);
+      }
+      50% {
+        opacity: 0.9;
+        transform: translate(var(--rand-x, 0px), -60px) scale(1.3) rotate(var(--rand-rot, 12deg));
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(var(--rand-x, 0px) * 1.5), -120px) scale(1) rotate(calc(var(--rand-rot, 12deg) * -1));
+      }
+    }
+    .quizizz-flying-emoji {
+      position: absolute;
+      pointer-events: none;
+      z-index: 60;
+      animation: quizizzFloatUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      font-size: 1.85rem;
+      user-select: none;
+    }
+    @keyframes liveLobbyPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    .lobby-badge-pulse {
+      animation: liveLobbyPulse 2.5s ease-in-out infinite;
+    }
+
     @keyframes floatGentle {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-5px); }
@@ -666,21 +697,183 @@
 
       </div>
 
-      <!-- NAMETHATUI COMPONENT: AVATAR GROUP (SÂN TRƯỜNG ONLINE) -->
-      <div class="bg-white border border-slate-200/80 rounded-2xl p-3 shadow-sm flex items-center justify-between gap-3">
-        <div class="flex items-center gap-2">
-          <div class="flex items-center -space-x-2 overflow-hidden">
-            <span class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-rose-100 text-[11px] flex items-center justify-center font-bold">🐱</span>
-            <span class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-purple-100 text-[11px] flex items-center justify-center font-bold">🦊</span>
-            <span class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-emerald-100 text-[11px] flex items-center justify-center font-bold">🐼</span>
-            <span class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-sky-100 text-[11px] flex items-center justify-center font-bold">🐶</span>
+      <!-- ==================== SÂN TRƯỜNG TRỰC TUYẾN (QUIZIZZ LIVE LOBBY EDITION) ==================== -->
+      <div id="quizizz-live-lobby" class="bg-gradient-to-br from-indigo-50/90 via-white to-purple-50/90 dark:from-slate-900/95 dark:via-indigo-950/40 dark:to-slate-900/95 border-2 border-indigo-200/90 dark:border-indigo-500/40 rounded-3xl p-4 sm:p-5 shadow-lg relative overflow-hidden transition-all duration-300">
+        
+        <!-- Floating Reactions Container -->
+        <div id="lobby-flying-reactions-box" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
+
+        <!-- Lobby Top Header Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-indigo-100 dark:border-slate-800 relative z-10">
+          
+          <!-- Left: Game PIN & Live Badge -->
+          <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
+            <span class="inline-flex items-center gap-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-[11px] font-black px-3 py-1 rounded-full shadow-sm tracking-wide">
+              <span>🎮</span> SÂN TRƯỜNG TRỰC TUYẾN
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span>LIVE ROOM</span>
+            </span>
+            <div class="inline-flex items-center gap-1.5 bg-white/90 dark:bg-slate-800/90 border border-indigo-200 dark:border-indigo-800/70 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold text-indigo-700 dark:text-indigo-300 shadow-xs">
+              <span class="text-slate-400 dark:text-slate-500 font-bold">PIN:</span>
+              <span class="font-mono tracking-wider">#CVA-2026</span>
+              <button onclick="copyLobbyPIN()" title="Sao chép mã phòng" class="ml-1 text-slate-400 hover:text-indigo-600 transition active:scale-90">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              </button>
+            </div>
           </div>
-          <span class="text-xs font-semibold text-slate-700 dark:text-slate-200">Dev Khánhh, Hải Đăng &amp; <span class="font-bold text-rose-600 dark:text-rose-400">38 bạn CVA</span> đang trực tuyến</span>
+
+          <!-- Right: Ping & Online Count & View All -->
+          <div class="flex items-center gap-3">
+            <span class="text-[11px] font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1">
+              <span>⚡</span> <span id="lobby-server-ping">16ms</span>
+            </span>
+            <div class="flex items-center gap-1.5 text-xs font-black text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800/60 px-3 py-1 rounded-full shadow-xs">
+              <span>👥</span>
+              <span id="lobby-online-counter" class="text-sm font-black transition-transform">42</span>
+              <span class="font-bold text-[11px]">học sinh online</span>
+            </div>
+            <button onclick="openModal('modal-online-students')" class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:underline flex items-center gap-1 transition">
+              <span>Xem danh sách</span> <span>→</span>
+            </button>
+          </div>
+
         </div>
-        <div class="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 px-2.5 py-1 rounded-full shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Online</span>
+
+        <!-- Quizizz Player Wall: Dynamic Student Avatar Cards -->
+        <div class="py-3.5 relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
+              <span>🏟️</span> Phòng chờ giao lưu học trò (Quizizz Lobby)
+            </span>
+            <span class="text-[10px] font-semibold text-slate-400 dark:text-slate-500 hidden sm:inline">Chạm vào bạn học để vẫy tay 👋</span>
+          </div>
+
+          <!-- Horizontal Scroll / Flex Grid of Online Classmates -->
+          <div id="lobby-player-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-8 gap-2">
+            
+            <div onclick="pokeStudent('Dev Khánhh (8A1)')" class="group flex items-center gap-2 bg-white/95 dark:bg-slate-800/90 border border-amber-300 dark:border-amber-500/50 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-amber-400 hover:-translate-y-0.5 transition-all cursor-pointer relative overflow-hidden">
+              <span class="text-xl group-hover:scale-110 transition-transform">🐱</span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs font-extrabold text-slate-900 dark:text-white truncate">Dev Khánhh</p>
+                  <span class="text-[9px] font-black bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 px-1 py-0.2 rounded-md">8A1</span>
+                </div>
+                <p class="text-[9px] font-bold text-amber-600 dark:text-amber-400 truncate">👑 Host Sân Trường</p>
+              </div>
+            </div>
+
+            <div onclick="pokeStudent('Hải Đăng (9A1)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-rose-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <span class="text-xl group-hover:scale-110 transition-transform">🦊</span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Hải Đăng</p>
+                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">9A1</span>
+                </div>
+                <p class="text-[9px] font-medium text-rose-500 truncate">🔥 Top 1 VAR</p>
+              </div>
+            </div>
+
+            <div onclick="pokeStudent('Bảo Ngọc (8A3)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-emerald-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <span class="text-xl group-hover:scale-110 transition-transform">🐰</span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Bảo Ngọc</p>
+                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">8A3</span>
+                </div>
+                <p class="text-[9px] font-medium text-emerald-600 dark:text-emerald-400 truncate">📚 Chợ Sách 0đ</p>
+              </div>
+            </div>
+
+            <div onclick="pokeStudent('Quỳnh Chi (7A4)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-indigo-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <span class="text-xl group-hover:scale-110 transition-transform">🐱</span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Quỳnh Chi</p>
+                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">7A4</span>
+                </div>
+                <p class="text-[9px] font-medium text-indigo-500 truncate">⚡ 1.200 Aura</p>
+              </div>
+            </div>
+
+            <div onclick="pokeStudent('Tuấn Kiệt (8A2)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-amber-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <span class="text-xl group-hover:scale-110 transition-transform">🐶</span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Tuấn Kiệt</p>
+                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">8A2</span>
+                </div>
+                <p class="text-[9px] font-medium text-amber-500 truncate">✨ Quẻ Đại Cát</p>
+              </div>
+            </div>
+
+            <div onclick="pokeStudent('Đức Anh (9A4)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-sky-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <span class="text-xl group-hover:scale-110 transition-transform">🐼</span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Đức Anh</p>
+                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">9A4</span>
+                </div>
+                <p class="text-[9px] font-medium text-sky-500 truncate">🎯 Thi Vào 10</p>
+              </div>
+            </div>
+
+            <div onclick="pokeStudent('Hà My (7A1)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-purple-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <span class="text-xl group-hover:scale-110 transition-transform">🐯</span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Hà My</p>
+                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">7A1</span>
+                </div>
+                <p class="text-[9px] font-medium text-purple-500 truncate">🧋 Mê Trà Sữa</p>
+              </div>
+            </div>
+
+            <div onclick="openModal('modal-online-students')" class="flex items-center justify-center gap-1.5 bg-indigo-50/70 dark:bg-indigo-950/50 border border-dashed border-indigo-300 dark:border-indigo-700/60 rounded-2xl p-2 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100/80 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <span class="text-xs font-extrabold">+35 bạn...</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Quizizz Live Reaction Spam Bar & Wave Button -->
+        <div class="pt-3 border-t border-indigo-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative z-10">
+          
+          <!-- Reactions Bar (Click to spam floating emojis like Quizizz) -->
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 mr-1 flex items-center gap-1">
+              <span>💬</span> Spam Cảm Xúc:
+            </span>
+            <button onclick="spawnLobbyReaction('❤️')" class="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-rose-400 hover:scale-125 transition-all text-sm flex items-center justify-center active:scale-95 shadow-xs" title="Thả Tim">❤️</button>
+            <button onclick="spawnLobbyReaction('🔥')" class="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-amber-400 hover:scale-125 transition-all text-sm flex items-center justify-center active:scale-95 shadow-xs" title="Cháy Phố">🔥</button>
+            <button onclick="spawnLobbyReaction('⚡')" class="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-yellow-400 hover:scale-125 transition-all text-sm flex items-center justify-center active:scale-95 shadow-xs" title="Siêu Cấp">⚡</button>
+            <button onclick="spawnLobbyReaction('🎉')" class="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-purple-400 hover:scale-125 transition-all text-sm flex items-center justify-center active:scale-95 shadow-xs" title="Quẩy Lên">🎉</button>
+            <button onclick="spawnLobbyReaction('🧋')" class="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 hover:scale-125 transition-all text-sm flex items-center justify-center active:scale-95 shadow-xs" title="Trà Sữa">🧋</button>
+            <button onclick="spawnLobbyReaction('🚀')" class="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-sky-400 hover:scale-125 transition-all text-sm flex items-center justify-center active:scale-95 shadow-xs" title="Cất Cánh">🚀</button>
+            <span class="text-[10px] font-bold text-slate-400 ml-1">(<span id="lobby-reaction-counter">1.482</span> lượt)</span>
+          </div>
+
+          <!-- Wave / Join ready button like Quizizz -->
+          <button onclick="waveToLobby()" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-rose-600 hover:opacity-95 text-white font-extrabold text-xs px-4 py-2 rounded-2xl shadow-md transition active:scale-95 flex items-center justify-center gap-1.5 self-start sm:self-auto">
+            <span>👋</span> Vẫy tay chào sân trường (+5 Aura)
+          </button>
+
+        </div>
+
+        <!-- Live Activity Mini Feed (Rotating Ticker) -->
+        <div class="mt-2.5 pt-2 border-t border-dashed border-indigo-100 dark:border-slate-800/80 flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+          <span class="inline-flex items-center gap-1 font-black text-rose-500 uppercase tracking-wider text-[10px] flex-shrink-0">
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span>
+            LIVE FEED
+          </span>
+          <p id="lobby-activity-text" class="font-medium text-slate-700 dark:text-slate-300 truncate transition-opacity duration-300">
+            🔔 [8A1] Dev Khánhh vừa tham gia phòng trực tuyến Sân Trường CVA
+          </p>
+        </div>
+
       </div>
 
       <!-- ==================== CVA 3 TRỤ CỘT ĐỘT PHÁ (HIGH-DESIGN BENTO SHOWCASE) ==================== -->
@@ -1105,6 +1298,67 @@
   </nav>
 
   <!-- ==================== MODALS ==================== -->
+
+  <!-- MODAL: SÂN TRƯỜNG TRỰC TUYẾN (QUIZIZZ LOBBY PLAYERS MODAL) -->
+  <div id="modal-online-students" onclick="handleBackdropClick(event, 'modal-online-students')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 max-w-lg w-full shadow-2xl my-auto relative animate-scale-up space-y-4" onclick="event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal('modal-online-students')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-300 transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Header -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl shadow-xs">
+          👥
+        </div>
+        <div>
+          <h3 class="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+            <span>Sân Trường Trực Tuyến CVA</span>
+            <span class="text-xs font-black bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 rounded-full">42 Online</span>
+          </h3>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400">Danh sách học sinh THCS Chu Văn An đang có mặt trong phòng</p>
+        </div>
+      </div>
+
+      <!-- Search & Grade Filter Pills -->
+      <div class="space-y-2">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="lobby-student-search" 
+            oninput="filterLobbyStudents(this.value)"
+            placeholder="Tìm theo tên học sinh hoặc lớp (vd: 8A1, Chi, Đăng, 9A...)"
+            class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-8 pr-3 py-2 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+          />
+          <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs">🔍</span>
+        </div>
+
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-[11px] font-bold">
+          <button onclick="filterLobbyGrade('all', this)" class="lobby-grade-btn active bg-indigo-600 text-white px-2.5 py-1 rounded-xl transition">Tất cả (42)</button>
+          <button onclick="filterLobbyGrade('6', this)" class="lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition">Khối 6 (8)</button>
+          <button onclick="filterLobbyGrade('7', this)" class="lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition">Khối 7 (10)</button>
+          <button onclick="filterLobbyGrade('8', this)" class="lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition">Khối 8 (14)</button>
+          <button onclick="filterLobbyGrade('9', this)" class="lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition">Khối 9 (10)</button>
+        </div>
+      </div>
+
+      <!-- Students List -->
+      <div id="modal-lobby-students-list" class="max-h-[320px] overflow-y-auto space-y-2 pr-1">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+      <!-- Footer Action -->
+      <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400 text-[11px]">Mã phòng: <b class="text-indigo-600 dark:text-indigo-400 font-mono">#CVA-2026</b></span>
+        <button onclick="waveToLobby(); closeModal('modal-online-students');" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-1.5 rounded-xl transition active:scale-95 flex items-center gap-1">
+          <span>👋</span> Vẫy tay chào tất cả (+5 Aura)
+        </button>
+      </div>
+
+    </div>
+  </div>
 
   <!-- MODAL: COMMAND PALETTE (CMD+K / CTRL+K SPOTLIGHT SEARCH) -->
   <div id="modal-command-palette" onclick="handleBackdropClick(event, 'modal-command-palette')" class="fixed inset-0 z-[80] command-palette-backdrop hidden flex items-start justify-center pt-16 sm:pt-24 p-4 overflow-y-auto">
@@ -1756,7 +2010,230 @@
     /* =====================================================================
        QUẺ MAY MẮN & HỆ THỐNG VIBE CHECK (RESET 00:00 HẰNG NGÀY)
        ===================================================================== */
-    function scrollToVibeCheck() {
+    /* =====================================================================
+       QUIZIZZ LIVE LOBBY ENGINE: INTERACTIONS, REACTIONS & ONLINE STUDENTS
+       ===================================================================== */
+    let lobbyReactionCount = 1482;
+    let lobbyCurrentCount = 42;
+    let lobbyCurrentPing = 16;
+    let lobbyActiveGrade = 'all';
+
+    const LOBBY_STUDENTS = [
+      { name: "Dev Khánhh", class: "8A1", grade: "8", avatar: "🐱", badge: "👑 Host Sân Trường", aura: 1000, status: "Đang trực tuyến • Sẵn sàng" },
+      { name: "Hải Đăng", class: "9A1", grade: "9", avatar: "🦊", badge: "🔥 Top 1 VAR", aura: 2450, status: "Đang tìm Casio FX-580VNX" },
+      { name: "Bảo Ngọc", class: "8A3", grade: "8", avatar: "🐰", badge: "📚 Chợ Sách 0đ", aura: 1890, status: "Vừa tặng đề thi thử vào 10" },
+      { name: "Quỳnh Chi", class: "7A4", grade: "7", avatar: "🐱", badge: "⚡ 1.200 Aura", aura: 1200, status: "Vừa bốc quẻ Đại Cát 🌟" },
+      { name: "Tuấn Kiệt", class: "8A2", grade: "8", avatar: "🐶", badge: "✨ Đại Cát", aura: 960, status: "Đang trao đổi sách Tiếng Anh" },
+      { name: "Đức Anh", class: "9A4", grade: "9", avatar: "🐼", badge: "🎯 Ôn Thi 10", aura: 1750, status: "Đang học nhóm tại Thư viện" },
+      { name: "Hà My", class: "7A1", grade: "7", avatar: "🐯", badge: "🧋 Mê Trà Sữa", aura: 820, status: "Đang check VAR vòng tay" },
+      { name: "Khánh Linh", class: "6A5", grade: "6", avatar: "🦄", badge: "🌱 Tân Binh CVA", aura: 650, status: "Mới tham gia trạm học đường" },
+      { name: "Minh Triết", class: "8A1", grade: "8", avatar: "🐨", badge: "🎸 Guitar CVA", aura: 1100, status: "Đang trực tuyến" },
+      { name: "Hoàng Nam", class: "9A2", grade: "9", avatar: "🐧", badge: "⭐ Đội Tuyển Toán", aura: 3100, status: "Vừa pass bộ đề chuyên Toán" },
+      { name: "Thảo Vy", class: "6A2", grade: "6", avatar: "🐣", badge: "🎨 CLB Mỹ Thuật", aura: 580, status: "Đang tìm hộp bút rơi" },
+      { name: "Phương Linh", class: "7A3", grade: "7", avatar: "🌸", badge: "🕊️ Sứ Giả CVA", aura: 1420, status: "Vừa rút quẻ Bình An" },
+      { name: "Gia Bảo", class: "8A4", grade: "8", avatar: "🐻", badge: "⚽ Đội Bóng Rổ", aura: 1250, status: "Đang ở sân bóng rổ" },
+      { name: "Hương Giang", class: "9A3", grade: "9", avatar: "🐱", badge: "📖 Ôn Thi Văn", aura: 2100, status: "Đang săn tài liệu Ngữ Văn" },
+      { name: "Đăng Khoa", class: "6A1", grade: "6", avatar: "🐸", badge: "💡 Sáng Tạo", aura: 720, status: "Đang trực tuyến" }
+    ];
+
+    const LOBBY_FEED_EVENTS = [
+      "🔔 [8A1] Dev Khánhh vừa tham gia phòng trực tuyến Sân Trường CVA",
+      "🔔 [9A1] Hải Đăng vừa ghim tin Check VAR máy tính Casio FX-580",
+      "🔔 [8A3] Bảo Ngọc vừa pass bộ đề thi thử Toán vào 10 giá 0đ",
+      "🔔 [7A4] Quỳnh Chi vừa bốc được quẻ Đại Cát hôm nay! 🌟",
+      "🔔 [8A2] Tuấn Kiệt vừa thả 10 🔥 vào phòng trực tuyến",
+      "🔔 [9A4] Đức Anh vừa nhận +10 Aura từ Check VAR chính chủ",
+      "🔔 [6A5] Khánh Linh vừa nhận sách Ngữ Văn 6 từ anh chị Lớp 9",
+      "🔔 [8A1] Minh Triết vừa vẫy tay chào toàn thể sân trường CVA 👋"
+    ];
+
+    let lobbyFeedIdx = 0;
+
+    function copyLobbyPIN() {
+      const pin = "#CVA-2026";
+      navigator.clipboard.writeText(pin).then(() => {
+        showTeenToast("Đã chép mã PIN " + pin + " để rủ bạn bè vào phòng! 🎮", "📋");
+      }).catch(() => {
+        showTeenToast("Mã PIN phòng: " + pin, "🎮");
+      });
+      playCuteSound('ting');
+    }
+    window.copyLobbyPIN = copyLobbyPIN;
+
+    function spawnLobbyReaction(emoji) {
+      const box = document.getElementById('lobby-flying-reactions-box');
+      if (!box) return;
+
+      const el = document.createElement('div');
+      el.className = 'quizizz-flying-emoji';
+      el.textContent = emoji;
+
+      const randX = (Math.random() * 60 - 30) + 'px';
+      const randRot = (Math.random() * 30 - 15) + 'deg';
+      const randLeft = Math.floor(Math.random() * 75 + 10) + '%';
+
+      el.style.left = randLeft;
+      el.style.bottom = '15px';
+      el.style.setProperty('--rand-x', randX);
+      el.style.setProperty('--rand-rot', randRot);
+
+      box.appendChild(el);
+      playCuteSound('pop');
+
+      lobbyReactionCount++;
+      const counterEl = document.getElementById('lobby-reaction-counter');
+      if (counterEl) counterEl.textContent = lobbyReactionCount.toLocaleString();
+
+      if (lobbyReactionCount % 5 === 0) {
+        addAuraPoints(1, "Thả cảm xúc Sân Trường");
+      }
+
+      setTimeout(() => el.remove(), 1200);
+    }
+    window.spawnLobbyReaction = spawnLobbyReaction;
+
+    function waveToLobby() {
+      launchConfetti();
+      playCuteSound('chime');
+      showTeenToast(`${currentUser.name} (${currentUser.class}) vừa vẫy tay chào toàn thể sân trường CVA! 👋✨`, "👋");
+      addAuraPoints(5, "Vẫy tay điểm danh");
+
+      // Spawn multiple wave emojis
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => spawnLobbyReaction('👋'), i * 150);
+      }
+
+      const feedEl = document.getElementById('lobby-activity-text');
+      if (feedEl) {
+        feedEl.textContent = `🔔 [${currentUser.class}] ${currentUser.name} vừa vẫy tay chào cả trường! 👋✨`;
+      }
+    }
+    window.waveToLobby = waveToLobby;
+
+    function pokeStudent(studentName) {
+      playCuteSound('pop');
+      showTeenToast(`Bạn đã vẫy tay chào ${studentName}! 👋`, "👋");
+      spawnLobbyReaction('❤️');
+    }
+    window.pokeStudent = pokeStudent;
+
+    function filterLobbyGrade(grade, btn) {
+      lobbyActiveGrade = grade;
+      document.querySelectorAll('.lobby-grade-btn').forEach(b => {
+        b.className = 'lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition';
+      });
+      if (btn) {
+        btn.className = 'lobby-grade-btn active bg-indigo-600 text-white px-2.5 py-1 rounded-xl transition';
+      }
+      renderLobbyStudentsModal();
+    }
+    window.filterLobbyGrade = filterLobbyGrade;
+
+    function filterLobbyStudents(query = '') {
+      renderLobbyStudentsModal(query);
+    }
+    window.filterLobbyStudents = filterLobbyStudents;
+
+    function renderLobbyStudentsModal(searchQuery = '') {
+      const container = document.getElementById('modal-lobby-students-list');
+      if (!container) return;
+
+      const q = searchQuery.toLowerCase().trim();
+      let list = LOBBY_STUDENTS;
+
+      if (lobbyActiveGrade !== 'all') {
+        list = list.filter(s => s.grade === lobbyActiveGrade);
+      }
+
+      if (q) {
+        list = list.filter(s => s.name.toLowerCase().includes(q) || s.class.toLowerCase().includes(q) || s.status.toLowerCase().includes(q));
+      }
+
+      container.innerHTML = '';
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-8 text-slate-400 text-xs">
+            <span class="text-3xl block mb-2">🔍</span>
+            Không tìm thấy bạn học nào phù hợp.
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach(student => {
+        const isCurrent = student.name === currentUser.name;
+        const card = document.createElement('div');
+        card.className = `flex items-center justify-between p-2.5 rounded-2xl border transition ${
+          isCurrent 
+            ? 'bg-amber-50/80 dark:bg-amber-950/40 border-amber-300 dark:border-amber-600/50' 
+            : 'bg-slate-50/80 dark:bg-slate-800/60 border-slate-200/80 dark:border-slate-700/80 hover:border-indigo-300 dark:hover:border-indigo-600'
+        }`;
+
+        card.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="w-9 h-9 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-xl shadow-xs flex-shrink-0">
+              ${student.avatar}
+            </span>
+            <div class="min-w-0">
+              <div class="flex items-center gap-1.5">
+                <p class="text-xs font-extrabold text-slate-900 dark:text-white truncate">${student.name}</p>
+                <span class="text-[9px] font-black bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-1.5 py-0.2 rounded-md">${student.class}</span>
+                ${isCurrent ? '<span class="text-[9px] font-black bg-amber-500 text-white px-1 py-0.2 rounded">BẠN</span>' : ''}
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 truncate">${student.status}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <span class="text-[11px] font-bold text-amber-500">⚡ ${student.aura}</span>
+            <button onclick="pokeStudent('${student.name} (${student.class})')" class="bg-white dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-[11px] font-bold px-2 py-1 rounded-xl border border-slate-200 dark:border-slate-600 transition active:scale-90 flex items-center gap-1 shadow-xs">
+              👋 Chào
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function initQuizizzLobby() {
+      // Rotate Activity Feed every 3.8s
+      setInterval(() => {
+        const feedEl = document.getElementById('lobby-activity-text');
+        if (!feedEl) return;
+        lobbyFeedIdx = (lobbyFeedIdx + 1) % LOBBY_FEED_EVENTS.length;
+        feedEl.style.opacity = '0';
+        setTimeout(() => {
+          feedEl.textContent = LOBBY_FEED_EVENTS[lobbyFeedIdx];
+          feedEl.style.opacity = '1';
+        }, 300);
+      }, 3800);
+
+      // Natural fluctuation of online players & ping every 14s
+      setInterval(() => {
+        const countEl = document.getElementById('lobby-online-counter');
+        const pingEl = document.getElementById('lobby-server-ping');
+        
+        // Random fluctuation between 39 and 46
+        const delta = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+        lobbyCurrentCount = Math.max(38, Math.min(48, lobbyCurrentCount + delta));
+        
+        // Ping between 14ms and 21ms
+        lobbyCurrentPing = Math.floor(Math.random() * 8) + 14;
+
+        if (countEl) {
+          countEl.textContent = lobbyCurrentCount;
+          countEl.classList.add('scale-125', 'text-emerald-500');
+          setTimeout(() => countEl.classList.remove('scale-125', 'text-emerald-500'), 500);
+        }
+        if (pingEl) {
+          pingEl.textContent = lobbyCurrentPing + 'ms';
+        }
+      }, 14000);
+
+      renderLobbyStudentsModal();
+    }
+
+        function scrollToVibeCheck() {
       switchTab('landing');
       const card = document.getElementById('bento-vibe-card');
       if (card) {
@@ -3086,6 +3563,7 @@
       safeRun(setupGreeting, 'setupGreeting');
       safeRun(updateProfileUI, 'updateProfileUI');
       safeRun(checkDailyVibeStatus, 'checkDailyVibeStatus');
+      safeRun(initQuizizzLobby, 'initQuizizzLobby');
       safeRun(renderLandingFeed, 'renderLandingFeed');
       safeRun(renderLostFound, 'renderLostFound');
       safeRun(renderBooks, 'renderBooks');
