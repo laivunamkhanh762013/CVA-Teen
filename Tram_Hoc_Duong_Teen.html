@@ -622,9 +622,20 @@
           id="sound-toggle-btn"
           onclick="toggleSoundMute()" 
           title="Bật/Tắt âm thanh" 
-          class="flex items-center justify-center w-8 h-8 bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black dark:border-zinc-700 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000000] dark:shadow-[2px_2px_0px_0px_#CCFF00] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+          class="flex items-center justify-center w-8 h-8 bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black dark:border-zinc-700 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000000] dark:shadow-[2px_2px_0px_0px_#CCFF00] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
         >
           <span id="sound-icon">🔊</span>
+        </button>
+
+        <!-- Notification Bell (Unread Count Badge) -->
+        <button 
+          id="notif-btn"
+          onclick="openNotificationCenter()" 
+          title="Thông báo tương tác mạng xã hội" 
+          class="relative flex items-center justify-center w-8 h-8 bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black dark:border-zinc-700 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000000] dark:shadow-[2px_2px_0px_0px_#FFE600] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+        >
+          <span>🔔</span>
+          <span id="notif-badge" class="absolute -top-1.5 -right-1.5 bg-[#FF007A] text-white text-[9px] font-black w-4 h-4 rounded-full border border-black flex items-center justify-center shadow-[1px_1px_0px_0px_#000000]">3</span>
         </button>
 
         <!-- Profile & Aura Badge -->
@@ -692,6 +703,74 @@
     <!-- ==================== TAB 0: LANDING PAGE (BENTO GRID + THREADS FEED) ==================== -->
     <section id="tab-landing" class="tab-view space-y-4">
       
+      <!-- ==================== CVA 24H VIBE STORIES BAR (INSTAGRAM / THREADS STYLE) ==================== -->
+      <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-3 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] overflow-x-auto no-scrollbar select-none">
+        <div id="stories-container" class="flex items-center gap-4 px-1 min-w-max">
+          
+          <!-- Story 0: Your Story (+) -->
+          <div onclick="openCreateStoryModal()" class="flex flex-col items-center gap-1 cursor-pointer group">
+            <div class="relative p-0.5 rounded-full border-2 border-dashed border-black dark:border-zinc-500 group-hover:scale-105 transition">
+              <div id="story-my-avatar" class="w-13 h-13 rounded-full bg-[#FFE600] flex items-center justify-center text-2xl border-2 border-black overflow-hidden shadow-[2px_2px_0px_0px_#000000]">
+                🐱
+              </div>
+              <span class="absolute bottom-0 right-0 w-4 h-4 bg-[#CCFF00] text-black border border-black rounded-full flex items-center justify-center text-[11px] font-black">+</span>
+            </div>
+            <span class="text-[10px] font-black uppercase text-black dark:text-zinc-300">Tin của bạn</span>
+          </div>
+
+          <!-- Story 1: 9A1 Ôn Thi -->
+          <div onclick="openStoryViewer(0)" class="flex flex-col items-center gap-1 cursor-pointer group">
+            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#FF007A] via-[#FFE600] to-[#00F0FF] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
+              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+                🦊
+              </div>
+            </div>
+            <span class="text-[10px] font-black uppercase text-black dark:text-zinc-300">9A1 Ôn 10</span>
+          </div>
+
+          <!-- Story 2: Căn-tin CVA -->
+          <div onclick="openStoryViewer(1)" class="flex flex-col items-center gap-1 cursor-pointer group">
+            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#CCFF00] to-[#00F0FF] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
+              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+                🧋
+              </div>
+            </div>
+            <span class="text-[10px] font-black uppercase text-black dark:text-zinc-300">Căn-tin CVA</span>
+          </div>
+
+          <!-- Story 3: Sân Bóng Rổ -->
+          <div onclick="openStoryViewer(2)" class="flex flex-col items-center gap-1 cursor-pointer group">
+            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#FF007A] to-[#FFE600] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
+              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+                🏀
+              </div>
+            </div>
+            <span class="text-[10px] font-black uppercase text-black dark:text-zinc-300">Sân Rổ 8A</span>
+          </div>
+
+          <!-- Story 4: Capybara Chill -->
+          <div onclick="openStoryViewer(3)" class="flex flex-col items-center gap-1 cursor-pointer group">
+            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#00F0FF] to-[#CCFF00] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
+              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+                🐻
+              </div>
+            </div>
+            <span class="text-[10px] font-black uppercase text-black dark:text-zinc-300">Capybara</span>
+          </div>
+
+          <!-- Story 5: Sách 0đ -->
+          <div onclick="openStoryViewer(4)" class="flex flex-col items-center gap-1 cursor-pointer group">
+            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#FFE600] to-[#FF007A] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
+              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+                📚
+              </div>
+            </div>
+            <span class="text-[10px] font-black uppercase text-black dark:text-zinc-300">Tủ Sách 0đ</span>
+          </div>
+
+        </div>
+      </div>
+
       <!-- BENTO GRID HERO SECTION (AESTHETIC & HARMONIOUS) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
         
@@ -1217,14 +1296,51 @@
         </div>
       </div>
 
-      <!-- ĐÀI PHÁT THANH CVA (LIVE THREADS FEED) -->
+      <!-- ==================== CVA WEEKLY POLL (BÌNH CHỌN HỌC ĐƯỜNG GEN Z) ==================== -->
+      <div id="cva-weekly-poll" class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[5px_5px_0px_0px_#000000] dark:shadow-[5px_5px_0px_0px_#CCFF00] space-y-3">
+        <div class="flex items-center justify-between border-b-2 border-black/10 dark:border-zinc-800 pb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-[#FFE600] text-black border-2 border-black flex items-center justify-center text-sm shadow-[1.5px_1.5px_0px_0px_#000000]">📊</span>
+            <div>
+              <h3 class="text-xs sm:text-sm font-black text-black dark:text-white uppercase font-display">Bình Chọn CVA Tuần Này</h3>
+              <p class="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold">Thăm dò ý kiến học trò Chu Văn An • Nhận ngay +10 Aura</p>
+            </div>
+          </div>
+          <span class="text-[10px] bg-[#CCFF00] text-black border-2 border-black px-2 py-0.5 rounded-full font-black uppercase shadow-[1.5px_1.5px_0px_0px_#000000]">HOT POLL</span>
+        </div>
+
+        <p class="text-xs font-black text-black dark:text-white leading-snug">
+          "Giờ ra chơi tiết 2 dài 20 phút, học sinh CVA thích tụ tập làm gì nhất?"
+        </p>
+
+        <!-- Poll Options -->
+        <div class="space-y-2 text-xs font-bold" id="poll-options-container">
+          <!-- Rendered dynamically by JS -->
+        </div>
+
+        <div class="flex items-center justify-between text-[10px] font-bold text-zinc-500 dark:text-zinc-400 pt-1">
+          <span id="poll-total-votes">428 học sinh đã bình chọn</span>
+          <span class="text-[#FF007A] font-black uppercase">Ẩn danh 100%</span>
+        </div>
+      </div>
+
+      <!-- ĐÀI PHÁT THANH CVA (LIVE THREADS FEED & SOCIAL FEED SORTER) -->
       <div class="space-y-3 pt-2">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xs font-extrabold text-slate-900 flex items-center gap-1.5 uppercase tracking-wide">
-            <span>📻 Đài Phát Thanh CVA</span>
-            <span class="text-[9px] bg-rose-100 text-rose-700 px-1.5 py-0.2 rounded-full font-bold animate-pulse">Live</span>
-          </h3>
-          <span class="text-[11px] font-semibold text-slate-400">Chuỗi Threads mới nhất</span>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <h3 class="text-xs sm:text-sm font-black text-black dark:text-white flex items-center gap-1.5 uppercase font-display">
+              <span>📻 Đài Phát Thanh CVA</span>
+              <span class="text-[9px] bg-[#FF007A] text-white px-2 py-0.5 rounded-full font-black uppercase border border-black shadow-[1px_1px_0px_0px_#000000] animate-pulse">Live</span>
+            </h3>
+            <span class="text-[11px] font-bold text-zinc-500 dark:text-zinc-400 hidden sm:inline">• Bảng tin mạng xã hội</span>
+          </div>
+
+          <!-- Feed Sorter Pills -->
+          <div class="flex items-center gap-1 bg-slate-100 dark:bg-zinc-800 p-1 rounded-2xl border-2 border-black dark:border-zinc-700 text-xs font-black">
+            <button onclick="setFeedSort('foryou', this)" class="feed-sort-btn active bg-black text-[#FFE600] border border-black px-2.5 py-1 rounded-xl uppercase text-[10px] cursor-pointer shadow-[1px_1px_0px_0px_#000000]">🔥 Dành cho bạn</button>
+            <button onclick="setFeedSort('latest', this)" class="feed-sort-btn text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white px-2.5 py-1 rounded-xl font-bold uppercase text-[10px] cursor-pointer">⏱️ Mới nhất</button>
+            <button onclick="setFeedSort('popular', this)" class="feed-sort-btn text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white px-2.5 py-1 rounded-xl font-bold uppercase text-[10px] cursor-pointer">⚡ Thịnh hành</button>
+          </div>
         </div>
 
         <!-- Container chứa các Thread nổi bật từ cả 3 danh mục -->
@@ -1594,16 +1710,105 @@
         </div>
       </div>
 
-      <!-- My Activities (Threads style) -->
-      <div class="space-y-2">
-        <h4 class="text-xs font-extrabold text-slate-900 flex items-center justify-between uppercase tracking-wide">
-          <span>📦 Các Threads em đã tạo</span>
-          <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Đã lưu máy
-          </span>
-        </h4>
-        <div id="my-activities-container" class="space-y-2">
-          <!-- Rendered by JS -->
+      <!-- PROFILE SOCIAL SUB-TABS (THREADS / INSTAGRAM STYLE) -->
+      <div class="space-y-3 pt-2">
+        <div class="grid grid-cols-4 gap-1 sm:gap-2 bg-slate-100 dark:bg-zinc-800 p-1 rounded-2xl border-2 border-black dark:border-zinc-700 text-center text-xs font-black">
+          <button id="p-subtab-posted" onclick="switchProfileSubTab('posted')" class="profile-subtab active bg-black text-[#FFE600] border border-black py-1.5 rounded-xl uppercase text-[10px] sm:text-[11px] shadow-[1px_1px_0px_0px_#000000] cursor-pointer">
+            📝 Đã Tạo
+          </button>
+          <button id="p-subtab-liked" onclick="switchProfileSubTab('liked')" class="profile-subtab text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white py-1.5 rounded-xl font-bold uppercase text-[10px] sm:text-[11px] cursor-pointer">
+            ❤️ Đã Tim
+          </button>
+          <button id="p-subtab-saved" onclick="switchProfileSubTab('saved')" class="profile-subtab text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white py-1.5 rounded-xl font-bold uppercase text-[10px] sm:text-[11px] cursor-pointer">
+            🔖 Đã Lưu
+          </button>
+          <button id="p-subtab-ranks" onclick="switchProfileSubTab('ranks')" class="profile-subtab text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white py-1.5 rounded-xl font-bold uppercase text-[10px] sm:text-[11px] cursor-pointer">
+            ⚡ Level Aura
+          </button>
+        </div>
+
+        <!-- Tab Content View 1: Posted Threads -->
+        <div id="view-profile-posted" class="space-y-2">
+          <div id="my-activities-container" class="space-y-2">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Tab Content View 2: Liked Threads -->
+        <div id="view-profile-liked" class="hidden space-y-2">
+          <div id="my-liked-container" class="space-y-2">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Tab Content View 3: Saved / Bookmarked Threads -->
+        <div id="view-profile-saved" class="hidden space-y-2">
+          <div id="my-saved-container" class="space-y-2">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Tab Content View 4: Aura Level & Achievements Progress -->
+        <div id="view-profile-ranks" class="hidden space-y-3">
+          <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] space-y-4">
+            <div class="flex items-center justify-between border-b-2 border-black/10 dark:border-zinc-800 pb-3">
+              <div>
+                <span class="text-xs font-black uppercase text-zinc-500 dark:text-zinc-400">Cấp Bậc Học Trò:</span>
+                <h4 id="aura-tier-name" class="text-base font-black text-black dark:text-white uppercase font-display">Chiến Thần Học Đường (Level 3)</h4>
+              </div>
+              <span class="text-2xl">👑</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-bold">
+                <span id="aura-progress-label">Tiến trình thăng hạng: 1000 / 1200 Aura</span>
+                <span id="aura-progress-pct" class="font-black text-[#FF007A]">83%</span>
+              </div>
+              <div class="w-full bg-slate-100 dark:bg-zinc-800 border-2 border-black rounded-full h-3.5 p-0.5 overflow-hidden">
+                <div id="aura-progress-bar" class="bg-gradient-to-r from-[#CCFF00] via-[#FFE600] to-[#FF007A] h-full rounded-full transition-all duration-500" style="width: 83%"></div>
+              </div>
+              <p class="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold mt-1">
+                Tích thêm <span id="aura-needed-pts" class="text-[#FF007A] font-black">200 Aura</span> để đạt danh hiệu <b>Huyền Thoại Chu Văn An</b>!
+              </p>
+            </div>
+
+            <!-- Badges Catalog -->
+            <div class="pt-2 border-t-2 border-black/10 dark:border-zinc-800 space-y-2">
+              <p class="text-xs font-black uppercase text-black dark:text-white">Bộ Sưu Tập Huy Hiệu:</p>
+              <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+                <div class="p-2.5 rounded-2xl border-2 border-black bg-[#CCFF00]/20 flex items-center gap-2">
+                  <span class="text-xl">🔍</span>
+                  <div>
+                    <p class="font-black text-black dark:text-white">Hiệp Sĩ Check VAR</p>
+                    <p class="text-[10px] text-zinc-500">Giúp đồng môn tìm đồ</p>
+                  </div>
+                </div>
+                <div class="p-2.5 rounded-2xl border-2 border-black bg-[#FFE600]/20 flex items-center gap-2">
+                  <span class="text-xl">📚</span>
+                  <div>
+                    <p class="font-black text-black dark:text-white">Sứ Giả Tủ Sách 0đ</p>
+                    <p class="text-[10px] text-zinc-500">Trao tặng tri thức</p>
+                  </div>
+                </div>
+                <div class="p-2.5 rounded-2xl border-2 border-black bg-[#FF007A]/20 flex items-center gap-2">
+                  <span class="text-xl">💌</span>
+                  <div>
+                    <p class="font-black text-black dark:text-white">Chiến Thần Tâm Sự</p>
+                    <p class="text-[10px] text-zinc-500">Lắng nghe & an ủi bạn</p>
+                  </div>
+                </div>
+                <div class="p-2.5 rounded-2xl border-2 border-black bg-[#00F0FF]/20 flex items-center gap-2">
+                  <span class="text-xl">🥠</span>
+                  <div>
+                    <p class="font-black text-black dark:text-white">Vibe King CVA</p>
+                    <p class="text-[10px] text-zinc-500">Bốc quẻ may mắn mỗi ngày</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -1887,6 +2092,21 @@
           <textarea id="lf_desc" rows="2" placeholder="VD: Mặt sau dán sticker Anya, có vết trầy ở góc..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl p-2.5 text-xs font-semibold text-black dark:text-white focus:outline-none placeholder:text-zinc-400"></textarea>
         </div>
 
+        <!-- Image Upload Attachment -->
+        <div>
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Đính kèm ảnh chụp đồ vật (tùy chọn)</label>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="document.getElementById('lf-image-input').click()" class="bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-3 py-1.5 rounded-xl font-black text-xs shadow-[2px_2px_0px_0px_#000000] active:scale-95 transition flex items-center gap-1.5 cursor-pointer">
+              <span>📷</span> Chọn ảnh từ máy
+            </button>
+            <input type="file" id="lf-image-input" accept="image/*" class="hidden" onchange="handlePostImageSelect(event, 'lf')">
+            <div id="lf-img-preview-box" class="hidden relative inline-block">
+              <img id="lf-img-preview" src="" class="h-12 w-12 rounded-xl border-2 border-black object-cover shadow-[1px_1px_0px_0px_#000000]">
+              <button type="button" onclick="clearPostImage('lf')" class="absolute -top-1 -right-1 bg-[#FF007A] text-white rounded-full w-4 h-4 flex items-center justify-center border border-black text-[10px] font-bold cursor-pointer">✕</button>
+            </div>
+          </div>
+        </div>
+
         <!-- Hậu tạ (Mất đồ) -->
         <div id="lf-reward-box">
           <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Món quà cảm ơn nhỏ</label>
@@ -1985,6 +2205,21 @@
           <input type="text" id="book_meet_place" placeholder="VD: Thư viện tầng 2, Ghế đá sân cờ ra chơi..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
         </div>
 
+        <!-- Image Upload Attachment -->
+        <div>
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Đính kèm ảnh bìa sách / truyện (tùy chọn)</label>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="document.getElementById('book-image-input').click()" class="bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-3 py-1.5 rounded-xl font-black text-xs shadow-[2px_2px_0px_0px_#000000] active:scale-95 transition flex items-center gap-1.5 cursor-pointer">
+              <span>📷</span> Chọn ảnh từ máy
+            </button>
+            <input type="file" id="book-image-input" accept="image/*" class="hidden" onchange="handlePostImageSelect(event, 'book')">
+            <div id="book-img-preview-box" class="hidden relative inline-block">
+              <img id="book-img-preview" src="" class="h-12 w-12 rounded-xl border-2 border-black object-cover shadow-[1px_1px_0px_0px_#000000]">
+              <button type="button" onclick="clearPostImage('book')" class="absolute -top-1 -right-1 bg-[#FF007A] text-white rounded-full w-4 h-4 flex items-center justify-center border border-black text-[10px] font-bold cursor-pointer">✕</button>
+            </div>
+          </div>
+        </div>
+
         <button type="submit" class="w-full bg-[#CCFF00] hover:bg-[#B8E600] text-black border-2 border-black font-black py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer">
           <span>Đăng Lên Chợ Phiên (+150 Aura)</span> <span>📚</span>
         </button>
@@ -2068,6 +2303,21 @@
         <div>
           <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Nội dung tâm sự <span class="text-rose-500">*</span></label>
           <textarea id="conf_content" rows="4" required placeholder="Viết tâm sự của bạn tại đây... Hãy cùng giữ gìn không gian văn minh, thân thiện của học trò THCS Chu Văn An nhé!" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl p-3 text-xs font-semibold text-black dark:text-white focus:outline-none placeholder:text-zinc-400 leading-relaxed"></textarea>
+        </div>
+
+        <!-- Image Upload Attachment -->
+        <div>
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Đính kèm meme / ảnh minh họa (tùy chọn)</label>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="document.getElementById('conf-image-input').click()" class="bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-3 py-1.5 rounded-xl font-black text-xs shadow-[2px_2px_0px_0px_#000000] active:scale-95 transition flex items-center gap-1.5 cursor-pointer">
+              <span>📷</span> Chọn ảnh từ máy
+            </button>
+            <input type="file" id="conf-image-input" accept="image/*" class="hidden" onchange="handlePostImageSelect(event, 'conf')">
+            <div id="conf-img-preview-box" class="hidden relative inline-block">
+              <img id="conf-img-preview" src="" class="h-12 w-12 rounded-xl border-2 border-black object-cover shadow-[1px_1px_0px_0px_#000000]">
+              <button type="button" onclick="clearPostImage('conf')" class="absolute -top-1 -right-1 bg-[#FF007A] text-white rounded-full w-4 h-4 flex items-center justify-center border border-black text-[10px] font-bold cursor-pointer">✕</button>
+            </div>
+          </div>
         </div>
 
         <button type="submit" class="w-full bg-[#FFE600] hover:bg-[#FADB14] text-black border-2 border-black font-black text-xs sm:text-sm py-3 px-4 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer">
@@ -2242,6 +2492,135 @@
     </div>
   </div>
 
+  <!-- MODAL: TRUNG TÂM THÔNG BÁO MẠNG XÃ HỘI (NOTIFICATIONS CENTER) -->
+  <div id="modal-notifications" onclick="handleBackdropClick(event, 'modal-notifications')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 max-w-md w-full shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#FFE600] my-auto relative animate-scale-up space-y-4" onclick="event.stopPropagation()">
+      <button onclick="closeModal('modal-notifications')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-black dark:text-white transition cursor-pointer">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="flex items-center justify-between border-b-2 border-black/10 dark:border-zinc-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-2xl bg-[#FFE600] text-black border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_0px_#000000]">
+            🔔
+          </div>
+          <div>
+            <h3 class="text-base font-black text-black dark:text-white uppercase font-display">Thông Báo Học Đường</h3>
+            <p class="text-[11px] text-zinc-500 dark:text-zinc-400 font-bold">Cập nhật tương tác mới nhất của bạn</p>
+          </div>
+        </div>
+        <button onclick="markAllNotificationsRead()" class="text-[10px] font-black uppercase text-[#FF007A] hover:underline cursor-pointer">
+          ✓ Đã đọc hết
+        </button>
+      </div>
+
+      <!-- Notification List -->
+      <div id="notifications-list-container" class="max-h-[360px] overflow-y-auto space-y-2 pr-1 text-xs">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: XEM TIN CVA 24H (STORY VIEWER WITH PROGRESS BAR) -->
+  <div id="modal-story-viewer" onclick="handleBackdropClick(event, 'modal-story-viewer')" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-zinc-950 border-3 border-black rounded-3xl p-4 max-w-sm w-full shadow-[8px_8px_0px_0px_#FFE600] relative animate-scale-up space-y-3.5 text-white overflow-hidden" onclick="event.stopPropagation()">
+      
+      <!-- Top Animated Progress Bar -->
+      <div class="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+        <div id="story-progress-bar" class="bg-[#CCFF00] h-full rounded-full transition-all duration-100" style="width: 0%"></div>
+      </div>
+
+      <!-- Story Header -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span id="story-author-avatar" class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center text-base border-2 border-black font-black">🦊</span>
+          <div>
+            <p id="story-author-name" class="text-xs font-black leading-tight">Hải Đăng 9A1</p>
+            <p id="story-time-stamp" class="text-[10px] text-zinc-400 font-semibold">1 giờ trước</p>
+          </div>
+        </div>
+        <button onclick="closeStoryViewer()" class="w-7 h-7 rounded-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 flex items-center justify-center text-white cursor-pointer text-xs font-black">
+          ✕
+        </button>
+      </div>
+
+      <!-- Story Body / Card Canvas -->
+      <div id="story-canvas" class="min-h-[260px] rounded-2xl border-2 border-zinc-800 p-5 flex flex-col justify-between relative overflow-hidden transition-all bg-gradient-to-br from-indigo-950 via-purple-950 to-zinc-900">
+        <span id="story-sticker" class="text-4xl">📚</span>
+        <p id="story-caption" class="text-base sm:text-lg font-black leading-snug font-display text-[#FFE600] drop-shadow">
+          "Giải xong bộ đề Toán khảo sát rồi! Khối 9 Chu Văn An năm nay quyết tâm đỗ nguyện vọng 1!"
+        </p>
+        <span id="story-tag" class="self-start text-[10px] font-black uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded-md border border-white/20">
+          #CVA2026 #ThiVao10
+        </span>
+      </div>
+
+      <!-- Story Navigation Controls -->
+      <div class="flex items-center justify-between gap-2 pt-1">
+        <button onclick="prevStory()" class="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-xs font-bold text-white cursor-pointer">
+          ← Trước
+        </button>
+        <div class="flex items-center gap-2">
+          <button onclick="reactToStory('❤️')" class="text-lg hover:scale-125 transition active:scale-95">❤️</button>
+          <button onclick="reactToStory('🔥')" class="text-lg hover:scale-125 transition active:scale-95">🔥</button>
+          <button onclick="reactToStory('👏')" class="text-lg hover:scale-125 transition active:scale-95">👏</button>
+        </div>
+        <button onclick="nextStory()" class="px-3 py-1.5 rounded-xl bg-[#FFE600] text-black font-black text-xs cursor-pointer shadow-[2px_2px_0px_0px_#000000]">
+          Tiếp →
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: PHOTO LIGHTBOX (FULLSCREEN IMAGE VIEWER) -->
+  <div id="modal-lightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6">
+    <div class="relative max-w-2xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 w-8 h-8 rounded-full bg-white text-black border-2 border-black font-black flex items-center justify-center cursor-pointer shadow-[2px_2px_0px_0px_#000000]">
+        ✕
+      </button>
+      <img id="lightbox-img" src="" alt="Ảnh phóng to" class="max-h-[80vh] w-auto rounded-3xl border-3 border-black shadow-[8px_8px_0px_0px_#CCFF00] object-contain">
+    </div>
+  </div>
+
+  <!-- MODAL: CHIA SẺ BÀI VIẾT (SOCIAL SHARE SHEET) -->
+  <div id="modal-share" onclick="handleBackdropClick(event, 'modal-share')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 max-w-sm w-full shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#00F0FF] my-auto relative animate-scale-up space-y-4" onclick="event.stopPropagation()">
+      <button onclick="closeModal('modal-share')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-black dark:text-white transition cursor-pointer">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-[#00F0FF] text-black border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_0px_#000000]">
+          ✈️
+        </div>
+        <div>
+          <h3 class="text-base font-black text-black dark:text-white uppercase font-display">Chia Sẻ Bài Viết</h3>
+          <p id="share-target-title" class="text-xs text-zinc-600 dark:text-zinc-400 font-bold truncate max-w-[200px]">Tiêu đề bài viết...</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+        <button onclick="executeShareAction('copy')" class="p-3 rounded-2xl border-2 border-black bg-white dark:bg-zinc-800 text-black dark:text-white shadow-[2px_2px_0px_0px_#000000] active:scale-95 flex flex-col items-center gap-1.5 cursor-pointer">
+          <span class="text-2xl">📋</span>
+          <span class="font-black uppercase text-[10px]">Copy Link</span>
+        </button>
+        <button onclick="executeShareAction('zalo')" class="p-3 rounded-2xl border-2 border-black bg-[#00F0FF] text-black shadow-[2px_2px_0px_0px_#000000] active:scale-95 flex flex-col items-center gap-1.5 cursor-pointer">
+          <span class="text-2xl">💬</span>
+          <span class="font-black uppercase text-[10px]">Gửi Qua Zalo</span>
+        </button>
+        <button onclick="executeShareAction('facebook')" class="p-3 rounded-2xl border-2 border-black bg-[#CCFF00] text-black shadow-[2px_2px_0px_0px_#000000] active:scale-95 flex flex-col items-center gap-1.5 cursor-pointer">
+          <span class="text-2xl">🌐</span>
+          <span class="font-black uppercase text-[10px]">Facebook</span>
+        </button>
+        <button onclick="executeShareAction('quote')" class="p-3 rounded-2xl border-2 border-black bg-[#FFE600] text-black shadow-[2px_2px_0px_0px_#000000] active:scale-95 flex flex-col items-center gap-1.5 cursor-pointer">
+          <span class="text-2xl">✍️</span>
+          <span class="font-black uppercase text-[10px]">Trích Dẫn Bài</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST THÔNG BÁO POP-UP (Floating Pill at Top - NEOBRUTALISM) -->
   <div id="teen-toast" class="toast-hide fixed top-16 left-1/2 -translate-x-1/2 z-[90] bg-[#FFE600] text-black border-2 border-black px-4 py-2.5 rounded-2xl shadow-[4px_4px_0px_0px_#000000] flex items-center gap-2 text-xs font-black uppercase tracking-wide select-none transition-all duration-300 pointer-events-none">
     <span id="toast-icon" class="text-sm">🎉</span>
@@ -2357,7 +2736,80 @@
       nickname: "Chiến Thần Code CVA",
       avatar: "🐱",
       school: "Trường THCS Chu Văn An",
-      aura: 1000
+      aura: 1000,
+      likedPostIds: [],
+      boostedPostIds: [],
+      savedPostIds: [],
+      unreadNotifs: 3,
+      notifications: [
+        { id: 'notif-1', type: 'system', title: 'Chào mừng Dev Khánhh! 🚀', desc: 'Chào mừng em đến với Trạm Học Đường Teen CVA. Đã cộng +1000 Aura khởi nghiệp!', time: 'Hôm nay', unread: true },
+        { id: 'notif-2', type: 'aura', title: 'Danh hiệu Tinh Anh CVA ⚡', desc: 'Em đã đạt mốc 1000 Aura! Hãy giữ vững phong độ bốc quẻ và giúp đỡ bạn bè mỗi ngày nhé.', time: '10 phút trước', unread: true },
+        { id: 'notif-3', type: 'like', title: 'Bảo Anh - 8A2 đã thả tim bài viết ❤️', desc: 'Bài viết tìm máy tính Casio FX 580VN của bạn nhận được 1 lượt tim mới.', time: '25 phút trước', unread: true }
+      ]
+    };
+
+    /* CVA 24H VIBE STORIES DATA */
+    const DEFAULT_STORIES = [
+      {
+        id: 'story-1',
+        author: 'Dev Khánhh',
+        authorClass: '8A1',
+        avatar: '🐱',
+        time: '1h trước',
+        bgGradient: 'from-amber-400 via-pink-500 to-purple-600',
+        tag: '🔥 Admin Vibe',
+        content: 'Chào cả nhà CVA! Trạm Học Đường Teen vừa cập nhật tính năng Social Feed & Stories siêu mượt. Mọi người thả tim bốc quẻ sáng nay chưa nè? ⚡',
+        views: 142,
+        reactions: { '❤️': 38, '🔥': 52, '⚡': 29 }
+      },
+      {
+        id: 'story-2',
+        author: 'Linh Đan',
+        authorClass: '9B3',
+        avatar: '🦊',
+        time: '2h trước',
+        bgGradient: 'from-cyan-400 to-blue-600',
+        tag: '📚 Sách 0đ',
+        content: 'Vừa dọn tủ sách học kỳ 1, mình có trọn bộ Đề Cương Ôn Thi Vào 10 môn Toán - Văn còn rất mới, bạn nào cần thì ghé Chợ Sách 0đ nhận nha! 🎁',
+        views: 98,
+        reactions: { '❤️': 24, '👏': 31, '✨': 18 }
+      },
+      {
+        id: 'story-3',
+        author: 'Minh Trí',
+        authorClass: '7A4',
+        avatar: '🐼',
+        time: '3h trước',
+        bgGradient: 'from-emerald-400 to-teal-700',
+        tag: '🔑 Nhặt Được',
+        content: 'Ai rơi chùm chìa khóa có móc gấu dâu Lotso ở dãy hành lang tầng 2 nhà B thì Check VAR chính chủ nhận lại nhé! 🗝️',
+        views: 85,
+        reactions: { '❤️': 19, '👏': 42 }
+      },
+      {
+        id: 'story-4',
+        author: 'Bảo Anh',
+        authorClass: '8A2',
+        avatar: '🐰',
+        time: '4h trước',
+        bgGradient: 'from-fuchsia-500 to-rose-600',
+        tag: '💌 Góc Tâm Sự',
+        content: 'Tuần này kiểm tra giữa kỳ căng thẳng quá, chúc toàn thể các bạn 2k11, 2k12 CVA chúng mình đều đạt điểm 9-10 rực rỡ nha! Cố lênnn ✨',
+        views: 110,
+        reactions: { '❤️': 65, '🔥': 40, '✨': 35 }
+      }
+    ];
+
+    /* CVA WEEKLY POLL DATA */
+    const DEFAULT_POLL = {
+      id: 'poll-cva-week',
+      question: "Món ăn nào tại căng-tin CVA xứng danh 'Quán Quân Đỉnh Nóc Kịch Trần' tuần này? 🍜🥪",
+      options: [
+        { text: "Bánh mì xíu mại sốt cay thơm nức 🥖", votes: 148 },
+        { text: "Mì tôm chanh bò khô bắp phô mai 🍜", votes: 236 },
+        { text: "Trà đào cam sả thạch đào giòn 🍑", votes: 182 },
+        { text: "Bánh tráng trộn bò khô lắc muối tắc 🌶️", votes: 94 }
+      ]
     };
 
     const DEFAULT_LF = [
@@ -2571,6 +3023,13 @@
     if (!currentUser || currentUser.name === 'Minh Anh') {
       currentUser = { ...DEFAULT_USER, aura: (currentUser && currentUser.aura) || DEFAULT_USER.aura };
       try { localStorage.setItem('teen_user_threads', JSON.stringify(currentUser)); } catch (e) {}
+    }
+    if (!Array.isArray(currentUser.likedPostIds)) currentUser.likedPostIds = [];
+    if (!Array.isArray(currentUser.boostedPostIds)) currentUser.boostedPostIds = [];
+    if (!Array.isArray(currentUser.savedPostIds)) currentUser.savedPostIds = [];
+    if (!Array.isArray(currentUser.notifications)) currentUser.notifications = DEFAULT_USER.notifications;
+    if (typeof currentUser.unreadNotifs !== 'number') {
+      currentUser.unreadNotifs = currentUser.notifications.filter(n => n.unread).length;
     }
     let lostFoundData = safeLoadJSON('teen_lf_threads', DEFAULT_LF);
     let booksData = safeLoadJSON('teen_books_threads', DEFAULT_BOOKS);
@@ -3177,45 +3636,205 @@
     /* =====================================================================
        6. THREADS ACTIONS: LIKE, REPLY, REPOST, SHARE
        ===================================================================== */
+    /* AUTHENTIC LIKE / UNLIKE TOGGLE */
     function toggleLike(type, id) {
-      playCuteSound('ting');
       let targetList = type === 'lf' ? lostFoundData : (type === 'book' ? booksData : confessionsData);
       const item = targetList.find(i => i.id === id);
-      if (item) {
+      if (!item) return;
+
+      const isLiked = currentUser.likedPostIds && currentUser.likedPostIds.includes(id);
+
+      if (isLiked) {
+        currentUser.likedPostIds = currentUser.likedPostIds.filter(x => x !== id);
+        item.likes = Math.max(0, (item.likes || 1) - 1);
+        playCuteSound('pop');
+        showTeenToast("Đã bỏ thả tim bài viết", "🤍");
+      } else {
+        if (!currentUser.likedPostIds) currentUser.likedPostIds = [];
+        currentUser.likedPostIds.push(id);
         item.likes = (item.likes || 0) + 1;
         addAuraPoints(2);
-        saveState();
-        refreshActiveViews();
+        playCuteSound('ting');
+        launchConfetti();
         showTeenToast("Đã thả tim bài viết! (+2 Aura) 💖", "❤️");
+        
+        if (item.author && item.author !== currentUser.name) {
+          addNotification({
+            id: 'notif-' + Date.now(),
+            type: 'like',
+            title: `${currentUser.name} đã thích bài viết của bạn`,
+            desc: `Bài viết "${item.title || 'tâm sự'}" vừa có thêm 1 lượt tim mới.`,
+            time: 'Vừa xong',
+            unread: true
+          });
+        }
+      }
+
+      saveState();
+      refreshActiveViews();
+    }
+    window.toggleLike = toggleLike;
+
+    /* REPOST / BOOST TOGGLE */
+    function boostThread(type, id) {
+      let targetList = type === 'lf' ? lostFoundData : (type === 'book' ? booksData : confessionsData);
+      const index = targetList.findIndex(i => i.id === id);
+      if (index === -1) return;
+
+      const item = targetList[index];
+      const isBoosted = currentUser.boostedPostIds && currentUser.boostedPostIds.includes(id);
+
+      if (isBoosted) {
+        currentUser.boostedPostIds = currentUser.boostedPostIds.filter(x => x !== id);
+        item.boosts = Math.max(0, (item.boosts || 1) - 1);
+        playCuteSound('pop');
+        showTeenToast("Đã hủy Repost bài viết", "↩️");
+      } else {
+        if (!currentUser.boostedPostIds) currentUser.boostedPostIds = [];
+        currentUser.boostedPostIds.push(id);
+        item.boosts = (item.boosts || 0) + 1;
+        targetList.splice(index, 1);
+        targetList.unshift(item);
+        addAuraPoints(5);
+        playCuteSound('chime');
+        launchConfetti();
+        showTeenToast("Đã Repost đẩy bài viết lên đầu Feed! (+5 Aura) 🚀", "🔥");
+      }
+
+      saveState();
+      refreshActiveViews();
+    }
+    window.boostThread = boostThread;
+
+    /* BOOKMARK TOGGLE */
+    function toggleBookmarkPost(type, id) {
+      const isSaved = currentUser.savedPostIds && currentUser.savedPostIds.includes(id);
+      if (isSaved) {
+        currentUser.savedPostIds = currentUser.savedPostIds.filter(x => x !== id);
+        playCuteSound('pop');
+        showTeenToast("Đã bỏ lưu bài viết khỏi mục cá nhân", "🔖");
+      } else {
+        if (!currentUser.savedPostIds) currentUser.savedPostIds = [];
+        currentUser.savedPostIds.push(id);
+        addAuraPoints(2);
+        playCuteSound('ting');
+        showTeenToast("Đã lưu bài viết vào mục Bookmark cá nhân! (+2 Aura) 🔖", "✨");
+      }
+      saveState();
+      refreshActiveViews();
+      document.querySelectorAll('.post-dropdown-menu').forEach(m => m.classList.add('hidden'));
+    }
+    window.toggleBookmarkPost = toggleBookmarkPost;
+
+    /* POST DROPDOWN OVERFLOW MENU */
+    function togglePostDropdown(id, event) {
+      if (event && event.stopPropagation) event.stopPropagation();
+      const menu = document.getElementById(`post-menu-${id}`);
+      if (!menu) return;
+      const isHidden = menu.classList.contains('hidden');
+      document.querySelectorAll('.post-dropdown-menu').forEach(m => m.classList.add('hidden'));
+      if (isHidden) {
+        menu.classList.remove('hidden');
       }
     }
+    window.togglePostDropdown = togglePostDropdown;
 
-    function boostThread(type, id) {
-      playCuteSound('chime');
-      launchConfetti();
+    /* DELETE POST */
+    function deletePost(type, id) {
+      if (!confirm("Em có chắc chắn muốn xóa bài viết này không? Hành động này không thể hoàn tác!")) return;
+      playCuteSound('pop');
       let targetList = type === 'lf' ? lostFoundData : (type === 'book' ? booksData : confessionsData);
       const index = targetList.findIndex(i => i.id === id);
       if (index > -1) {
-        const item = targetList.splice(index, 1)[0];
-        item.boosts = (item.boosts || 0) + 1;
-        targetList.unshift(item);
-        addAuraPoints(5);
+        targetList.splice(index, 1);
         saveState();
         refreshActiveViews();
-        showTeenToast("Đã Repost đẩy bài lên đầu bảng tin! (+5 Aura) 🔁", "🚀");
+        showTeenToast("Đã xóa bài viết thành công!", "🗑️");
       }
     }
+    window.deletePost = deletePost;
+
+    /* TOGGLE SOLVE POST (ĐÃ TÌM THẤY / ĐÃ XONG) */
+    function toggleSolvePost(type, id) {
+      let targetList = type === 'lf' ? lostFoundData : (type === 'book' ? booksData : confessionsData);
+      const item = targetList.find(i => i.id === id);
+      if (!item) return;
+
+      if (item.status === 'solved') {
+        item.status = 'open';
+        showTeenToast("Đã mở lại trạng thái bài viết!", "🔄");
+      } else {
+        item.status = 'solved';
+        addAuraPoints(20);
+        playCuteSound('chime');
+        launchConfetti();
+        showTeenToast("🎉 Chúc mừng! Đã hoàn tất giải quyết: +20 Aura!", "🏆");
+      }
+      saveState();
+      refreshActiveViews();
+      document.querySelectorAll('.post-dropdown-menu').forEach(m => m.classList.add('hidden'));
+    }
+    window.toggleSolvePost = toggleSolvePost;
+
+    /* REPORT POST */
+    function reportPost(id) {
+      document.querySelectorAll('.post-dropdown-menu').forEach(m => m.classList.add('hidden'));
+      showTeenToast("Cảm ơn bạn! Đội ngũ kiểm duyệt CVA sẽ kiểm tra ngay bài viết này 🛡️", "🚩");
+    }
+    window.reportPost = reportPost;
+
+    /* SHARE MODAL & ACTIONS */
+    let currentSharePayload = { title: '', author: '' };
+
+    function openShareModal(title, author) {
+      currentSharePayload = { title, author };
+      const titleEl = document.getElementById('share-target-title');
+      if (titleEl) titleEl.textContent = title || "Bài viết tại Trạm Học Đường Teen CVA";
+      const modal = document.getElementById('modal-share');
+      if (modal) modal.classList.remove('hidden');
+      document.querySelectorAll('.post-dropdown-menu').forEach(m => m.classList.add('hidden'));
+    }
+    window.openShareModal = openShareModal;
+
+    function closeShareModal() {
+      const modal = document.getElementById('modal-share');
+      if (modal) modal.classList.add('hidden');
+    }
+    window.closeShareModal = closeShareModal;
+
+    function executeShareAction(action) {
+      playCuteSound('ting');
+      const url = window.location.href;
+      const text = `[Trạm Học Đường Teen CVA] ${currentSharePayload.title} - từ bạn ${currentSharePayload.author}\nXem tại: ${url}`;
+
+      if (action === 'copy') {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url);
+          showTeenToast("Đã sao chép link liên kết vào Clipboard! 📋", "🔗");
+        } else {
+          showTeenToast("Đã lấy link bài viết!", "🔗");
+        }
+      } else if (action === 'facebook') {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        showTeenToast("Đang mở Facebook để chia sẻ...", "🌐");
+      } else if (action === 'zalo') {
+        if (navigator.clipboard) navigator.clipboard.writeText(text);
+        showTeenToast("Đã copy nội dung, hãy dán vào khung chat Zalo nhóm lớp nhé! 💬", "📱");
+      } else if (action === 'quote') {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text);
+          showTeenToast("Đã copy thẻ trích dẫn để gửi cho bạn bè! 💌", "✨");
+        }
+      }
+      addAuraPoints(3);
+      closeShareModal();
+    }
+    window.executeShareAction = executeShareAction;
 
     function shareThread(title, author) {
-      playCuteSound('pop');
-      const textToCopy = `[Trạm Học Đường Teen CVA] ${title} - từ bạn ${author}`;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(textToCopy);
-        showTeenToast("Đã copy nội dung bài viết vào clipboard!", "✈️");
-      } else {
-        showTeenToast(`Đã chia sẻ bài viết của ${author}!`, "✈️");
-      }
+      openShareModal(title, author);
     }
+    window.shareThread = shareThread;
 
     function toggleReplyBox(id) {
       playCuteSound('pop');
@@ -3312,9 +3931,14 @@
       const isConf = type === 'confession';
       const isMail = false;
 
-      const repliesCount = (item.replies ? item.replies.length : 0) + (item.aiResponse ? 1 : 0);
-      const likesCount = item.likes || item.cheers || 1;
+      const repliesCount = (item.replies ? item.replies.length : 0);
+      const likesCount = item.likes || 0;
       const boostsCount = item.boosts || 0;
+
+      const isMyPost = (item.author === currentUser.name) || (item.authorClass === currentUser.class);
+      const isLiked = currentUser.likedPostIds && currentUser.likedPostIds.includes(item.id);
+      const isBoosted = currentUser.boostedPostIds && currentUser.boostedPostIds.includes(item.id);
+      const isSaved = currentUser.savedPostIds && currentUser.savedPostIds.includes(item.id);
 
       let categoryBadge = '';
       if (isLF) {
@@ -3342,8 +3966,6 @@
       }
 
       let repliesHTML = '';
-      // aiResponse in cards removed;
-
       if (item.replies && item.replies.length > 0) {
         item.replies.forEach(rep => {
           repliesHTML += `
@@ -3374,49 +3996,110 @@
             <!-- Right Content -->
             <div class="flex-1 space-y-1.5 min-w-0 z-10">
               
-              <!-- Author header -->
-              <div class="flex items-center justify-between">
+              <!-- Author header & Three-dots dropdown -->
+              <div class="flex items-center justify-between relative">
                 <div class="flex items-center gap-1.5 flex-wrap">
-                  <span class="font-black text-black dark:text-white text-xs sm:text-sm">${escapeHTML(isConf && item.isAnonymous ? (item.anonNick || item.author) : item.author)}</span>
-                  ${isConf && item.isAnonymous 
-                    ? `<span class="text-[10px] font-black bg-[#FF007A] text-white px-2 py-0.5 rounded-full border border-black shadow-[1px_1px_0px_0px_#000000] uppercase">🎭 ẨN DANH 100%</span>`
-                    : `<span class="text-[10px] font-bold bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 px-1.5 py-0.2 rounded-md border border-black/20">${escapeHTML(item.authorClass || '8A1')}</span>`
-                  }
-                  <span class="text-sky-500 font-bold text-xs" title="Học sinh Chu Văn An">✓</span>
+                  <span class="font-black text-black dark:text-white text-xs sm:text-sm hover:underline cursor-pointer">
+                    ${escapeHTML(item.author || item.anonNick || "Học sinh CVA")}
+                  </span>
+                  ${item.authorClass ? `<span class="bg-black/5 dark:bg-white/10 text-zinc-700 dark:text-zinc-300 px-2 py-0.5 rounded-md text-[10px] font-black border border-black/20">${escapeHTML(item.authorClass)}</span>` : ''}
+                  <span class="text-zinc-400 text-xs font-semibold">•</span>
+                  <span class="text-zinc-400 text-[11px] font-bold">${item.time || 'Vừa xong'}</span>
                 </div>
-                <span class="text-[10px] text-slate-400 font-medium">${item.time}</span>
+
+                <div class="flex items-center gap-1.5">
+                  ${categoryBadge}
+                  
+                  <!-- Three-dots overflow menu -->
+                  <div class="relative">
+                    <button 
+                      type="button"
+                      onclick="togglePostDropdown('${item.id}', event)" 
+                      class="post-dropdown-trigger p-1.5 rounded-xl border border-black/10 dark:border-zinc-700 hover:bg-slate-100 dark:hover:bg-zinc-800 text-zinc-500 hover:text-black dark:hover:text-white transition cursor-pointer"
+                      title="Tùy chọn bài viết"
+                    >
+                      <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+                    </button>
+                    <div id="post-menu-${item.id}" class="post-dropdown-menu hidden absolute right-0 mt-1 w-44 bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-1.5 z-50 text-xs font-bold space-y-1">
+                      ${isMyPost ? `
+                        <button onclick="toggleSolvePost('${type}', '${item.id}')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-[#CCFF00] hover:text-black transition flex items-center gap-2 cursor-pointer">
+                          <span>✅</span> <span>${item.status === 'solved' ? 'Mở lại tin' : 'Đã Xong / Tìm Thấy'}</span>
+                        </button>
+                        <button onclick="deletePost('${type}', '${item.id}')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-[#FF007A] hover:text-white transition flex items-center gap-2 text-rose-600 dark:text-rose-400 cursor-pointer">
+                          <span>🗑️</span> <span>Xóa bài viết</span>
+                        </button>
+                        <div class="border-t border-black/10 dark:border-zinc-700 my-1"></div>
+                      ` : ''}
+                      <button onclick="toggleBookmarkPost('${type}', '${item.id}')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-[#00F0FF] hover:text-black transition flex items-center gap-2 cursor-pointer">
+                        <span>${isSaved ? '🔖' : '📑'}</span> <span>${isSaved ? 'Bỏ lưu bài viết' : 'Lưu bài viết'}</span>
+                      </button>
+                      <button onclick="openShareModal('${escapeHTML(item.title || '')}', '${escapeHTML(item.author || item.anonNick || '')}')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-[#FFE600] hover:text-black transition flex items-center gap-2 cursor-pointer">
+                        <span>🔗</span> <span>Chia sẻ bài viết</span>
+                      </button>
+                      <button onclick="reportPost('${item.id}')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500 hover:text-black dark:hover:text-white transition flex items-center gap-2 cursor-pointer">
+                        <span>🚩</span> <span>Báo cáo bài viết</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <!-- Badges -->
-              <div class="flex items-center gap-1.5 flex-wrap">
-                ${categoryBadge}
-                ${isLF && item.reward ? `<span class="bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.2 rounded-full text-[10px] font-medium">🎁 ${escapeHTML(item.reward)}</span>` : ''}
-                ${isLF ? `<span class="text-[10px] text-slate-500 bg-slate-50 px-2 py-0.2 rounded-full border border-slate-100">📍 ${escapeHTML(item.location)}</span>` : ''}
-                ${isBook ? `<span class="text-[10px] text-slate-500 bg-slate-50 px-2 py-0.2 rounded-full border border-slate-100">🤝 ${escapeHTML(item.meetPlace)}</span>` : ''}
-                ${isConf && !item.isAnonymous ? `<span class="text-[10px] text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full border border-black/20 font-bold">👑 Chính Chủ</span>` : ''}
+              <!-- Main Post Content -->
+              <div class="space-y-1 pt-0.5">
+                ${item.title ? `
+                  <h5 class="font-black text-black dark:text-white text-xs sm:text-sm tracking-tight leading-snug">
+                    ${escapeHTML(item.title)}
+                  </h5>
+                ` : ''}
+                
+                <p class="text-zinc-700 dark:text-zinc-300 font-medium text-xs leading-relaxed">
+                  ${escapeHTML(item.desc || item.content || item.condition || '')}
+                </p>
+
+                ${isLF ? `
+                  <div class="flex items-center gap-3 pt-1 flex-wrap text-[11px] font-bold text-zinc-500 dark:text-zinc-400">
+                    <span class="flex items-center gap-1">📍 <span>${escapeHTML(item.location || 'Khuôn viên CVA')}</span></span>
+                    ${item.reward ? `<span class="text-[#FF007A] font-black">🎁 Thưởng: ${escapeHTML(item.reward)}</span>` : ''}
+                  </div>
+                ` : ''}
+
+                ${isBook ? `
+                  <div class="flex items-center gap-3 pt-1 flex-wrap text-[11px] font-bold text-zinc-500 dark:text-zinc-400">
+                    <span class="bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-200 px-2 py-0.5 rounded border border-amber-300 dark:border-amber-700">Khối ${escapeHTML(item.grade)} • ${escapeHTML(item.curriculum || 'Sách')}</span>
+                    ${item.tradeWant ? `<span class="text-zinc-700 dark:text-zinc-300">Cần đổi: <b>${escapeHTML(item.tradeWant)}</b></span>` : ''}
+                    ${item.meetPlace ? `<span>Hẹn tại: <b>${escapeHTML(item.meetPlace)}</b></span>` : ''}
+                  </div>
+                ` : ''}
+
+                <!-- Attached Photo Preview (Lightbox enabled) -->
+                ${item.image ? `
+                  <div class="pt-2">
+                    <div onclick="openLightbox('${item.image}')" class="rounded-2xl overflow-hidden border-2 border-black max-h-72 cursor-zoom-in group relative shadow-[2px_2px_0px_0px_#000000]">
+                      <img src="${item.image}" alt="Ảnh đính kèm" class="w-full h-auto max-h-72 object-cover group-hover:scale-[1.02] transition-transform duration-300" />
+                      <div class="absolute bottom-2 right-2 bg-black/80 backdrop-blur text-white text-[10px] font-black px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1">
+                        <span>🔍</span> Bấm để phóng to
+                      </div>
+                    </div>
+                  </div>
+                ` : ''}
+
               </div>
 
-              <!-- Title & Desc -->
-              <div>
-                <h4 class="font-black text-black dark:text-white text-sm leading-snug">${escapeHTML(item.title)}</h4>
-                <p class="text-xs text-zinc-700 dark:text-zinc-300 font-medium leading-relaxed mt-1 whitespace-pre-line">${escapeHTML(item.desc || item.content || item.condition)}</p>
-              </div>
-
-              <!-- Action buttons -->
-              <div class="pt-1 flex items-center gap-2 flex-wrap">
-                ${isLF && item.type === 'found' && item.status === 'open' ? `
-                  <button onclick="openVerifyClaimModal('${item.id}', '${encodeURIComponent(item.secretQuestion || 'Mặt sau có sticker gì?')}')" class="bg-[#FF007A] hover:bg-[#E6006E] text-white border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide cursor-pointer">
+              <!-- Action Pills -->
+              <div class="pt-2 flex flex-wrap gap-2">
+                ${isLF && item.type === 'found' && item.status !== 'solved' ? `
+                  <button onclick="openVerifyModal('${item.id}', '${escapeHTML(item.title)}', '${escapeHTML(item.secretQuestion || 'Món đồ có đặc điểm gì đặc biệt?')}')" class="bg-[#FFE600] hover:bg-[#FADB14] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition uppercase tracking-wide flex items-center gap-1.5 cursor-pointer">
                     <span>🔍 Check VAR Chính Chủ</span>
                   </button>
                 ` : ''}
 
-                ${isBook && item.deal === 'free' ? `
+                ${isBook && item.deal === 'free' && item.status !== 'solved' ? `
                   <button onclick="claimBookById('${item.id}')" class="bg-[#CCFF00] hover:bg-[#B8E600] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition uppercase tracking-wide cursor-pointer">
                     Xin Nhận Sách 0đ 🎁
                   </button>
                 ` : ''}
 
-                ${isBook && item.deal === 'trade' ? `
+                ${isBook && item.deal === 'trade' && item.status !== 'solved' ? `
                   <button onclick="proposeTradeById('${item.id}')" class="bg-[#FFE600] hover:bg-[#E6D000] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition uppercase tracking-wide cursor-pointer">
                     Đổi Đồ Với Bạn 🔄
                   </button>
@@ -3429,25 +4112,57 @@
                 ` : ''}
               </div>
 
-              <!-- Toolbar -->
-              <div class="flex items-center gap-5 pt-2 text-slate-500 text-xs font-semibold border-t border-slate-100">
-                <button onclick="toggleLike('${type}', '${item.id}')" class="flex items-center gap-1 hover:text-rose-500 transition active:scale-110">
-                  <i data-lucide="heart" class="w-4 h-4"></i>
-                  <span>${likesCount}</span>
-                </button>
-                
-                <button onclick="toggleReplyBox('${item.id}')" class="flex items-center gap-1 hover:text-indigo-600 transition">
-                  <i data-lucide="message-circle" class="w-4 h-4"></i>
-                  <span>${repliesCount}</span>
-                </button>
+              <!-- Social Toolbar -->
+              <div class="flex items-center justify-between pt-2.5 text-xs font-bold border-t-2 border-black/10 dark:border-zinc-800">
+                <div class="flex items-center gap-4">
+                  <!-- Like Heart Button -->
+                  <button 
+                    onclick="toggleLike('${type}', '${item.id}')" 
+                    class="flex items-center gap-1.5 transition active:scale-125 cursor-pointer ${isLiked ? 'text-[#FF007A] font-black' : 'text-zinc-500 hover:text-[#FF007A]'}"
+                    title="${isLiked ? 'Bỏ thích' : 'Thả tim bài viết'}"
+                  >
+                    <i data-lucide="heart" class="w-4 h-4 ${isLiked ? 'fill-[#FF007A] stroke-[#FF007A]' : ''}"></i>
+                    <span>${likesCount}</span>
+                  </button>
+                  
+                  <!-- Reply Button -->
+                  <button 
+                    onclick="toggleReplyBox('${item.id}')" 
+                    class="flex items-center gap-1.5 text-zinc-500 hover:text-black dark:hover:text-white transition cursor-pointer"
+                    title="Bình luận"
+                  >
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>${repliesCount}</span>
+                  </button>
 
-                <button onclick="boostThread('${type}', '${item.id}')" title="Repost đẩy bài lên đầu feed" class="flex items-center gap-1 hover:text-emerald-600 transition active:rotate-180">
-                  <i data-lucide="repeat" class="w-4 h-4"></i>
-                  <span>${boostsCount}</span>
-                </button>
+                  <!-- Repost / Boost Button -->
+                  <button 
+                    onclick="boostThread('${type}', '${item.id}')" 
+                    title="Repost đẩy bài lên đầu feed" 
+                    class="flex items-center gap-1.5 transition active:rotate-180 cursor-pointer ${isBoosted ? 'text-black dark:text-black bg-[#CCFF00] px-2 py-0.5 rounded-full border border-black font-black' : 'text-zinc-500 hover:text-emerald-500'}"
+                  >
+                    <i data-lucide="repeat" class="w-4 h-4"></i>
+                    <span>${boostsCount}</span>
+                  </button>
 
-                <button onclick="shareThread('${item.title}', '${item.author || item.anonNick}')" title="Chia sẻ vào nhóm lớp" class="flex items-center gap-1 hover:text-sky-600 transition">
-                  <i data-lucide="send" class="w-4 h-4"></i>
+                  <!-- Bookmark Button -->
+                  <button 
+                    onclick="toggleBookmarkPost('${type}', '${item.id}')" 
+                    title="${isSaved ? 'Đã lưu' : 'Lưu bài viết'}" 
+                    class="flex items-center gap-1.5 transition cursor-pointer ${isSaved ? 'text-[#00F0FF] font-black' : 'text-zinc-500 hover:text-[#00F0FF]'}"
+                  >
+                    <i data-lucide="bookmark" class="w-4 h-4 ${isSaved ? 'fill-[#00F0FF] stroke-[#00F0FF]' : ''}"></i>
+                  </button>
+                </div>
+
+                <!-- Share Button -->
+                <button 
+                  onclick="openShareModal('${escapeHTML(item.title || '')}', '${escapeHTML(item.author || item.anonNick || '')}')" 
+                  title="Chia sẻ vào nhóm lớp" 
+                  class="flex items-center gap-1 text-zinc-500 hover:text-indigo-500 transition cursor-pointer"
+                >
+                  <i data-lucide="share-2" class="w-4 h-4"></i>
+                  <span class="hidden sm:inline">Share</span>
                 </button>
               </div>
 
@@ -3488,26 +4203,75 @@
       `;
     }
 
+    /* FEED SORTING SYSTEM (THREADS & X STYLE) */
+    let currentFeedSort = 'foryou';
+
+    function setFeedSort(sortMode, btnEl) {
+      currentFeedSort = sortMode;
+      playCuteSound('pop');
+      
+      const buttons = document.querySelectorAll('.feed-sort-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-black', 'text-[#CCFF00]', 'dark:bg-[#CCFF00]', 'dark:text-black', 'shadow-[3px_3px_0px_0px_#000000]');
+        btn.classList.add('bg-white', 'dark:bg-zinc-800', 'text-black', 'dark:text-white', 'shadow-[2px_2px_0px_0px_#000000]');
+      });
+
+      if (btnEl) {
+        btnEl.classList.remove('bg-white', 'dark:bg-zinc-800', 'text-black', 'dark:text-white', 'shadow-[2px_2px_0px_0px_#000000]');
+        btnEl.classList.add('bg-black', 'text-[#CCFF00]', 'dark:bg-[#CCFF00]', 'dark:text-black', 'shadow-[3px_3px_0px_0px_#000000]');
+      }
+
+      renderLandingFeed();
+    }
+    window.setFeedSort = setFeedSort;
+
     function renderLandingFeed() {
       const container = document.getElementById('landing-threads-feed');
       if (!container) return;
       container.innerHTML = '';
 
-      const topLF = lostFoundData.slice(0, 2);
-      const topBooks = booksData.slice(0, 1);
-      const topConf = confessionsData.slice(0, 2);
+      // Aggregate all active posts
+      let allPosts = [
+        ...lostFoundData.map(i => ({ ...i, _postType: 'lf' })),
+        ...booksData.map(i => ({ ...i, _postType: 'book' })),
+        ...confessionsData.map(i => ({ ...i, _postType: 'confession' }))
+      ];
+
+      if (currentFeedSort === 'latest') {
+        allPosts.sort((a, b) => (b.id || '').localeCompare(a.id || ''));
+      } else if (currentFeedSort === 'popular') {
+        allPosts.sort((a, b) => {
+          const scoreA = (a.likes || 0) + ((a.replies ? a.replies.length : 0) * 2) + ((a.boosts || 0) * 3);
+          const scoreB = (b.likes || 0) + ((b.replies ? b.replies.length : 0) * 2) + ((b.boosts || 0) * 3);
+          return scoreB - scoreA;
+        });
+      } else {
+        // 'foryou': boosted posts first, then popular, with category interleaving
+        allPosts.sort((a, b) => {
+          const boostA = currentUser.boostedPostIds.includes(a.id) ? 100 : 0;
+          const boostB = currentUser.boostedPostIds.includes(b.id) ? 100 : 0;
+          const scoreA = (a.likes || 0) + ((a.boosts || 0) * 4) + boostA;
+          const scoreB = (b.likes || 0) + ((b.boosts || 0) * 4) + boostB;
+          return scoreB - scoreA;
+        });
+      }
+
+      if (allPosts.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white dark:bg-zinc-900 border-2 border-dashed border-black/30 dark:border-zinc-700 rounded-3xl p-8 text-center text-xs text-zinc-500 font-bold">
+            Chưa có bài viết nào trên feed. Hãy là người đầu tiên chia sẻ sách, đồ rơi hoặc tâm sự nhé! 🚀
+          </div>
+        `;
+        return;
+      }
+
+      allPosts.forEach(item => {
+        container.innerHTML += buildThreadCardHTML(item, item._postType);
+      });
       
-      topLF.forEach(item => {
-        container.innerHTML += buildThreadCardHTML(item, 'lf');
-      });
-      topBooks.forEach(item => {
-        container.innerHTML += buildThreadCardHTML(item, 'book');
-      });
-      topConf.forEach(item => {
-        container.innerHTML += buildThreadCardHTML(item, 'confession');
-      });
       safeCreateLucideIcons();
     }
+    window.renderLandingFeed = renderLandingFeed;
 
     /* =====================================================================
        8. TÍNH NĂNG 1: "ĐỒ ƠI VỀ ĐI"
@@ -3621,8 +4385,10 @@
         status: "open",
         likes: 1,
         boosts: 0,
+        image: pendingPostImages.lf || null,
         replies: []
       };
+      clearPostImage('lf');
 
       lostFoundData.unshift(newItem);
       addAuraPoints(type === 'found' ? 50 : 20);
@@ -3634,6 +4400,17 @@
       showTeenToast("Đã đăng Thread thành công! (+Aura) 🚀", "🎉");
       document.getElementById('form-lost-found').reset();
     }
+
+    function openVerifyModal(itemId, title, question) {
+      claimingItemId = itemId;
+      const q = question ? (question.startsWith('%') ? decodeURIComponent(question) : question) : 'Món đồ có đặc điểm gì đặc biệt?';
+      const qEl = document.getElementById('claim-question-text');
+      if (qEl) qEl.textContent = `"${q}"`;
+      const ansEl = document.getElementById('claim-answer-input');
+      if (ansEl) ansEl.value = '';
+      openModal('modal-verify-claim');
+    }
+    window.openVerifyModal = openVerifyModal;
 
     function openVerifyClaimModal(itemId, encodedQuestion) {
       claimingItemId = itemId;
@@ -3775,8 +4552,10 @@
         time: "Vừa xong",
         likes: 1,
         boosts: 0,
+        image: pendingPostImages.book || null,
         replies: []
       };
+      clearPostImage('book');
 
       booksData.unshift(newBook);
       addAuraPoints(deal === 'free' ? 150 : 50);
@@ -4146,6 +4925,563 @@
       document.getElementById('stat-aura-count').textContent = currentUser.aura || 1000;
     }
 
+        /* =====================================================================
+       SOCIAL ENGINE: PHOTO ATTACHMENTS & LIGHTBOX
+       ===================================================================== */
+    let pendingPostImages = { lf: null, book: null, conf: null };
+
+    function handlePostImageSelect(event, type) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      if (!file.type.startsWith('image/')) {
+        showTeenToast("Vui lòng chỉ chọn tệp hình ảnh hợp lệ (PNG, JPG, WEBP)!", "⚠️");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const maxDim = 800;
+          let w = img.width;
+          let h = img.height;
+          if (w > maxDim || h > maxDim) {
+            if (w > h) {
+              h = Math.round((h * maxDim) / w);
+              w = maxDim;
+            } else {
+              w = Math.round((w * maxDim) / h);
+              h = maxDim;
+            }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const compressed = canvas.toDataURL('image/jpeg', 0.8);
+          
+          pendingPostImages[type] = compressed;
+
+          const previewContainer = document.getElementById(`${type}-image-preview-container`);
+          const previewImg = document.getElementById(`${type}-image-preview`);
+          if (previewContainer && previewImg) {
+            previewImg.src = compressed;
+            previewContainer.classList.remove('hidden');
+          }
+          playCuteSound('ting');
+          showTeenToast("Đã đính kèm ảnh thành công! 📸", "✨");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    window.handlePostImageSelect = handlePostImageSelect;
+
+    function clearPostImage(type) {
+      pendingPostImages[type] = null;
+      const previewContainer = document.getElementById(`${type}-image-preview-container`);
+      const previewImg = document.getElementById(`${type}-image-preview`);
+      const fileInput = document.getElementById(`${type}-image-input`);
+      if (previewContainer) previewContainer.classList.add('hidden');
+      if (previewImg) previewImg.src = '';
+      if (fileInput) fileInput.value = '';
+    }
+    window.clearPostImage = clearPostImage;
+
+    function openLightbox(imgSrc) {
+      const modal = document.getElementById('modal-lightbox');
+      const img = document.getElementById('lightbox-img');
+      if (modal && img) {
+        img.src = imgSrc;
+        modal.classList.remove('hidden');
+        playCuteSound('pop');
+      }
+    }
+    window.openLightbox = openLightbox;
+
+    function closeLightbox() {
+      const modal = document.getElementById('modal-lightbox');
+      if (modal) modal.classList.add('hidden');
+    }
+    window.closeLightbox = closeLightbox;
+
+    /* =====================================================================
+       SOCIAL ENGINE: NOTIFICATION CENTER
+       ===================================================================== */
+    function updateNotificationBadge() {
+      const badge = document.getElementById('notif-badge');
+      if (!badge) return;
+      const unread = currentUser.unreadNotifs || 0;
+      if (unread > 0) {
+        badge.textContent = unread > 9 ? '9+' : unread;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+    window.updateNotificationBadge = updateNotificationBadge;
+
+    function openNotificationCenter() {
+      playCuteSound('pop');
+      const modal = document.getElementById('modal-notifications');
+      if (modal) {
+        modal.classList.remove('hidden');
+        renderNotifications();
+      }
+    }
+    window.openNotificationCenter = openNotificationCenter;
+
+    function closeNotificationCenter() {
+      const modal = document.getElementById('modal-notifications');
+      if (modal) modal.classList.add('hidden');
+    }
+    window.closeNotificationCenter = closeNotificationCenter;
+
+    function markAllNotificationsRead() {
+      if (!currentUser.notifications) return;
+      currentUser.notifications.forEach(n => n.unread = false);
+      currentUser.unreadNotifs = 0;
+      saveState();
+      updateNotificationBadge();
+      renderNotifications();
+      playCuteSound('ting');
+      showTeenToast("Đã đánh dấu tất cả thông báo là đã đọc! ✨", "📬");
+    }
+    window.markAllNotificationsRead = markAllNotificationsRead;
+
+    function addNotification(notif) {
+      if (!Array.isArray(currentUser.notifications)) currentUser.notifications = [];
+      currentUser.notifications.unshift(notif);
+      currentUser.unreadNotifs = (currentUser.unreadNotifs || 0) + 1;
+      saveState();
+      updateNotificationBadge();
+    }
+    window.addNotification = addNotification;
+
+    function renderNotifications() {
+      const container = document.getElementById('notifications-list-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const list = currentUser.notifications || [];
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-8 text-zinc-400 font-bold text-xs space-y-2">
+            <span class="text-3xl">📭</span>
+            <p>Em chưa có thông báo mới nào!</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach(item => {
+        let icon = '📢';
+        let iconBg = 'bg-[#CCFF00]';
+        if (item.type === 'like') { icon = '❤️'; iconBg = 'bg-[#FF007A] text-white'; }
+        else if (item.type === 'reply') { icon = '💬'; iconBg = 'bg-[#FFE600]'; }
+        else if (item.type === 'aura') { icon = '⚡'; iconBg = 'bg-[#00F0FF]'; }
+        else if (item.type === 'post') { icon = '📝'; iconBg = 'bg-black text-white'; }
+
+        container.innerHTML += `
+          <div class="flex items-start gap-3 p-3 rounded-2xl border-2 border-black/10 dark:border-zinc-700 ${item.unread ? 'bg-amber-50/70 dark:bg-zinc-800/80 border-black' : 'bg-white dark:bg-zinc-900'} transition-all">
+            <div class="w-8 h-8 rounded-full border-2 border-black ${iconBg} flex items-center justify-center text-xs font-black flex-shrink-0 shadow-[2px_2px_0px_0px_#000000]">
+              ${icon}
+            </div>
+            <div class="flex-1 space-y-0.5 text-xs">
+              <div class="flex items-center justify-between">
+                <h6 class="font-black text-black dark:text-white text-xs">${escapeHTML(item.title)}</h6>
+                <span class="text-[10px] text-zinc-400 font-bold">${escapeHTML(item.time)}</span>
+              </div>
+              <p class="text-zinc-600 dark:text-zinc-300 font-semibold text-[11px] leading-relaxed">${escapeHTML(item.desc)}</p>
+            </div>
+            ${item.unread ? `<span class="w-2.5 h-2.5 rounded-full bg-[#FF007A] flex-shrink-0 mt-1 border border-black animate-pulse"></span>` : ''}
+          </div>
+        `;
+      });
+    }
+    window.renderNotifications = renderNotifications;
+
+    /* =====================================================================
+       SOCIAL ENGINE: CVA 24H VIBE STORIES
+       ===================================================================== */
+    let currentStoryIdx = 0;
+    let storyAutoTimer = null;
+
+    function renderStoriesBar() {
+      const container = document.getElementById('stories-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      // Your Story Circle (+ Post Vibe)
+      container.innerHTML += `
+        <div onclick="openCreateStoryModal()" class="flex flex-col items-center gap-1.5 flex-shrink-0 cursor-pointer group">
+          <div class="relative w-16 h-16 rounded-full border-2 border-dashed border-black dark:border-[#CCFF00] bg-white dark:bg-zinc-800 p-0.5 flex items-center justify-center transition-transform group-hover:scale-105 shadow-[3px_3px_0px_0px_#000000]">
+            <span class="text-2xl">${currentUser.avatar || '🐱'}</span>
+            <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#CCFF00] border-2 border-black flex items-center justify-center font-black text-xs text-black">
+              +
+            </div>
+          </div>
+          <span class="text-[10px] font-black text-black dark:text-zinc-300 uppercase tracking-tight">Vibe của bạn</span>
+        </div>
+      `;
+
+      // Peer Stories
+      DEFAULT_STORIES.forEach((story, idx) => {
+        container.innerHTML += `
+          <div onclick="openStoryViewer(${idx})" class="flex flex-col items-center gap-1.5 flex-shrink-0 cursor-pointer group">
+            <div class="w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr ${story.bgGradient} border-2 border-black shadow-[3px_3px_0px_0px_#000000] flex items-center justify-center transition-transform group-hover:scale-105">
+              <div class="w-full h-full rounded-full bg-white dark:bg-zinc-900 border border-black flex items-center justify-center">
+                <span class="text-2xl">${story.avatar}</span>
+              </div>
+            </div>
+            <span class="text-[10px] font-black text-black dark:text-zinc-300 truncate max-w-[68px]">${escapeHTML(story.author)}</span>
+          </div>
+        `;
+      });
+    }
+    window.renderStoriesBar = renderStoriesBar;
+
+    function openStoryViewer(idx) {
+      currentStoryIdx = idx >= 0 && idx < DEFAULT_STORIES.length ? idx : 0;
+      const modal = document.getElementById('modal-story-viewer');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      renderStoryViewerContent();
+      startStoryAutoTimer();
+      playCuteSound('pop');
+    }
+    window.openStoryViewer = openStoryViewer;
+
+    function closeStoryViewer() {
+      if (storyAutoTimer) clearInterval(storyAutoTimer);
+      const modal = document.getElementById('modal-story-viewer');
+      if (modal) modal.classList.add('hidden');
+    }
+    window.closeStoryViewer = closeStoryViewer;
+
+    function renderStoryViewerContent() {
+      const story = DEFAULT_STORIES[currentStoryIdx];
+      if (!story) return;
+
+      const avatarEl = document.getElementById('story-author-avatar');
+      const nameEl = document.getElementById('story-author-name');
+      const timeEl = document.getElementById('story-time-stamp');
+      const stickerEl = document.getElementById('story-sticker');
+      const captionEl = document.getElementById('story-caption');
+      const tagEl = document.getElementById('story-tag');
+      const canvasEl = document.getElementById('story-canvas');
+
+      if (avatarEl) avatarEl.textContent = story.avatar || '🐱';
+      if (nameEl) nameEl.textContent = `${story.author} ${story.authorClass ? '• ' + story.authorClass : ''}`;
+      if (timeEl) timeEl.textContent = story.time || '1 giờ trước';
+      if (stickerEl) stickerEl.textContent = story.avatar || '✨';
+      if (captionEl) captionEl.textContent = `"${story.content}"`;
+      if (tagEl) tagEl.textContent = story.tag || '#CVA2026';
+      if (canvasEl) {
+        canvasEl.className = `min-h-[260px] rounded-2xl border-2 border-zinc-800 p-5 flex flex-col justify-between relative overflow-hidden transition-all bg-gradient-to-br ${story.bgGradient || 'from-indigo-950 via-purple-950 to-zinc-900'}`;
+      }
+    }
+
+    function startStoryAutoTimer() {
+      if (storyAutoTimer) clearInterval(storyAutoTimer);
+      const bar = document.getElementById('story-progress-bar');
+      if (bar) {
+        bar.style.width = '0%';
+        let progress = 0;
+        storyAutoTimer = setInterval(() => {
+          progress += 2;
+          bar.style.width = progress + '%';
+          if (progress >= 100) {
+            clearInterval(storyAutoTimer);
+            nextStory();
+          }
+        }, 100);
+      }
+    }
+
+    function nextStory() {
+      if (currentStoryIdx < DEFAULT_STORIES.length - 1) {
+        currentStoryIdx++;
+        renderStoryViewerContent();
+        startStoryAutoTimer();
+      } else {
+        closeStoryViewer();
+      }
+    }
+    window.nextStory = nextStory;
+
+    function prevStory() {
+      if (currentStoryIdx > 0) {
+        currentStoryIdx--;
+        renderStoryViewerContent();
+        startStoryAutoTimer();
+      }
+    }
+    window.prevStory = prevStory;
+
+    function reactToStory(emoji) {
+      const story = DEFAULT_STORIES[currentStoryIdx];
+      if (story) {
+        if (!story.reactions) story.reactions = {};
+        story.reactions[emoji] = (story.reactions[emoji] || 0) + 1;
+        playCuteSound('ting');
+        launchConfetti();
+        renderStoryViewerContent();
+        addAuraPoints(2);
+        showTeenToast(`+2 Aura! Đã thả cảm xúc ${emoji} vào story của ${story.author}!`, emoji);
+      }
+    }
+    window.reactToStory = reactToStory;
+
+    function openCreateStoryModal() {
+      const storyText = prompt("Chia sẻ nhanh Vibe 24h hôm nay của em đến toàn trường THCS Chu Văn An ✨:");
+      if (!storyText || !storyText.trim()) return;
+
+      const newStory = {
+        id: 'story-' + Date.now(),
+        author: currentUser.name,
+        authorClass: currentUser.class || '8A1',
+        avatar: currentUser.avatar || '🐱',
+        time: 'Vừa xong',
+        bgGradient: 'from-amber-400 via-rose-500 to-indigo-600',
+        tag: '⚡ Vibe Mới',
+        content: storyText.trim(),
+        views: 1,
+        reactions: { '❤️': 1, '🔥': 1 }
+      };
+
+      DEFAULT_STORIES.unshift(newStory);
+      renderStoriesBar();
+      addAuraPoints(10);
+      playCuteSound('chime');
+      launchConfetti();
+      showTeenToast("Vibe 24h của em đã lên sóng toàn trường! (+10 Aura) 🚀", "🔥");
+    }
+    window.openCreateStoryModal = openCreateStoryModal;
+
+    /* =====================================================================
+       SOCIAL ENGINE: CVA SCHOOL POLL WIDGET
+       ===================================================================== */
+    function renderCvaPoll() {
+      const container = document.getElementById('poll-options-container');
+      const totalVotesEl = document.getElementById('poll-total-votes');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const votedOptionIdx = localStorage.getItem('teen_cva_poll_vote');
+      const hasVoted = votedOptionIdx !== null;
+
+      const totalVotes = DEFAULT_POLL.options.reduce((sum, opt) => sum + opt.votes, 0);
+      if (totalVotesEl) totalVotesEl.textContent = `${totalVotes.toLocaleString()} bình chọn`;
+
+      DEFAULT_POLL.options.forEach((opt, idx) => {
+        const percent = totalVotes > 0 ? Math.round((opt.votes / totalVotes) * 100) : 0;
+        const isChosen = hasVoted && parseInt(votedOptionIdx, 10) === idx;
+
+        container.innerHTML += `
+          <div 
+            onclick="voteCvaPoll(${idx})" 
+            class="relative overflow-hidden rounded-2xl border-2 border-black p-3.5 ${isChosen ? 'bg-[#FFE600] font-black' : 'bg-slate-50 dark:bg-zinc-800 hover:bg-amber-100 dark:hover:bg-zinc-700'} transition-all cursor-pointer shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+          >
+            ${hasVoted ? `
+              <div class="absolute left-0 top-0 bottom-0 bg-[#CCFF00]/40 border-r-2 border-black/20 transition-all duration-700" style="width: ${percent}%;"></div>
+            ` : ''}
+
+            <div class="relative z-10 flex items-center justify-between text-xs">
+              <span class="font-extrabold text-black dark:text-white flex items-center gap-2">
+                ${isChosen ? '<span class="text-[#FF007A]">✓</span>' : ''} ${escapeHTML(opt.text)}
+              </span>
+              <span class="font-black text-black dark:text-white flex-shrink-0 ml-2">
+                ${hasVoted ? `${percent}% (${opt.votes})` : 'Bình chọn →'}
+              </span>
+            </div>
+          </div>
+        `;
+      });
+    }
+    window.renderCvaPoll = renderCvaPoll;
+
+    function voteCvaPoll(optionIdx) {
+      const alreadyVoted = localStorage.getItem('teen_cva_poll_vote');
+      if (alreadyVoted !== null) {
+        showTeenToast("Em đã hoàn tất bình chọn tuần này rồi nhé! Cảm ơn em ❤️", "🗳️");
+        return;
+      }
+
+      DEFAULT_POLL.options[optionIdx].votes += 1;
+      localStorage.setItem('teen_cva_poll_vote', String(optionIdx));
+      addAuraPoints(5);
+      playCuteSound('chime');
+      launchConfetti();
+      renderCvaPoll();
+      showTeenToast("Đã ghi nhận bình chọn của em! (+5 Aura) 🗳️✨", "🎉");
+    }
+    window.voteCvaPoll = voteCvaPoll;
+
+    /* =====================================================================
+       SOCIAL ENGINE: PROFILE SUB-TABS (POSTED / LIKED / SAVED / AURA)
+       ===================================================================== */
+    let currentProfileSubTab = 'posted';
+
+    function switchProfileSubTab(subTab) {
+      currentProfileSubTab = subTab;
+      playCuteSound('pop');
+
+      const tabs = ['posted', 'liked', 'saved', 'ranks'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`p-subtab-${t}`);
+        if (!btn) return;
+        if (t === subTab) {
+          btn.className = "profile-subtab active bg-black text-[#FFE600] border-2 border-black py-2 rounded-xl uppercase text-[10px] sm:text-[11px] shadow-[2px_2px_0px_0px_#000000] cursor-pointer font-black";
+        } else {
+          btn.className = "profile-subtab text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white py-2 rounded-xl font-bold uppercase text-[10px] sm:text-[11px] cursor-pointer";
+        }
+      });
+
+      renderProfileSubTab(subTab);
+    }
+    window.switchProfileSubTab = switchProfileSubTab;
+
+    function renderProfileSubTab(subTab) {
+      const container = document.getElementById('my-activities-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (subTab === 'posted') {
+        const myLF = lostFoundData.filter(i => i.author === currentUser.name);
+        const myBooks = booksData.filter(i => i.author === currentUser.name);
+        const myConf = confessionsData.filter(i => !i.isAnonymous && i.author === currentUser.name);
+        const myAll = [
+          ...myLF.map(i => ({ ...i, _postType: 'lf' })),
+          ...myBooks.map(i => ({ ...i, _postType: 'book' })),
+          ...myConf.map(i => ({ ...i, _postType: 'confession' }))
+        ];
+
+        if (myAll.length === 0) {
+          container.innerHTML = `
+            <div class="bg-white dark:bg-zinc-900 border-2 border-dashed border-black/30 dark:border-zinc-700 rounded-3xl p-8 text-center text-xs text-zinc-500 font-bold shadow-[2px_2px_0px_0px_#000000]">
+              Em chưa đăng Thread nào gần đây. Hãy thử chia sẻ sách 0đ, báo đồ rơi hoặc gửi tâm sự học đường nhé! 🚀
+            </div>
+          `;
+          return;
+        }
+
+        myAll.forEach(item => {
+          container.innerHTML += buildThreadCardHTML(item, item._postType);
+        });
+
+      } else if (subTab === 'liked') {
+        const likedIds = currentUser.likedPostIds || [];
+        const allPosts = [
+          ...lostFoundData.map(i => ({ ...i, _postType: 'lf' })),
+          ...booksData.map(i => ({ ...i, _postType: 'book' })),
+          ...confessionsData.map(i => ({ ...i, _postType: 'confession' }))
+        ];
+        const likedPosts = allPosts.filter(i => likedIds.includes(i.id));
+
+        if (likedPosts.length === 0) {
+          container.innerHTML = `
+            <div class="bg-white dark:bg-zinc-900 border-2 border-dashed border-black/30 dark:border-zinc-700 rounded-3xl p-8 text-center text-xs text-zinc-500 font-bold shadow-[2px_2px_0px_0px_#000000]">
+              Em chưa thả tim bài viết nào. Hãy dạo feed và thả tim những bài viết thú vị của bạn học CVA nhé! ❤️
+            </div>
+          `;
+          return;
+        }
+
+        likedPosts.forEach(item => {
+          container.innerHTML += buildThreadCardHTML(item, item._postType);
+        });
+
+      } else if (subTab === 'saved') {
+        const savedIds = currentUser.savedPostIds || [];
+        const allPosts = [
+          ...lostFoundData.map(i => ({ ...i, _postType: 'lf' })),
+          ...booksData.map(i => ({ ...i, _postType: 'book' })),
+          ...confessionsData.map(i => ({ ...i, _postType: 'confession' }))
+        ];
+        const savedPosts = allPosts.filter(i => savedIds.includes(i.id));
+
+        if (savedPosts.length === 0) {
+          container.innerHTML = `
+            <div class="bg-white dark:bg-zinc-900 border-2 border-dashed border-black/30 dark:border-zinc-700 rounded-3xl p-8 text-center text-xs text-zinc-500 font-bold shadow-[2px_2px_0px_0px_#000000]">
+              Bộ sưu tập đã lưu trống. Bấm nút "..." hoặc icon 🔖 ở bất kỳ bài viết nào để lưu đọc lại sau nhé! 📑
+            </div>
+          `;
+          return;
+        }
+
+        savedPosts.forEach(item => {
+          container.innerHTML += buildThreadCardHTML(item, item._postType);
+        });
+
+      } else if (subTab === 'ranks') {
+        const aura = currentUser.aura || 1000;
+        let rankName = 'Tập Sự CVA';
+        let nextRank = 'Tinh Anh CVA';
+        let targetAura = 1200;
+        let progress = 83;
+
+        if (aura >= 1500) {
+          rankName = 'Huyền Thoại Chu Văn An 👑';
+          nextRank = 'Max Rank';
+          targetAura = 2000;
+          progress = 100;
+        } else if (aura >= 1000) {
+          rankName = 'Tinh Anh CVA ⚡';
+          nextRank = 'Đại Sứ Chu Văn An 🌟';
+          targetAura = 1500;
+          progress = Math.min(100, Math.round(((aura - 1000) / 500) * 100));
+        }
+
+        container.innerHTML = `
+          <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider text-zinc-400">Danh hiệu hiện tại</span>
+                <h4 class="font-black text-black dark:text-white text-base">${rankName}</h4>
+              </div>
+              <span class="bg-[#FFE600] text-black border-2 border-black font-black text-sm px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#000000]">
+                ${aura.toLocaleString()} Aura
+              </span>
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-bold text-zinc-500">
+                <span>Tiến trình lên: <b>${nextRank}</b></span>
+                <span>${aura} / ${targetAura} Aura</span>
+              </div>
+              <div class="w-full bg-slate-100 dark:bg-zinc-800 h-3.5 rounded-full border-2 border-black overflow-hidden p-0.5">
+                <div class="h-full bg-[#CCFF00] rounded-full border border-black transition-all duration-700" style="width: ${progress}%;"></div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2 text-xs font-black">
+              <div class="p-3 rounded-2xl border-2 border-black bg-amber-50 dark:bg-zinc-800 text-center space-y-1 shadow-[2px_2px_0px_0px_#000000]">
+                <span class="text-xl">🥠</span>
+                <p class="text-[11px] text-zinc-700 dark:text-zinc-300">Bốc quẻ may mắn</p>
+                <span class="text-[#FF007A] text-[10px]">+10 Aura / ngày</span>
+              </div>
+              <div class="p-3 rounded-2xl border-2 border-black bg-emerald-50 dark:bg-zinc-800 text-center space-y-1 shadow-[2px_2px_0px_0px_#000000]">
+                <span class="text-xl">🤝</span>
+                <p class="text-[11px] text-zinc-700 dark:text-zinc-300">Trao trả đồ rơi</p>
+                <span class="text-[#00F0FF] text-[10px]">+50 Aura</span>
+              </div>
+              <div class="p-3 rounded-2xl border-2 border-black bg-cyan-50 dark:bg-zinc-800 text-center space-y-1 shadow-[2px_2px_0px_0px_#000000]">
+                <span class="text-xl">📚</span>
+                <p class="text-[11px] text-zinc-700 dark:text-zinc-300">Tặng sách 0đ</p>
+                <span class="text-[#CCFF00] text-[10px]">+30 Aura</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      safeCreateLucideIcons();
+    }
+    window.renderProfileSubTab = renderProfileSubTab;
+
     function renderMyActivities() {
       const container = document.getElementById('my-activities-container');
       if (!container) return;
@@ -4168,6 +5504,9 @@
 
       const auraStat = document.getElementById('stat-aura-count');
       if (auraStat) auraStat.textContent = currentUser.aura || 1000;
+
+      renderProfileSubTab(currentProfileSubTab);
+      return;
 
       if (myLF.length === 0 && myBooks.length === 0 && myConf.length === 0) {
         container.innerHTML = `
@@ -4597,8 +5936,10 @@
         content: content,
         likes: 1,
         boosts: 0,
+        image: pendingPostImages.conf || null,
         replies: []
       };
+      clearPostImage('conf');
 
       confessionsData.unshift(newPost);
       saveState();
@@ -4634,7 +5975,35 @@
       safeRun(renderLostFound, 'renderLostFound');
       safeRun(renderBooks, 'renderBooks');
       safeRun(renderMyActivities, 'renderMyActivities');
+      safeRun(updateNotificationBadge, 'updateNotificationBadge');
+      safeRun(renderStoriesBar, 'renderStoriesBar');
+      safeRun(renderCvaPoll, 'renderCvaPoll');
       safeRun(safeCreateLucideIcons, 'safeCreateLucideIcons');
+
+      // Click outside to close post dropdown menus
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.post-dropdown-menu') && !e.target.closest('.post-dropdown-trigger')) {
+          document.querySelectorAll('.post-dropdown-menu').forEach(m => m.classList.add('hidden'));
+        }
+      });
+
+      // Keyboard ESC to close any modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeNotificationCenter();
+          closeStoryViewer();
+          closeLightbox();
+          closeShareModal();
+          closeModal('modal-online-students');
+          closeModal('modal-command-palette');
+          closeModal('modal-lost-found');
+          closeModal('modal-book-exchange');
+          closeModal('modal-create-confession');
+          closeModal('modal-verify-claim');
+          closeModal('modal-healing-room');
+          closeModal('modal-profile-edit');
+        }
+      });
     });
   </script>
 </body>
