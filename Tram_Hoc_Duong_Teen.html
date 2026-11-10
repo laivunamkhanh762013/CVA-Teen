@@ -1372,17 +1372,17 @@
 
       <!-- Filter bar -->
       <div class="flex items-center justify-between gap-1 overflow-x-auto pb-1 no-scrollbar text-xs font-bold">
-        <div class="flex bg-slate-100 p-0.5 rounded-xl border border-slate-200">
-          <button id="filter-lost-mode-all" onclick="setLostFoundFilter('all')" class="px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-sm transition">Tất cả</button>
-          <button id="filter-lost-mode-lost" onclick="setLostFoundFilter('lost')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition">Mất đồ</button>
-          <button id="filter-lost-mode-found" onclick="setLostFoundFilter('found')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition">Nhặt được</button>
+        <div class="flex bg-slate-100 dark:bg-zinc-800 p-0.5 rounded-xl border-2 border-black dark:border-zinc-700">
+          <button id="filter-lost-mode-all" onclick="setLostFoundFilter('all')" class="px-2.5 py-1 rounded-lg bg-black text-[#FF007A] border border-black font-black uppercase transition text-[11px] cursor-pointer">Tất cả</button>
+          <button id="filter-lost-mode-lost" onclick="setLostFoundFilter('lost')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-zinc-300 hover:text-black dark:hover:text-white transition font-bold text-[11px] cursor-pointer">😭 Mất đồ</button>
+          <button id="filter-lost-mode-found" onclick="setLostFoundFilter('found')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-zinc-300 hover:text-black dark:hover:text-white transition font-bold text-[11px] cursor-pointer">✨ Nhặt được</button>
         </div>
 
         <div class="flex gap-1 overflow-x-auto no-scrollbar">
-          <button onclick="setCategoryLF('all', this)" class="lf-cat-btn active bg-slate-900 text-white px-2.5 py-1 rounded-lg whitespace-nowrap text-[11px] font-bold">Tất cả</button>
-          <button onclick="setCategoryLF('casio', this)" class="lf-cat-btn bg-white text-slate-700 border border-slate-200 px-2.5 py-1 rounded-lg whitespace-nowrap text-[11px]">💻 Casio</button>
-          <button onclick="setCategoryLF('scarf', this)" class="lf-cat-btn bg-white text-slate-700 border border-slate-200 px-2.5 py-1 rounded-lg whitespace-nowrap text-[11px]">🧣 Khăn quàng</button>
-          <button onclick="setCategoryLF('uniform', this)" class="lf-cat-btn bg-white text-slate-700 border border-slate-200 px-2.5 py-1 rounded-lg whitespace-nowrap text-[11px]">🧥 Áo khoác</button>
+          <button onclick="setCategoryLF('all', this)" class="lf-cat-btn active bg-black text-[#CCFF00] border-2 border-black px-2.5 py-1 rounded-xl whitespace-nowrap text-[11px] font-black uppercase shadow-[1.5px_1.5px_0px_0px_#000000] cursor-pointer">Tất cả</button>
+          <button onclick="setCategoryLF('casio', this)" class="lf-cat-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-1 rounded-xl whitespace-nowrap text-[11px] font-bold cursor-pointer">💻 Casio</button>
+          <button onclick="setCategoryLF('scarf', this)" class="lf-cat-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-1 rounded-xl whitespace-nowrap text-[11px] font-bold cursor-pointer">🧣 Khăn quàng</button>
+          <button onclick="setCategoryLF('uniform', this)" class="lf-cat-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-1 rounded-xl whitespace-nowrap text-[11px] font-bold cursor-pointer">🧥 Áo khoác</button>
         </div>
       </div>
 
@@ -1419,36 +1419,36 @@
       </div>
 
       <!-- Deal Filter Pills -->
-      <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold">
-        <button onclick="setBookDealFilter('all')" id="deal-filter-all" class="deal-filter-btn bg-slate-900 text-white py-1.5 rounded-xl shadow-sm">
+      <div class="grid grid-cols-3 gap-2 text-center text-xs font-black">
+        <button onclick="setBookDealFilter('all')" id="deal-filter-all" class="deal-filter-btn active bg-black text-[#CCFF00] border-2 border-black py-2 rounded-2xl shadow-[2px_2px_0px_0px_#000000] uppercase transition cursor-pointer">
           🌟 Tất cả
         </button>
-        <button onclick="setBookDealFilter('free')" id="deal-filter-free" class="deal-filter-btn bg-white text-slate-700 border border-slate-200 py-1.5 rounded-xl shadow-sm hover:bg-slate-50">
-          🎁 Tặng 0đ (Đàn em)
+        <button onclick="setBookDealFilter('free')" id="deal-filter-free" class="deal-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black py-2 rounded-2xl shadow-[2px_2px_0px_0px_#000000] hover:bg-slate-50 transition cursor-pointer uppercase">
+          🎁 Tặng 0đ
         </button>
-        <button onclick="setBookDealFilter('trade')" id="deal-filter-trade" class="deal-filter-btn bg-white text-slate-700 border border-slate-200 py-1.5 rounded-xl shadow-sm hover:bg-slate-50">
-          🔄 Đổi đồ (Trade)
+        <button onclick="setBookDealFilter('trade')" id="deal-filter-trade" class="deal-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black py-2 rounded-2xl shadow-[2px_2px_0px_0px_#000000] hover:bg-slate-50 transition cursor-pointer uppercase">
+          🔄 Đổi đồ
         </button>
       </div>
 
       <!-- Grade & Curriculum Filters -->
-      <div class="bg-white border border-slate-200/90 rounded-2xl p-2.5 space-y-2 shadow-card text-xs font-semibold">
+      <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-3 space-y-2.5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#CCFF00] text-xs font-semibold">
         <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
-          <span class="text-slate-400 whitespace-nowrap text-[11px]">Khối:</span>
-          <button onclick="setGradeFilter('all', this)" class="grade-filter-btn active bg-slate-900 text-white px-2.5 py-0.5 rounded-lg whitespace-nowrap">Tất cả</button>
-          <button onclick="setGradeFilter('6', this)" class="grade-filter-btn bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-lg whitespace-nowrap hover:bg-slate-200">Lớp 6</button>
-          <button onclick="setGradeFilter('7', this)" class="grade-filter-btn bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-lg whitespace-nowrap hover:bg-slate-200">Lớp 7</button>
-          <button onclick="setGradeFilter('8', this)" class="grade-filter-btn bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-lg whitespace-nowrap hover:bg-slate-200">Lớp 8</button>
-          <button onclick="setGradeFilter('9', this)" class="grade-filter-btn bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-lg whitespace-nowrap hover:bg-slate-200">Lớp 9 (Vào 10)</button>
+          <span class="text-zinc-500 dark:text-zinc-400 whitespace-nowrap text-[11px] font-black uppercase">Khối:</span>
+          <button onclick="setGradeFilter('all', this)" class="grade-filter-btn active bg-black text-[#FFE600] border-2 border-black px-2.5 py-0.5 rounded-xl whitespace-nowrap font-black uppercase shadow-[1.5px_1.5px_0px_0px_#000000] cursor-pointer">Tất cả</button>
+          <button onclick="setGradeFilter('6', this)" class="grade-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-0.5 rounded-xl whitespace-nowrap font-bold hover:bg-slate-100 cursor-pointer">Lớp 6</button>
+          <button onclick="setGradeFilter('7', this)" class="grade-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-0.5 rounded-xl whitespace-nowrap font-bold hover:bg-slate-100 cursor-pointer">Lớp 7</button>
+          <button onclick="setGradeFilter('8', this)" class="grade-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-0.5 rounded-xl whitespace-nowrap font-bold hover:bg-slate-100 cursor-pointer">Lớp 8</button>
+          <button onclick="setGradeFilter('9', this)" class="grade-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-0.5 rounded-xl whitespace-nowrap font-bold hover:bg-slate-100 cursor-pointer">Lớp 9 (Vào 10)</button>
         </div>
 
-        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar border-t border-slate-100 pt-1.5">
-          <span class="text-slate-400 whitespace-nowrap text-[11px]">Bộ sách:</span>
-          <button onclick="setCurriculumFilter('all', this)" class="curr-filter-btn active bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-md whitespace-nowrap font-bold">Tất cả</button>
-          <button onclick="setCurriculumFilter('kntt', this)" class="curr-filter-btn bg-white text-slate-600 border border-slate-200 px-2 py-0.5 rounded-md whitespace-nowrap">KNTT</button>
-          <button onclick="setCurriculumFilter('canhdieu', this)" class="curr-filter-btn bg-white text-slate-600 border border-slate-200 px-2 py-0.5 rounded-md whitespace-nowrap">Cánh diều</button>
-          <button onclick="setCurriculumFilter('chantroi', this)" class="curr-filter-btn bg-white text-slate-600 border border-slate-200 px-2 py-0.5 rounded-md whitespace-nowrap">Chân trời</button>
-          <button onclick="setCurriculumFilter('manga', this)" class="curr-filter-btn bg-amber-50 text-amber-900 border border-amber-200 px-2 py-0.5 rounded-md whitespace-nowrap">Manga/Conan</button>
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar border-t-2 border-black/10 dark:border-zinc-800 pt-2">
+          <span class="text-zinc-500 dark:text-zinc-400 whitespace-nowrap text-[11px] font-black uppercase">Bộ sách:</span>
+          <button onclick="setCurriculumFilter('all', this)" class="curr-filter-btn active bg-black text-[#00F0FF] border-2 border-black px-2 py-0.5 rounded-xl whitespace-nowrap font-black uppercase shadow-[1.5px_1.5px_0px_0px_#000000] cursor-pointer">Tất cả</button>
+          <button onclick="setCurriculumFilter('kntt', this)" class="curr-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2 py-0.5 rounded-xl whitespace-nowrap font-bold cursor-pointer">KNTT</button>
+          <button onclick="setCurriculumFilter('canhdieu', this)" class="curr-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2 py-0.5 rounded-xl whitespace-nowrap font-bold cursor-pointer">Cánh diều</button>
+          <button onclick="setCurriculumFilter('chantroi', this)" class="curr-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2 py-0.5 rounded-xl whitespace-nowrap font-bold cursor-pointer">Chân trời</button>
+          <button onclick="setCurriculumFilter('manga', this)" class="curr-filter-btn bg-[#FFE600] text-black border-2 border-black px-2 py-0.5 rounded-xl whitespace-nowrap font-black shadow-[1.5px_1.5px_0px_0px_#000000] cursor-pointer">Manga/Conan</button>
         </div>
       </div>
 
@@ -1461,6 +1461,20 @@
     <!-- ==================== TAB 3: TÍNH NĂNG 3: "GÓC TÂM SỰ HỌC ĐƯỜNG (CVA CONFESSIONS)" ==================== -->
     <section id="tab-confessions" class="tab-view hidden space-y-4">
       
+      <!-- Healing Room Quick Banner -->
+      <div class="bg-[#00F0FF] text-black border-2 border-black rounded-3xl p-4 shadow-[4px_4px_0px_0px_#000000] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">🕊️</span>
+          <div>
+            <p class="text-xs font-black uppercase tracking-tight">Căng thẳng ôn thi hoặc có chuyện buồn?</p>
+            <p class="text-[11px] font-bold text-zinc-900">Vào Trạm Sạc Bình Yên 4-4-4 hít thở sâu và nhận lời an ủi từ Chị Bồ Câu</p>
+          </div>
+        </div>
+        <button onclick="openHealingRoom()" class="bg-white text-black hover:bg-zinc-100 border-2 border-black font-black text-xs px-3.5 py-2 rounded-2xl shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 uppercase whitespace-nowrap cursor-pointer">
+          Phòng Thở 4-4-4 🕊️
+        </button>
+      </div>
+
       <!-- Threads Composer Quick Bar -->
       <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-4 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] space-y-3">
         <div class="flex items-center gap-2.5 cursor-pointer" onclick="openCreateConfessionModal()">
@@ -1560,19 +1574,23 @@
         </div>
       </div>
 
-      <!-- Counter -->
-      <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold">
-        <div class="bg-white border border-slate-100 p-2.5 rounded-2xl shadow-card">
-          <p class="text-xl font-black text-rose-500" id="stat-lost-count">0</p>
-          <p class="text-[11px] text-slate-400 font-medium">Tin tìm đồ</p>
+      <!-- Counter (4-Columns Neo-brutalism) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs font-bold">
+        <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 p-3 rounded-2xl shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#FF007A]">
+          <p class="text-xl font-black text-[#FF007A]" id="stat-lost-count">0</p>
+          <p class="text-[11px] text-zinc-600 dark:text-zinc-400 font-black uppercase">Tin tìm đồ</p>
         </div>
-        <div class="bg-white border border-slate-100 p-2.5 rounded-2xl shadow-card">
-          <p class="text-xl font-black text-emerald-500" id="stat-book-count">0</p>
-          <p class="text-[11px] text-slate-400 font-medium">Sách đã tặng</p>
+        <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 p-3 rounded-2xl shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#CCFF00]">
+          <p class="text-xl font-black text-emerald-600 dark:text-emerald-400" id="stat-book-count">0</p>
+          <p class="text-[11px] text-zinc-600 dark:text-zinc-400 font-black uppercase">Sách đã tặng</p>
         </div>
-        <div class="bg-white border border-slate-100 p-2.5 rounded-2xl shadow-card">
-          <p class="text-xl font-black text-amber-500" id="stat-aura-count">1000</p>
-          <p class="text-[11px] text-slate-400 font-medium">Điểm Aura ⚡</p>
+        <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 p-3 rounded-2xl shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#00F0FF]">
+          <p class="text-xl font-black text-[#00F0FF]" id="stat-conf-count">0</p>
+          <p class="text-[11px] text-zinc-600 dark:text-zinc-400 font-black uppercase">Tâm sự CVA</p>
+        </div>
+        <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 p-3 rounded-2xl shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#FFE600]">
+          <p class="text-xl font-black text-[#FFE600] dark:text-[#FFE600]" id="stat-aura-count">1000</p>
+          <p class="text-[11px] text-zinc-600 dark:text-zinc-400 font-black uppercase">Điểm Aura ⚡</p>
         </div>
       </div>
 
@@ -1642,8 +1660,8 @@
 
     <!-- FAB Menu Popup -->
     <div id="fab-menu" class="hidden absolute bottom-16 right-0 mb-2 w-56 bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-2.5 shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] space-y-1 transition-all">
-      <button onclick="openCreateLostModal(); toggleFabMenu()" class="w-full flex items-center gap-2.5 px-3 py-2 text-left rounded-2xl hover:bg-rose-50 text-xs font-bold text-slate-800 transition">
-        <span class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm">🔍</span>
+      <button onclick="openCreateLostModal(); toggleFabMenu()" class="w-full flex items-center gap-2.5 px-3 py-2 text-left rounded-2xl hover:bg-rose-50 dark:hover:bg-zinc-800 text-xs font-bold text-slate-800 dark:text-zinc-200 transition">
+        <span class="w-8 h-8 rounded-xl bg-rose-50 dark:bg-zinc-800 text-rose-600 dark:text-rose-400 flex items-center justify-center text-sm border border-rose-300 dark:border-rose-700">🔍</span>
         <div>
           <p>Báo mất / Nhặt đồ rơi</p>
           <p class="text-[10px] text-slate-400 font-normal">Check VAR Casio, khăn quàng...</p>
@@ -1713,26 +1731,26 @@
 
   <!-- ==================== MODALS ==================== -->
 
-  <!-- MODAL: SÂN TRƯỜNG TRỰC TUYẾN (QUIZIZZ LOBBY PLAYERS MODAL) -->
+  <!-- MODAL: SÂN TRƯỜNG TRỰC TUYẾN (QUIZIZZ LOBBY PLAYERS MODAL - NEOBRUTALISM) -->
   <div id="modal-online-students" onclick="handleBackdropClick(event, 'modal-online-students')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 max-w-lg w-full shadow-2xl my-auto relative animate-scale-up space-y-4" onclick="event.stopPropagation()">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 max-w-lg w-full shadow-[8px_8px_0px_0px_#000000] dark:shadow-[8px_8px_0px_0px_#00F0FF] my-auto relative animate-scale-up space-y-4" onclick="event.stopPropagation()">
       
       <!-- Close Button -->
-      <button onclick="closeModal('modal-online-students')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-300 transition">
+      <button onclick="closeModal('modal-online-students')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-black dark:text-white transition cursor-pointer">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
       <!-- Header -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl shadow-xs">
+        <div class="w-10 h-10 rounded-2xl bg-[#00F0FF] text-black border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_0px_#000000]">
           👥
         </div>
         <div>
-          <h3 class="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+          <h3 class="text-base font-black text-black dark:text-white uppercase font-display flex items-center gap-2">
             <span>Sân Trường Trực Tuyến CVA</span>
-            <span class="text-xs font-black bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 rounded-full">42 Online</span>
+            <span class="text-xs font-black bg-[#CCFF00] text-black border-2 border-black px-2 py-0.5 rounded-full shadow-[1.5px_1.5px_0px_0px_#000000]">42 Online</span>
           </h3>
-          <p class="text-[11px] text-slate-500 dark:text-slate-400">Danh sách học sinh THCS Chu Văn An đang có mặt trong phòng</p>
+          <p class="text-[11px] text-zinc-600 dark:text-zinc-400 font-bold">Danh sách học sinh THCS Chu Văn An đang có mặt trong phòng</p>
         </div>
       </div>
 
@@ -1744,17 +1762,17 @@
             id="lobby-student-search" 
             oninput="filterLobbyStudents(this.value)"
             placeholder="Tìm theo tên học sinh hoặc lớp (vd: 8A1, Chi, Đăng, 9A...)"
-            class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-8 pr-3 py-2 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+            class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl pl-8 pr-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400"
           />
-          <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs">🔍</span>
+          <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-500 text-xs">🔍</span>
         </div>
 
         <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-[11px] font-bold">
-          <button onclick="filterLobbyGrade('all', this)" class="lobby-grade-btn active bg-indigo-600 text-white px-2.5 py-1 rounded-xl transition">Tất cả (42)</button>
-          <button onclick="filterLobbyGrade('6', this)" class="lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition">Khối 6 (8)</button>
-          <button onclick="filterLobbyGrade('7', this)" class="lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition">Khối 7 (10)</button>
-          <button onclick="filterLobbyGrade('8', this)" class="lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition">Khối 8 (14)</button>
-          <button onclick="filterLobbyGrade('9', this)" class="lobby-grade-btn bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-xl hover:bg-slate-200 transition">Khối 9 (10)</button>
+          <button onclick="filterLobbyGrade('all', this)" class="lobby-grade-btn active bg-black text-[#FFE600] border-2 border-black px-2.5 py-1 rounded-xl shadow-[1.5px_1.5px_0px_0px_#000000] font-black uppercase transition cursor-pointer">Tất cả (42)</button>
+          <button onclick="filterLobbyGrade('6', this)" class="lobby-grade-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-1 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700 font-bold transition cursor-pointer">Khối 6 (8)</button>
+          <button onclick="filterLobbyGrade('7', this)" class="lobby-grade-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-1 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700 font-bold transition cursor-pointer">Khối 7 (10)</button>
+          <button onclick="filterLobbyGrade('8', this)" class="lobby-grade-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-1 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700 font-bold transition cursor-pointer">Khối 8 (14)</button>
+          <button onclick="filterLobbyGrade('9', this)" class="lobby-grade-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-1 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700 font-bold transition cursor-pointer">Khối 9 (10)</button>
         </div>
       </div>
 
@@ -1764,9 +1782,9 @@
       </div>
 
       <!-- Footer Action -->
-      <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold">
-        <span class="text-slate-400 text-[11px]">Mã phòng: <b class="text-indigo-600 dark:text-indigo-400 font-mono">#CVA-2026</b></span>
-        <button onclick="waveToLobby(); closeModal('modal-online-students');" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-1.5 rounded-xl transition active:scale-95 flex items-center gap-1">
+      <div class="pt-2 border-t-2 border-black/10 dark:border-zinc-800 flex items-center justify-between text-xs font-black">
+        <span class="text-zinc-600 dark:text-zinc-400 text-[11px]">Mã phòng: <b class="text-[#00F0FF] font-mono">#CVA-2026</b></span>
+        <button onclick="waveToLobby(); closeModal('modal-online-students');" class="bg-[#CCFF00] hover:bg-[#B8E600] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 transition flex items-center gap-1 uppercase cursor-pointer">
           <span>👋</span> Vẫy tay chào tất cả (+5 Aura)
         </button>
       </div>
@@ -1774,33 +1792,33 @@
     </div>
   </div>
 
-  <!-- MODAL: COMMAND PALETTE (CMD+K / CTRL+K SPOTLIGHT SEARCH) -->
+  <!-- MODAL: COMMAND PALETTE (CMD+K / CTRL+K SPOTLIGHT SEARCH - NEOBRUTALISM) -->
   <div id="modal-command-palette" onclick="handleBackdropClick(event, 'modal-command-palette')" class="fixed inset-0 z-[80] command-palette-backdrop hidden flex items-start justify-center pt-16 sm:pt-24 p-4 overflow-y-auto">
-    <div class="bg-white border border-slate-200 rounded-3xl max-w-lg w-full shadow-2xl relative overflow-hidden animate-scale-up" onclick="event.stopPropagation()">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl max-w-lg w-full shadow-[8px_8px_0px_0px_#000000] dark:shadow-[8px_8px_0px_0px_#CCFF00] relative overflow-hidden animate-scale-up" onclick="event.stopPropagation()">
       
       <!-- Palette Search Input -->
-      <div class="p-3.5 border-b border-slate-100 flex items-center gap-3">
-        <i data-lucide="search" class="w-5 h-5 text-rose-500 flex-shrink-0"></i>
+      <div class="p-3.5 border-b-2 border-black dark:border-zinc-700 flex items-center gap-3 bg-slate-50 dark:bg-zinc-800">
+        <i data-lucide="search" class="w-5 h-5 text-[#FF007A] flex-shrink-0"></i>
         <input 
           id="command-palette-input"
           type="text" 
           placeholder="Gõ để tìm kiếm đồ rơi, sách 0đ, tâm sự hoặc tác vụ..." 
           oninput="filterCommandPalette(this.value)"
-          class="w-full text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none placeholder:text-slate-400"
+          class="w-full text-xs sm:text-sm font-bold text-black dark:text-white bg-transparent focus:outline-none placeholder:text-zinc-400"
           autocomplete="off"
         />
         <div class="flex items-center gap-1 flex-shrink-0">
-          <kbd class="text-[10px] font-bold bg-slate-100 border border-slate-200 text-slate-500 px-1.5 py-0.5 rounded">ESC</kbd>
+          <kbd class="text-[10px] font-black bg-[#FFE600] border-2 border-black text-black px-2 py-0.5 rounded-lg shadow-[1px_1px_0px_0px_#000000]">ESC</kbd>
         </div>
       </div>
 
       <!-- Quick Action Results List -->
-      <div class="max-h-[380px] overflow-y-auto p-2 space-y-1" id="command-palette-results">
+      <div class="max-h-[380px] overflow-y-auto p-2 space-y-1.5" id="command-palette-results">
         <!-- Javascript will populate results or render defaults -->
       </div>
 
       <!-- Palette Footer -->
-      <div class="px-4 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-medium">
+      <div class="px-4 py-2.5 bg-slate-100 dark:bg-zinc-950 border-t-2 border-black/10 dark:border-zinc-800 flex items-center justify-between text-[11px] text-zinc-600 dark:text-zinc-400 font-bold">
         <span>Gõ để tìm kiếm tức thì</span>
         <div class="flex items-center gap-2">
           <span>↑↓ Di chuyển</span>
@@ -1812,42 +1830,44 @@
   </div>
   
 
-  <!-- MODAL 1: BÁO MẤT HOẶC NHẶT ĐƯỢC ĐỒ (CHECK VAR) -->
-  <div id="modal-lost-found" onclick="handleBackdropClick(event, 'modal-lost-found')" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-white border border-slate-200 rounded-3xl p-5 max-w-md w-full shadow-2xl my-auto relative animate-scale-up">
-      <button onclick="closeModal('modal-lost-found')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition">
+  <!-- MODAL 1: BÁO MẤT HOẶC NHẶT ĐƯỢC ĐỒ (CHECK VAR - NEOBRUTALISM) -->
+  <div id="modal-lost-found" onclick="handleBackdropClick(event, 'modal-lost-found')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 max-w-md w-full shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#FF007A] my-auto relative animate-scale-up space-y-3" onclick="event.stopPropagation()">
+      <button onclick="closeModal('modal-lost-found')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-black dark:text-white transition cursor-pointer">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <div class="flex items-center gap-2 mb-3">
-        <span class="text-2xl">🎒</span>
+      <div class="flex items-center gap-2.5 mb-2">
+        <div class="w-10 h-10 rounded-2xl bg-[#FF007A] text-white border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_0px_#000000]">
+          🎒
+        </div>
         <div>
-          <h3 class="text-sm sm:text-base font-extrabold text-slate-900">Tạo Thread Thất Lạc Mới</h3>
-          <p class="text-xs text-slate-500">Cộng đồng Chu Văn An sẽ hỗ trợ em cứu giá ngay!</p>
+          <h3 class="text-base font-black text-black dark:text-white uppercase font-display">Tạo Thread Cứu Giá Mới</h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 font-bold">Cộng đồng Chu Văn An sẽ hỗ trợ em cứu giá ngay!</p>
         </div>
       </div>
 
       <form id="form-lost-found" onsubmit="submitLostFoundForm(event)" class="space-y-3 text-xs font-semibold">
-        <div class="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-xl border border-slate-200">
-          <label class="cursor-pointer text-center py-1.5 rounded-lg transition flex items-center justify-center gap-1.5 bg-white text-slate-900 shadow-sm" id="label-lf-lost">
+        <div class="grid grid-cols-2 gap-2 bg-slate-100 dark:bg-zinc-800 p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700">
+          <label class="cursor-pointer text-center py-2 rounded-xl transition flex items-center justify-center gap-1.5 bg-[#FF007A] text-white border-2 border-black font-black shadow-[2px_2px_0px_0px_#000000]" id="label-lf-lost">
             <input type="radio" name="lf_type" value="lost" checked onchange="toggleLFType('lost')" class="hidden">
             <span class="text-sm">😭</span> <span>Em làm mất đồ</span>
           </label>
-          <label class="cursor-pointer text-center py-1.5 rounded-lg transition flex items-center justify-center gap-1.5 text-slate-600" id="label-lf-found">
+          <label class="cursor-pointer text-center py-2 rounded-xl transition flex items-center justify-center gap-1.5 bg-white dark:bg-zinc-900 text-black dark:text-white border-2 border-transparent font-bold" id="label-lf-found">
             <input type="radio" name="lf_type" value="found" onchange="toggleLFType('found')" class="hidden">
             <span class="text-sm">✨</span> <span>Em nhặt được đồ</span>
           </label>
         </div>
 
         <div>
-          <label class="block text-slate-600 mb-1">Tên món đồ <span class="text-rose-500">*</span></label>
-          <input type="text" id="lf_title" required placeholder="VD: Máy tính Casio FX 580VN X màu đen..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:bg-white focus:border-slate-400">
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Tên món đồ <span class="text-rose-500">*</span></label>
+          <input type="text" id="lf_title" required placeholder="VD: Máy tính Casio FX 580VN X màu đen..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
         </div>
 
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-slate-600 mb-1">Danh mục</label>
-            <select id="lf_category" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-medium focus:outline-none">
+            <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Danh mục</label>
+            <select id="lf_category" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-2.5 py-2 text-xs font-bold text-black dark:text-white focus:outline-none">
               <option value="casio">💻 Máy tính Casio</option>
               <option value="scarf">🧣 Khăn quàng / Huy hiệu</option>
               <option value="uniform">🧥 Áo đồng phục / Thể dục</option>
@@ -1857,20 +1877,20 @@
             </select>
           </div>
           <div>
-            <label class="block text-slate-600 mb-1">Vị trí rơi / Nhặt</label>
-            <input type="text" id="lf_location" required placeholder="VD: Sân bóng rổ, Phòng Tin..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:bg-white">
+            <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Vị trí rơi / Nhặt</label>
+            <input type="text" id="lf_location" required placeholder="VD: Sân bóng rổ, Phòng Tin..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
           </div>
         </div>
 
         <div>
-          <label class="block text-slate-600 mb-1">Mô tả đặc điểm nhận dạng</label>
-          <textarea id="lf_desc" rows="2" placeholder="VD: Mặt sau dán sticker Anya, có vết trầy ở góc..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs font-medium focus:outline-none focus:bg-white"></textarea>
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Mô tả đặc điểm nhận dạng</label>
+          <textarea id="lf_desc" rows="2" placeholder="VD: Mặt sau dán sticker Anya, có vết trầy ở góc..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl p-2.5 text-xs font-semibold text-black dark:text-white focus:outline-none placeholder:text-zinc-400"></textarea>
         </div>
 
         <!-- Hậu tạ (Mất đồ) -->
         <div id="lf-reward-box">
-          <label class="block text-slate-600 mb-1">Món quà cảm ơn nhỏ</label>
-          <select id="lf_reward" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-medium focus:outline-none">
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Món quà cảm ơn nhỏ</label>
+          <select id="lf_reward" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-2.5 py-2 text-xs font-bold text-black dark:text-white focus:outline-none">
             <option value="🥤 1 Cốc trà sữa trân châu">🥤 1 Cốc trà sữa trân châu</option>
             <option value="🍦 1 Cây kem ốc quế căn-tin">🍦 1 Cây kem ốc quế căn-tin</option>
             <option value="🍟 1 Gói bim bim khổng lồ">🍟 1 Gói bim bim khổng lồ</option>
@@ -1880,96 +1900,93 @@
 
         <!-- Câu hỏi bí mật Check VAR (Nhặt được đồ) -->
         <div id="lf-secret-box" class="hidden">
-          <label class="block text-slate-600 mb-1">
-            <span class="text-purple-600 font-bold">Câu hỏi bí mật Check VAR</span> (Xác thực chính chủ)
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">
+            <span class="text-[#FF007A]">Câu hỏi bí mật Check VAR</span> (Xác thực chính chủ)
           </label>
-          <input type="text" id="lf_secret_question" placeholder="VD: Mặt sau dán sticker hình gì?" class="w-full bg-purple-50/50 border border-purple-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:bg-white">
-          <p class="text-[10px] text-slate-400 mt-1">Chỉ bạn nào trả lời đúng câu này mới được hẹn trao trả đồ!</p>
+          <input type="text" id="lf_secret_question" placeholder="VD: Mặt sau dán sticker hình gì?" class="w-full bg-purple-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
+          <p class="text-[10px] text-zinc-500 dark:text-zinc-400 mt-1 font-bold">Chỉ bạn nào trả lời đúng câu này mới được hẹn trao trả đồ!</p>
         </div>
 
-        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-2.5 rounded-xl font-bold shadow-sm transition flex items-center justify-center gap-1.5 active:scale-98">
-          <span>Đăng Thread Cứu Giá Ngay</span> <span>🚀</span>
+        <button type="submit" class="w-full bg-[#FFE600] hover:bg-[#FADB14] text-black border-2 border-black font-black py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer">
+          <span>Đăng Thread Cứu Giá Ngay (+20 Aura)</span> <span>🚀</span>
         </button>
       </form>
     </div>
   </div>
 
-  <!-- MODAL 2: TẶNG HOẶC ĐỔI SÁCH -->
-  <div id="modal-book-exchange" onclick="handleBackdropClick(event, 'modal-book-exchange')" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-white border border-slate-200 rounded-3xl p-5 max-w-md w-full shadow-2xl my-auto relative animate-scale-up">
-      <button onclick="closeModal('modal-book-exchange')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition">
+  <!-- MODAL 2: TẶNG HOẶC ĐỔI SÁCH (NEOBRUTALISM) -->
+  <div id="modal-book-exchange" onclick="handleBackdropClick(event, 'modal-book-exchange')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 max-w-md w-full shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] my-auto relative animate-scale-up space-y-3" onclick="event.stopPropagation()">
+      <button onclick="closeModal('modal-book-exchange')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-black dark:text-white transition cursor-pointer">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <div class="flex items-center gap-2 mb-3">
-        <span class="text-2xl">📚</span>
+      <div class="flex items-center gap-2.5 mb-2">
+        <div class="w-10 h-10 rounded-2xl bg-[#CCFF00] text-black border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_0px_#000000]">
+          📚
+        </div>
         <div>
-          <h3 class="text-sm sm:text-base font-extrabold text-slate-900">Đăng Sách Lên Chợ Phiên</h3>
-          <p class="text-xs text-slate-500">Tặng 0đ cho đàn em hoặc đổi truyện tranh</p>
+          <h3 class="text-base font-black text-black dark:text-white uppercase font-display">Đăng Sách Lên Chợ Phiên</h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 font-bold">Tặng 0đ cho đàn em hoặc đổi truyện tranh</p>
         </div>
       </div>
 
       <form id="form-book" onsubmit="submitBookForm(event)" class="space-y-3 text-xs font-semibold">
-        <div class="grid grid-cols-3 gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200 text-center">
-          <label class="cursor-pointer py-1.5 rounded-lg transition bg-white text-slate-900 shadow-sm" id="label-deal-free">
+        <div class="grid grid-cols-2 gap-2 bg-slate-100 dark:bg-zinc-800 p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 text-center">
+          <label class="cursor-pointer py-2 rounded-xl transition flex items-center justify-center gap-1.5 bg-[#CCFF00] text-black border-2 border-black font-black shadow-[2px_2px_0px_0px_#000000]" id="label-deal-free">
             <input type="radio" name="book_deal" value="free" checked onchange="toggleBookDeal('free')" class="hidden">
             <span>🎁 Tặng 0đ</span>
           </label>
-          <label class="cursor-pointer py-1.5 rounded-lg transition text-slate-600" id="label-deal-trade">
+          <label class="cursor-pointer py-2 rounded-xl transition flex items-center justify-center gap-1.5 bg-white dark:bg-zinc-900 text-black dark:text-white border-2 border-transparent font-bold" id="label-deal-trade">
             <input type="radio" name="book_deal" value="trade" onchange="toggleBookDeal('trade')" class="hidden">
             <span>🔄 Đổi đồ</span>
-          </label>
-          <label class="cursor-pointer py-1.5 rounded-lg transition text-slate-600" id="label-deal-cheap">
-            <input type="radio" name="book_deal" value="cheap" onchange="toggleBookDeal('cheap')" class="hidden">
-            <span>🪙 Hạt dẻ</span>
           </label>
         </div>
 
         <div>
-          <label class="block text-slate-600 mb-1">Tên sách / truyện / đề ôn thi <span class="text-rose-500">*</span></label>
-          <input type="text" id="book_title" required placeholder="VD: Bộ đề ôn thi vào 10 Toán - Văn CVA..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:bg-white">
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Tên sách / Truyện / Tài liệu <span class="text-rose-500">*</span></label>
+          <input type="text" id="book_title" required placeholder="VD: SGK Toán 8 KNTT, Truyện Doraemon..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
         </div>
 
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-slate-600 mb-1">Khối lớp</label>
-            <select id="book_grade" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-medium focus:outline-none">
-              <option value="9">Lớp 9 (Vào 10)</option>
-              <option value="8">Lớp 8</option>
-              <option value="7">Lớp 7</option>
-              <option value="6">Lớp 6</option>
-              <option value="all">Mọi khối lớp</option>
+            <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Khối lớp</label>
+            <select id="book_grade" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-2.5 py-2 text-xs font-bold text-black dark:text-white focus:outline-none">
+              <option value="8">Khối 8</option>
+              <option value="9">Khối 9 (Ôn thi vào 10)</option>
+              <option value="7">Khối 7</option>
+              <option value="6">Khối 6</option>
             </select>
           </div>
           <div>
-            <label class="block text-slate-600 mb-1">Bộ sách</label>
-            <select id="book_curriculum" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-medium focus:outline-none">
-              <option value="kntt">Kết nối tri thức</option>
-              <option value="canhdieu">Cánh diều</option>
-              <option value="chantroi">Chân trời sáng tạo</option>
-              <option value="manga">Manga / Conan / Truyện</option>
-              <option value="exam">Tài liệu thi</option>
+            <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Bộ sách</label>
+            <select id="book_curriculum" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-2.5 py-2 text-xs font-bold text-black dark:text-white focus:outline-none">
+              <option value="kntt">Kết Nối Tri Thức</option>
+              <option value="canhdieu">Cánh Diều</option>
+              <option value="chantroi">Chân Trời Sáng Tạo</option>
+              <option value="exam">Đề thi / Tài liệu ôn 10</option>
+              <option value="manga">Truyện tranh / Manga</option>
             </select>
           </div>
         </div>
 
         <div>
-          <label class="block text-slate-600 mb-1">Tình trạng sách</label>
-          <input type="text" id="book_condition" placeholder="VD: Đã bọc bìa nilon, mới 95%, không vẽ bậy..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:bg-white">
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Tình trạng sách</label>
+          <input type="text" id="book_condition" placeholder="VD: Sách bọc bìa nilon, mới 95%, không vẽ bậy..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-semibold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
         </div>
 
         <div id="book-trade-want-box" class="hidden">
-          <label class="block text-slate-600 mb-1">Muốn đổi lấy gì?</label>
-          <input type="text" id="book_trade_want" placeholder="VD: Muốn đổi lấy Conan tập 90-100 hoặc rubik..." class="w-full bg-emerald-50/50 border border-emerald-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:bg-white">
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Món đồ muốn đổi lấy</label>
+          <input type="text" id="book_trade_want" placeholder="VD: Đổi lấy tập Conan 100 hoặc bút bi nước..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
         </div>
 
         <div>
-          <label class="block text-slate-600 mb-1">Hẹn gặp trao đổi tại trường</label>
-          <input type="text" id="book_meet_place" required placeholder="VD: Ghế đá sân cờ vào giờ ra chơi..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:bg-white">
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Điểm hẹn trao đổi thuận tiện</label>
+          <input type="text" id="book_meet_place" placeholder="VD: Thư viện tầng 2, Ghế đá sân cờ ra chơi..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
         </div>
 
-        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-2.5 rounded-xl font-bold shadow-sm transition flex items-center justify-center gap-1.5 active:scale-98">
-          <span>Đăng Lên Chợ Phiên (+15 Aura)</span> <span>📚</span>
+        <button type="submit" class="w-full bg-[#CCFF00] hover:bg-[#B8E600] text-black border-2 border-black font-black py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer">
+          <span>Đăng Lên Chợ Phiên (+150 Aura)</span> <span>📚</span>
         </button>
       </form>
     </div>
@@ -2060,59 +2077,102 @@
     </div>
   </div>
 
-  <!-- MODAL 4: CHECK VAR - TRẢ LỜI CÂU HỎI BÍ MẬT -->
-  <div id="modal-verify-claim" onclick="handleBackdropClick(event, 'modal-verify-claim')" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white border border-slate-200 rounded-3xl p-5 max-w-sm w-full shadow-2xl my-auto relative animate-scale-up space-y-3 text-xs font-semibold">
-      <button onclick="closeModal('modal-verify-claim')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition">
+  <!-- MODAL 4: CHECK VAR CHÍNH CHỦ (XÁC MINH CÂU HỎI BÍ MẬT - NEOBRUTALISM) -->
+  <div id="modal-verify-claim" onclick="handleBackdropClick(event, 'modal-verify-claim')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 max-w-sm w-full shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#00F0FF] my-auto relative animate-scale-up space-y-3.5" onclick="event.stopPropagation()">
+      <button onclick="closeModal('modal-verify-claim')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-black dark:text-white transition cursor-pointer">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <div class="flex items-center gap-2">
-        <span class="text-2xl">🔍</span>
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-[#00F0FF] text-black border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_0px_#000000]">
+          🔍
+        </div>
         <div>
-          <h3 class="text-sm font-extrabold text-slate-900">Check VAR Chính Chủ</h3>
-          <p class="text-[11px] text-slate-500">Trả lời câu hỏi bí mật từ bạn nhặt được</p>
+          <h3 class="text-base font-black text-black dark:text-white uppercase font-display">Check VAR Chính Chủ</h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 font-bold">Trả lời câu hỏi bí mật từ bạn nhặt được</p>
         </div>
       </div>
 
-      <div class="bg-purple-50/60 border border-purple-200 rounded-xl p-3 space-y-1">
-        <p class="text-[10px] text-purple-700 font-bold uppercase tracking-wider">Câu hỏi bí mật từ bạn:</p>
-        <p id="claim-question-text" class="text-xs font-bold text-slate-800">"Mặt sau dán sticker ai?"</p>
+      <div class="bg-[#FFF0F5] dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-3.5 space-y-1">
+        <p class="text-[10px] text-[#FF007A] font-black uppercase tracking-wider">Câu hỏi bí mật từ bạn nhặt được:</p>
+        <p id="claim-question-text" class="text-xs font-black text-black dark:text-white">"Mặt sau dán sticker ai?"</p>
       </div>
 
       <div>
-        <label class="block text-slate-600 mb-1">Câu trả lời của em:</label>
-        <input type="text" id="claim-answer-input" placeholder="Nhập câu trả lời để xác minh chính chủ..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:bg-white">
+        <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Câu trả lời của em <span class="text-rose-500">*</span></label>
+        <input type="text" id="claim-answer-input" placeholder="Nhập câu trả lời để xác minh chính chủ..." class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-black dark:text-white focus:outline-none placeholder:text-zinc-400">
       </div>
 
-      <button onclick="confirmClaimFoundItem()" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-2.5 rounded-xl font-bold shadow-sm transition active:scale-98">
-        Xác Minh & Hẹn Trao Trả (+50 Aura) 🎉
+      <button onclick="confirmClaimFoundItem()" class="w-full bg-[#00F0FF] hover:bg-[#00D6E6] text-black border-2 border-black font-black py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer">
+        <span>Xác Minh & Hẹn Trao Trả (+200 Aura ⚡)</span> <span>🎉</span>
       </button>
     </div>
   </div>
 
-  <!-- MODAL 6: SỬA THẺ HỌC SINH & UPLOAD AVATAR -->
-  <div id="modal-profile-edit" onclick="handleBackdropClick(event, 'modal-profile-edit')" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-white border border-slate-200 rounded-3xl p-5 max-w-sm w-full shadow-2xl my-auto relative animate-scale-up space-y-3.5 text-xs font-semibold">
-      <button onclick="closeModal('modal-profile-edit')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition">
+  <!-- MODAL 5: PHÒNG THỞ 4-4-4 VÀ TRẠM SẠC BÌNH YÊN (RESTORED & NEOBRUTALISM) -->
+  <div id="modal-healing-room" onclick="handleBackdropClick(event, 'modal-healing-room')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-6 max-w-sm w-full shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#00F0FF] my-auto relative animate-scale-up space-y-4 text-center" onclick="event.stopPropagation()">
+      <button onclick="closeModal('modal-healing-room')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-black dark:text-white transition cursor-pointer">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <div class="flex items-center gap-2">
-        <span class="text-2xl">🎟️</span>
+      <div>
+        <span class="inline-block text-4xl mb-1">🕊️</span>
+        <h3 class="text-base font-black text-black dark:text-white uppercase font-display">Trạm Sạc Bình Yên 4-4-4</h3>
+        <p class="text-xs text-zinc-600 dark:text-zinc-400 font-bold">Dành 3 phút hít thở sâu cùng Chị Bồ Câu nạp lại Aura nhé!</p>
+      </div>
+
+      <div class="py-5 flex flex-col items-center justify-center relative">
+        <div id="breathe-bubble-visual" class="w-28 h-28 rounded-full bg-[#CCFF00] dark:bg-[#FFE600] border-4 border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center text-black font-black text-2xl select-none transition-transform duration-1000">
+          <span id="breathe-countdown">Sẵn sàng</span>
+        </div>
+        <p id="breathe-guide-text" class="text-xs font-black text-black dark:text-white mt-4 transition-all">
+          Bấm bắt đầu để cùng thở với Chị Bồ Câu nhé!
+        </p>
+      </div>
+
+      <div class="flex justify-center gap-2">
+        <button id="breathe-ctrl-btn" onclick="toggleBreatheCycle()" class="bg-[#FFE600] hover:bg-[#FADB14] text-black border-2 border-black px-4 py-2 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 uppercase cursor-pointer">
+          ▶️ Bắt đầu
+        </button>
+        <button onclick="sendEmbraceCheer()" class="bg-[#FF007A] hover:bg-[#E6006E] text-white border-2 border-black px-4 py-2 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 uppercase cursor-pointer">
+          💖 Tự ôm mình (+5 Aura)
+        </button>
+      </div>
+
+      <div id="ai-response-box" class="bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-3.5 text-xs text-left shadow-[2px_2px_0px_0px_#000000]">
+        <p class="text-zinc-800 dark:text-zinc-200 font-semibold leading-relaxed">
+          "Em đã vất vả nhiều rồi. Kết quả một bài kiểm tra không định nghĩa giá trị con người em. Hãy hít một hơi thật sâu và tự thưởng cho mình một giấc ngủ ngon nhé!"
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 6: SỬA THẺ HỌC SINH & UPLOAD AVATAR (NEOBRUTALISM) -->
+  <div id="modal-profile-edit" onclick="handleBackdropClick(event, 'modal-profile-edit')" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 max-w-sm w-full shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#FFE600] my-auto relative animate-scale-up space-y-3.5 text-xs font-semibold" onclick="event.stopPropagation()">
+      <button onclick="closeModal('modal-profile-edit')" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-black dark:text-white transition cursor-pointer">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-[#00F0FF] text-black border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_0px_#000000]">
+          🎟️
+        </div>
         <div>
-          <h3 class="text-sm font-extrabold text-slate-900">Thẻ Học Sinh & Avatar</h3>
-          <p class="text-[11px] text-slate-500">Tự tin khoe cá tính học trò CVA</p>
+          <h3 class="text-base font-black text-black dark:text-white uppercase font-display">Thẻ Học Sinh & Avatar</h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 font-bold">Tự tin khoe cá tính học trò CVA</p>
         </div>
       </div>
 
       <!-- AVATAR STUDIO (UPLOAD & PREVIEW) -->
-      <div class="bg-slate-50/80 border border-slate-200 rounded-2xl p-3 flex flex-col items-center justify-center gap-2.5 text-center">
+      <div class="bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-3 flex flex-col items-center justify-center gap-2.5 text-center">
         <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-file-input').click()" title="Bấm vào để chọn ảnh từ máy">
-          <div id="edit-avatar-preview" class="w-20 h-20 rounded-full bg-rose-50 border-2 border-rose-300 flex items-center justify-center text-4xl shadow-md overflow-hidden transition group-hover:opacity-90">
+          <div id="edit-avatar-preview" class="w-20 h-20 rounded-full bg-white dark:bg-zinc-900 border-2 border-black flex items-center justify-center text-4xl shadow-[3px_3px_0px_0px_#000000] overflow-hidden transition group-hover:scale-105">
             🐱
           </div>
-          <div class="absolute bottom-0 right-0 bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs shadow border-2 border-white group-hover:scale-110 transition">
+          <div class="absolute bottom-0 right-0 bg-black text-[#FFE600] w-6 h-6 rounded-full flex items-center justify-center text-xs shadow border-2 border-black group-hover:scale-110 transition">
             📷
           </div>
         </div>
@@ -2121,48 +2181,48 @@
         <input type="file" id="avatar-file-input" accept="image/*" class="hidden" onchange="handleAvatarUpload(event)">
 
         <div class="flex items-center gap-2">
-          <button type="button" onclick="document.getElementById('avatar-file-input').click()" class="bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-sm transition active:scale-95 flex items-center gap-1.5">
+          <button type="button" onclick="document.getElementById('avatar-file-input').click()" class="bg-black text-[#FFE600] hover:opacity-90 border-2 border-black text-[11px] font-black px-3 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#000000] active:scale-95 transition flex items-center gap-1.5 uppercase cursor-pointer">
             <span>📸</span> Tải ảnh từ máy
           </button>
-          <button type="button" id="btn-remove-avatar-img" onclick="resetAvatarToEmoji()" class="hidden bg-rose-50 hover:bg-rose-100 text-rose-700 text-[11px] font-bold px-2.5 py-1.5 rounded-xl border border-rose-200 transition active:scale-95">
+          <button type="button" id="btn-remove-avatar-img" onclick="resetAvatarToEmoji()" class="hidden bg-[#FF007A] hover:bg-[#E6006E] text-white text-[11px] font-black px-2.5 py-1.5 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_#000000] transition active:scale-95 uppercase cursor-pointer">
             Gỡ ảnh ✕
           </button>
         </div>
-        <p class="text-[10px] text-slate-400 font-medium">Hỗ trợ JPG, PNG, WEBP (Tự động nén siêu nhẹ)</p>
+        <p class="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold">Hỗ trợ JPG, PNG, WEBP (Tự động nén siêu nhẹ)</p>
       </div>
 
       <!-- QUICK EMOJI AVATAR OPTIONS -->
       <div>
-        <label class="block text-slate-600 mb-1.5">Hoặc chọn nhanh linh vật Gen Z:</label>
+        <label class="block text-black dark:text-white mb-1.5 font-black uppercase text-[11px]">Hoặc chọn nhanh linh vật Gen Z:</label>
         <div class="grid grid-cols-6 gap-1.5 text-center">
-          <button type="button" onclick="selectAvatar('🐱', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-rose-500 bg-rose-50 hover:bg-rose-100 transition active:scale-90" data-emoji="🐱">🐱</button>
-          <button type="button" onclick="selectAvatar('🐶', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐶">🐶</button>
-          <button type="button" onclick="selectAvatar('🐼', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐼">🐼</button>
-          <button type="button" onclick="selectAvatar('🐰', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐰">🐰</button>
-          <button type="button" onclick="selectAvatar('🦊', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🦊">🦊</button>
-          <button type="button" onclick="selectAvatar('🐧', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐧">🐧</button>
-          <button type="button" onclick="selectAvatar('🐻', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐻">🐻</button>
-          <button type="button" onclick="selectAvatar('🐯', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐯">🐯</button>
-          <button type="button" onclick="selectAvatar('🦄', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🦄">🦄</button>
-          <button type="button" onclick="selectAvatar('🐣', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐣">🐣</button>
-          <button type="button" onclick="selectAvatar('🐨', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐨">🐨</button>
-          <button type="button" onclick="selectAvatar('🐸', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border border-slate-200 hover:border-slate-400 transition active:scale-90" data-emoji="🐸">🐸</button>
+          <button type="button" onclick="selectAvatar('🐱', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black bg-[#FFE600] shadow-[2px_2px_0px_0px_#000000] transition active:scale-90 cursor-pointer" data-emoji="🐱">🐱</button>
+          <button type="button" onclick="selectAvatar('🐶', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐶">🐶</button>
+          <button type="button" onclick="selectAvatar('🐼', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐼">🐼</button>
+          <button type="button" onclick="selectAvatar('🐰', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐰">🐰</button>
+          <button type="button" onclick="selectAvatar('🦊', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🦊">🦊</button>
+          <button type="button" onclick="selectAvatar('🐧', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐧">🐧</button>
+          <button type="button" onclick="selectAvatar('🐻', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐻">🐻</button>
+          <button type="button" onclick="selectAvatar('🐯', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐯">🐯</button>
+          <button type="button" onclick="selectAvatar('🦄', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🦄">🦄</button>
+          <button type="button" onclick="selectAvatar('🐣', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐣">🐣</button>
+          <button type="button" onclick="selectAvatar('🐨', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐨">🐨</button>
+          <button type="button" onclick="selectAvatar('🐸', this)" class="avatar-opt text-2xl p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 bg-white dark:bg-zinc-800 transition active:scale-90 cursor-pointer" data-emoji="🐸">🐸</button>
         </div>
       </div>
 
-      <div class="space-y-2.5 pt-1 border-t border-slate-100">
+      <div class="space-y-2.5 pt-1 border-t-2 border-black/10 dark:border-zinc-800">
         <div>
-          <label class="block text-slate-600 mb-1">Tên thường gọi</label>
-          <input type="text" id="edit-user-name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:bg-white">
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Tên thường gọi <span class="text-rose-500">*</span></label>
+          <input type="text" id="edit-user-name" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-1.5 text-xs font-bold text-black dark:text-white focus:outline-none">
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-slate-600 mb-1">Lớp</label>
-            <input type="text" id="edit-user-class" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:bg-white">
+            <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Lớp <span class="text-rose-500">*</span></label>
+            <input type="text" id="edit-user-class" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-1.5 text-xs font-bold text-black dark:text-white focus:outline-none">
           </div>
           <div>
-            <label class="block text-slate-600 mb-1">Khối</label>
-            <select id="edit-user-grade" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2 py-1.5 text-xs font-medium focus:outline-none focus:bg-white">
+            <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Khối</label>
+            <select id="edit-user-grade" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-2 py-1.5 text-xs font-bold text-black dark:text-white focus:outline-none">
               <option value="6">Khối 6</option>
               <option value="7">Khối 7</option>
               <option value="8">Khối 8</option>
@@ -2171,21 +2231,21 @@
           </div>
         </div>
         <div>
-          <label class="block text-slate-600 mb-1">Biệt danh hài hước</label>
-          <input type="text" id="edit-user-nick" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:bg-white">
+          <label class="block text-black dark:text-white mb-1 font-black uppercase text-[11px]">Biệt danh cá tính</label>
+          <input type="text" id="edit-user-nick" class="w-full bg-slate-50 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-xl px-3 py-1.5 text-xs font-bold text-black dark:text-white focus:outline-none">
         </div>
       </div>
 
-      <button onclick="saveUserProfile()" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-2.5 rounded-xl font-bold shadow-sm transition active:scale-98">
-        Lưu Thẻ Học Sinh ✨
+      <button onclick="saveUserProfile()" class="w-full bg-[#FFE600] hover:bg-[#FADB14] text-black border-2 border-black font-black py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none uppercase tracking-wide transition cursor-pointer">
+        Lưu Thẻ Học Sinh CVA ✨
       </button>
     </div>
   </div>
 
-  <!-- TOAST THÔNG BÁO POP-UP (Floating Pill at Top) -->
-  <div id="teen-toast" class="toast-hide fixed top-16 left-1/2 -translate-x-1/2 z-[80] bg-slate-900/95 dark:bg-slate-800/95 dark:border dark:border-slate-700/80 backdrop-blur-md text-white px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 text-xs font-semibold">
+  <!-- TOAST THÔNG BÁO POP-UP (Floating Pill at Top - NEOBRUTALISM) -->
+  <div id="teen-toast" class="toast-hide fixed top-16 left-1/2 -translate-x-1/2 z-[90] bg-[#FFE600] text-black border-2 border-black px-4 py-2.5 rounded-2xl shadow-[4px_4px_0px_0px_#000000] flex items-center gap-2 text-xs font-black uppercase tracking-wide select-none transition-all duration-300 pointer-events-none">
     <span id="toast-icon" class="text-sm">🎉</span>
-    <span id="toast-message" class="text-slate-100">Thông báo thành công!</span>
+    <span id="toast-message" class="text-black">Thông báo thành công!</span>
   </div>
 
   <!-- ==================== JAVASCRIPT MASTER LOGIC ==================== -->
@@ -3052,6 +3112,10 @@
       if (tabId === 'confessions') renderConfessions();
       if (tabId === 'lost-found') renderLostFound();
       if (tabId === 'books') renderBooks();
+      if (tabId === 'profile') {
+        updateProfileUI();
+        renderMyActivities();
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -3194,6 +3258,8 @@
       renderBooks();
       renderConfessions();
       renderLandingFeed();
+      renderMyActivities();
+      updateProfileUI();
     }
 
     /* =====================================================================
@@ -3252,9 +3318,13 @@
 
       let categoryBadge = '';
       if (isLF) {
-        categoryBadge = item.type === 'lost' 
-          ? `<span class="bg-[#FF007A] text-white border-2 border-black px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">😭 CẦN TÌM GẤP</span>`
-          : `<span class="bg-[#CCFF00] text-black border-2 border-black px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">✨ NHẶT ĐƯỢC</span>`;
+        if (item.status === 'solved') {
+          categoryBadge = `<span class="bg-[#00F0FF] text-black border-2 border-black px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">🎉 ĐÃ TÌM THẤY</span>`;
+        } else {
+          categoryBadge = item.type === 'lost' 
+            ? `<span class="bg-[#FF007A] text-white border-2 border-black px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">😭 CẦN TÌM GẤP</span>`
+            : `<span class="bg-[#CCFF00] text-black border-2 border-black px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">✨ NHẶT ĐƯỢC</span>`;
+        }
       } else if (isBook) {
         categoryBadge = item.deal === 'free'
           ? `<span class="bg-[#CCFF00] text-black border-2 border-black px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">🎁 TẶNG 0Đ</span>`
@@ -3279,12 +3349,12 @@
           repliesHTML += `
             <div class="flex items-start gap-2.5 pt-1.5">
               ${renderReplyAvatar(rep.avatar)}
-              <div class="flex-1 bg-slate-50 border border-slate-100 rounded-2xl px-2.5 py-1.5 text-xs">
+              <div class="flex-1 bg-slate-100 dark:bg-zinc-800 border-2 border-black/10 dark:border-zinc-700 rounded-2xl px-3 py-2 text-xs">
                 <div class="flex items-center justify-between">
-                  <span class="font-bold text-slate-800">${escapeHTML(rep.author)} <span class="text-[9px] text-slate-400">(${escapeHTML(rep.authorClass)})</span></span>
-                  <span class="text-[9px] text-slate-400 font-medium">${rep.time}</span>
+                  <span class="font-black text-black dark:text-white">${escapeHTML(rep.author)} <span class="text-[9px] text-zinc-500 dark:text-zinc-400 font-bold">(${escapeHTML(rep.authorClass)})</span></span>
+                  <span class="text-[9px] text-zinc-400 font-medium">${rep.time}</span>
                 </div>
-                <p class="text-slate-600 font-normal mt-0.5">${escapeHTML(rep.text)}</p>
+                <p class="text-zinc-700 dark:text-zinc-300 font-medium mt-0.5">${escapeHTML(rep.text)}</p>
               </div>
             </div>
           `;
@@ -3292,7 +3362,7 @@
       }
 
       return `
-        <div class="thread-card bg-white border border-slate-200/90 rounded-2xl p-4 shadow-card space-y-3 relative overflow-hidden">
+        <div class="thread-card bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-4 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#CCFF00] space-y-3 relative overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000]">
           
           <div class="flex items-start gap-3 relative">
             <!-- Left Avatar & Thread line -->
@@ -3328,26 +3398,26 @@
 
               <!-- Title & Desc -->
               <div>
-                <h4 class="font-extrabold text-slate-900 text-sm leading-snug">${escapeHTML(item.title)}</h4>
-                <p class="text-xs text-slate-600 font-normal leading-relaxed mt-1 whitespace-pre-line">${escapeHTML(item.desc || item.content || item.condition)}</p>
+                <h4 class="font-black text-black dark:text-white text-sm leading-snug">${escapeHTML(item.title)}</h4>
+                <p class="text-xs text-zinc-700 dark:text-zinc-300 font-medium leading-relaxed mt-1 whitespace-pre-line">${escapeHTML(item.desc || item.content || item.condition)}</p>
               </div>
 
               <!-- Action buttons -->
-              <div class="pt-1 flex items-center gap-2">
+              <div class="pt-1 flex items-center gap-2 flex-wrap">
                 ${isLF && item.type === 'found' && item.status === 'open' ? `
-                  <button onclick="openVerifyClaimModal('${item.id}', '${encodeURIComponent(item.secretQuestion || 'Mặt sau có sticker gì?')}')" class="bg-[#FF007A] hover:bg-[#E6006E] text-white border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide">
+                  <button onclick="openVerifyClaimModal('${item.id}', '${encodeURIComponent(item.secretQuestion || 'Mặt sau có sticker gì?')}')" class="bg-[#FF007A] hover:bg-[#E6006E] text-white border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide cursor-pointer">
                     <span>🔍 Check VAR Chính Chủ</span>
                   </button>
                 ` : ''}
 
                 ${isBook && item.deal === 'free' ? `
-                  <button onclick="claimBookFree('${item.title}', '${item.author}')" class="bg-[#CCFF00] hover:bg-[#B8E600] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition uppercase tracking-wide">
+                  <button onclick="claimBookById('${item.id}')" class="bg-[#CCFF00] hover:bg-[#B8E600] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition uppercase tracking-wide cursor-pointer">
                     Xin Nhận Sách 0đ 🎁
                   </button>
                 ` : ''}
 
                 ${isBook && item.deal === 'trade' ? `
-                  <button onclick="proposeTrade('${item.title}', '${item.author}')" class="bg-[#FFE600] hover:bg-[#E6D000] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition uppercase tracking-wide">
+                  <button onclick="proposeTradeById('${item.id}')" class="bg-[#FFE600] hover:bg-[#E6D000] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] text-[11px] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition uppercase tracking-wide cursor-pointer">
                     Đổi Đồ Với Bạn 🔄
                   </button>
                 ` : ''}
@@ -3447,10 +3517,11 @@
       currentLFFilter = type;
       ['all', 'lost', 'found'].forEach(t => {
         const btn = document.getElementById(`filter-lost-mode-${t}`);
+        if (!btn) return;
         if (t === type) {
-          btn.className = "px-2.5 py-1 rounded-lg bg-white text-slate-900 shadow-sm transition font-bold";
+          btn.className = "px-2.5 py-1 rounded-lg bg-black text-[#FF007A] border border-black font-black uppercase transition text-[11px] cursor-pointer";
         } else {
-          btn.className = "px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition font-medium";
+          btn.className = "px-2.5 py-1 rounded-lg text-slate-600 dark:text-zinc-300 hover:text-black dark:hover:text-white transition font-bold text-[11px] cursor-pointer";
         }
       });
       renderLostFound();
@@ -3460,12 +3531,10 @@
       playCuteSound('pop');
       currentLFCat = cat;
       document.querySelectorAll('.lf-cat-btn').forEach(btn => {
-        btn.classList.remove('active', 'bg-slate-900', 'text-white');
-        btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+        btn.className = "lf-cat-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-1 rounded-xl whitespace-nowrap text-[11px] font-bold cursor-pointer";
       });
       if (btnEl) {
-        btnEl.classList.add('active', 'bg-slate-900', 'text-white');
-        btnEl.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+        btnEl.className = "lf-cat-btn active bg-black text-[#CCFF00] border-2 border-black px-2.5 py-1 rounded-xl whitespace-nowrap text-[11px] font-black uppercase shadow-[1.5px_1.5px_0px_0px_#000000] cursor-pointer";
       }
       renderLostFound();
     }
@@ -3603,10 +3672,11 @@
       currentBookDeal = deal;
       ['all', 'free', 'trade'].forEach(d => {
         const btn = document.getElementById(`deal-filter-${d}`);
+        if (!btn) return;
         if (d === deal) {
-          btn.className = "deal-filter-btn bg-slate-900 text-white py-1.5 rounded-xl shadow-sm font-bold";
+          btn.className = "deal-filter-btn active bg-black text-[#CCFF00] border-2 border-black py-2 rounded-2xl shadow-[2px_2px_0px_0px_#000000] font-black uppercase transition cursor-pointer";
         } else {
-          btn.className = "deal-filter-btn bg-white text-slate-700 border border-slate-200 py-1.5 rounded-xl shadow-sm hover:bg-slate-50 font-medium";
+          btn.className = "deal-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black py-2 rounded-2xl shadow-[2px_2px_0px_0px_#000000] hover:bg-slate-50 transition cursor-pointer font-bold uppercase";
         }
       });
       renderBooks();
@@ -3615,20 +3685,24 @@
     function setGradeFilter(grade, btnEl) {
       playCuteSound('pop');
       currentGrade = grade;
-      document.querySelectorAll('.grade-filter-btn').forEach(b => {
-        b.className = "grade-filter-btn bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-lg whitespace-nowrap hover:bg-slate-200 font-medium";
+      document.querySelectorAll('.grade-filter-btn').forEach(btn => {
+        btn.className = "grade-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2.5 py-0.5 rounded-xl whitespace-nowrap font-bold hover:bg-slate-100 cursor-pointer";
       });
-      btnEl.className = "grade-filter-btn active bg-slate-900 text-white px-2.5 py-0.5 rounded-lg whitespace-nowrap font-bold";
+      if (btnEl) {
+        btnEl.className = "grade-filter-btn active bg-black text-[#FFE600] border-2 border-black px-2.5 py-0.5 rounded-xl whitespace-nowrap font-black uppercase shadow-[1.5px_1.5px_0px_0px_#000000] cursor-pointer";
+      }
       renderBooks();
     }
 
     function setCurriculumFilter(curr, btnEl) {
       playCuteSound('pop');
       currentCurriculum = curr;
-      document.querySelectorAll('.curr-filter-btn').forEach(b => {
-        b.className = "curr-filter-btn bg-white text-slate-600 border border-slate-200 px-2 py-0.5 rounded-md whitespace-nowrap";
+      document.querySelectorAll('.curr-filter-btn').forEach(btn => {
+        btn.className = "curr-filter-btn bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black px-2 py-0.5 rounded-xl whitespace-nowrap font-bold hover:bg-slate-100 cursor-pointer";
       });
-      btnEl.className = "curr-filter-btn active bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-md whitespace-nowrap font-bold";
+      if (btnEl) {
+        btnEl.className = "curr-filter-btn active bg-black text-[#00F0FF] border-2 border-black px-2 py-0.5 rounded-xl whitespace-nowrap font-black uppercase shadow-[1.5px_1.5px_0px_0px_#000000] cursor-pointer";
+      }
       renderBooks();
     }
 
@@ -3718,11 +3792,40 @@
     
     function claimBookById(id) {
       const b = booksData.find(item => item.id === id);
-      if (b) claimBookFree(b.title, b.author);
+      if (b) {
+        if (!b.replies) b.replies = [];
+        b.replies.push({
+          author: currentUser.name,
+          authorClass: currentUser.class,
+          avatar: currentUser.avatar,
+          text: `Em xin nhận cuốn sách "${b.title}" này ạ! Hẹn gặp bạn ở ${b.meetPlace || 'sân trường'} nhé! 🎁`,
+          time: "Vừa xong"
+        });
+        saveState();
+        refreshActiveViews();
+        launchConfetti();
+        addAuraPoints(15);
+        showTeenToast(`Đã gửi lời xin sách tới bạn ${b.author}! (+15 Aura ⚡)`, "🎁");
+      }
     }
+
     function proposeTradeById(id) {
       const b = booksData.find(item => item.id === id);
-      if (b) proposeTrade(b.title, b.author);
+      if (b) {
+        if (!b.replies) b.replies = [];
+        b.replies.push({
+          author: currentUser.name,
+          authorClass: currentUser.class,
+          avatar: currentUser.avatar,
+          text: `Tớ muốn đổi đồ với bạn cho cuốn "${b.title}"! Giờ ra chơi mình gặp nhau trao đổi nhé! 🔄`,
+          time: "Vừa xong"
+        });
+        saveState();
+        refreshActiveViews();
+        playCuteSound('ting');
+        addAuraPoints(10);
+        showTeenToast(`Đã gửi lời mời đổi đồ tới bạn ${b.author}! (+10 Aura ⚡)`, "🔄");
+      }
     }
 
     function claimBookFree(title, author) {
@@ -3977,6 +4080,16 @@
           });
         }
       });
+      if (typeof confessionsData !== 'undefined' && Array.isArray(confessionsData)) {
+        confessionsData.forEach(item => {
+          if (!item.isAnonymous && item.author === currentUser.name) item.avatar = currentUser.avatar;
+          if (item.replies) {
+            item.replies.forEach(rep => {
+              if (rep.author === currentUser.name) rep.avatar = currentUser.avatar;
+            });
+          }
+        });
+      }
 
       updateProfileUI();
       saveState();
@@ -3985,6 +4098,7 @@
       renderLandingFeed();
       renderLostFound();
       renderBooks();
+      if (typeof renderConfessions === 'function') renderConfessions();
       renderMyActivities();
 
       launchConfetti();
@@ -4034,18 +4148,31 @@
 
     function renderMyActivities() {
       const container = document.getElementById('my-activities-container');
+      if (!container) return;
       container.innerHTML = '';
 
       const myLF = lostFoundData.filter(i => i.author === currentUser.name);
       const myBooks = booksData.filter(i => i.author === currentUser.name);
+      const myConf = (typeof confessionsData !== 'undefined' && Array.isArray(confessionsData)) 
+        ? confessionsData.filter(i => !i.isAnonymous && i.author === currentUser.name)
+        : [];
 
-      document.getElementById('stat-lost-count').textContent = myLF.length;
-      document.getElementById('stat-book-count').textContent = myBooks.length;
+      const lostStat = document.getElementById('stat-lost-count');
+      if (lostStat) lostStat.textContent = myLF.length;
+      
+      const bookStat = document.getElementById('stat-book-count');
+      if (bookStat) bookStat.textContent = myBooks.length;
 
-      if (myLF.length === 0 && myBooks.length === 0) {
+      const confStat = document.getElementById('stat-conf-count');
+      if (confStat) confStat.textContent = myConf.length;
+
+      const auraStat = document.getElementById('stat-aura-count');
+      if (auraStat) auraStat.textContent = currentUser.aura || 1000;
+
+      if (myLF.length === 0 && myBooks.length === 0 && myConf.length === 0) {
         container.innerHTML = `
-          <div class="bg-white border border-dashed border-slate-200 rounded-2xl p-4 text-center text-xs text-slate-400 font-medium">
-            Em chưa tạo Thread nào gần đây. Hãy thử chia sẻ sách hoặc báo đồ rơi nhé!
+          <div class="bg-white dark:bg-zinc-900 border-2 border-dashed border-black/30 dark:border-zinc-700 rounded-3xl p-6 text-center text-xs text-zinc-500 dark:text-zinc-400 font-bold shadow-[2px_2px_0px_0px_#000000]">
+            Em chưa tạo Thread nào gần đây. Hãy thử chia sẻ sách, báo đồ rơi hoặc gửi tâm sự học đường nhé!
           </div>
         `;
         return;
@@ -4053,32 +4180,48 @@
 
       myLF.forEach(item => {
         const div = document.createElement('div');
-        div.className = "bg-white border border-slate-200 rounded-2xl p-3 flex items-center justify-between text-xs font-semibold shadow-sm";
+        div.className = "bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-2xl p-3 flex items-center justify-between text-xs font-bold shadow-[2px_2px_0px_0px_#000000]";
         div.innerHTML = `
-          <div class="flex items-center gap-2">
-            <span>${item.type === 'lost' ? '😭' : '✨'}</span>
-            <div>
-              <p class="text-slate-900 font-bold">${item.title}</p>
-              <p class="text-[10px] text-slate-400">Tìm đồ • ${item.time}</p>
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="text-xl flex-shrink-0">${item.type === 'lost' ? '😭' : '✨'}</span>
+            <div class="min-w-0">
+              <p class="text-black dark:text-white font-black truncate">${escapeHTML(item.title)}</p>
+              <p class="text-[10px] text-zinc-500 dark:text-zinc-400 font-semibold">Tìm đồ • ${item.time}</p>
             </div>
           </div>
-          <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-lg border border-slate-200 font-bold">${item.status === 'solved' ? 'Đã tìm thấy' : 'Đang tìm'}</span>
+          <span class="text-[10px] ${item.status === 'solved' ? 'bg-[#00F0FF] text-black' : 'bg-slate-100 dark:bg-zinc-800 text-black dark:text-white'} px-2 py-0.5 rounded-lg border-2 border-black font-black uppercase flex-shrink-0">${item.status === 'solved' ? 'Đã tìm thấy' : 'Đang tìm'}</span>
         `;
         container.appendChild(div);
       });
 
       myBooks.forEach(item => {
         const div = document.createElement('div');
-        div.className = "bg-white border border-slate-200 rounded-2xl p-3 flex items-center justify-between text-xs font-semibold shadow-sm";
+        div.className = "bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-2xl p-3 flex items-center justify-between text-xs font-bold shadow-[2px_2px_0px_0px_#000000]";
         div.innerHTML = `
-          <div class="flex items-center gap-2">
-            <span>📚</span>
-            <div>
-              <p class="text-slate-900 font-bold">${item.title}</p>
-              <p class="text-[10px] text-slate-400">Chợ phiên • ${item.deal === 'free' ? '0đ' : 'Đổi đồ'}</p>
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="text-xl flex-shrink-0">📚</span>
+            <div class="min-w-0">
+              <p class="text-black dark:text-white font-black truncate">${escapeHTML(item.title)}</p>
+              <p class="text-[10px] text-zinc-500 dark:text-zinc-400 font-semibold">Chợ phiên • ${item.deal === 'free' ? '0đ' : 'Đổi đồ'}</p>
             </div>
           </div>
-          <span class="text-[10px] bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-lg border border-emerald-200 font-bold">Đang mở</span>
+          <span class="text-[10px] bg-[#CCFF00] text-black px-2 py-0.5 rounded-lg border-2 border-black font-black uppercase flex-shrink-0">Chợ phiên</span>
+        `;
+        container.appendChild(div);
+      });
+
+      myConf.forEach(item => {
+        const div = document.createElement('div');
+        div.className = "bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-2xl p-3 flex items-center justify-between text-xs font-bold shadow-[2px_2px_0px_0px_#000000]";
+        div.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="text-xl flex-shrink-0">💌</span>
+            <div class="min-w-0">
+              <p class="text-black dark:text-white font-black truncate">${escapeHTML(item.title)}</p>
+              <p class="text-[10px] text-zinc-500 dark:text-zinc-400 font-semibold">Tâm sự • ${item.time}</p>
+            </div>
+          </div>
+          <span class="text-[10px] bg-[#FFE600] text-black px-2 py-0.5 rounded-lg border-2 border-black font-black uppercase flex-shrink-0">Tâm sự CVA</span>
         `;
         container.appendChild(div);
       });
@@ -4089,12 +4232,14 @@
        ===================================================================== */
     function handleGlobalSearch(query) {
       const clearBtn = document.getElementById('clear-search-btn');
-      if (query.trim()) clearBtn.classList.remove('hidden');
-      else clearBtn.classList.add('hidden');
+      if (clearBtn) {
+        if (query.trim()) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
 
       if (currentTab === 'lost-found') renderLostFound(query);
       else if (currentTab === 'books') renderBooks(query);
-      
+      else if (currentTab === 'confessions' && typeof renderConfessions === 'function') renderConfessions(query);
       else if (currentTab === 'landing') {
         switchTab('lost-found');
         renderLostFound(query);
@@ -4166,24 +4311,39 @@
       const defaultActions = [
         { icon: '🎒', title: 'Tìm máy tính Casio FX-580VNX', desc: 'Đồ thất lạc gần đây • Cần cứu giá', action: () => { switchTab('lost-found'); } },
         { icon: '📚', title: 'Pass đề thi thử vào 10 môn Toán giá 0đ', desc: 'Chợ phiên học trò • Khối 9 tặng', action: () => { switchTab('books'); } },
-                { icon: '🥠', title: 'Bốc quẻ may mắn học đường (+10 Aura)', desc: 'Vibe check hàng ngày', action: () => { switchTab('landing'); rollVibeCheck(); } },
+        { icon: '💌', title: 'Góc tâm sự & Confession CVA', desc: 'Chia sẻ thầm kín 100% ẩn danh hoặc có tên', action: () => { switchTab('confessions'); } },
+        { icon: '🕊️', title: 'Trạm sạc bình yên 4-4-4', desc: 'Phòng thở & chữa lành tâm hồn học trò', action: () => { openHealingRoom(); } },
+        { icon: '🥠', title: 'Bốc quẻ may mắn học đường (+10 Aura)', desc: 'Vibe check hàng ngày reset 00:00', action: () => { switchTab('landing'); rollVibeCheck(); } },
         { icon: '🌓', title: 'Đổi giao diện Tối / Sáng (Dark / Light Mode)', desc: 'Phím tắt Ctrl+D • Midnight Cyber hoặc Clean Pastel', action: () => { toggleThemeMode(); } },
-                { icon: '💳', title: 'Xem thẻ học sinh & điểm Aura cá nhân', desc: 'Góc của em • Đổi Avatar', action: () => { switchTab('profile'); } }
+        { icon: '💳', title: 'Xem thẻ học sinh & điểm Aura cá nhân', desc: 'Góc của em • Đổi Avatar', action: () => { switchTab('profile'); } }
       ];
 
-      // Add dynamic matching items from data
+      // Add dynamic matching items from data safely
       const matches = [];
       if (q) {
         lostFoundData.forEach(item => {
-          if (item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q)) {
-            matches.push({ icon: '🎒', title: item.title, desc: `Tìm đồ: ${item.location} • ${item.author}`, action: () => { switchTab('lost-found'); } });
+          const title = item.title || '';
+          const desc = item.desc || '';
+          if (title.toLowerCase().includes(q) || desc.toLowerCase().includes(q)) {
+            matches.push({ icon: '🎒', title: item.title, desc: `Tìm đồ: ${item.location || 'CVA'} • ${item.author}`, action: () => { switchTab('lost-found'); } });
           }
         });
         booksData.forEach(book => {
-          if (book.title.toLowerCase().includes(q) || book.desc.toLowerCase().includes(q)) {
-            matches.push({ icon: '📚', title: book.title, desc: `Chợ sách: Lớp ${book.grade} • ${book.author}`, action: () => { switchTab('books'); } });
+          const title = book.title || '';
+          const cond = book.condition || '';
+          if (title.toLowerCase().includes(q) || cond.toLowerCase().includes(q)) {
+            matches.push({ icon: '📚', title: book.title, desc: `Chợ sách: Lớp ${book.grade || '8'} • ${book.author}`, action: () => { switchTab('books'); } });
           }
         });
+        if (typeof confessionsData !== 'undefined' && Array.isArray(confessionsData)) {
+          confessionsData.forEach(conf => {
+            const title = conf.title || '';
+            const content = conf.content || '';
+            if (title.toLowerCase().includes(q) || content.toLowerCase().includes(q)) {
+              matches.push({ icon: '💌', title: conf.title, desc: `Tâm sự: ${conf.categoryName || 'CVA'} • ${conf.author}`, action: () => { switchTab('confessions'); } });
+            }
+          });
+        }
       }
 
       const listToRender = q ? (matches.length > 0 ? matches : defaultActions.filter(a => a.title.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q))) : defaultActions;
@@ -4199,15 +4359,15 @@
       }
 
       container.innerHTML = listToRender.map((item, idx) => `
-        <div onclick="executeCommandItem(${idx})" class="command-palette-item p-2.5 rounded-xl border border-transparent cursor-pointer flex items-center justify-between text-xs">
+        <div onclick="executeCommandItem(${idx})" class="command-palette-item p-2.5 rounded-2xl border-2 border-transparent hover:border-black dark:hover:border-zinc-600 hover:bg-[#CCFF00]/20 dark:hover:bg-zinc-800 cursor-pointer flex items-center justify-between text-xs transition">
           <div class="flex items-center gap-3">
-            <span class="text-base flex-shrink-0">${item.icon}</span>
+            <span class="text-lg flex-shrink-0">${item.icon}</span>
             <div>
-              <p class="font-bold text-slate-900 leading-tight">${escapeHTML(item.title)}</p>
-              <p class="text-[11px] text-slate-500 mt-0.5 leading-none">${escapeHTML(item.desc)}</p>
+              <p class="font-black text-black dark:text-white leading-tight">${escapeHTML(item.title)}</p>
+              <p class="text-[11px] text-zinc-600 dark:text-zinc-400 font-bold mt-0.5 leading-none">${escapeHTML(item.desc)}</p>
             </div>
           </div>
-          <span class="text-[10px] text-slate-400 font-semibold flex items-center gap-1">Chọn ↵</span>
+          <span class="text-[10px] font-black bg-black text-[#FFE600] border border-black px-1.5 py-0.5 rounded shadow-[1px_1px_0px_0px_#000000]">↵ Chọn</span>
         </div>
       `).join('');
 
@@ -4220,6 +4380,17 @@
         window.currentCommandList[idx].action();
       }
     }
+
+    // Auto-close FAB Menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const fabBtn = document.getElementById('fab-button');
+      const fabMenu = document.getElementById('fab-menu');
+      if (fabBtn && fabMenu && !fabMenu.classList.contains('hidden')) {
+        if (!fabBtn.contains(e.target) && !fabMenu.contains(e.target)) {
+          toggleFabMenu();
+        }
+      }
+    });
 
     // Global Keyboard listener for Command Palette (Ctrl+K or Cmd+K)
     window.addEventListener('keydown', (e) => {
@@ -4246,7 +4417,7 @@
     /* =====================================================================
        GÓC TÂM SỰ HỌC ĐƯỜNG & CVA CONFESSIONS (100% ẨN DANH HOẶC GHI TÊN)
        ===================================================================== */
-    function renderConfessions() {
+    function renderConfessions(searchQuery = '') {
       const container = document.getElementById('confessions-items');
       if (!container) return;
 
@@ -4262,6 +4433,17 @@
         filtered = filtered.filter(item => item.isAnonymous);
       } else if (currentConfMode === 'named') {
         filtered = filtered.filter(item => !item.isAnonymous);
+      }
+
+      // Filter by Search Query
+      if (searchQuery && typeof searchQuery === 'string') {
+        const q = searchQuery.toLowerCase().trim();
+        filtered = filtered.filter(item => 
+          (item.title && item.title.toLowerCase().includes(q)) || 
+          (item.content && item.content.toLowerCase().includes(q)) ||
+          (item.author && item.author.toLowerCase().includes(q)) ||
+          (item.anonNick && item.anonNick.toLowerCase().includes(q))
+        );
       }
 
       if (filtered.length === 0) {
