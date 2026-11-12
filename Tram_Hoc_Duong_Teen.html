@@ -190,13 +190,105 @@
       box-shadow: 7px 7px 0px 0px #FFE600 !important;
     }
 
-        body {
+        /* Base Canvas: Warm Vintage Paper + Retro Dot Grid */
+    body {
       font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-tap-highlight-color: transparent;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       letter-spacing: -0.012em;
-      background-color: #F8FAFC;
+      background-color: #FDFBF7;
+      background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1.2px, transparent 1.2px);
+      background-size: 20px 20px;
+    }
+    html.dark body,
+    [data-theme="dark"] body {
+      background-color: #09090B;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.2px, transparent 1.2px);
+      background-size: 20px 20px;
+    }
+
+    /* Sticker Tilt Classes & Animations */
+    .sticker-tilt-left  { transform: rotate(-2deg); }
+    .sticker-tilt-right { transform: rotate(2deg); }
+    .sticker-tilt-hard-left  { transform: rotate(-4deg); }
+    .sticker-tilt-hard-right { transform: rotate(4deg); }
+
+    /* Retro Badge Stamp Token */
+    .retro-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      border: 2px solid #000000;
+      font-weight: 900;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 2px 2px 0px 0px #000000;
+      user-select: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .retro-stamp:hover {
+      transform: scale(1.06) rotate(0deg) !important;
+      box-shadow: 3.5px 3.5px 0px 0px #000000 !important;
+    }
+    html.dark .retro-stamp,
+    [data-theme="dark"] .retro-stamp {
+      border-color: #27272A;
+      box-shadow: 2px 2px 0px 0px #CCFF00;
+    }
+
+    /* Hard Offset Shadow System & Tactile Click Physics */
+    .shadow-brutal-xs { box-shadow: 1.5px 1.5px 0px 0px #000000; }
+    .shadow-brutal-sm { box-shadow: 2px 2px 0px 0px #000000; }
+    .shadow-brutal    { box-shadow: 4px 4px 0px 0px #000000; }
+    .shadow-brutal-lg { box-shadow: 6px 6px 0px 0px #000000; }
+    .shadow-brutal-xl { box-shadow: 8px 8px 0px 0px #000000; }
+
+    html.dark .shadow-brutal,
+    [data-theme="dark"] .shadow-brutal {
+      box-shadow: 4px 4px 0px 0px #CCFF00 !important;
+    }
+    html.dark .shadow-brutal-pink,
+    [data-theme="dark"] .shadow-brutal-pink {
+      box-shadow: 4px 4px 0px 0px #FF007A !important;
+    }
+    html.dark .shadow-brutal-yellow,
+    [data-theme="dark"] .shadow-brutal-yellow {
+      box-shadow: 4px 4px 0px 0px #FFE600 !important;
+    }
+
+    .tactile-btn {
+      border: 2px solid #000000 !important;
+      box-shadow: 4px 4px 0px 0px #000000 !important;
+      font-weight: 900 !important;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      cursor: pointer !important;
+    }
+    .tactile-btn:hover {
+      transform: translate(-1.5px, -1.5px) !important;
+      box-shadow: 6px 6px 0px 0px #000000 !important;
+    }
+    .tactile-btn:active {
+      transform: translate(2px, 2px) !important;
+      box-shadow: 0px 0px 0px 0px #000000 !important;
+    }
+
+    .retro-sticker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 9999px;
+      border: 2px solid #000000;
+      box-shadow: 2px 2px 0px 0px #000000;
+      font-weight: 900;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      user-select: none;
     }
 
     /* Signature High-Aura Display Headings (Space Grotesk) */
@@ -572,7 +664,7 @@
 </style>
 </head>
 
-<body class="text-slate-800 min-h-screen pb-24 antialiased selection:bg-rose-500 selection:text-white relative bg-slate-50/80">
+<body class="text-black dark:text-zinc-100 min-h-screen pb-24 antialiased selection:bg-[#FF007A] selection:text-white relative bg-[#FDFBF7] dark:bg-[#09090B]">
   
   <!-- FLOATING COLORFUL AMBIENT MESH GLOW ORBS (THÊM MÀU SẮC GEN Z) -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
@@ -584,6 +676,8 @@
 
   <!-- ==================== HEADER (GEN Z NEOBRUTALISM) ==================== -->
   <header class="sticky top-0 z-30 bg-[#FDFBF7] dark:bg-zinc-950 border-b-2 border-black dark:border-zinc-800 px-4 py-2.5 transition-all shadow-[0px_3px_0px_0px_#000000] dark:shadow-[0px_3px_0px_0px_#18181b]">
+    <!-- 3.5px Cyber Rainbow Accent Stripe -->
+    <div class="absolute top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-[#FF007A] via-[#FFE600] to-[#00F0FF] border-b border-black"></div>
     <div class="max-w-6xl xl:max-w-7xl mx-auto flex items-center justify-between gap-4">
       
       <!-- Brand & Mascot (Official CVA Logo) -->
@@ -649,18 +743,21 @@
       </div>
     </div>
 
-    <!-- Search input -->
+    <!-- Search input with ⌘K sticker pill -->
     <div class="max-w-6xl xl:max-w-7xl mx-auto mt-2.5">
       <div class="relative">
         <svg class="w-4 h-4 text-slate-400 stroke-2 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="M21 21l-4.35-4.35"/></svg>
         <input 
           id="global-search-input" onclick="openCommandPalette()"
           type="text" 
-          placeholder="Tìm kiếm hoặc nhấn Ctrl+K để mở Command Palette..." 
+          placeholder="Tìm kiếm hoặc nhấn ⌘K / Ctrl+K để mở Command Palette..." 
           oninput="handleGlobalSearch(this.value)"
-          class="w-full bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 focus:border-black dark:focus:border-[#CCFF00] rounded-full pl-9 pr-8 py-2 text-xs font-bold text-black dark:text-white focus:outline-none transition placeholder:text-zinc-500 shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#CCFF00]"
+          class="w-full bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 focus:border-black dark:focus:border-[#CCFF00] rounded-full pl-9 pr-14 py-2 text-xs font-bold text-black dark:text-white focus:outline-none transition placeholder:text-zinc-500 shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#CCFF00]"
         />
-        <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+        <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 pointer-events-none">
+          <span class="hidden sm:inline-flex items-center text-[10px] font-black uppercase bg-zinc-100 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 px-2 py-0.5 rounded-lg text-black dark:text-zinc-300 shadow-[1.5px_1.5px_0px_0px_#000000]">⌘K</span>
+        </div>
+        <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-12 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
           <i data-lucide="x" class="w-3.5 h-3.5"></i>
         </button>
       </div>
@@ -668,30 +765,30 @@
   </header>
 
   <!-- ==================== CHIC RETRO ANNOUNCEMENT TICKER (GEN Z NEOBRUTALISM) ==================== -->
-  <div class="announcement-ticker py-2 overflow-hidden select-none">
-    <div class="flex whitespace-nowrap animate-marquee text-xs font-black tracking-wider uppercase text-black dark:text-zinc-200">
+  <div class="announcement-ticker bg-[#FFE600] dark:bg-[#FFE600] text-black border-y-2 border-black py-2.5 font-black shadow-[0_2px_0px_0px_#000000] overflow-hidden select-none">
+    <div class="flex whitespace-nowrap animate-marquee text-xs font-black tracking-wider uppercase text-black">
       <span class="mx-5 inline-flex items-center gap-2">
-        <span class="px-2 py-0.5 rounded-full bg-black text-[#FFE600] text-[10px] font-black uppercase tracking-wider border border-black">Cần Cứu Giá</span>
+        <span class="retro-stamp bg-[#FF007A] text-white sticker-tilt-left">🔥 CẦN CỨU GIÁ</span>
         <span>Ai để quên Casio FX-580VNX phòng Tin học lên nhận gấp nha! ⚡</span>
       </span>
-      <span class="text-black dark:text-zinc-600 font-black">•</span>
+      <span class="text-black font-black text-sm">•</span>
       <span class="mx-5 inline-flex items-center gap-2">
-        <span class="px-2 py-0.5 rounded-full bg-white text-black text-[10px] font-black uppercase tracking-wider border-2 border-black">Chợ Phiên 0đ</span>
+        <span class="retro-stamp bg-[#CCFF00] text-black sticker-tilt-right">📚 CHỢ PHIÊN 0Đ</span>
         <span>Anh chị Khối 9 vừa pass bộ đề thi thử vào 10 môn Toán giá 0đ! 📚</span>
       </span>
-      <span class="text-black dark:text-zinc-600 font-black">•</span>
+      <span class="text-black font-black text-sm">•</span>
       <span class="mx-5 inline-flex items-center gap-2">
-        <span class="px-2 py-0.5 rounded-full bg-[#FF007A] text-white text-[10px] font-black uppercase tracking-wider border-2 border-black">Quẻ May Mắn</span>
+        <span class="retro-stamp bg-black text-[#FFE600] sticker-tilt-hard-left">🥠 QUẺ MAY MẮN</span>
         <span>Bốc quẻ may mắn học đường &amp; Check VAR chính chủ nhận ngay +1000 Aura! ⚡</span>
       </span>
-      <span class="text-black dark:text-zinc-600 font-black">•</span>
+      <span class="text-black font-black text-sm">•</span>
       <span class="mx-5 inline-flex items-center gap-2">
-        <span class="px-2 py-0.5 rounded-full bg-[#00F0FF] text-black text-[10px] font-black uppercase tracking-wider border-2 border-black">Check VAR</span>
+        <span class="retro-stamp bg-[#00F0FF] text-black sticker-tilt-right">🔍 CHECK VAR</span>
         <span>Nhặt được khăn quàng đỏ thêu 7A4 ở sân cờ, bấm Check VAR nhận lại! 🧣</span>
       </span>
-      <span class="text-black dark:text-zinc-600 font-black">•</span>
+      <span class="text-black font-black text-sm">•</span>
       <span class="mx-5 inline-flex items-center gap-2">
-        <span class="px-2 py-0.5 rounded-full bg-[#CCFF00] text-black text-[10px] font-black uppercase tracking-wider border-2 border-black">Aura Học Đường</span>
+        <span class="retro-stamp bg-white text-black sticker-tilt-left">✨ AURA HỌC ĐƯỜNG</span>
         <span>Chúc toàn thể học sinh THCS Chu Văn An học nhẹ nhàng, +1000 Aura! ✨</span>
       </span>
     </div>
@@ -704,24 +801,30 @@
     <section id="tab-landing" class="tab-view space-y-4">
       
       <!-- ==================== CVA 24H VIBE STORIES BAR (INSTAGRAM / THREADS STYLE) ==================== -->
-      <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-3 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] overflow-x-auto no-scrollbar select-none">
-        <div id="stories-container" class="flex items-center gap-4 px-1 min-w-max">
-          
+      <div class="bg-white dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-3.5 sm:p-4 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] overflow-x-auto no-scrollbar select-none">
+        <!-- Header Row -->
+        <div class="flex items-center justify-between px-1 mb-2.5 pb-2 border-b-2 border-black/10 dark:border-zinc-800">
+          <div class="flex items-center gap-2">
+            <span class="text-sm">📸</span>
+            <span class="text-xs font-black uppercase tracking-wider font-heading text-black dark:text-white">CVA 24H Vibe Stories</span>
+            <span class="retro-stamp bg-[#FF007A] text-white sticker-tilt-hard-left animate-pulse">🔥 #CVA_HOT</span>
+          </div>
+          <span class="text-[10px] font-bold text-zinc-500 dark:text-zinc-400">Vuốt ngang để xem ⚡</span>
+        </div>
+        <div id="stories-container" class="flex items-center gap-3.5 px-1 min-w-max">
           <!-- Story 0: Your Story (+) -->
-          <div onclick="openCreateStoryModal()" class="flex flex-col items-center gap-1 cursor-pointer group">
-            <div class="relative p-0.5 rounded-full border-2 border-dashed border-black dark:border-zinc-500 group-hover:scale-105 transition">
-              <div id="story-my-avatar" class="w-13 h-13 rounded-full bg-[#FFE600] flex items-center justify-center text-2xl border-2 border-black overflow-hidden shadow-[2px_2px_0px_0px_#000000]">
-                🐱
-              </div>
-              <span class="absolute bottom-0 right-0 w-4 h-4 bg-[#CCFF00] text-black border border-black rounded-full flex items-center justify-center text-[11px] font-black">+</span>
+          <div onclick="openCreateStoryModal()" class="flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+            <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-dashed border-black dark:border-[#CCFF00] bg-white dark:bg-zinc-800 p-0.5 flex items-center justify-center transition-transform hover:scale-105 shadow-[2.5px_2.5px_0px_0px_#000000]">
+              <span class="text-2xl">🐱</span>
+              <span class="absolute -bottom-1 -right-1 w-5 h-5 bg-[#CCFF00] text-black border-2 border-black rounded-full flex items-center justify-center text-xs font-black">+</span>
             </div>
             <span class="text-[10px] font-black uppercase text-black dark:text-zinc-300">Tin của bạn</span>
           </div>
 
           <!-- Story 1: 9A1 Ôn Thi -->
-          <div onclick="openStoryViewer(0)" class="flex flex-col items-center gap-1 cursor-pointer group">
-            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#FF007A] via-[#FFE600] to-[#00F0FF] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
-              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+          <div onclick="openStoryViewer(0)" class="flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#FF007A] via-[#FFE600] to-[#00F0FF] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
+              <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 🦊
               </div>
             </div>
@@ -729,9 +832,9 @@
           </div>
 
           <!-- Story 2: Căn-tin CVA -->
-          <div onclick="openStoryViewer(1)" class="flex flex-col items-center gap-1 cursor-pointer group">
-            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#CCFF00] to-[#00F0FF] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
-              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+          <div onclick="openStoryViewer(1)" class="flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#CCFF00] to-[#00F0FF] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
+              <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 🧋
               </div>
             </div>
@@ -739,9 +842,9 @@
           </div>
 
           <!-- Story 3: Sân Bóng Rổ -->
-          <div onclick="openStoryViewer(2)" class="flex flex-col items-center gap-1 cursor-pointer group">
-            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#FF007A] to-[#FFE600] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
-              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+          <div onclick="openStoryViewer(2)" class="flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#FF007A] to-[#FFE600] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
+              <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 🏀
               </div>
             </div>
@@ -749,9 +852,9 @@
           </div>
 
           <!-- Story 4: Capybara Chill -->
-          <div onclick="openStoryViewer(3)" class="flex flex-col items-center gap-1 cursor-pointer group">
-            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#00F0FF] to-[#CCFF00] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
-              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+          <div onclick="openStoryViewer(3)" class="flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#00F0FF] to-[#CCFF00] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
+              <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 🐻
               </div>
             </div>
@@ -759,15 +862,14 @@
           </div>
 
           <!-- Story 5: Sách 0đ -->
-          <div onclick="openStoryViewer(4)" class="flex flex-col items-center gap-1 cursor-pointer group">
-            <div class="p-0.5 rounded-full border-2 border-black bg-gradient-to-tr from-[#FFE600] to-[#FF007A] group-hover:scale-105 transition shadow-[2px_2px_0px_0px_#000000]">
-              <div class="w-13 h-13 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
+          <div onclick="openStoryViewer(4)" class="flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#FFE600] to-[#FF007A] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
+              <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 📚
               </div>
             </div>
             <span class="text-[10px] font-black uppercase text-black dark:text-zinc-300">Tủ Sách 0đ</span>
           </div>
-
         </div>
       </div>
 
@@ -775,8 +877,13 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
         
         <!-- Bento 1: Main Hero Banner (Col span 2) -->
-        <div class="md:col-span-2 relative bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-7 shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] hover:-translate-y-0.5 hover:shadow-[8px_8px_0px_0px_#000000] dark:hover:shadow-[8px_8px_0px_0px_#CCFF00] transition-all overflow-hidden flex flex-col justify-between group">
+        <div class="md:col-span-2 relative bg-white dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-7 shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] hover:-translate-y-0.5 hover:shadow-[8px_8px_0px_0px_#000000] dark:hover:shadow-[8px_8px_0px_0px_#CCFF00] transition-all overflow-hidden flex flex-col justify-between group">
           
+          <!-- Top Right Floating Sticker Stamp -->
+          <div class="absolute -top-1 -right-1 rotate-6 hidden sm:flex items-center gap-1 bg-[#FFE600] text-black border-2 border-black px-3 py-1 rounded-2xl shadow-[3px_3px_0px_0px_#000000] text-[10px] font-black uppercase tracking-widest z-0 pointer-events-none select-none">
+            <span>⚡</span> 100% CVA GEN Z
+          </div>
+
           <div class="space-y-3 relative z-10">
             <!-- School Brand Tag -->
             <div class="flex items-center gap-2">
@@ -784,14 +891,14 @@
                 <img src="logo.png" onerror="this.onerror=null; this.src=CVA_LOGO;" alt="CVA" class="w-3.5 h-3.5 rounded-full object-contain" />
                 <span>THCS Chu Văn An</span>
               </span>
-              <span class="px-2.5 py-1 rounded-full bg-black text-[#FFE600] dark:bg-[#FFE600] dark:text-black border-2 border-black text-[10px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">
-                Retro Pop 2026
+              <span class="retro-stamp bg-black text-[#FFE600] sticker-tilt-right">
+                #TRẠM_TEEN_2026
               </span>
             </div>
 
             <!-- Clean Hero Title -->
-            <h2 class="text-3xl sm:text-4xl font-black text-black dark:text-white tracking-tight uppercase leading-tight font-display">
-              Trạm Học Đường Teen
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-black dark:text-white tracking-tight uppercase leading-tight font-display">
+              TRẠM HỌC ĐƯỜNG TEEN <span class="inline-block bg-[#FFE600] text-black px-2 py-0.5 rounded-xl border-2 border-black shadow-[3px_3px_0px_0px_#000000] -rotate-1 text-2xl sm:text-3xl md:text-4xl">CVA</span>
             </h2>
 
             <!-- Editorial Subtitle -->
@@ -804,25 +911,25 @@
           <div class="pt-5 flex flex-wrap gap-2.5 relative z-10">
             <button 
               onclick="switchTab('lost-found')" 
-              class="bg-[#FF007A] text-white hover:bg-[#E6006E] border-2 border-black font-black text-xs px-4 py-2.5 rounded-2xl shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FF007A] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
+              class="bg-[#FF007A] text-white hover:bg-[#E6006E] border-2 border-black font-black text-xs sm:text-sm px-4 sm:px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
             >
               <span>🔍</span> Check VAR Tìm Đồ
             </button>
             <button 
               onclick="switchTab('books')" 
-              class="bg-[#CCFF00] text-black hover:bg-[#B8E600] border-2 border-black font-black text-xs px-4 py-2.5 rounded-2xl shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#CCFF00] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
+              class="bg-[#CCFF00] text-black hover:bg-[#B8E600] border-2 border-black font-black text-xs sm:text-sm px-4 sm:px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
             >
               <span>📚</span> Chợ Phiên Sách 0đ
             </button>
             <button 
               onclick="switchTab('confessions')" 
-              class="bg-[#FFE600] text-black hover:bg-[#FADB14] border-2 border-black font-black text-xs px-4 py-2.5 rounded-2xl shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
+              class="bg-[#FFE600] text-black hover:bg-[#FADB14] border-2 border-black font-black text-xs sm:text-sm px-4 sm:px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
             >
               <span>💌</span> Góc Tâm Sự CVA
             </button>
             <button 
               onclick="openProfileModal()" 
-              class="bg-[#00F0FF] text-black hover:bg-[#00D6E6] border-2 border-black font-black text-xs px-4 py-2.5 rounded-2xl shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#00F0FF] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
+              class="bg-[#00F0FF] text-black hover:bg-[#00D6E6] border-2 border-black font-black text-xs sm:text-sm px-4 sm:px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
             >
               <span>🎟️</span> Thẻ Học Sinh CVA
             </button>
@@ -830,10 +937,10 @@
         </div>
 
         <!-- Bento 2: Mini-game "Bốc Quẻ Học Đường / Vibe Check" (Neobrutalism Edition) -->
-        <div id="bento-vibe-card" class="bg-[#FFF8E7] dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] flex flex-col justify-between text-center relative overflow-hidden transition-all duration-300">
+        <div id="bento-vibe-card" class="bg-[#FFF8E7] dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] flex flex-col justify-between text-center relative overflow-hidden transition-all duration-300">
           <div class="space-y-2 relative z-10">
             <div onclick="resetDailyVibeForTesting()" title="Click để reset bốc lại thử nghiệm (+10 Aura)" class="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border-2 border-black bg-[#FFE600] text-black shadow-[2px_2px_0px_0px_#000000] cursor-pointer hover:scale-105 transition active:scale-95 select-none" id="vibe-badge">
-              <span>🥠</span> Quẻ May Mắn <span class="text-[9px] bg-black text-[#FFE600] px-1.5 py-0.2 rounded-full font-black">1 LẦN/NGÀY • 00:00</span>
+              <span>🥠</span> Quẻ May Mắn <span id="vibe-countdown-badge" class="text-[9px] bg-black text-[#FFE600] px-1.5 py-0.2 rounded-full font-black">RESET: --:--:--</span>
             </div>
             
             <h3 class="text-xs font-black uppercase tracking-tight text-black dark:text-white font-heading" id="vibe-title">Vibe Check Hôm Nay</h3>
@@ -847,7 +954,7 @@
             <button 
               id="vibe-check-btn" 
               onclick="rollVibeCheck()" 
-              class="w-full bg-[#FFE600] text-black hover:bg-[#FADB14] border-2 border-black font-black text-xs py-3 px-4 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer"
+              class="w-full bg-[#FFE600] text-black hover:bg-[#FADB14] border-2 border-black font-black text-xs sm:text-sm py-3 px-4 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer"
             >
               <span>Rút Quẻ Ngay (+10 Aura) ✨</span>
             </button>
@@ -935,84 +1042,82 @@
           <!-- Horizontal Scroll / Flex Grid of Online Classmates -->
           <div id="lobby-player-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-8 gap-2">
             
-            <div onclick="pokeStudent('Dev Khánhh (8A1)')" class="group flex items-center gap-2 bg-white/95 dark:bg-slate-800/90 border border-amber-300 dark:border-amber-500/50 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-amber-400 hover:-translate-y-0.5 transition-all cursor-pointer relative overflow-hidden">
+                      <div onclick="pokeStudent('Dev Khánhh (8A1)')" class="group flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-2.5 shadow-[2.5px_2.5px_0px_0px_#000000] dark:shadow-[2.5px_2.5px_0px_0px_#CCFF00] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer relative overflow-hidden">
               <span class="text-xl group-hover:scale-110 transition-transform">🐱</span>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1">
-                  <p class="text-xs font-extrabold text-slate-900 dark:text-white truncate">Dev Khánhh</p>
-                  <span class="text-[9px] font-black bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 px-1 py-0.2 rounded-md">8A1</span>
+                  <p class="text-xs font-black text-black dark:text-white truncate">Dev Khánhh</p>
+                  <span class="text-[9px] font-black bg-[#FFE600] text-black border border-black px-1 py-0.2 rounded-md">8A1</span>
                 </div>
-                <p class="text-[9px] font-bold text-amber-600 dark:text-amber-400 truncate">👑 Host Sân Trường</p>
+                <p class="text-[9px] font-black text-[#FF007A] dark:text-[#FF66B2] truncate">👑 Host Sân Trường</p>
               </div>
             </div>
 
-            <div onclick="pokeStudent('Hải Đăng (9A1)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-rose-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div onclick="pokeStudent('Hải Đăng (9A1)')" class="group flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-2.5 shadow-[2.5px_2.5px_0px_0px_#000000] dark:shadow-[2.5px_2.5px_0px_0px_#FF007A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
               <span class="text-xl group-hover:scale-110 transition-transform">🦊</span>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1">
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Hải Đăng</p>
-                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">9A1</span>
+                  <p class="text-xs font-black text-black dark:text-white truncate">Hải Đăng</p>
+                  <span class="text-[9px] font-black bg-zinc-100 dark:bg-zinc-700 text-black dark:text-zinc-200 border border-black px-1 py-0.2 rounded-md">9A1</span>
                 </div>
-                <p class="text-[9px] font-medium text-rose-500 truncate">🔥 Top 1 VAR</p>
+                <p class="text-[9px] font-black text-[#FF007A] truncate">🔥 Top 1 VAR</p>
               </div>
             </div>
 
-            <div onclick="pokeStudent('Bảo Ngọc (8A3)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-emerald-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div onclick="pokeStudent('Bảo Ngọc (8A3)')" class="group flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-2.5 shadow-[2.5px_2.5px_0px_0px_#000000] dark:shadow-[2.5px_2.5px_0px_0px_#CCFF00] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
               <span class="text-xl group-hover:scale-110 transition-transform">🐰</span>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1">
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Bảo Ngọc</p>
-                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">8A3</span>
+                  <p class="text-xs font-black text-black dark:text-white truncate">Bảo Ngọc</p>
+                  <span class="text-[9px] font-black bg-zinc-100 dark:bg-zinc-700 text-black dark:text-zinc-200 border border-black px-1 py-0.2 rounded-md">8A3</span>
                 </div>
-                <p class="text-[9px] font-medium text-emerald-600 dark:text-emerald-400 truncate">📚 Chợ Sách 0đ</p>
+                <p class="text-[9px] font-black text-emerald-600 dark:text-[#CCFF00] truncate">📚 Chợ Sách 0đ</p>
               </div>
             </div>
 
-            <div onclick="pokeStudent('Quỳnh Chi (7A4)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-indigo-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div onclick="pokeStudent('Quỳnh Chi (7A4)')" class="group flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-2.5 shadow-[2.5px_2.5px_0px_0px_#000000] dark:shadow-[2.5px_2.5px_0px_0px_#00F0FF] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
               <span class="text-xl group-hover:scale-110 transition-transform">🐱</span>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1">
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Quỳnh Chi</p>
-                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">7A4</span>
+                  <p class="text-xs font-black text-black dark:text-white truncate">Quỳnh Chi</p>
+                  <span class="text-[9px] font-black bg-zinc-100 dark:bg-zinc-700 text-black dark:text-zinc-200 border border-black px-1 py-0.2 rounded-md">7A4</span>
                 </div>
-                <p class="text-[9px] font-medium text-indigo-500 truncate">⚡ 1.200 Aura</p>
+                <p class="text-[9px] font-black text-cyan-600 dark:text-[#00F0FF] truncate">⚡ 1.200 Aura</p>
               </div>
             </div>
 
-            <div onclick="pokeStudent('Tuấn Kiệt (8A2)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-amber-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div onclick="pokeStudent('Tuấn Kiệt (8A2)')" class="group flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-2.5 shadow-[2.5px_2.5px_0px_0px_#000000] dark:shadow-[2.5px_2.5px_0px_0px_#FFE600] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
               <span class="text-xl group-hover:scale-110 transition-transform">🐶</span>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1">
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Tuấn Kiệt</p>
-                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">8A2</span>
+                  <p class="text-xs font-black text-black dark:text-white truncate">Tuấn Kiệt</p>
+                  <span class="text-[9px] font-black bg-zinc-100 dark:bg-zinc-700 text-black dark:text-zinc-200 border border-black px-1 py-0.2 rounded-md">8A2</span>
                 </div>
-                <p class="text-[9px] font-medium text-amber-500 truncate">✨ Quẻ Đại Cát</p>
+                <p class="text-[9px] font-black text-amber-600 dark:text-[#FFE600] truncate">✨ Quẻ Đại Cát</p>
               </div>
             </div>
 
-            <div onclick="pokeStudent('Đức Anh (9A4)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-sky-400 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div onclick="pokeStudent('Đức Anh (9A4)')" class="group flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-2.5 shadow-[2.5px_2.5px_0px_0px_#000000] dark:shadow-[2.5px_2.5px_0px_0px_#FF007A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
               <span class="text-xl group-hover:scale-110 transition-transform">🐼</span>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1">
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Đức Anh</p>
-                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">9A4</span>
+                  <p class="text-xs font-black text-black dark:text-white truncate">Đức Anh</p>
+                  <span class="text-[9px] font-black bg-zinc-100 dark:bg-zinc-700 text-black dark:text-zinc-200 border border-black px-1 py-0.2 rounded-md">9A4</span>
                 </div>
-                <p class="text-[9px] font-medium text-sky-500 truncate">🎯 Thi Vào 10</p>
+                <p class="text-[9px] font-black text-purple-600 dark:text-purple-400 truncate">🧋 Nghiện Trà Sữa</p>
               </div>
             </div>
 
-            <div onclick="pokeStudent('Hà My (7A1)')" class="group flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-2 shadow-xs hover:shadow-md hover:border-purple-400 hover:-translate-y-0.5 transition-all cursor-pointer">
-              <span class="text-xl group-hover:scale-110 transition-transform">🐯</span>
+            <div onclick="pokeStudent('Minh Trang (7A1)')" class="group flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-2xl p-2.5 shadow-[2.5px_2.5px_0px_0px_#000000] dark:shadow-[2.5px_2.5px_0px_0px_#FF007A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
+              <span class="text-xl group-hover:scale-110 transition-transform">🐨</span>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1">
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Hà My</p>
-                  <span class="text-[9px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 py-0.2 rounded-md">7A1</span>
+                  <p class="text-xs font-black text-black dark:text-white truncate">Minh Trang</p>
+                  <span class="text-[9px] font-black bg-zinc-100 dark:bg-zinc-700 text-black dark:text-zinc-200 border border-black px-1 py-0.2 rounded-md">7A1</span>
                 </div>
-                <p class="text-[9px] font-medium text-purple-500 truncate">🧋 Mê Trà Sữa</p>
+                <p class="text-[9px] font-black text-pink-600 dark:text-[#FF007A] truncate">🌸 Thích Đọc Sách</p>
               </div>
-            </div>
-
-            <div onclick="openModal('modal-online-students')" class="flex items-center justify-center gap-1.5 bg-indigo-50/70 dark:bg-indigo-950/50 border border-dashed border-indigo-300 dark:border-indigo-700/60 rounded-2xl p-2 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100/80 hover:-translate-y-0.5 transition-all cursor-pointer">
+            </div>div onclick="openModal('modal-online-students')" class="flex items-center justify-center gap-1.5 bg-indigo-50/70 dark:bg-indigo-950/50 border border-dashed border-indigo-300 dark:border-indigo-700/60 rounded-2xl p-2 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100/80 hover:-translate-y-0.5 transition-all cursor-pointer">
               <span class="text-xs font-extrabold">+35 bạn...</span>
             </div>
           </div>
@@ -1076,14 +1181,20 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
           <!-- Problem 1: Rơi Casio & Khăn Quàng -->
-          <div class="bg-[#FFF0F5] dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FF007A] flex flex-col justify-between space-y-3 hover:-translate-y-1 transition-all">
+          <div class="bg-[#FFF0F5] dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FF007A] flex flex-col justify-between space-y-3 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
             <div class="space-y-2">
               <span class="text-3xl">😭</span>
-              <h4 class="text-sm font-black text-black dark:text-white uppercase tracking-tight">Rơi Casio &amp; Khăn Quàng?</h4>
-              <p class="text-xs text-zinc-700 dark:text-zinc-300 font-medium leading-relaxed">
-                <b>Cách cũ:</b> Hớt hải chạy khắp các tầng lớp, đăng bài Facebook bị trôi tin, nhận nhầm hoặc thất lạc vĩnh viễn.<br/>
-                <b>Trạm Teen:</b> Check VAR chính chủ với <i>Câu hỏi bí mật</i>, xác minh 100% trong 30 giây!
-              </p>
+              <h4 class="text-sm font-black text-black dark:text-white uppercase tracking-tight font-display">Rơi Casio &amp; Khăn Quàng?</h4>
+              <div class="space-y-2 text-xs font-medium">
+                <div class="p-2.5 rounded-2xl bg-white/80 dark:bg-zinc-800/90 border-2 border-black/20">
+                  <span class="inline-block px-2 py-0.5 rounded-md bg-rose-200 text-rose-900 border border-black text-[9px] font-black uppercase mb-1">❌ Cách Cũ</span>
+                  <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed">Hớt hải chạy khắp các tầng lớp, đăng bài Facebook trôi tin, nhận nhầm hoặc thất lạc vĩnh viễn.</p>
+                </div>
+                <div class="p-2.5 rounded-2xl bg-[#CCFF00]/40 dark:bg-zinc-800/90 border-2 border-black">
+                  <span class="inline-block px-2 py-0.5 rounded-md bg-[#CCFF00] text-black border border-black text-[9px] font-black uppercase mb-1">⚡ Trạm Teen 4.0</span>
+                  <p class="text-black dark:text-white font-bold leading-relaxed">Check VAR chính chủ với <i>Câu hỏi bí mật</i>, xác minh 100% trong 30 giây!</p>
+                </div>
+              </div>
             </div>
             <div class="pt-2 border-t-2 border-black/10 dark:border-zinc-800">
               <span class="text-[10px] font-black text-[#FF007A] uppercase">✓ 1.850+ đồ đã về chủ</span>
@@ -1091,14 +1202,20 @@
           </div>
 
           <!-- Problem 2: Thiếu Đề Cương Ôn Thi -->
-          <div class="bg-[#F4FFE0] dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#CCFF00] flex flex-col justify-between space-y-3 hover:-translate-y-1 transition-all">
+          <div class="bg-[#F4FFE0] dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#CCFF00] flex flex-col justify-between space-y-3 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
             <div class="space-y-2">
               <span class="text-3xl">📚</span>
-              <h4 class="text-sm font-black text-black dark:text-white uppercase tracking-tight">Thiếu Đề Cương Ôn Thi?</h4>
-              <p class="text-xs text-zinc-700 dark:text-zinc-300 font-medium leading-relaxed">
-                <b>Cách cũ:</b> Mua sách mới đắt đỏ, photo đề cương thiếu trang, không có người định hướng ôn thi vào 10.<br/>
-                <b>Trạm Teen:</b> Anh chị Khối 9 truyền lửa SGK &amp; bộ đề thi thử chất lượng cao hoàn toàn 0đ!
-              </p>
+              <h4 class="text-sm font-black text-black dark:text-white uppercase tracking-tight font-display">Thiếu Đề Cương Ôn Thi?</h4>
+              <div class="space-y-2 text-xs font-medium">
+                <div class="p-2.5 rounded-2xl bg-white/80 dark:bg-zinc-800/90 border-2 border-black/20">
+                  <span class="inline-block px-2 py-0.5 rounded-md bg-rose-200 text-rose-900 border border-black text-[9px] font-black uppercase mb-1">❌ Cách Cũ</span>
+                  <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed">Mua sách mới đắt đỏ, photo đề cương thiếu trang, không có anh chị khóa trên định hướng.</p>
+                </div>
+                <div class="p-2.5 rounded-2xl bg-[#CCFF00]/40 dark:bg-zinc-800/90 border-2 border-black">
+                  <span class="inline-block px-2 py-0.5 rounded-md bg-[#CCFF00] text-black border border-black text-[9px] font-black uppercase mb-1">⚡ Trạm Teen 4.0</span>
+                  <p class="text-black dark:text-white font-bold leading-relaxed">Anh chị Khối 9 truyền lửa SGK &amp; bộ đề thi thử chất lượng cao hoàn toàn 0đ!</p>
+                </div>
+              </div>
             </div>
             <div class="pt-2 border-t-2 border-black/10 dark:border-zinc-800">
               <span class="text-[10px] font-black text-black dark:text-[#CCFF00] uppercase">✓ 4.200+ sách trao tay</span>
@@ -1106,14 +1223,20 @@
           </div>
 
           <!-- Problem 3: Áp Lực Giờ Kiểm Tra -->
-          <div class="bg-[#FFFDE0] dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] flex flex-col justify-between space-y-3 hover:-translate-y-1 transition-all">
+          <div class="bg-[#FFFDE0] dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] flex flex-col justify-between space-y-3 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
             <div class="space-y-2">
               <span class="text-3xl">🔋</span>
-              <h4 class="text-sm font-black text-black dark:text-white uppercase tracking-tight">Áp Lực Giờ Kiểm Tra?</h4>
-              <p class="text-xs text-zinc-700 dark:text-zinc-300 font-medium leading-relaxed">
-                <b>Cách cũ:</b> Căng thẳng trước tiết 1, tâm lý lo lắng, thiếu không gian gắn kết lành mạnh giờ ra chơi.<br/>
-                <b>Trạm Teen:</b> Vibe check tâm linh học đường, spam thả tim sân trường trực tuyến, tích +10 Aura mỗi ngày!
-              </p>
+              <h4 class="text-sm font-black text-black dark:text-white uppercase tracking-tight font-display">Áp Lực Giờ Kiểm Tra?</h4>
+              <div class="space-y-2 text-xs font-medium">
+                <div class="p-2.5 rounded-2xl bg-white/80 dark:bg-zinc-800/90 border-2 border-black/20">
+                  <span class="inline-block px-2 py-0.5 rounded-md bg-rose-200 text-rose-900 border border-black text-[9px] font-black uppercase mb-1">❌ Cách Cũ</span>
+                  <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed">Căng thẳng trước tiết 1, tâm lý lo lắng, thiếu không gian gắn kết lành mạnh giờ ra chơi.</p>
+                </div>
+                <div class="p-2.5 rounded-2xl bg-[#CCFF00]/40 dark:bg-zinc-800/90 border-2 border-black">
+                  <span class="inline-block px-2 py-0.5 rounded-md bg-[#CCFF00] text-black border border-black text-[9px] font-black uppercase mb-1">⚡ Trạm Teen 4.0</span>
+                  <p class="text-black dark:text-white font-bold leading-relaxed">Vibe check tâm linh học đường, spam thả tim sân trường, tích +10 Aura mỗi ngày!</p>
+                </div>
+              </div>
             </div>
             <div class="pt-2 border-t-2 border-black/10 dark:border-zinc-800">
               <span class="text-[10px] font-black text-[#B45309] dark:text-[#FFE600] uppercase">✓ Reset 00:00 hằng ngày</span>
@@ -1126,19 +1249,19 @@
       <div id="cva-pillars-showcase" class="space-y-4 pt-1">
         
         <!-- Section Header -->
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200/80 dark:border-slate-800 pb-3">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b-2 border-black dark:border-zinc-800 pb-3">
           <div>
-            <div class="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800 px-2.5 py-0.5 rounded-full mb-1">
+            <div class="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider bg-[#FF007A] text-white border-2 border-black px-2.5 py-0.5 rounded-full shadow-[2px_2px_0px_0px_#000000] mb-1">
               ✨ Hệ Sinh Thái Học Đường 4.0
             </div>
-            <h3 class="text-base sm:text-xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h3 class="text-base sm:text-xl font-black text-black dark:text-white tracking-tight font-display uppercase">
               3 Trụ Cột Đột Phá Tại Trạm Học Đường Teen
             </h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p class="text-xs text-zinc-700 dark:text-zinc-300 mt-0.5 font-semibold">
               Thiết kế dành riêng cho học trò THCS Chu Văn An: giải quyết rơi đồ, chia sẻ sách vở và rèn luyện tư duy mỗi ngày.
             </p>
           </div>
-          <button onclick="switchTab('lost-found')" class="self-start sm:self-auto bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition active:scale-95 flex items-center gap-1.5 shadow-sm">
+          <button onclick="switchTab('lost-found')" class="self-start sm:self-auto bg-black text-[#CCFF00] hover:bg-zinc-800 border-2 border-black font-black text-xs px-3.5 py-2 rounded-xl shadow-[3px_3px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000000] transition-all flex items-center gap-1.5 cursor-pointer uppercase">
             <span>Khám phá Check VAR</span> <span>→</span>
           </button>
         </div>
@@ -1309,8 +1432,8 @@
           <span class="text-[10px] bg-[#CCFF00] text-black border-2 border-black px-2 py-0.5 rounded-full font-black uppercase shadow-[1.5px_1.5px_0px_0px_#000000]">HOT POLL</span>
         </div>
 
-        <p class="text-xs font-black text-black dark:text-white leading-snug">
-          "Giờ ra chơi tiết 2 dài 20 phút, học sinh CVA thích tụ tập làm gì nhất?"
+        <p id="poll-question-text" class="text-xs sm:text-sm font-black text-black dark:text-white leading-snug">
+          "Món ăn nào tại căng-tin CVA xứng danh 'Quán Quân Đỉnh Nóc Kịch Trần' tuần này? 🍜🥪"
         </p>
 
         <!-- Poll Options -->
@@ -1336,10 +1459,10 @@
           </div>
 
           <!-- Feed Sorter Pills -->
-          <div class="flex items-center gap-1 bg-slate-100 dark:bg-zinc-800 p-1 rounded-2xl border-2 border-black dark:border-zinc-700 text-xs font-black">
-            <button onclick="setFeedSort('foryou', this)" class="feed-sort-btn active bg-black text-[#FFE600] border border-black px-2.5 py-1 rounded-xl uppercase text-[10px] cursor-pointer shadow-[1px_1px_0px_0px_#000000]">🔥 Dành cho bạn</button>
-            <button onclick="setFeedSort('latest', this)" class="feed-sort-btn text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white px-2.5 py-1 rounded-xl font-bold uppercase text-[10px] cursor-pointer">⏱️ Mới nhất</button>
-            <button onclick="setFeedSort('popular', this)" class="feed-sort-btn text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white px-2.5 py-1 rounded-xl font-bold uppercase text-[10px] cursor-pointer">⚡ Thịnh hành</button>
+          <div class="flex items-center gap-1.5 bg-slate-100 dark:bg-zinc-800 p-1.5 rounded-2xl border-2 border-black dark:border-zinc-700 text-xs font-black">
+            <button id="sort-btn-foryou" onclick="setFeedSort('foryou', this)" class="feed-sort-btn active bg-black text-[#FFE600] border-2 border-black px-3 py-1.5 rounded-xl uppercase text-[10px] sm:text-xs font-black shadow-[2px_2px_0px_0px_#000000] cursor-pointer">🔥 Dành cho bạn</button>
+            <button id="sort-btn-latest" onclick="setFeedSort('latest', this)" class="feed-sort-btn bg-white dark:bg-zinc-800 text-black dark:text-zinc-200 border-2 border-black dark:border-zinc-700 hover:bg-zinc-100 px-3 py-1.5 rounded-xl uppercase text-[10px] sm:text-xs font-bold shadow-[1px_1px_0px_0px_#000000] cursor-pointer">⏱️ Mới nhất</button>
+            <button id="sort-btn-popular" onclick="setFeedSort('popular', this)" class="feed-sort-btn bg-white dark:bg-zinc-800 text-black dark:text-zinc-200 border-2 border-black dark:border-zinc-700 hover:bg-zinc-100 px-3 py-1.5 rounded-xl uppercase text-[10px] sm:text-xs font-bold shadow-[1px_1px_0px_0px_#000000] cursor-pointer">⚡ Thịnh hành</button>
           </div>
         </div>
 
@@ -1463,8 +1586,15 @@
     <!-- ==================== TAB 1: TÍNH NĂNG 1: "ĐỒ ƠI VỀ ĐI" ==================== -->
     <section id="tab-lost-found" class="tab-view hidden space-y-3">
       
-      <!-- Threads Composer Quick Bar -->
-      <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-4 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#CCFF00] space-y-3">
+      <!-- Threads Composer Quick Bar with Signature Stamp -->
+      <div class="bg-white dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-4 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#CCFF00] space-y-3 relative overflow-hidden">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-sm">🎒</span>
+            <span class="text-xs font-black uppercase tracking-wider font-heading text-black dark:text-white">Check VAR Tìm Đồ Thất Lạc</span>
+          </div>
+          <span class="retro-stamp bg-[#CCFF00] text-black sticker-tilt-right">🔍 #CHECK_VAR_UY_TIN</span>
+        </div>
         <div class="flex items-center gap-2.5 cursor-pointer" onclick="openCreateLostModal()">
           <div id="composer-lf-avatar" class="w-9 h-9 rounded-full bg-[#FF007A] text-white border-2 border-black flex items-center justify-center text-sm shadow-[2px_2px_0px_0px_#000000] overflow-hidden flex-shrink-0">
             🐱
@@ -1475,14 +1605,14 @@
         </div>
         <div class="flex items-center justify-between pt-2 border-t-2 border-black/10 dark:border-zinc-800 text-xs font-bold">
           <div class="flex gap-2">
-            <button onclick="openCreateLostModal('lost')" class="bg-[#FF007A] text-white border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide">
+            <button onclick="openCreateLostModal('lost')" class="bg-[#FF007A] text-white hover:bg-[#E6006E] border-2 border-black font-black text-xs px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide cursor-pointer">
               <span>😭</span> Báo mất đồ
             </button>
-            <button onclick="openCreateLostModal('found')" class="bg-[#CCFF00] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide">
+            <button onclick="openCreateLostModal('found')" class="bg-[#CCFF00] text-black hover:bg-[#B8E600] border-2 border-black font-black text-xs px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide cursor-pointer">
               <span>✨</span> Nhặt được đồ
             </button>
           </div>
-          <span class="text-[10px] font-black uppercase text-black dark:text-[#CCFF00] bg-[#FFE600] border-2 border-black px-2 py-0.5 rounded-md shadow-[1.5px_1.5px_0px_0px_#000000]">+10 Aura</span>
+          <span class="retro-stamp bg-[#FFE600] text-black sticker-tilt-left">+10 Aura ⚡</span>
         </div>
       </div>
 
@@ -1511,30 +1641,35 @@
     <!-- ==================== TAB 2: TÍNH NĂNG 2: "CHỢ PHIÊN HỌC TRÒ" ==================== -->
     <section id="tab-books" class="tab-view hidden space-y-3">
       
-      <!-- Threads Composer Quick Bar -->
-      <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-4 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#CCFF00] space-y-3">
+            <!-- Threads Composer Quick Bar -->
+      <div class="bg-white dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-4 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] space-y-3 relative overflow-hidden">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-sm">📚</span>
+            <span class="text-xs font-black uppercase tracking-wider font-heading text-black dark:text-white">Chợ Phiên Sách &amp; Đề Cương 0đ</span>
+          </div>
+          <span class="retro-stamp bg-[#00F0FF] text-black sticker-tilt-right">📚 #SÁCH_0Đ_TRUYỀN_LỬA</span>
+        </div>
         <div class="flex items-center gap-2.5 cursor-pointer" onclick="openCreateBookModal()">
-          <div class="w-9 h-9 rounded-full bg-[#CCFF00] text-black border-2 border-black flex items-center justify-center text-sm shadow-[2px_2px_0px_0px_#000000]">
+          <div class="w-9 h-9 rounded-full bg-[#CCFF00] text-black border-2 border-black flex items-center justify-center text-sm shadow-[2px_2px_0px_0px_#000000] flex-shrink-0">
             📚
           </div>
           <div class="flex-1 bg-slate-100 dark:bg-zinc-800 border-2 border-black dark:border-zinc-700 rounded-full px-4 py-2 text-xs font-bold text-slate-500 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-700 transition">
-            Pass sách giáo khoa 0đ, đổi truyện Conan, tài liệu thi vào 10...
+            Bạn có bộ SGK cũ, truyện tranh hay đề thi nào muốn tặng lại không?...
           </div>
         </div>
         <div class="flex items-center justify-between pt-2 border-t-2 border-black/10 dark:border-zinc-800 text-xs font-bold">
           <div class="flex gap-2">
-            <button onclick="openCreateBookModal('free')" class="bg-[#CCFF00] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide">
-              <span>🎁</span> Tặng 0đ đàn em
+            <button onclick="openCreateBookModal('free')" class="bg-[#CCFF00] text-black hover:bg-[#B8E600] border-2 border-black font-black text-xs px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide cursor-pointer">
+              <span>🎁</span> Tặng 0đ cho đàn em
             </button>
-            <button onclick="openCreateBookModal('trade')" class="bg-[#FFE600] text-black border-2 border-black font-black px-3.5 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide">
-              <span>🔄</span> Đổi đồ trade
+            <button onclick="openCreateBookModal('trade')" class="bg-[#FFE600] text-black hover:bg-[#FADB14] border-2 border-black font-black text-xs px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1 uppercase tracking-wide cursor-pointer">
+              <span>🔄</span> Đổi sách truyện
             </button>
           </div>
-          <span class="text-[10px] font-black uppercase text-black bg-[#CCFF00] border-2 border-black px-2 py-0.5 rounded-md shadow-[1.5px_1.5px_0px_0px_#000000]">+15 Aura</span>
+          <span class="retro-stamp bg-[#CCFF00] text-black sticker-tilt-left">+150 Aura ⚡</span>
         </div>
-      </div>
-
-      <!-- Deal Filter Pills -->
+      </div><!-- Deal Filter Pills -->
       <div class="grid grid-cols-3 gap-2 text-center text-xs font-black">
         <button onclick="setBookDealFilter('all')" id="deal-filter-all" class="deal-filter-btn active bg-black text-[#CCFF00] border-2 border-black py-2 rounded-2xl shadow-[2px_2px_0px_0px_#000000] uppercase transition cursor-pointer">
           🌟 Tất cả
@@ -1577,16 +1712,19 @@
     <!-- ==================== TAB 3: TÍNH NĂNG 3: "GÓC TÂM SỰ HỌC ĐƯỜNG (CVA CONFESSIONS)" ==================== -->
     <section id="tab-confessions" class="tab-view hidden space-y-4">
       
-      <!-- Healing Room Quick Banner -->
-      <div class="bg-[#00F0FF] text-black border-2 border-black rounded-3xl p-4 shadow-[4px_4px_0px_0px_#000000] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <!-- Healing Room Quick Banner with Pop-art Styling -->
+      <div class="bg-[#00F0FF] dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-4 sm:p-5 shadow-[5px_5px_0px_0px_#000000] dark:shadow-[5px_5px_0px_0px_#00F0FF] flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative overflow-hidden">
         <div class="flex items-center gap-3">
-          <span class="text-3xl">🕊️</span>
+          <span class="text-3xl animate-bounce">🕊️</span>
           <div>
-            <p class="text-xs font-black uppercase tracking-tight">Căng thẳng ôn thi hoặc có chuyện buồn?</p>
-            <p class="text-[11px] font-bold text-zinc-900">Vào Trạm Sạc Bình Yên 4-4-4 hít thở sâu và nhận lời an ủi từ Chị Bồ Câu</p>
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <p class="text-xs sm:text-sm font-black uppercase tracking-tight font-display text-black dark:text-white">Căng thẳng ôn thi hoặc có chuyện buồn?</p>
+              <span class="retro-stamp bg-[#FF007A] text-white sticker-tilt-hard-right">🕊️ #ẨN_DANH_BẢO_MẬT</span>
+            </div>
+            <p class="text-[11px] font-bold text-zinc-900 dark:text-zinc-300 mt-0.5">Vào Trạm Sạc Bình Yên 4-4-4 hít thở sâu và nhận lời an ủi từ Chị Bồ Câu</p>
           </div>
         </div>
-        <button onclick="openHealingRoom()" class="bg-white text-black hover:bg-zinc-100 border-2 border-black font-black text-xs px-3.5 py-2 rounded-2xl shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 uppercase whitespace-nowrap cursor-pointer">
+        <button onclick="openHealingRoom()" class="bg-white dark:bg-zinc-800 text-black dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 border-2 border-black font-black text-xs px-4 py-2.5 rounded-2xl shadow-[3px_3px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 uppercase whitespace-nowrap cursor-pointer">
           Phòng Thở 4-4-4 🕊️
         </button>
       </div>
@@ -1640,57 +1778,57 @@
     <!-- ==================== TAB 4: TÍNH NĂNG 4: "GÓC CỦA EM" ==================== -->
     <section id="tab-profile" class="tab-view hidden space-y-4">
       
-      <!-- Student Card -->
-      <div class="bg-[#FFE600] dark:bg-zinc-900 border-3 border-black dark:border-zinc-700 rounded-3xl p-6 shadow-[8px_8px_0px_0px_#000000] dark:shadow-[8px_8px_0px_0px_#CCFF00] relative overflow-hidden">
-        
-        <div class="flex items-start justify-between relative z-10">
-          <div class="flex items-center gap-3">
-            <div class="relative group cursor-pointer" onclick="triggerAvatarUploadFromCard()" title="Bấm vào để đổi hoặc tải ảnh đại diện">
-              <div id="profile-card-avatar" class="w-16 h-16 rounded-2xl bg-white border-2 border-black flex items-center justify-center text-3xl shadow-[3px_3px_0px_0px_#000000] overflow-hidden transition group-hover:scale-105">
-                🐱
-              </div>
-              <div class="absolute -bottom-1 -right-1 bg-black text-[#FFE600] w-6 h-6 rounded-full flex items-center justify-center text-xs shadow border-2 border-black group-hover:scale-110 transition">
-                📷
-              </div>
+            <!-- PROFILE HERO CARD (GEN Z NEOBRUTALISM STUDENT ID - HOLOGRAPHIC LANYARD) -->
+      <div class="bg-[#FFE600] dark:bg-zinc-900 border-3 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-7 shadow-[8px_8px_0px_0px_#000000] dark:shadow-[8px_8px_0px_0px_#CCFF00] relative overflow-hidden">
+        <!-- Tape / Clip Sticker Decor -->
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/90 dark:bg-zinc-800 border-2 border-black px-4 py-0.5 rounded-b-lg text-[9px] font-black uppercase tracking-widest shadow-[2px_2px_0px_0px_#000000] z-20">
+          THCS CHU VĂN AN • STUDENT ID
+        </div>
+
+        <div class="flex items-start justify-between relative z-10 pt-2">
+          <div class="flex items-center gap-3.5">
+            <div id="profile-card-avatar" class="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-white border-2 border-black flex items-center justify-center text-3xl sm:text-4xl shadow-[3px_3px_0px_0px_#000000] overflow-hidden">
+              🐱
             </div>
             <div>
-              <div class="flex items-center gap-2">
-                <h3 id="profile-card-name" class="text-xl sm:text-2xl font-black text-black dark:text-white uppercase font-display">Dev Khánhh</h3>
-                <span id="profile-card-class" class="text-xs font-black bg-[#CCFF00] text-black px-2.5 py-0.5 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_#000000]">8A1</span>
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 id="profile-card-name" class="text-xl sm:text-2xl font-black text-black dark:text-white uppercase font-display leading-tight">Dev Khánhh</h3>
+                <span id="profile-card-class" class="text-xs font-black bg-[#CCFF00] text-black px-2.5 py-0.5 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_#000000] sticker-tilt-right">8A1</span>
+                <span class="retro-stamp bg-[#FF007A] text-white sticker-tilt-left text-[9px]">⚡ #AURA_1000</span>
+                <span class="retro-stamp bg-black text-[#FFE600] sticker-tilt-right text-[9px]">💯 #NO_CAP_100%</span>
               </div>
               <p id="profile-card-nick" class="text-xs font-black text-black dark:text-[#FF007A] mt-0.5 uppercase tracking-wide">"Chiến Thần Code CVA"</p>
-              <p class="text-[11px] text-zinc-800 dark:text-zinc-300 font-bold mt-0.5 flex items-center gap-1.5">
+              <p class="text-[11px] text-zinc-900 dark:text-zinc-300 font-bold mt-1 flex items-center gap-1.5">
                 <img src="logo.png" onerror="this.onerror=null; this.src=CVA_LOGO;" alt="CVA" class="w-4 h-4 rounded-full object-contain inline-block border border-black" />
                 <span id="profile-card-school">Trường THCS Chu Văn An</span>
+                <span class="text-zinc-600 dark:text-zinc-400 font-mono text-[10px]">#CVA-2026</span>
               </p>
             </div>
           </div>
-          <button onclick="openProfileModal()" class="text-xs font-black bg-black text-white dark:bg-white dark:text-black border-2 border-black px-3.5 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#CCFF00] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none flex items-center gap-1.5 uppercase transition">
-            <i data-lucide="settings" class="w-3.5 h-3.5"></i> Sửa
+          <button onclick="openProfileModal()" class="text-xs font-black bg-black text-white dark:bg-white dark:text-black border-2 border-black px-3.5 py-2 rounded-xl shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#CCFF00] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none flex items-center gap-1.5 uppercase transition cursor-pointer">
+            <i data-lucide="settings" class="w-3.5 h-3.5"></i> Sửa Thẻ
           </button>
         </div>
 
-        <!-- Badges -->
+        <!-- Badges Collage -->
         <div class="mt-5 pt-3.5 border-t-2 border-black/15 dark:border-zinc-800 relative z-10">
-          <p class="text-xs font-black uppercase tracking-wider text-black dark:text-zinc-300 mb-2.5">Danh hiệu Aura đạt được:</p>
+          <p class="text-xs font-black uppercase tracking-wider text-black dark:text-zinc-300 mb-2.5">Huy hiệu Aura danh dự:</p>
           <div class="flex flex-wrap gap-2">
-            <span class="inline-flex items-center gap-1 text-[11px] font-black bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black dark:border-zinc-700 px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#000000] uppercase">
+            <span class="retro-stamp bg-white dark:bg-zinc-800 text-black dark:text-white sticker-tilt-left">
               ⚡ <span id="user-aura-rank">Chiến Thần Tốt Bụng</span> (<span id="user-aura-badge">1000</span> Aura)
             </span>
-            <span class="inline-flex items-center gap-1 text-[11px] font-black bg-[#CCFF00] text-black border-2 border-black px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#000000] uppercase">
+            <span class="retro-stamp bg-[#CCFF00] text-black sticker-tilt-right">
               💻 Chiến Thần CVA
             </span>
-            <span class="inline-flex items-center gap-1 text-[11px] font-black bg-[#00F0FF] text-black border-2 border-black px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#000000] uppercase">
+            <span class="retro-stamp bg-[#00F0FF] text-black sticker-tilt-left">
               🌱 Sứ Giả Tủ Sách 0đ
             </span>
-            <span class="inline-flex items-center gap-1 text-[11px] font-black bg-[#FF007A] text-white border-2 border-black px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#000000] uppercase">
+            <span class="retro-stamp bg-[#FF007A] text-white sticker-tilt-right">
               🔍 Hiệp Sĩ Check VAR
             </span>
           </div>
         </div>
-      </div>
-
-      <!-- Counter (4-Columns Neo-brutalism) -->
+      </div><!-- Counter (4-Columns Neo-brutalism) -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs font-bold">
         <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 p-3 rounded-2xl shadow-[3px_3px_0px_0px_#000000] dark:shadow-[3px_3px_0px_0px_#FF007A]">
           <p class="text-xl font-black text-[#FF007A]" id="stat-lost-count">0</p>
@@ -2525,13 +2663,13 @@
   <div id="modal-story-viewer" onclick="handleBackdropClick(event, 'modal-story-viewer')" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4">
     <div class="bg-zinc-950 border-3 border-black rounded-3xl p-4 max-w-sm w-full shadow-[8px_8px_0px_0px_#FFE600] relative animate-scale-up space-y-3.5 text-white overflow-hidden" onclick="event.stopPropagation()">
       
-      <!-- Top Animated Progress Bar -->
-      <div class="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
-        <div id="story-progress-bar" class="bg-[#CCFF00] h-full rounded-full transition-all duration-100" style="width: 0%"></div>
+      <!-- Top Animated Segmented Progress Bars (Instagram / Threads style) -->
+      <div id="story-progress-segments" class="flex items-center gap-1.5 w-full">
+        <!-- Rendered dynamically for each story in DEFAULT_STORIES -->
       </div>
 
       <!-- Story Header -->
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between pt-1">
         <div class="flex items-center gap-2">
           <span id="story-author-avatar" class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center text-base border-2 border-black font-black">🦊</span>
           <div>
@@ -2539,13 +2677,21 @@
             <p id="story-time-stamp" class="text-[10px] text-zinc-400 font-semibold">1 giờ trước</p>
           </div>
         </div>
-        <button onclick="closeStoryViewer()" class="w-7 h-7 rounded-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 flex items-center justify-center text-white cursor-pointer text-xs font-black">
+        <button onclick="closeStoryViewer()" class="w-7 h-7 rounded-full bg-zinc-800 hover:bg-zinc-700 border-2 border-black flex items-center justify-center text-white cursor-pointer text-xs font-black shadow-[1.5px_1.5px_0px_0px_#000000]">
           ✕
         </button>
       </div>
 
-      <!-- Story Body / Card Canvas -->
-      <div id="story-canvas" class="min-h-[260px] rounded-2xl border-2 border-zinc-800 p-5 flex flex-col justify-between relative overflow-hidden transition-all bg-gradient-to-br from-indigo-950 via-purple-950 to-zinc-900">
+      <!-- Story Body / Card Canvas with Left/Right Tap zones and Hold-to-pause -->
+      <div 
+        id="story-canvas" 
+        onclick="handleStoryCanvasClick(event)"
+        onmousedown="pauseStory()" 
+        onmouseup="resumeStory()"
+        ontouchstart="pauseStory()" 
+        ontouchend="resumeStory()"
+        class="min-h-[260px] rounded-2xl border-2 border-zinc-800 p-5 flex flex-col justify-between relative overflow-hidden transition-all bg-gradient-to-br from-indigo-950 via-purple-950 to-zinc-900 cursor-pointer select-none"
+      >
         <span id="story-sticker" class="text-4xl">📚</span>
         <p id="story-caption" class="text-base sm:text-lg font-black leading-snug font-display text-[#FFE600] drop-shadow">
           "Giải xong bộ đề Toán khảo sát rồi! Khối 9 Chu Văn An năm nay quyết tâm đỗ nguyện vọng 1!"
@@ -2555,17 +2701,23 @@
         </span>
       </div>
 
-      <!-- Story Navigation Controls -->
-      <div class="flex items-center justify-between gap-2 pt-1">
-        <button onclick="prevStory()" class="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-xs font-bold text-white cursor-pointer">
+      <!-- Story Navigation Controls & Live Reaction Counters -->
+      <div class="flex items-center justify-between gap-2 pt-1 select-none">
+        <button onclick="prevStory()" class="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-xs font-bold text-white border-2 border-black cursor-pointer shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none">
           ← Trước
         </button>
         <div class="flex items-center gap-2">
-          <button onclick="reactToStory('❤️')" class="text-lg hover:scale-125 transition active:scale-95">❤️</button>
-          <button onclick="reactToStory('🔥')" class="text-lg hover:scale-125 transition active:scale-95">🔥</button>
-          <button onclick="reactToStory('👏')" class="text-lg hover:scale-125 transition active:scale-95">👏</button>
+          <button onclick="reactToStory('❤️')" class="flex items-center gap-1 text-xs bg-zinc-900 border-2 border-black px-2 py-1 rounded-xl hover:scale-110 transition active:scale-95 cursor-pointer shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <span>❤️</span> <span id="story-react-heart" class="text-[10px] font-black text-rose-400">0</span>
+          </button>
+          <button onclick="reactToStory('🔥')" class="flex items-center gap-1 text-xs bg-zinc-900 border-2 border-black px-2 py-1 rounded-xl hover:scale-110 transition active:scale-95 cursor-pointer shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <span>🔥</span> <span id="story-react-fire" class="text-[10px] font-black text-amber-400">0</span>
+          </button>
+          <button onclick="reactToStory('⚡')" class="flex items-center gap-1 text-xs bg-zinc-900 border-2 border-black px-2 py-1 rounded-xl hover:scale-110 transition active:scale-95 cursor-pointer shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <span>⚡</span> <span id="story-react-zap" class="text-[10px] font-black text-[#CCFF00]">0</span>
+          </button>
         </div>
-        <button onclick="nextStory()" class="px-3 py-1.5 rounded-xl bg-[#FFE600] text-black font-black text-xs cursor-pointer shadow-[2px_2px_0px_0px_#000000]">
+        <button onclick="nextStory()" class="px-3 py-1.5 rounded-xl bg-[#FFE600] text-black font-black text-xs cursor-pointer border-2 border-black shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none">
           Tiếp →
         </button>
       </div>
@@ -2573,7 +2725,35 @@
     </div>
   </div>
 
-  <!-- MODAL: PHOTO LIGHTBOX (FULLSCREEN IMAGE VIEWER) -->
+
+  <!-- MODAL: CHÚC MỪNG THĂNG HẠNG AURA MILESTONE (NEOBRUTALISM CELEBRATION) -->
+  <div id="modal-aura-milestone" onclick="handleBackdropClick(event, 'modal-aura-milestone')" class="fixed inset-0 z-[90] bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-[#FFE600] dark:bg-zinc-900 border-3 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-7 max-w-sm w-full shadow-[8px_8px_0px_0px_#000000] dark:shadow-[8px_8px_0px_0px_#CCFF00] my-auto relative animate-scale-up space-y-4 text-center" onclick="event.stopPropagation()">
+      <div class="w-16 h-16 rounded-2xl bg-white border-2 border-black flex items-center justify-center text-4xl mx-auto shadow-[3px_3px_0px_0px_#000000]">
+        👑
+      </div>
+      <div>
+        <span class="inline-block bg-[#FF007A] text-white border-2 border-black px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-[1.5px_1.5px_0px_0px_#000000] mb-1">
+          AURA LEVEL-UP MILESTONE
+        </span>
+        <h3 id="milestone-title" class="text-xl sm:text-2xl font-black text-black dark:text-white uppercase font-display leading-tight">
+          Hiệp Sĩ Chu Văn An ⚡
+        </h3>
+        <p id="milestone-desc" class="text-xs text-zinc-800 dark:text-zinc-300 font-bold mt-2 leading-relaxed">
+          Em đã đạt mốc Aura danh dự!
+        </p>
+      </div>
+      <div class="bg-white dark:bg-zinc-800 border-2 border-black rounded-2xl p-3 shadow-[2px_2px_0px_0px_#000000] text-center">
+        <p class="text-[10px] font-black uppercase text-zinc-500 dark:text-zinc-400">Điểm Aura Hiện Tại</p>
+        <p id="milestone-aura-pts" class="text-2xl font-black text-[#FF007A] font-display">1200</p>
+      </div>
+      <button onclick="closeModal('modal-aura-milestone')" class="w-full bg-black text-[#CCFF00] hover:bg-zinc-800 border-2 border-black font-black text-xs sm:text-sm py-3 px-4 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer">
+        <span>Nhận Danh Hiệu &amp; Đóng</span> <span>⚡</span>
+      </button>
+    </div>
+  </div>
+
+    <!-- MODAL: PHOTO LIGHTBOX (FULLSCREEN IMAGE VIEWER) -->
   <div id="modal-lightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6">
     <div class="relative max-w-2xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
       <button onclick="closeLightbox()" class="absolute -top-10 right-0 w-8 h-8 rounded-full bg-white text-black border-2 border-black font-black flex items-center justify-center cursor-pointer shadow-[2px_2px_0px_0px_#000000]">
@@ -3392,12 +3572,48 @@
       const now = new Date();
       const midnight = new Date(now);
       midnight.setHours(24, 0, 0, 0);
-      const diffMs = midnight - now;
+      const diffMs = Math.max(0, midnight - now);
       const hours = Math.floor(diffMs / (1000 * 60 * 60));
       const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
       return `${hours}h ${mins}p`;
     }
     window.getTimeUntilMidnight = getTimeUntilMidnight;
+
+    /* Live Ticking Countdown to 00:00 Midnight Reset */
+    function updateVibeCountdown() {
+      const badge = document.getElementById('vibe-countdown-badge');
+      if (!badge) return;
+      const now = new Date();
+      const midnight = new Date(now);
+      midnight.setHours(24, 0, 0, 0);
+      const diff = midnight - now;
+      if (diff <= 0) {
+        if (typeof checkDailyVibeStatus === 'function') checkDailyVibeStatus();
+      }
+      const safeDiff = Math.max(0, diff);
+      const hours = Math.floor(safeDiff / 3600000).toString().padStart(2, '0');
+      const mins = Math.floor((safeDiff % 3600000) / 60000).toString().padStart(2, '0');
+      const secs = Math.floor((safeDiff % 60000) / 1000).toString().padStart(2, '0');
+      badge.textContent = `RESET: ${hours}:${mins}:${secs}`;
+    }
+    setInterval(updateVibeCountdown, 1000);
+
+    /* Aura Milestone Modal Controller */
+    function showAuraMilestoneModal(title, desc, aura) {
+      const modal = document.getElementById('modal-aura-milestone');
+      const titleEl = document.getElementById('milestone-title');
+      const descEl = document.getElementById('milestone-desc');
+      const auraEl = document.getElementById('milestone-aura-pts');
+      if (titleEl) titleEl.textContent = title;
+      if (descEl) descEl.textContent = desc;
+      if (auraEl) auraEl.textContent = aura;
+      if (modal) {
+        modal.classList.remove('hidden');
+        playCuteSound('chime');
+        launchConfetti();
+      }
+    }
+    window.showAuraMilestoneModal = showAuraMilestoneModal;
 
     function checkDailyVibeStatus() {
       const today = getTodayDateKey();
@@ -3636,13 +3852,29 @@
     /* =====================================================================
        6. THREADS ACTIONS: LIKE, REPLY, REPOST, SHARE
        ===================================================================== */
+    /* UNIVERSAL POST LOOKUP HELPER */
+    function findPostById(id, type) {
+      if (type === 'lf') return { item: lostFoundData.find(i => i.id === id), list: lostFoundData, type: 'lf' };
+      if (type === 'book') return { item: booksData.find(i => i.id === id), list: booksData, type: 'book' };
+      if (type === 'confession' || type === 'conf') return { item: confessionsData.find(i => i.id === id), list: confessionsData, type: 'confession' };
+      
+      let item = lostFoundData.find(i => i.id === id);
+      if (item) return { item, list: lostFoundData, type: 'lf' };
+      item = booksData.find(i => i.id === id);
+      if (item) return { item, list: booksData, type: 'book' };
+      item = confessionsData.find(i => i.id === id);
+      if (item) return { item, list: confessionsData, type: 'confession' };
+      return { item: null, list: null, type: null };
+    }
+    window.findPostById = findPostById;
+
     /* AUTHENTIC LIKE / UNLIKE TOGGLE */
     function toggleLike(type, id) {
-      let targetList = type === 'lf' ? lostFoundData : (type === 'book' ? booksData : confessionsData);
-      const item = targetList.find(i => i.id === id);
+      const { item } = findPostById(id, type);
       if (!item) return;
 
-      const isLiked = currentUser.likedPostIds && currentUser.likedPostIds.includes(id);
+      if (!Array.isArray(currentUser.likedPostIds)) currentUser.likedPostIds = [];
+      const isLiked = currentUser.likedPostIds.includes(id);
 
       if (isLiked) {
         currentUser.likedPostIds = currentUser.likedPostIds.filter(x => x !== id);
@@ -3650,7 +3882,6 @@
         playCuteSound('pop');
         showTeenToast("Đã bỏ thả tim bài viết", "🤍");
       } else {
-        if (!currentUser.likedPostIds) currentUser.likedPostIds = [];
         currentUser.likedPostIds.push(id);
         item.likes = (item.likes || 0) + 1;
         addAuraPoints(2);
@@ -3708,13 +3939,14 @@
 
     /* BOOKMARK TOGGLE */
     function toggleBookmarkPost(type, id) {
-      const isSaved = currentUser.savedPostIds && currentUser.savedPostIds.includes(id);
+      if (!Array.isArray(currentUser.savedPostIds)) currentUser.savedPostIds = [];
+      const isSaved = currentUser.savedPostIds.includes(id);
+
       if (isSaved) {
         currentUser.savedPostIds = currentUser.savedPostIds.filter(x => x !== id);
         playCuteSound('pop');
         showTeenToast("Đã bỏ lưu bài viết khỏi mục cá nhân", "🔖");
       } else {
-        if (!currentUser.savedPostIds) currentUser.savedPostIds = [];
         currentUser.savedPostIds.push(id);
         addAuraPoints(2);
         playCuteSound('ting');
@@ -4206,19 +4438,46 @@
     /* FEED SORTING SYSTEM (THREADS & X STYLE) */
     let currentFeedSort = 'foryou';
 
+    function getPostTimestamp(post) {
+      if (post.createdAt && typeof post.createdAt === 'number') return post.createdAt;
+      if (post.timestamp && typeof post.timestamp === 'number') return post.timestamp;
+      if (post.id && typeof post.id === 'string') {
+        const parts = post.id.split('-');
+        if (parts.length > 1) {
+          const num = parseInt(parts[parts.length - 1], 10);
+          if (!isNaN(num) && num > 1000000000) return num;
+        }
+      }
+      if (post.time) {
+        if (post.time.includes('Vừa xong')) return Date.now();
+        if (post.time.includes('5 phút')) return Date.now() - 5 * 60 * 1000;
+        if (post.time.includes('10 phút')) return Date.now() - 10 * 60 * 1000;
+        if (post.time.includes('15 phút')) return Date.now() - 15 * 60 * 1000;
+        if (post.time.includes('25 phút')) return Date.now() - 25 * 60 * 1000;
+        if (post.time.includes('40 phút')) return Date.now() - 40 * 60 * 1000;
+        if (post.time.includes('1 giờ')) return Date.now() - 60 * 60 * 1000;
+        if (post.time.includes('2 giờ')) return Date.now() - 2 * 60 * 60 * 1000;
+        if (post.time.includes('Hôm nay')) return Date.now() - 4 * 60 * 60 * 1000;
+        if (post.time.includes('Hôm qua')) return Date.now() - 24 * 60 * 60 * 1000;
+      }
+      return 0;
+    }
+    window.getPostTimestamp = getPostTimestamp;
+
     function setFeedSort(sortMode, btnEl) {
       currentFeedSort = sortMode;
       playCuteSound('pop');
       
       const buttons = document.querySelectorAll('.feed-sort-btn');
       buttons.forEach(btn => {
-        btn.classList.remove('bg-black', 'text-[#CCFF00]', 'dark:bg-[#CCFF00]', 'dark:text-black', 'shadow-[3px_3px_0px_0px_#000000]');
-        btn.classList.add('bg-white', 'dark:bg-zinc-800', 'text-black', 'dark:text-white', 'shadow-[2px_2px_0px_0px_#000000]');
+        btn.className = "feed-sort-btn bg-white dark:bg-zinc-800 text-black dark:text-zinc-200 border-2 border-black dark:border-zinc-700 hover:bg-zinc-100 px-3 py-1.5 rounded-xl uppercase text-[10px] sm:text-xs font-bold shadow-[1px_1px_0px_0px_#000000] cursor-pointer";
       });
 
+      if (!btnEl) {
+        btnEl = document.getElementById(`sort-btn-${sortMode}`) || document.querySelector(`button[onclick*="'${sortMode}'"]`);
+      }
       if (btnEl) {
-        btnEl.classList.remove('bg-white', 'dark:bg-zinc-800', 'text-black', 'dark:text-white', 'shadow-[2px_2px_0px_0px_#000000]');
-        btnEl.classList.add('bg-black', 'text-[#CCFF00]', 'dark:bg-[#CCFF00]', 'dark:text-black', 'shadow-[3px_3px_0px_0px_#000000]');
+        btnEl.className = "feed-sort-btn active bg-black text-[#FFE600] border-2 border-black px-3 py-1.5 rounded-xl uppercase text-[10px] sm:text-xs font-black shadow-[2px_2px_0px_0px_#000000] cursor-pointer";
       }
 
       renderLandingFeed();
@@ -4238,27 +4497,29 @@
       ];
 
       if (currentFeedSort === 'latest') {
-        allPosts.sort((a, b) => (b.id || '').localeCompare(a.id || ''));
+        allPosts.sort((a, b) => getPostTimestamp(b) - getPostTimestamp(a));
       } else if (currentFeedSort === 'popular') {
         allPosts.sort((a, b) => {
-          const scoreA = (a.likes || 0) + ((a.replies ? a.replies.length : 0) * 2) + ((a.boosts || 0) * 3);
-          const scoreB = (b.likes || 0) + ((b.replies ? b.replies.length : 0) * 2) + ((b.boosts || 0) * 3);
+          const scoreA = ((a.likes || 0) * 3) + (((a.replies && a.replies.length) || 0) * 4) + ((a.boosts || 0) * 5);
+          const scoreB = ((b.likes || 0) * 3) + (((b.replies && b.replies.length) || 0) * 4) + ((b.boosts || 0) * 5);
           return scoreB - scoreA;
         });
       } else {
-        // 'foryou': boosted posts first, then popular, with category interleaving
+        // 'foryou': boosted posts first, then popular with aura affinity
         allPosts.sort((a, b) => {
-          const boostA = currentUser.boostedPostIds.includes(a.id) ? 100 : 0;
-          const boostB = currentUser.boostedPostIds.includes(b.id) ? 100 : 0;
-          const scoreA = (a.likes || 0) + ((a.boosts || 0) * 4) + boostA;
-          const scoreB = (b.likes || 0) + ((b.boosts || 0) * 4) + boostB;
+          const boostA = (currentUser.boostedPostIds || []).includes(a.id) ? 150 : 0;
+          const boostB = (currentUser.boostedPostIds || []).includes(b.id) ? 150 : 0;
+          const likedA = (currentUser.likedPostIds || []).includes(a.id) ? 30 : 0;
+          const likedB = (currentUser.likedPostIds || []).includes(b.id) ? 30 : 0;
+          const scoreA = ((a.likes || 0) * 2) + ((a.boosts || 0) * 4) + (((a.replies && a.replies.length) || 0) * 3) + boostA + likedA;
+          const scoreB = ((b.likes || 0) * 2) + ((b.boosts || 0) * 4) + (((b.replies && b.replies.length) || 0) * 3) + boostB + likedB;
           return scoreB - scoreA;
         });
       }
 
       if (allPosts.length === 0) {
         container.innerHTML = `
-          <div class="bg-white dark:bg-zinc-900 border-2 border-dashed border-black/30 dark:border-zinc-700 rounded-3xl p-8 text-center text-xs text-zinc-500 font-bold">
+          <div class="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 border-2 border-dashed border-black/30 dark:border-zinc-700 rounded-3xl p-8 text-center text-xs text-zinc-500 font-bold">
             Chưa có bài viết nào trên feed. Hãy là người đầu tiên chia sẻ sách, đồ rơi hoặc tâm sự nhé! 🚀
           </div>
         `;
@@ -4703,18 +4964,36 @@
        14. PROFILE & HỆ THỐNG ĐIỂM AURA (GEN Z)
        ===================================================================== */
     function addAuraPoints(pts) {
-      currentUser.aura = (currentUser.aura || 1000) + pts;
-      document.getElementById('header-aura-pts').textContent = currentUser.aura;
-      document.getElementById('user-aura-badge').textContent = currentUser.aura;
-      document.getElementById('stat-aura-count').textContent = currentUser.aura;
+      const prevAura = currentUser.aura || 1000;
+      currentUser.aura = prevAura + pts;
+      const newAura = currentUser.aura;
+
+      const headerAura = document.getElementById('header-aura-pts');
+      const userAura = document.getElementById('user-aura-badge');
+      const statAura = document.getElementById('stat-aura-count');
+      if (headerAura) headerAura.textContent = newAura;
+      if (userAura) userAura.textContent = newAura;
+      if (statAura) statAura.textContent = newAura;
       
       let rank = "Chiến Thần Tốt Bụng";
-      if (currentUser.aura < 500) rank = "Tân Binh Lớp 6";
-      else if (currentUser.aura >= 1500 && currentUser.aura < 3000) rank = "Hiệp Sĩ Check VAR";
-      else if (currentUser.aura >= 3000) rank = "Đại Sứ Tử Tế CVA 👑";
-      document.getElementById('user-aura-rank').textContent = rank;
+      if (newAura < 500) rank = "Tân Binh Lớp 6";
+      else if (newAura >= 2000) rank = "Huyền Thoại Chu Văn An 🌟";
+      else if (newAura >= 1500) rank = "Chiến Thần Học Đường 👑";
+      else if (newAura >= 1200) rank = "Tinh Anh Chu Văn An ⚡";
+      
+      const rankEl = document.getElementById('user-aura-rank');
+      if (rankEl) rankEl.textContent = rank;
 
       saveState();
+
+      // Check milestones celebration
+      if (prevAura < 1200 && newAura >= 1200) {
+        showAuraMilestoneModal('Tinh Anh Chu Văn An ⚡', 'Chúc mừng em đã cán mốc 1200 Aura! Mở khóa danh hiệu Hiệp Sĩ và khung viền Acid Neon.', newAura);
+      } else if (prevAura < 1500 && newAura >= 1500) {
+        showAuraMilestoneModal('Chiến Thần Học Đường 👑', 'Tuyệt đỉnh CVA! Em đã chính thức bước lên ngôi vị Chiến Thần Học Đường với vương miện danh dự.', newAura);
+      } else if (prevAura < 2000 && newAura >= 2000) {
+        showAuraMilestoneModal('Huyền Thoại Chu Văn An 🌟', 'Vô địch thiên hạ! Em đã trở thành Huyền Thoại Chu Văn An, vinh danh trên Bảng Vàng toàn trường.', newAura);
+      }
     }
 
     let pendingAvatar = currentUser.avatar || '🐱';
@@ -4964,8 +5243,8 @@
           
           pendingPostImages[type] = compressed;
 
-          const previewContainer = document.getElementById(`${type}-image-preview-container`);
-          const previewImg = document.getElementById(`${type}-image-preview`);
+          const previewContainer = document.getElementById(`${type}-img-preview-box`) || document.getElementById(`${type}-image-preview-container`);
+          const previewImg = document.getElementById(`${type}-img-preview`) || document.getElementById(`${type}-image-preview`);
           if (previewContainer && previewImg) {
             previewImg.src = compressed;
             previewContainer.classList.remove('hidden');
@@ -4981,8 +5260,8 @@
 
     function clearPostImage(type) {
       pendingPostImages[type] = null;
-      const previewContainer = document.getElementById(`${type}-image-preview-container`);
-      const previewImg = document.getElementById(`${type}-image-preview`);
+      const previewContainer = document.getElementById(`${type}-img-preview-box`) || document.getElementById(`${type}-image-preview-container`);
+      const previewImg = document.getElementById(`${type}-img-preview`) || document.getElementById(`${type}-image-preview`);
       const fileInput = document.getElementById(`${type}-image-input`);
       if (previewContainer) previewContainer.classList.add('hidden');
       if (previewImg) previewImg.src = '';
@@ -5108,6 +5387,8 @@
        ===================================================================== */
     let currentStoryIdx = 0;
     let storyAutoTimer = null;
+    let storyIsPaused = false;
+    let currentStoryProgress = 0;
 
     function renderStoriesBar() {
       const container = document.getElementById('stories-container');
@@ -5116,22 +5397,22 @@
 
       // Your Story Circle (+ Post Vibe)
       container.innerHTML += `
-        <div onclick="openCreateStoryModal()" class="flex flex-col items-center gap-1.5 flex-shrink-0 cursor-pointer group">
-          <div class="relative w-16 h-16 rounded-full border-2 border-dashed border-black dark:border-[#CCFF00] bg-white dark:bg-zinc-800 p-0.5 flex items-center justify-center transition-transform group-hover:scale-105 shadow-[3px_3px_0px_0px_#000000]">
+        <div onclick="openCreateStoryModal()" class="flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+          <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-dashed border-black dark:border-[#CCFF00] bg-white dark:bg-zinc-800 p-0.5 flex items-center justify-center transition-transform hover:scale-105 shadow-[2.5px_2.5px_0px_0px_#000000]">
             <span class="text-2xl">${currentUser.avatar || '🐱'}</span>
-            <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#CCFF00] border-2 border-black flex items-center justify-center font-black text-xs text-black">
+            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-[#CCFF00] text-black border-2 border-black rounded-full flex items-center justify-center font-black text-xs text-black">
               +
             </div>
           </div>
-          <span class="text-[10px] font-black text-black dark:text-zinc-300 uppercase tracking-tight">Vibe của bạn</span>
+          <span class="text-[10px] font-black text-black dark:text-zinc-300 uppercase tracking-tight">Tin của bạn</span>
         </div>
       `;
 
       // Peer Stories
       DEFAULT_STORIES.forEach((story, idx) => {
         container.innerHTML += `
-          <div onclick="openStoryViewer(${idx})" class="flex flex-col items-center gap-1.5 flex-shrink-0 cursor-pointer group">
-            <div class="w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr ${story.bgGradient} border-2 border-black shadow-[3px_3px_0px_0px_#000000] flex items-center justify-center transition-transform group-hover:scale-105">
+          <div onclick="openStoryViewer(${idx})" class="flex flex-col items-center gap-1 flex-shrink-0 cursor-pointer group">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr ${story.bgGradient} border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105 active:scale-95">
               <div class="w-full h-full rounded-full bg-white dark:bg-zinc-900 border border-black flex items-center justify-center">
                 <span class="text-2xl">${story.avatar}</span>
               </div>
@@ -5143,12 +5424,31 @@
     }
     window.renderStoriesBar = renderStoriesBar;
 
+    function renderStorySegments() {
+      const segContainer = document.getElementById('story-progress-segments');
+      if (!segContainer) return;
+      segContainer.innerHTML = '';
+      DEFAULT_STORIES.forEach((_, i) => {
+        let width = '0%';
+        if (i < currentStoryIdx) width = '100%';
+        else if (i === currentStoryIdx) width = `${currentStoryProgress}%`;
+        segContainer.innerHTML += `
+          <div class="flex-1 bg-zinc-800 h-1.5 rounded-full overflow-hidden border border-zinc-700/50">
+            <div id="story-seg-${i}" class="bg-[#CCFF00] h-full rounded-full transition-all duration-100 ease-linear" style="width: ${width};"></div>
+          </div>
+        `;
+      });
+    }
+
     function openStoryViewer(idx) {
       currentStoryIdx = idx >= 0 && idx < DEFAULT_STORIES.length ? idx : 0;
+      currentStoryProgress = 0;
+      storyIsPaused = false;
       const modal = document.getElementById('modal-story-viewer');
       if (!modal) return;
       modal.classList.remove('hidden');
       renderStoryViewerContent();
+      renderStorySegments();
       startStoryAutoTimer();
       playCuteSound('pop');
     }
@@ -5156,6 +5456,8 @@
 
     function closeStoryViewer() {
       if (storyAutoTimer) clearInterval(storyAutoTimer);
+      storyAutoTimer = null;
+      storyIsPaused = false;
       const modal = document.getElementById('modal-story-viewer');
       if (modal) modal.classList.add('hidden');
     }
@@ -5180,31 +5482,54 @@
       if (captionEl) captionEl.textContent = `"${story.content}"`;
       if (tagEl) tagEl.textContent = story.tag || '#CVA2026';
       if (canvasEl) {
-        canvasEl.className = `min-h-[260px] rounded-2xl border-2 border-zinc-800 p-5 flex flex-col justify-between relative overflow-hidden transition-all bg-gradient-to-br ${story.bgGradient || 'from-indigo-950 via-purple-950 to-zinc-900'}`;
+        canvasEl.className = `min-h-[260px] rounded-2xl border-2 border-zinc-800 p-5 flex flex-col justify-between relative overflow-hidden transition-all bg-gradient-to-br ${story.bgGradient || 'from-indigo-950 via-purple-950 to-zinc-900'} cursor-pointer select-none`;
       }
+
+      const rHeart = document.getElementById('story-react-heart');
+      const rFire = document.getElementById('story-react-fire');
+      const rZap = document.getElementById('story-react-zap');
+      if (rHeart) rHeart.textContent = (story.reactions && story.reactions['❤️']) || 0;
+      if (rFire) rFire.textContent = (story.reactions && story.reactions['🔥']) || 0;
+      if (rZap) rZap.textContent = (story.reactions && (story.reactions['⚡'] || story.reactions['👏'])) || 0;
     }
 
     function startStoryAutoTimer() {
       if (storyAutoTimer) clearInterval(storyAutoTimer);
-      const bar = document.getElementById('story-progress-bar');
-      if (bar) {
-        bar.style.width = '0%';
-        let progress = 0;
-        storyAutoTimer = setInterval(() => {
-          progress += 2;
-          bar.style.width = progress + '%';
-          if (progress >= 100) {
-            clearInterval(storyAutoTimer);
-            nextStory();
-          }
-        }, 100);
+      currentStoryProgress = 0;
+      storyAutoTimer = setInterval(() => {
+        if (storyIsPaused) return;
+        currentStoryProgress += 2;
+        const activeSeg = document.getElementById(`story-seg-${currentStoryIdx}`);
+        if (activeSeg) activeSeg.style.width = currentStoryProgress + '%';
+        if (currentStoryProgress >= 100) {
+          clearInterval(storyAutoTimer);
+          nextStory();
+        }
+      }, 100);
+    }
+
+    function pauseStory() { storyIsPaused = true; }
+    function resumeStory() { storyIsPaused = false; }
+    window.pauseStory = pauseStory;
+    window.resumeStory = resumeStory;
+
+    function handleStoryCanvasClick(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      if (clickX < rect.width * 0.35) {
+        prevStory();
+      } else {
+        nextStory();
       }
     }
+    window.handleStoryCanvasClick = handleStoryCanvasClick;
 
     function nextStory() {
       if (currentStoryIdx < DEFAULT_STORIES.length - 1) {
         currentStoryIdx++;
+        currentStoryProgress = 0;
         renderStoryViewerContent();
+        renderStorySegments();
         startStoryAutoTimer();
       } else {
         closeStoryViewer();
@@ -5215,8 +5540,13 @@
     function prevStory() {
       if (currentStoryIdx > 0) {
         currentStoryIdx--;
+        currentStoryProgress = 0;
         renderStoryViewerContent();
+        renderStorySegments();
         startStoryAutoTimer();
+      } else {
+        currentStoryProgress = 0;
+        renderStorySegments();
       }
     }
     window.prevStory = prevStory;
@@ -5264,34 +5594,41 @@
     /* =====================================================================
        SOCIAL ENGINE: CVA SCHOOL POLL WIDGET
        ===================================================================== */
+    let cvaPollData = safeLoadJSON('teen_cva_poll_data', DEFAULT_POLL);
+
     function renderCvaPoll() {
       const container = document.getElementById('poll-options-container');
       const totalVotesEl = document.getElementById('poll-total-votes');
+      const questionEl = document.getElementById('poll-question-text');
       if (!container) return;
       container.innerHTML = '';
+
+      if (questionEl && cvaPollData.question) {
+        questionEl.textContent = `"${cvaPollData.question}"`;
+      }
 
       const votedOptionIdx = localStorage.getItem('teen_cva_poll_vote');
       const hasVoted = votedOptionIdx !== null;
 
-      const totalVotes = DEFAULT_POLL.options.reduce((sum, opt) => sum + opt.votes, 0);
-      if (totalVotesEl) totalVotesEl.textContent = `${totalVotes.toLocaleString()} bình chọn`;
+      const totalVotes = cvaPollData.options.reduce((sum, opt) => sum + (opt.votes || 0), 0);
+      if (totalVotesEl) totalVotesEl.textContent = `${totalVotes.toLocaleString()} học sinh đã bình chọn`;
 
-      DEFAULT_POLL.options.forEach((opt, idx) => {
+      cvaPollData.options.forEach((opt, idx) => {
         const percent = totalVotes > 0 ? Math.round((opt.votes / totalVotes) * 100) : 0;
         const isChosen = hasVoted && parseInt(votedOptionIdx, 10) === idx;
 
         container.innerHTML += `
           <div 
             onclick="voteCvaPoll(${idx})" 
-            class="relative overflow-hidden rounded-2xl border-2 border-black p-3.5 ${isChosen ? 'bg-[#FFE600] font-black' : 'bg-slate-50 dark:bg-zinc-800 hover:bg-amber-100 dark:hover:bg-zinc-700'} transition-all cursor-pointer shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+            class="relative overflow-hidden rounded-2xl border-2 border-black p-3.5 ${isChosen ? 'bg-[#FFE600] font-black' : 'bg-[#FDFBF7] dark:bg-zinc-800 hover:bg-[#FFE600]/30 dark:hover:bg-zinc-700'} transition-all cursor-pointer shadow-[2.5px_2.5px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none hover:-translate-y-0.5"
           >
             ${hasVoted ? `
-              <div class="absolute left-0 top-0 bottom-0 bg-[#CCFF00]/40 border-r-2 border-black/20 transition-all duration-700" style="width: ${percent}%;"></div>
+              <div class="poll-bar-fill absolute left-0 top-0 bottom-0 bg-[#CCFF00] dark:bg-[#CCFF00]/80 border-r-2 border-black transition-all duration-700 ease-out" style="width: 0%;" data-target-width="${percent}%"></div>
             ` : ''}
 
-            <div class="relative z-10 flex items-center justify-between text-xs">
+            <div class="relative z-10 flex items-center justify-between text-xs sm:text-sm">
               <span class="font-extrabold text-black dark:text-white flex items-center gap-2">
-                ${isChosen ? '<span class="text-[#FF007A]">✓</span>' : ''} ${escapeHTML(opt.text)}
+                ${isChosen ? '<span class="text-[#FF007A] font-black text-sm">✓</span>' : ''} ${escapeHTML(opt.text)}
               </span>
               <span class="font-black text-black dark:text-white flex-shrink-0 ml-2">
                 ${hasVoted ? `${percent}% (${opt.votes})` : 'Bình chọn →'}
@@ -5300,6 +5637,20 @@
           </div>
         `;
       });
+
+      if (hasVoted) {
+        if (typeof requestAnimationFrame === 'function') {
+          requestAnimationFrame(() => {
+            container.querySelectorAll('.poll-bar-fill').forEach(bar => {
+              bar.style.width = bar.dataset.targetWidth;
+            });
+          });
+        } else {
+          container.querySelectorAll('.poll-bar-fill').forEach(bar => {
+            bar.style.width = bar.dataset.targetWidth;
+          });
+        }
+      }
     }
     window.renderCvaPoll = renderCvaPoll;
 
@@ -5310,20 +5661,22 @@
         return;
       }
 
-      DEFAULT_POLL.options[optionIdx].votes += 1;
+      if (!cvaPollData.options[optionIdx]) return;
+      cvaPollData.options[optionIdx].votes = (cvaPollData.options[optionIdx].votes || 0) + 1;
       localStorage.setItem('teen_cva_poll_vote', String(optionIdx));
-      addAuraPoints(5);
+      try { localStorage.setItem('teen_cva_poll_data', JSON.stringify(cvaPollData)); } catch(e){}
+      addAuraPoints(10);
       playCuteSound('chime');
       launchConfetti();
       renderCvaPoll();
-      showTeenToast("Đã ghi nhận bình chọn của em! (+5 Aura) 🗳️✨", "🎉");
+      showTeenToast("Đã ghi nhận bình chọn của em! (+10 Aura) 🗳️✨", "🎉");
     }
     window.voteCvaPoll = voteCvaPoll;
 
     /* =====================================================================
        SOCIAL ENGINE: PROFILE SUB-TABS (POSTED / LIKED / SAVED / AURA)
        ===================================================================== */
-    let currentProfileSubTab = 'posted';
+        let currentProfileSubTab = 'posted';
 
     function switchProfileSubTab(subTab) {
       currentProfileSubTab = subTab;
@@ -5332,11 +5685,13 @@
       const tabs = ['posted', 'liked', 'saved', 'ranks'];
       tabs.forEach(t => {
         const btn = document.getElementById(`p-subtab-${t}`);
-        if (!btn) return;
+        const view = document.getElementById(`view-profile-${t}`);
         if (t === subTab) {
-          btn.className = "profile-subtab active bg-black text-[#FFE600] border-2 border-black py-2 rounded-xl uppercase text-[10px] sm:text-[11px] shadow-[2px_2px_0px_0px_#000000] cursor-pointer font-black";
+          if (btn) btn.className = "profile-subtab active bg-black text-[#FFE600] border-2 border-black py-2 rounded-xl uppercase text-[10px] sm:text-[11px] shadow-[2px_2px_0px_0px_#000000] cursor-pointer font-black";
+          if (view) view.classList.remove('hidden');
         } else {
-          btn.className = "profile-subtab text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white py-2 rounded-xl font-bold uppercase text-[10px] sm:text-[11px] cursor-pointer";
+          if (btn) btn.className = "profile-subtab text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white py-2 rounded-xl font-bold uppercase text-[10px] sm:text-[11px] cursor-pointer";
+          if (view) view.classList.add('hidden');
         }
       });
 
@@ -5345,11 +5700,10 @@
     window.switchProfileSubTab = switchProfileSubTab;
 
     function renderProfileSubTab(subTab) {
-      const container = document.getElementById('my-activities-container');
-      if (!container) return;
-      container.innerHTML = '';
-
       if (subTab === 'posted') {
+        const container = document.getElementById('my-activities-container');
+        if (!container) return;
+        container.innerHTML = '';
         const myLF = lostFoundData.filter(i => i.author === currentUser.name);
         const myBooks = booksData.filter(i => i.author === currentUser.name);
         const myConf = confessionsData.filter(i => !i.isAnonymous && i.author === currentUser.name);
@@ -5371,8 +5725,12 @@
         myAll.forEach(item => {
           container.innerHTML += buildThreadCardHTML(item, item._postType);
         });
+        safeCreateLucideIcons();
 
       } else if (subTab === 'liked') {
+        const container = document.getElementById('my-liked-container') || document.getElementById('my-activities-container');
+        if (!container) return;
+        container.innerHTML = '';
         const likedIds = currentUser.likedPostIds || [];
         const allPosts = [
           ...lostFoundData.map(i => ({ ...i, _postType: 'lf' })),
@@ -5393,8 +5751,12 @@
         likedPosts.forEach(item => {
           container.innerHTML += buildThreadCardHTML(item, item._postType);
         });
+        safeCreateLucideIcons();
 
       } else if (subTab === 'saved') {
+        const container = document.getElementById('my-saved-container') || document.getElementById('my-activities-container');
+        if (!container) return;
+        container.innerHTML = '';
         const savedIds = currentUser.savedPostIds || [];
         const allPosts = [
           ...lostFoundData.map(i => ({ ...i, _postType: 'lf' })),
@@ -5415,70 +5777,40 @@
         savedPosts.forEach(item => {
           container.innerHTML += buildThreadCardHTML(item, item._postType);
         });
+        safeCreateLucideIcons();
 
       } else if (subTab === 'ranks') {
         const aura = currentUser.aura || 1000;
         let rankName = 'Tập Sự CVA';
-        let nextRank = 'Tinh Anh CVA';
         let targetAura = 1200;
-        let progress = 83;
+        let progress = Math.min(100, Math.round((aura / targetAura) * 100));
 
         if (aura >= 1500) {
           rankName = 'Huyền Thoại Chu Văn An 👑';
-          nextRank = 'Max Rank';
           targetAura = 2000;
           progress = 100;
-        } else if (aura >= 1000) {
-          rankName = 'Tinh Anh CVA ⚡';
-          nextRank = 'Đại Sứ Chu Văn An 🌟';
+        } else if (aura >= 1200) {
+          rankName = 'Tinh Anh Chu Văn An ⚡';
           targetAura = 1500;
-          progress = Math.min(100, Math.round(((aura - 1000) / 500) * 100));
+          progress = Math.min(100, Math.round((aura / targetAura) * 100));
+        } else if (aura >= 1000) {
+          rankName = 'Chiến Thần Học Đường (Level 3) 🌟';
+          targetAura = 1200;
+          progress = Math.min(100, Math.round((aura / targetAura) * 100));
         }
 
-        container.innerHTML = `
-          <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] space-y-4">
-            <div class="flex items-center justify-between">
-              <div>
-                <span class="text-[10px] font-black uppercase tracking-wider text-zinc-400">Danh hiệu hiện tại</span>
-                <h4 class="font-black text-black dark:text-white text-base">${rankName}</h4>
-              </div>
-              <span class="bg-[#FFE600] text-black border-2 border-black font-black text-sm px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#000000]">
-                ${aura.toLocaleString()} Aura
-              </span>
-            </div>
+        const tierEl = document.getElementById('aura-tier-name');
+        const progLabel = document.getElementById('aura-progress-label');
+        const progPct = document.getElementById('aura-progress-pct');
+        const progBar = document.getElementById('aura-progress-bar');
+        const neededPts = document.getElementById('aura-needed-pts');
 
-            <div class="space-y-1.5">
-              <div class="flex items-center justify-between text-xs font-bold text-zinc-500">
-                <span>Tiến trình lên: <b>${nextRank}</b></span>
-                <span>${aura} / ${targetAura} Aura</span>
-              </div>
-              <div class="w-full bg-slate-100 dark:bg-zinc-800 h-3.5 rounded-full border-2 border-black overflow-hidden p-0.5">
-                <div class="h-full bg-[#CCFF00] rounded-full border border-black transition-all duration-700" style="width: ${progress}%;"></div>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2 text-xs font-black">
-              <div class="p-3 rounded-2xl border-2 border-black bg-amber-50 dark:bg-zinc-800 text-center space-y-1 shadow-[2px_2px_0px_0px_#000000]">
-                <span class="text-xl">🥠</span>
-                <p class="text-[11px] text-zinc-700 dark:text-zinc-300">Bốc quẻ may mắn</p>
-                <span class="text-[#FF007A] text-[10px]">+10 Aura / ngày</span>
-              </div>
-              <div class="p-3 rounded-2xl border-2 border-black bg-emerald-50 dark:bg-zinc-800 text-center space-y-1 shadow-[2px_2px_0px_0px_#000000]">
-                <span class="text-xl">🤝</span>
-                <p class="text-[11px] text-zinc-700 dark:text-zinc-300">Trao trả đồ rơi</p>
-                <span class="text-[#00F0FF] text-[10px]">+50 Aura</span>
-              </div>
-              <div class="p-3 rounded-2xl border-2 border-black bg-cyan-50 dark:bg-zinc-800 text-center space-y-1 shadow-[2px_2px_0px_0px_#000000]">
-                <span class="text-xl">📚</span>
-                <p class="text-[11px] text-zinc-700 dark:text-zinc-300">Tặng sách 0đ</p>
-                <span class="text-[#CCFF00] text-[10px]">+30 Aura</span>
-              </div>
-            </div>
-          </div>
-        `;
+        if (tierEl) tierEl.textContent = rankName;
+        if (progLabel) progLabel.textContent = `Tiến trình thăng hạng: ${aura} / ${targetAura} Aura`;
+        if (progPct) progPct.textContent = `${progress}%`;
+        if (progBar) progBar.style.width = `${progress}%`;
+        if (neededPts) neededPts.textContent = `${Math.max(0, targetAura - aura)} Aura`;
       }
-
-      safeCreateLucideIcons();
     }
     window.renderProfileSubTab = renderProfileSubTab;
 
@@ -5641,6 +5973,8 @@
       }, 75);
     }
 
+    let selectedCommandIdx = 0;
+
     function renderCommandPaletteResults(query) {
       const container = document.getElementById('command-palette-results');
       if (!container) return;
@@ -5686,19 +6020,25 @@
       }
 
       const listToRender = q ? (matches.length > 0 ? matches : defaultActions.filter(a => a.title.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q))) : defaultActions;
+      selectedCommandIdx = 0;
 
       if (listToRender.length === 0) {
         container.innerHTML = `
-          <div class="py-8 text-center text-xs text-slate-400">
+          <div class="py-8 text-center text-xs text-zinc-400">
             <span class="text-2xl block mb-1">🔍</span>
             Không tìm thấy kết quả nào cho "${escapeHTML(query)}". Thử gõ "Casio", "Toán", "Văn", "Đồng phục"...
           </div>
         `;
+        window.currentCommandList = [];
         return;
       }
 
       container.innerHTML = listToRender.map((item, idx) => `
-        <div onclick="executeCommandItem(${idx})" class="command-palette-item p-2.5 rounded-2xl border-2 border-transparent hover:border-black dark:hover:border-zinc-600 hover:bg-[#CCFF00]/20 dark:hover:bg-zinc-800 cursor-pointer flex items-center justify-between text-xs transition">
+        <div 
+          id="cmd-item-${idx}"
+          onclick="executeCommandItem(${idx})" 
+          class="command-palette-item p-2.5 rounded-2xl border-2 ${idx === selectedCommandIdx ? 'border-black bg-[#CCFF00]/40 shadow-[2px_2px_0px_0px_#000000] is-selected' : 'border-transparent hover:border-black dark:hover:border-zinc-600 hover:bg-[#CCFF00]/20 dark:hover:bg-zinc-800'} cursor-pointer flex items-center justify-between text-xs transition"
+        >
           <div class="flex items-center gap-3">
             <span class="text-lg flex-shrink-0">${item.icon}</span>
             <div>
@@ -5711,6 +6051,20 @@
       `).join('');
 
       window.currentCommandList = listToRender;
+    }
+
+    function updateCommandPaletteHighlight() {
+      const items = document.querySelectorAll('.command-palette-item');
+      items.forEach((item, idx) => {
+        if (idx === selectedCommandIdx) {
+          item.classList.add('border-black', 'bg-[#CCFF00]/40', 'shadow-[2px_2px_0px_0px_#000000]', 'is-selected');
+          item.classList.remove('border-transparent');
+          item.scrollIntoView({ block: 'nearest' });
+        } else {
+          item.classList.remove('border-black', 'bg-[#CCFF00]/40', 'shadow-[2px_2px_0px_0px_#000000]', 'is-selected');
+          item.classList.add('border-transparent');
+        }
+      });
     }
 
     function executeCommandItem(idx) {
@@ -5731,13 +6085,55 @@
       }
     });
 
-    // Global Keyboard listener for Command Palette (Ctrl+K or Cmd+K)
+    // Global Keyboard listener for Command Palette, Lightbox & Stories
     window.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('modal-command-palette');
+      const isPaletteOpen = modal && !modal.classList.contains('hidden');
+      const lightboxModal = document.getElementById('modal-lightbox');
+      const isLightboxOpen = lightboxModal && !lightboxModal.classList.contains('hidden');
+      const storyModal = document.getElementById('modal-story-viewer');
+      const isStoryOpen = storyModal && !storyModal.classList.contains('hidden');
+
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         openCommandPalette();
-      } else if (e.key === 'Escape') {
-        closeCommandPalette();
+        return;
+      }
+
+      if (e.key === 'Escape') {
+        if (isPaletteOpen) closeCommandPalette();
+        if (isLightboxOpen) closeLightbox();
+        if (isStoryOpen) closeStoryViewer();
+        return;
+      }
+
+      if (isPaletteOpen) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (window.currentCommandList && window.currentCommandList.length > 0) {
+            selectedCommandIdx = (selectedCommandIdx + 1) % window.currentCommandList.length;
+            updateCommandPaletteHighlight();
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (window.currentCommandList && window.currentCommandList.length > 0) {
+            selectedCommandIdx = (selectedCommandIdx - 1 + window.currentCommandList.length) % window.currentCommandList.length;
+            updateCommandPaletteHighlight();
+          }
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          executeCommandItem(selectedCommandIdx);
+        }
+      }
+
+      if (isStoryOpen) {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prevStory();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          nextStory();
+        }
       }
     });
 
