@@ -23,7 +23,7 @@ const html2 = fs.readFileSync('Tram_Hoc_Duong_Teen.html', 'utf8');
 const b1 = fs.readFileSync('index.html');
 const b2 = fs.readFileSync('Tram_Hoc_Duong_Teen.html');
 test('100% Bitwise buffer parity between index.html and Tram_Hoc_Duong_Teen.html', b1.equals(b2));
-test('Exact byte length match (468,030 bytes)', b1.length === 468030 && b2.length === 468030, `Length: ${b1.length}`);
+test('Exact byte length match (472,207 bytes)', b1.length === 472207 && b2.length === 472207, `Length: ${b1.length}`);
 
 // 2. CSS Selector: not hiding marquee or size pill
 const hasNotSelector = html1.includes('.swarm-draw-pending > *:not(.swarm-scroll-marquee):not(.swarm-size-pill)');
@@ -45,14 +45,25 @@ const hasViewportClamping = (html1.includes('w - 40') || html1.includes('window.
 test('executeSwarmDraw clamps cursor coordinates to viewport boundaries', hasViewportClamping);
 
 // 5. Fail-Safe on Tab Switch
-const hasTabSwitchFailSafe = html1.includes("Fail-safe tab switch: Reveal all pending cards on tab navigation") &&
+const hasTabSwitchFailSafe = html1.includes("Fail-safe tab switch: Reveal all pending cards") &&
                              html1.includes("document.querySelectorAll('.swarm-draw-pending').forEach") &&
-                             html1.includes("el.classList.remove('swarm-draw-pending')");
-test('switchTab automatically removes swarm-draw-pending to prevent trapped content', hasTabSwitchFailSafe);
+                             html1.includes("document.querySelectorAll('.swarm-btn-pending').forEach");
+test('switchTab automatically removes pending states on cards & buttons to prevent trapped content', hasTabSwitchFailSafe);
 
 // 6. Fail-Safe safety timeouts
 const hasSafetyTimeout = html1.includes('setTimeout(revealCard, 350)') || html1.includes('safety timeout');
 test('Fail-safe safety timeout protects against stuck hidden state', hasSafetyTimeout);
+
+// 7. Quizizz Lobby Raw HTML Leak Elimination
+const hasLeakedTag = html1.includes('</div>div') || html2.includes('</div>div');
+test('Raw HTML leak "</div>div" is 100% eliminated from both files', !hasLeakedTag);
+
+// 8. Hierarchical Button Swarm Draw
+const hasButtonDraw = html1.includes('drawCardButtons') &&
+                      html1.includes('.swarm-btn-marquee') &&
+                      html1.includes('.swarm-btn-revealed') &&
+                      html1.includes('btnSpringPop');
+test('Hierarchical Button Swarm Draw engine & CSS rules verified', hasButtonDraw);
 
 console.log(`\nHOTFIX VERIFICATION SUMMARY: ${pass}/${pass + fail} PASSED (${fail} FAILS)`);
 
