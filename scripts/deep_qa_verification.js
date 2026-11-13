@@ -472,6 +472,33 @@ if (runtimeInitOk) {
   } catch (e) {
     check('Swarm Build Animation & Figma Cursor Chat verification', false, e.message);
   }
+
+  // Test M: Scroll-Driven Swarm Draw & Reveal
+  try {
+    check('initScrollSwarmDraw is exposed on window', typeof sandbox.initScrollSwarmDraw === 'function');
+    
+    // Test initialization
+    sandbox.initScrollSwarmDraw();
+    check('initScrollSwarmDraw executes cleanly in sandbox', true);
+
+    if (typeof sandbox.executeSwarmDraw === 'function') {
+      const mockCard = {
+        classList: {
+          contains: (cls) => cls === 'swarm-draw-pending',
+          add: () => {},
+          remove: () => {}
+        },
+        dataset: {},
+        appendChild: () => {},
+        querySelectorAll: () => [],
+        getBoundingClientRect: () => ({ top: 120, left: 120, bottom: 360, right: 600, width: 480, height: 240 })
+      };
+      sandbox.executeSwarmDraw(mockCard, { id: 'p1', name: 'Linh Đan', color: '#FF007A' });
+      check('executeSwarmDraw triggers marquee animation and reveal cleanly', mockCard.dataset.swarmRevealed === 'true');
+    }
+  } catch (e) {
+    check('Scroll-Driven Swarm Draw verification', false, e.message);
+  }
 }
 
 console.log('\n================================================================');

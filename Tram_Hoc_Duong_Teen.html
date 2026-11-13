@@ -366,6 +366,97 @@
       100% { transform: scale(1) translateY(0); opacity: 1; }
     }
 
+    /* ==========================================================================
+       SCROLL-DRIVEN SWARM DRAW & REVEAL SYSTEM (CLS = 0 NEOBRUTALISM)
+       ========================================================================== */
+    .swarm-draw-pending {
+      position: relative !important;
+      border: 2px dashed rgba(0, 0, 0, 0.12) !important;
+      background-color: rgba(0, 0, 0, 0.015) !important;
+      box-shadow: none !important;
+      border-radius: 24px !important;
+      transition: border-color 0.2s ease, background-color 0.2s ease !important;
+    }
+    html.dark .swarm-draw-pending,
+    [data-theme="dark"] .swarm-draw-pending {
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      background-color: rgba(255, 255, 255, 0.015) !important;
+    }
+
+    /* Hide inner content during pending state with smooth spring-ready scale */
+    .swarm-draw-pending > * {
+      opacity: 0 !important;
+      transform: scale(0.96) !important;
+      pointer-events: none !important;
+      transition: opacity 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+
+    /* Crosshair watermark in center of empty frame */
+    .swarm-draw-pending::before {
+      content: '+';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 22px;
+      font-family: monospace;
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+      z-index: 10;
+    }
+    html.dark .swarm-draw-pending::before,
+    [data-theme="dark"] .swarm-draw-pending::before {
+      color: rgba(255, 255, 255, 0.18);
+    }
+
+    /* Scroll-Driven Selection Marquee Overlay */
+    .swarm-scroll-marquee {
+      position: absolute;
+      inset: 0;
+      border: 2.5px dashed var(--marquee-color, #FFE600);
+      background-color: rgba(255, 230, 0, 0.12);
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 30;
+      animation: marqueeExpand 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes marqueeExpand {
+      0%   { clip-path: polygon(0 0, 0 0, 0 0, 0 0); }
+      100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    }
+    .swarm-size-pill {
+      position: absolute;
+      bottom: -22px;
+      right: 0;
+      background-color: #000000;
+      color: var(--marquee-color, #FFE600);
+      border: 1.5px solid #000000;
+      font-size: 9px;
+      font-family: monospace;
+      font-weight: 900;
+      padding: 1px 6px;
+      border-radius: 6px;
+      box-shadow: 1.5px 1.5px 0px 0px var(--marquee-color, #FFE600);
+      white-space: nowrap;
+      z-index: 35;
+    }
+
+    /* Phase 3: Revealed card with spring bounce */
+    .swarm-draw-revealed {
+      animation: cardSpringBounce 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+    }
+    .swarm-draw-revealed > * {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+      pointer-events: auto !important;
+    }
+    @keyframes cardSpringBounce {
+      0%   { transform: scale(0.97); }
+      60%  { transform: scale(1.015); }
+      100% { transform: scale(1); }
+    }
+
     /* Selection Marquee for Swarm Page Build */
     #swarm-selection-marquee {
       position: absolute;
@@ -1118,7 +1209,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
         
         <!-- Bento 1: Main Hero Banner (Col span 2) -->
-        <div id="bento-hero-banner" class="md:col-span-2 relative bg-white dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-7 shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] hover:-translate-y-0.5 hover:shadow-[8px_8px_0px_0px_#000000] dark:hover:shadow-[8px_8px_0px_0px_#CCFF00] transition-all overflow-hidden flex flex-col justify-between group">
+        <div id="bento-hero-banner" class="swarm-draw-target md:col-span-2 relative bg-white dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-7 shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] hover:-translate-y-0.5 hover:shadow-[8px_8px_0px_0px_#000000] dark:hover:shadow-[8px_8px_0px_0px_#CCFF00] transition-all overflow-hidden flex flex-col justify-between group">
           
           <!-- Top Right Floating Sticker Stamp -->
           <div class="absolute -top-1 -right-1 rotate-6 hidden sm:flex items-center gap-1 bg-[#FFE600] text-black border-2 border-black px-3 py-1 rounded-2xl shadow-[3px_3px_0px_0px_#000000] text-[10px] font-black uppercase tracking-widest z-0 pointer-events-none select-none">
@@ -1180,7 +1271,7 @@
         </div>
 
         <!-- Bento 2: Mini-game "Bốc Quẻ Học Đường / Vibe Check" (Neobrutalism Edition) -->
-        <div id="bento-vibe-card" class="bg-[#FFF8E7] dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] flex flex-col justify-between text-center relative overflow-hidden transition-all duration-300">
+        <div id="bento-vibe-card" class="swarm-draw-target bg-[#FFF8E7] dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] flex flex-col justify-between text-center relative overflow-hidden transition-all duration-300">
           <div class="space-y-2 relative z-10">
             <div onclick="resetDailyVibeForTesting()" title="Click để reset bốc lại thử nghiệm (+10 Aura)" class="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border-2 border-black bg-[#FFE600] text-black shadow-[2px_2px_0px_0px_#000000] cursor-pointer hover:scale-105 transition active:scale-95 select-none" id="vibe-badge">
               <span>🥠</span> Quẻ May Mắn <span id="vibe-countdown-badge" class="text-[9px] bg-black text-[#FFE600] px-1.5 py-0.2 rounded-full font-black">RESET: --:--:--</span>
@@ -1227,7 +1318,7 @@
       </div>
 
       <!-- ==================== SÂN TRƯỜNG TRỰC TUYẾN (QUIZIZZ LIVE LOBBY NEOBRUTALISM) ==================== -->
-      <div id="quizizz-live-lobby" class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-4 sm:p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#00F0FF] relative overflow-hidden transition-all duration-300">
+      <div id="quizizz-live-lobby" class="swarm-draw-target bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-4 sm:p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#00F0FF] relative overflow-hidden transition-all duration-300">
         
         <!-- Floating Reactions Container -->
         <div id="lobby-flying-reactions-box" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
@@ -1663,7 +1754,7 @@
       </div>
 
       <!-- ==================== CVA WEEKLY POLL (BÌNH CHỌN HỌC ĐƯỜNG GEN Z) ==================== -->
-      <div id="cva-weekly-poll" class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[5px_5px_0px_0px_#000000] dark:shadow-[5px_5px_0px_0px_#CCFF00] space-y-3">
+      <div id="cva-weekly-poll" class="swarm-draw-target bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[5px_5px_0px_0px_#000000] dark:shadow-[5px_5px_0px_0px_#CCFF00] space-y-3">
         <div class="flex items-center justify-between border-b-2 border-black/10 dark:border-zinc-800 pb-2.5">
           <div class="flex items-center gap-2">
             <span class="w-8 h-8 rounded-xl bg-[#FFE600] text-black border-2 border-black flex items-center justify-center text-sm shadow-[1.5px_1.5px_0px_0px_#000000]">📊</span>
@@ -1716,7 +1807,7 @@
       </div>
 
       <!-- ==================== ACCORDION FAQS: CẨM NANG & HỎI ĐÁP CVA (NEOBRUTALISM) ==================== -->
-      <div class="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 sm:p-6 shadow-[5px_5px_0px_0px_#000000] dark:shadow-[5px_5px_0px_0px_#CCFF00] space-y-4 mt-5">
+      <div id="landing-faqs-accordion" class="swarm-draw-target bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-5 sm:p-6 shadow-[5px_5px_0px_0px_#000000] dark:shadow-[5px_5px_0px_0px_#CCFF00] space-y-4 mt-5">
         <div class="flex items-center justify-between border-b-2 border-black dark:border-zinc-800 pb-3">
           <div class="flex items-center gap-2">
             <span class="text-xl">💡</span>
@@ -1780,7 +1871,7 @@
       </div>
 
       <!-- ==================== THE FINAL PUSH: HIGH-ENERGY FOOTER CTA BANNER ==================== -->
-      <div id="landing-final-cta" class="bg-[#FFE600] dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-8 shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] text-center space-y-4 my-6 relative overflow-hidden">
+      <div id="landing-final-cta" class="swarm-draw-target bg-[#FFE600] dark:bg-zinc-900 border-2 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-8 shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] text-center space-y-4 my-6 relative overflow-hidden">
         <div class="inline-flex items-center gap-2 bg-black text-[#FFE600] border-2 border-black px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">
           <span>🏫</span> THCS CHU VĂN AN • HỆ SINH THÁI 4.0
         </div>
@@ -7002,6 +7093,129 @@
       }
     }
 
+    /* ==========================================================================
+       SCROLL-DRIVEN SWARM DRAW & REVEAL ENGINE
+       ========================================================================== */
+    let swarmDrawQueue = [];
+    let swarmDrawTimer = null;
+    let swarmDrawPeerIdx = 0;
+
+    function queueSwarmDraw(el) {
+      if (!el || el.dataset.swarmRevealed === 'true') return;
+      swarmDrawQueue.push(el);
+
+      if (!swarmDrawTimer) {
+        processSwarmDrawQueue();
+      }
+    }
+
+    function processSwarmDrawQueue() {
+      if (swarmDrawQueue.length === 0) {
+        swarmDrawTimer = null;
+        return;
+      }
+
+      const el = swarmDrawQueue.shift();
+      const peer = SWARM_PEERS[swarmDrawPeerIdx % SWARM_PEERS.length];
+      swarmDrawPeerIdx++;
+
+      executeSwarmDraw(el, peer);
+
+      // Stagger delay between parallel draws (110ms)
+      swarmDrawTimer = setTimeout(() => {
+        processSwarmDrawQueue();
+      }, 110);
+    }
+
+    function executeSwarmDraw(el, peer) {
+      if (!el || el.dataset.swarmRevealed === 'true') return;
+      el.dataset.swarmRevealed = 'true';
+
+      const rect = el.getBoundingClientRect();
+
+      // Dispatch assigned peer cursor toward card corner if enabled
+      if (swarmEnabled && swarmPeersState.length > 0 && !isSwarmBuildPlaying) {
+        const peerObj = swarmPeersState.find(p => p.id === peer.id) || swarmPeersState[0];
+        if (peerObj) {
+          peerObj.x = Math.max(10, rect.left);
+          peerObj.y = Math.max(10, rect.top);
+          peerObj.targetX = Math.max(10, rect.left + rect.width);
+          peerObj.targetY = Math.max(10, rect.top + rect.height);
+          peerObj.speed = 0.085;
+        }
+      }
+
+      // Create neon dashed marquee overlay
+      const marquee = document.createElement('div');
+      marquee.className = 'swarm-scroll-marquee';
+      marquee.style.setProperty('--marquee-color', peer.color || '#FFE600');
+      marquee.innerHTML = `<span class="swarm-size-pill">w: ${Math.round(rect.width || 360)}px  h: ${Math.round(rect.height || 200)}px</span>`;
+      el.appendChild(marquee);
+
+      // Complete reveal after 240ms or safety 350ms
+      let completed = false;
+      const revealCard = () => {
+        if (completed) return;
+        completed = true;
+        if (marquee.parentNode) marquee.remove();
+        el.classList.remove('swarm-draw-pending');
+        el.classList.add('swarm-draw-revealed');
+
+        if (typeof triggerPeerClickEffect === 'function' && swarmEnabled && !isSwarmBuildPlaying) {
+          triggerPeerClickEffect(rect.left + rect.width - 20, rect.top + rect.height - 20, peer);
+        }
+        if (typeof playCuteSound === 'function') {
+          playCuteSound('pop');
+        }
+      };
+
+      setTimeout(revealCard, 240);
+    }
+
+    function initScrollSwarmDraw() {
+      if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
+      const targets = document.querySelectorAll('.swarm-draw-target, #bento-hero-banner, #bento-vibe-card, #quizizz-live-lobby, #landing-problem-agitation > div > div, #cva-pillars-showcase > div > div, #landing-testimonials > div > div, #cva-weekly-poll, #landing-faqs-accordion, #landing-final-cta');
+
+      if (typeof IntersectionObserver === 'undefined') {
+        // Fallback for headless vm test sandbox or unsupported browsers: instant visibility
+        targets.forEach(el => {
+          el.classList.remove('swarm-draw-pending');
+          el.classList.add('swarm-draw-revealed');
+          el.dataset.swarmRevealed = 'true';
+        });
+        return;
+      }
+
+      targets.forEach(el => {
+        el.classList.add('swarm-draw-target');
+        // Do not hide top Hero and Vibe cards initially (managed by Build Intro)
+        if (el.id !== 'bento-hero-banner' && el.id !== 'bento-vibe-card') {
+          el.classList.add('swarm-draw-pending');
+        } else {
+          el.dataset.swarmRevealed = 'true';
+        }
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target);
+            queueSwarmDraw(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -20px 0px' });
+
+      targets.forEach(el => {
+        if (el.id !== 'bento-hero-banner' && el.id !== 'bento-vibe-card') {
+          observer.observe(el);
+        }
+      });
+
+      window.__swarmDrawObserver = observer;
+    }
+    window.initScrollSwarmDraw = initScrollSwarmDraw;
+
     function triggerSwarmBuildIntro(isManual = false) {
       if (typeof document === 'undefined') return;
       if (isSwarmBuildPlaying) return;
@@ -7185,6 +7399,21 @@
         if (!swarmEnabled && overlay) {
           overlay.style.display = 'none';
         }
+        // Re-observe scroll draw targets if manual replay
+        if (isManual) {
+          const drawTargets = document.querySelectorAll('.swarm-draw-target');
+          drawTargets.forEach(el => {
+            if (el.id !== 'bento-hero-banner' && el.id !== 'bento-vibe-card') {
+              el.dataset.swarmRevealed = 'false';
+              el.classList.remove('swarm-draw-revealed');
+              el.classList.add('swarm-draw-pending');
+              if (window.__swarmDrawObserver) {
+                window.__swarmDrawObserver.observe(el);
+              }
+            }
+          });
+        }
+
         if (isManual && typeof showTeenToast === 'function') {
           showTeenToast("Hoàn thành dựng trang Swarm Landing Page! 🚀🎉", "⚡");
         }
@@ -7266,6 +7495,7 @@
       safeRun(renderCvaPoll, 'renderCvaPoll');
       safeRun(safeCreateLucideIcons, 'safeCreateLucideIcons');
       safeRun(initSwarmCursors, 'initSwarmCursors');
+      safeRun(initScrollSwarmDraw, 'initScrollSwarmDraw');
       safeRun(() => {
         setTimeout(() => {
           try {
