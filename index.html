@@ -421,7 +421,7 @@
       z-index: 50 !important;
       opacity: 1 !important;
       visibility: visible !important;
-      animation: marqueeExpand 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: marqueeExpand 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
       box-shadow: 0 0 12px rgba(255, 230, 0, 0.35) !important;
     }
     @keyframes marqueeExpand {
@@ -493,7 +493,7 @@
       border-radius: inherit;
       pointer-events: none;
       z-index: 30;
-      animation: marqueeExpand 0.16s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: marqueeExpand 0.38s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
     }
 
     /* Selection Marquee for Swarm Page Build */
@@ -7164,7 +7164,7 @@
     }
 
     /* ==========================================================================
-       SCROLL-DRIVEN SWARM DRAW & REVEAL ENGINE (STRICT BOTTOM NAV EXCLUSION)
+       SCROLL-DRIVEN SWARM DRAW & REVEAL ENGINE (CINEMATIC DELIBERATE PACING)
        ========================================================================== */
     let swarmDrawQueue = [];
     let swarmDrawTimer = null;
@@ -7191,10 +7191,10 @@
 
       executeSwarmDraw(el, peer);
 
-      // Stagger delay between parallel draws (100ms)
+      // Cinematic stagger delay between sequential cards in a row (380ms)
       swarmDrawTimer = setTimeout(() => {
         processSwarmDrawQueue();
-      }, 100);
+      }, 380);
     }
 
     function executeSwarmDraw(el, peer) {
@@ -7213,13 +7213,13 @@
 
       const peerObj = (swarmEnabled && swarmPeersState.length > 0) ? (swarmPeersState.find(p => p.id === peer.id) || swarmPeersState[0]) : null;
 
-      // Dispatch assigned peer cursor toward card corner if enabled
+      // Deliberate, smooth gliding speed (speed = 0.08) across diagonal of the card
       if (peerObj && !isSwarmBuildPlaying) {
         peerObj.x = startX;
         peerObj.y = startY;
         peerObj.targetX = targetX;
         peerObj.targetY = targetY;
-        peerObj.speed = 0.16;
+        peerObj.speed = 0.08;
       }
 
       // Create neon dashed marquee overlay
@@ -7229,7 +7229,7 @@
       marquee.innerHTML = `<span class="swarm-size-pill">w: ${Math.round(rect.width || 360)}px  h: ${Math.round(rect.height || 200)}px</span>`;
       el.appendChild(marquee);
 
-      // Clear, visible marquee drag rhythm (300ms) before spring bounce pop
+      // Clear, cinematic deliberate marquee drag (650ms) before spring bounce pop
       let completed = false;
       const revealCard = () => {
         if (completed) return;
@@ -7256,8 +7256,8 @@
         drawCardButtons(el);
       };
 
-      setTimeout(revealCard, 300);
-      setTimeout(revealCard, 420); // Hard safety net: never leave card stuck
+      setTimeout(revealCard, 650);
+      setTimeout(revealCard, 850); // Hard safety net: never leave card stuck
     }
 
     function drawCardButtons(cardEl) {
@@ -7275,7 +7275,7 @@
         btn.classList.add('swarm-btn-pending');
         btn.style.position = 'relative';
 
-        // Staggered peer cursor draw on each button (140ms marquee)
+        // Staggered peer cursor draw on each button (380ms marquee, 160ms stagger)
         setTimeout(() => {
           const bRect = btn.getBoundingClientRect();
           const peer = SWARM_PEERS[(idx + 1) % SWARM_PEERS.length];
@@ -7288,7 +7288,7 @@
             peerObj.y = Math.max(70, Math.min(safeY - 12, bRect.top));
             peerObj.targetX = Math.max(16, Math.min(w - 40, bRect.left + bRect.width - 15));
             peerObj.targetY = Math.max(70, Math.min(safeY - 12, bRect.top + bRect.height - 15));
-            peerObj.speed = 0.16;
+            peerObj.speed = 0.08;
           }
 
           const bMarquee = document.createElement('div');
@@ -7305,6 +7305,9 @@
             if (typeof triggerPeerClickEffect === 'function' && swarmEnabled && !isSwarmBuildPlaying) {
               triggerPeerClickEffect(Math.max(16, Math.min(w - 40, bRect.left + bRect.width - 10)), Math.min(safeY - 12, bRect.top + bRect.height - 10), peer);
             }
+            if (typeof playCuteSound === 'function') {
+              playCuteSound('pop');
+            }
 
             // Post-draw dispersal: Cursors float away after button draw
             if (peerObj && !isSwarmBuildPlaying) {
@@ -7312,8 +7315,8 @@
               peerObj.targetY = Math.random() * (safeY - 180) + 80;
               peerObj.speed = 0.035;
             }
-          }, 140);
-        }, idx * 70);
+          }, 380);
+        }, idx * 160);
       });
     }
     window.drawCardButtons = drawCardButtons;
@@ -7449,13 +7452,13 @@
       const heroW = bentoRect.width || 520;
       const heroH = bentoRect.height || 240;
 
-      // Act 1 (0ms - 180ms): Minh Trí (#FFE600) drags cyber yellow marquee over Bento Hero
+      // Act 1 (0ms - 650ms): Minh Trí (#FFE600) drags cyber yellow marquee over Bento Hero
       if (p2) {
         p2.x = heroLeft;
         p2.y = heroTop;
         p2.targetX = heroLeft + heroW;
         p2.targetY = heroTop + heroH;
-        p2.speed = 0.16;
+        p2.speed = 0.08;
       }
 
       if (marquee) {
@@ -7471,10 +7474,10 @@
             marquee.style.width = `${heroW}px`;
             marquee.style.height = `${heroH}px`;
           }
-        }, 30);
+        }, 50);
       }
 
-      // 180ms: Bento Hero pops open and 4 action buttons inside are drawn
+      // 650ms: Bento Hero pops open and 4 action buttons inside are drawn
       setTimeout(() => {
         if (marquee) {
           marquee.classList.add('hidden');
@@ -7497,15 +7500,15 @@
         if (typeof playCuteSound === 'function') {
           playCuteSound('pop');
         }
-      }, 180);
+      }, 650);
 
-      // Act 2 (180ms - 340ms): Linh Đan types title & Bảo Anh pops stickers
+      // Act 2 (650ms - 1100ms): Linh Đan types title & Bảo Anh pops stickers
       setTimeout(() => {
         const titleRect = heroTitle ? heroTitle.getBoundingClientRect() : { left: heroLeft + 20, top: heroTop + 40, width: 300, height: 60 };
         if (p1) {
           p1.targetX = titleRect.left + 80;
           p1.targetY = titleRect.top + 20;
-          p1.speed = 0.14;
+          p1.speed = 0.08;
           showPeerChat(p1, 'Set font Space Grotesk 900 cực cháy! ⚡', 2200);
           triggerPeerClickEffect(p1.x, p1.y, p1);
         }
@@ -7523,14 +7526,14 @@
         }
 
         if (stampHot) {
-          stampHot.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          stampHot.style.transition = 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)';
           stampHot.style.transform = 'scale(1.25) rotate(-6deg)';
-          setTimeout(() => { stampHot.style.transform = ''; }, 200);
+          setTimeout(() => { stampHot.style.transform = ''; }, 250);
         }
         if (stampAura) {
-          stampAura.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          stampAura.style.transition = 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)';
           stampAura.style.transform = 'scale(1.25) rotate(6deg)';
-          setTimeout(() => { stampAura.style.transform = ''; }, 200);
+          setTimeout(() => { stampAura.style.transform = ''; }, 250);
         }
 
         if (storiesContainer) {
@@ -7539,13 +7542,13 @@
             setTimeout(() => {
               node.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
               node.style.transform = 'scale(1.15)';
-              setTimeout(() => { node.style.transform = ''; }, 160);
-            }, idx * 40);
+              setTimeout(() => { node.style.transform = ''; }, 180);
+            }, idx * 50);
           });
         }
-      }, 260);
+      }, 750);
 
-      // Act 3 (340ms - 520ms): Hoàng Nam (#00F0FF) draws Bento Vibe Card
+      // Act 3 (1100ms - 1750ms): Hoàng Nam (#00F0FF) draws Bento Vibe Card (650ms)
       setTimeout(() => {
         const vibeRect = bentoVibe ? bentoVibe.getBoundingClientRect() : { left: heroLeft + heroW + 20, top: heroTop, width: 280, height: 260 };
         const vibeLeft = vibeRect.left;
@@ -7558,7 +7561,7 @@
           p4.y = vibeTop;
           p4.targetX = vibeLeft + vibeW;
           p4.targetY = vibeTop + vibeH;
-          p4.speed = 0.16;
+          p4.speed = 0.08;
         }
 
         // Attach cyan marquee inside bentoVibe
@@ -7586,10 +7589,10 @@
           if (typeof playCuteSound === 'function') {
             playCuteSound('pop');
           }
-        }, 180);
-      }, 340);
+        }, 650);
+      }, 1100);
 
-      // Act 4 (520ms - 680ms): Ngọc Diệp (#A855F7) draws "Rút Quẻ Ngay (+10 Aura)" button
+      // Act 4 (1750ms - 2150ms): Ngọc Diệp (#A855F7) draws "Rút Quẻ Ngay (+10 Aura)" button (380ms)
       setTimeout(() => {
         const btnRect = vibeBtn ? vibeBtn.getBoundingClientRect() : { left: heroLeft + heroW + 40, top: heroTop + 180, width: 220, height: 44 };
         const peerDrawer = p5 || p4;
@@ -7599,7 +7602,7 @@
           peerDrawer.y = btnRect.top;
           peerDrawer.targetX = btnRect.left + btnRect.width - 15;
           peerDrawer.targetY = btnRect.top + btnRect.height - 15;
-          peerDrawer.speed = 0.16;
+          peerDrawer.speed = 0.08;
         }
 
         let bMarquee = null;
@@ -7625,10 +7628,10 @@
           if (p4) {
             showPeerChat(p4, 'Xong kèo! Trang lên sóng toàn trường rồi anh em ơi! 🚀🎉', 2600);
           }
-        }, 160);
-      }, 520);
+        }, 380);
+      }, 1750);
 
-      // Act 5 (680ms - 850ms): Confetti burst & completion celebration
+      // Act 5 (2200ms - 2400ms): Confetti burst & completion celebration
       setTimeout(() => {
         if (typeof confetti === 'function') {
           try {
@@ -7643,9 +7646,9 @@
         if (typeof playCuteSound === 'function') {
           playCuteSound('pop');
         }
-      }, 680);
+      }, 2200);
 
-      // Settle at 850ms: Disperse peers upward into content area
+      // Settle at 2400ms: Disperse peers upward into content area
       setTimeout(() => {
         isSwarmBuildPlaying = false;
         const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
@@ -7661,7 +7664,7 @@
         if (isManual && typeof showTeenToast === 'function') {
           showTeenToast("Hoàn thành dựng trang Swarm Landing Page! 🚀🎉", "⚡");
         }
-      }, 850);
+      }, 2400);
     }
     window.triggerSwarmBuildIntro = triggerSwarmBuildIntro;
 
