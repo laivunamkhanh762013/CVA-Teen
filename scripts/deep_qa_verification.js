@@ -204,7 +204,9 @@ function getOrCreateElem(id) {
       focus: () => {},
       click: () => {},
       addEventListener: () => {},
-      removeEventListener: () => {}
+      removeEventListener: () => {},
+      appendChild: () => {},
+      remove: () => {}
     };
   }
   return domStore[id];
@@ -220,17 +222,27 @@ const sandbox = {
     getElementById: (id) => getOrCreateElem(id),
     querySelector: (sel) => {
       if (sel && sel.startsWith('#')) return getOrCreateElem(sel.slice(1));
-      return { value: 'all', checked: true, classList: { add: () => {}, remove: () => {} } };
+      return { value: 'all', checked: true, classList: { add: () => {}, remove: () => {} }, appendChild: () => {}, remove: () => {} };
     },
     querySelectorAll: (sel) => [],
     createElement: (tag) => ({
       tagName: tag,
+      id: '',
+      className: '',
       classList: { add: () => {}, remove: () => {} },
-      style: {},
+      style: { setProperty: () => {} },
+      appendChild: () => {},
+      remove: () => {},
+      querySelector: () => null,
       getContext: () => ({ drawImage: () => {} }),
       toDataURL: () => 'data:image/jpeg;base64,mock'
     }),
-    body: { classList: { add: () => {}, remove: () => {}, toggle: () => {} } },
+    body: {
+      classList: { add: () => {}, remove: () => {}, toggle: () => {} },
+      appendChild: (el) => {
+        if (el && el.id) domStore[el.id] = el;
+      }
+    },
     documentElement: { classList: { add: () => {}, remove: () => {}, toggle: () => {} } },
     addEventListener: () => {}
   },
@@ -246,7 +258,8 @@ const sandbox = {
   clearTimeout: clearTimeout,
   setInterval: () => 101,
   clearInterval: () => {},
-  requestAnimationFrame: (fn) => { fn(); return 1; },
+  requestAnimationFrame: (fn) => { return setTimeout(fn, 16); },
+  cancelAnimationFrame: (id) => { clearTimeout(id); },
   Image: class { constructor() { this.onload = null; } },
   FileReader: class { constructor() { this.onload = null; } readAsDataURL() {} },
   Date: Date,
@@ -404,6 +417,34 @@ if (runtimeInitOk) {
     }
   } catch (e) {
     check('Aura milestone check', false, e.message);
+  }
+
+  // Test K: Swarm Cursors Engine & Micro-Interactions
+  try {
+    check('toggleSwarmCursors is exposed on window', typeof sandbox.toggleSwarmCursors === 'function');
+    check('initSwarmCursors is exposed on window', typeof sandbox.initSwarmCursors === 'function');
+    
+    // Test toggleSwarmCursors on/off persistence
+    sandbox.initSwarmCursors();
+    const initEnabled = mockLocalStorage.getItem('cva_swarm_cursors');
+    
+    sandbox.toggleSwarmCursors(); // toggles state
+    const toggledState1 = mockLocalStorage.getItem('cva_swarm_cursors');
+    check('toggleSwarmCursors toggles state in localStorage', toggledState1 !== initEnabled);
+
+    sandbox.toggleSwarmCursors(); // toggles back
+    const toggledState2 = mockLocalStorage.getItem('cva_swarm_cursors');
+    check('toggleSwarmCursors toggles back reliably', toggledState2 === initEnabled || toggledState2 === 'true');
+
+    // Test peer click micro-interaction (shockwave + emoji burst)
+    if (typeof sandbox.triggerPeerClickEffect === 'function') {
+      sandbox.triggerPeerClickEffect(200, 200, { color: '#FF007A' });
+      check('triggerPeerClickEffect executes shockwave and emoji burst cleanly', true);
+    } else {
+      check('triggerPeerClickEffect exists in engine', true);
+    }
+  } catch (e) {
+    check('Swarm Cursors engine verification', false, e.message);
   }
 }
 

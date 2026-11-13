@@ -34,7 +34,11 @@ const requiredIds = [
   'global-search-input',
   'sort-btn-latest',
   'sort-btn-popular',
-  'sort-btn-foryou'
+  'sort-btn-foryou',
+  'swarm-toggle-btn',
+  'swarm-cursors-overlay',
+  'swarm-toggle-icon',
+  'swarm-toggle-label'
 ];
 
 requiredIds.forEach(id => {
@@ -78,7 +82,11 @@ const logicChecks = [
   { name: 'Command palette ArrowUp/ArrowDown selection', test: 'selectedCommandIdx = (selectedCommandIdx + 1)' },
   { name: 'Command palette Enter execution', test: 'executeCommandItem(selectedCommandIdx)' },
   { name: 'Vibe countdown timer live ticking', test: 'updateVibeCountdown' },
-  { name: 'Aura milestone modal triggers', test: 'modal-aura-milestone' }
+  { name: 'Aura milestone modal triggers', test: 'modal-aura-milestone' },
+  { name: 'Swarm cursors initialization', test: 'initSwarmCursors' },
+  { name: 'Swarm cursors toggle controller', test: 'toggleSwarmCursors' },
+  { name: 'Swarm click shockwave effect', test: 'triggerPeerClickEffect' },
+  { name: 'Swarm shortcut Ctrl+M', test: 'e.key.toLowerCase() === \'m\'' }
 ];
 
 logicChecks.forEach(c => {

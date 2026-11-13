@@ -214,6 +214,120 @@
     .sticker-tilt-hard-left  { transform: rotate(-4deg); }
     .sticker-tilt-hard-right { transform: rotate(4deg); }
 
+    /* ==========================================================================
+       SWARM CURSORS NEO-BRUTALIST PARTICLES & RIPPLES (MULTIPLAYER CVA)
+       ========================================================================== */
+    #swarm-cursors-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 55;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .swarm-cursor-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      user-select: none;
+      will-change: transform;
+      z-index: 55;
+      transition: opacity 0.2s ease;
+    }
+
+    .swarm-cursor-pointer {
+      filter: drop-shadow(2px 2px 0px #000000);
+      transform-origin: 0 0;
+    }
+
+    .swarm-thought-bubble {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 14px;
+      background: #000000;
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 10px;
+      border: 1.5px solid #000000;
+      box-shadow: 2px 2px 0px 0px #FFE600;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 57;
+      transition: opacity 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .swarm-name-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      border: 2px solid #000000;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #000000;
+      box-shadow: 2px 2px 0px 0px #000000;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 56;
+    }
+
+    @keyframes brutalistRippleExpand {
+      0% {
+        transform: translate(-50%, -50%) scale(0.2);
+        opacity: 1;
+        border-width: 3.5px;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2.6);
+        opacity: 0;
+        border-width: 1px;
+      }
+    }
+
+    .brutalist-shockwave {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      border-style: solid;
+      border-color: #000000;
+      pointer-events: none;
+      animation: brutalistRippleExpand 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      z-index: 54;
+    }
+
+    @keyframes swarmEmojiFlyUp {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.7) rotate(0deg);
+      }
+      50% {
+        transform: translate(var(--dx, 15px), -45px) scale(1.3) rotate(var(--rot, 15deg));
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(var(--dx, 15px) * 1.6), -85px) scale(0.9) rotate(calc(var(--rot, 15deg) * -1));
+      }
+    }
+
+    .swarm-flying-emoji {
+      position: absolute;
+      font-size: 1.5rem;
+      pointer-events: none;
+      z-index: 56;
+      animation: swarmEmojiFlyUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
     /* Retro Badge Stamp Token */
     .retro-stamp {
       display: inline-flex;
@@ -665,6 +779,9 @@
 </head>
 
 <body class="text-black dark:text-zinc-100 min-h-screen pb-24 antialiased selection:bg-[#FF007A] selection:text-white relative bg-[#FDFBF7] dark:bg-[#09090B]">
+
+  <!-- Swarm Cursors Multiplayer Overlay Container -->
+  <div id="swarm-cursors-overlay"></div>
   
   <!-- FLOATING COLORFUL AMBIENT MESH GLOW ORBS (THÊM MÀU SẮC GEN Z) -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
@@ -709,6 +826,17 @@
         >
           <span id="theme-toggle-icon" class="text-sm">🌙</span>
           <span id="theme-toggle-label" class="hidden sm:inline">Tối</span>
+        </button>
+
+        <!-- Swarm Cursors Toggle Button (Multiplayer CVA, Ctrl+M) -->
+        <button 
+          id="swarm-toggle-btn"
+          onclick="toggleSwarmCursors()" 
+          title="Bật/Tắt con trỏ học sinh CVA trực tuyến (Phím tắt: Ctrl + M)" 
+          class="flex items-center gap-1.5 bg-[#CCFF00] text-black border-2 border-black px-2.5 py-1 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_#000000] transition-all cursor-pointer"
+        >
+          <span id="swarm-toggle-icon" class="text-sm">👥</span>
+          <span id="swarm-toggle-label" class="hidden sm:inline text-[11px] font-black uppercase">Swarm (5)</span>
         </button>
 
         <!-- Sound Toggle -->
@@ -5987,6 +6115,7 @@
         { icon: '💌', title: 'Góc tâm sự & Confession CVA', desc: 'Chia sẻ thầm kín 100% ẩn danh hoặc có tên', action: () => { switchTab('confessions'); } },
         { icon: '🕊️', title: 'Trạm sạc bình yên 4-4-4', desc: 'Phòng thở & chữa lành tâm hồn học trò', action: () => { openHealingRoom(); } },
         { icon: '🥠', title: 'Bốc quẻ may mắn học đường (+10 Aura)', desc: 'Vibe check hàng ngày reset 00:00', action: () => { switchTab('landing'); rollVibeCheck(); } },
+        { icon: '👥', title: 'Bật / Tắt Swarm Cursors (Ctrl+M)', desc: 'Đàn con trỏ học sinh CVA trực tuyến cùng tương tác thời gian thực', action: () => { toggleSwarmCursors(); } },
         { icon: '🌓', title: 'Đổi giao diện Tối / Sáng (Dark / Light Mode)', desc: 'Phím tắt Ctrl+D • Midnight Cyber hoặc Clean Pastel', action: () => { toggleThemeMode(); } },
         { icon: '💳', title: 'Xem thẻ học sinh & điểm Aura cá nhân', desc: 'Góc của em • Đổi Avatar', action: () => { switchTab('profile'); } }
       ];
@@ -6097,6 +6226,12 @@
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         openCommandPalette();
+        return;
+      }
+
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'm') {
+        e.preventDefault();
+        toggleSwarmCursors();
         return;
       }
 
@@ -6356,6 +6491,297 @@
     }
     window.submitConfessionForm = submitConfessionForm;
 
+    /* =====================================================================
+       MULTIPLAYER ENGINE: CVA SWARM CURSORS (REALTIME STUDENT SIMULATION)
+       ===================================================================== */
+    const SWARM_STORAGE_KEY = 'cva_swarm_cursors';
+
+    const SWARM_PEERS = [
+      { id: 'p1', name: 'Linh Đan', grade: '9B3', avatar: '🌸', color: '#FF007A', badgeColor: '#FF007A', textColor: '#FFFFFF', bubbles: ["Check VAR nè! 🔍", "Đồ xinh quá! ✨", "Ai rơi đồ lên nhận nha! ⚡"] },
+      { id: 'p2', name: 'Minh Trí', grade: '7A4', avatar: '⚡', color: '#FFE600', badgeColor: '#FFE600', textColor: '#000000', bubbles: ["Bốc quẻ may mắn! 🥠", "Quẻ Đại Cát +10 Aura!", "Tâm linh học đường 🌟"] },
+      { id: 'p3', name: 'Bảo Anh', grade: '8A2', avatar: '🐱', color: '#CCFF00', badgeColor: '#CCFF00', textColor: '#000000', bubbles: ["Xin sách Toán 9 📚", "Chợ 0đ đỉnh nóc! 🎁", "Có đề thi thử không ạ? 🎒"] },
+      { id: 'p4', name: 'Hoàng Nam', grade: '9A5', avatar: '🔥', color: '#00F0FF', badgeColor: '#00F0FF', textColor: '#000000', bubbles: ["Chào bạn CVA! ✨", "Sân trường đông vui ghê!", "Thả tim bài viết nè! ❤️"] },
+      { id: 'p5', name: 'Ngọc Diệp', grade: '8A4', avatar: '🐰', color: '#A855F7', badgeColor: '#A855F7', textColor: '#FFFFFF', bubbles: ["Vào phòng thở 4-4-4 🕊️", "Chị Bồ Câu an ủi nè!", "Học vui vẻ nhé! 🌸"] }
+    ];
+
+    let swarmEnabled = true;
+    let swarmAnimId = null;
+    let userMouseX = -100;
+    let userMouseY = -100;
+    let userMouseActiveTime = 0;
+    let swarmPeersState = [];
+
+    function initSwarmCursors() {
+      const saved = localStorage.getItem(SWARM_STORAGE_KEY);
+      swarmEnabled = saved === null ? true : saved === 'true';
+
+      let overlay = document.getElementById('swarm-cursors-overlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'swarm-cursors-overlay';
+        document.body.appendChild(overlay);
+      }
+
+      updateSwarmToggleButton();
+
+      if (!swarmEnabled) {
+        overlay.style.display = 'none';
+        return;
+      }
+      overlay.style.display = 'block';
+
+      // Setup peers initial positions
+      const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
+      const h = typeof window !== 'undefined' ? window.innerHeight : 768;
+
+      overlay.innerHTML = '';
+      swarmPeersState = SWARM_PEERS.map((peer, idx) => {
+        const startX = Math.random() * (w - 150) + 50;
+        const startY = Math.random() * (h - 200) + 100;
+
+        const cursorEl = document.createElement('div');
+        cursorEl.id = `swarm-cursor-${peer.id}`;
+        cursorEl.className = 'swarm-cursor-item';
+        cursorEl.style.transform = `translate(${startX}px, ${startY}px)`;
+
+        cursorEl.innerHTML = `
+          <svg class="swarm-cursor-pointer" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M4 2L20 12L13 14L9 22L4 2Z" fill="${peer.color}" stroke="#000000" stroke-width="2.2" stroke-linejoin="round"/>
+          </svg>
+          <div id="swarm-bubble-${peer.id}" class="swarm-thought-bubble opacity-0 scale-95" style="border-color: #000000;">
+            ${peer.bubbles[0]}
+          </div>
+          <div class="swarm-name-tag" style="background-color: ${peer.badgeColor}; color: ${peer.textColor};">
+            <span>${peer.avatar}</span>
+            <span>${peer.name}</span>
+            <span class="bg-black text-[#FFE600] px-1 py-0.2 rounded text-[8px] font-mono border border-black">${peer.grade}</span>
+          </div>
+        `;
+
+        overlay.appendChild(cursorEl);
+
+        return {
+          ...peer,
+          x: startX,
+          y: startY,
+          targetX: startX,
+          targetY: startY,
+          speed: 0.025 + Math.random() * 0.02,
+          state: 'move', // 'move', 'pause', 'click'
+          timer: Math.floor(Math.random() * 120) + 60,
+          bubbleTimer: 0,
+          el: cursorEl,
+          bubbleEl: cursorEl.querySelector('.swarm-thought-bubble')
+        };
+      });
+
+      // Track user mouse for social interaction
+      window.addEventListener('mousemove', (e) => {
+        userMouseX = e.clientX;
+        userMouseY = e.clientY;
+        userMouseActiveTime = Date.now();
+      }, { passive: true });
+
+      startSwarmLoop();
+    }
+    window.initSwarmCursors = initSwarmCursors;
+
+    function triggerPeerClickEffect(x, y, peer) {
+      const overlay = document.getElementById('swarm-cursors-overlay');
+      if (!overlay) return;
+
+      // 1. Shockwave circle
+      const wave = document.createElement('div');
+      wave.className = 'brutalist-shockwave';
+      wave.style.left = `${x}px`;
+      wave.style.top = `${y}px`;
+      wave.style.borderColor = peer.color || '#000000';
+      overlay.appendChild(wave);
+      setTimeout(() => wave.remove(), 700);
+
+      // 2. Flying Emoji Burst
+      const emojis = ['❤️', '🔥', '✨', '🥠', '⚡'];
+      const chosen = emojis[Math.floor(Math.random() * emojis.length)];
+      const fly = document.createElement('div');
+      fly.className = 'swarm-flying-emoji';
+      fly.textContent = chosen;
+      fly.style.left = `${x}px`;
+      fly.style.top = `${y}px`;
+      fly.style.setProperty('--dx', `${(Math.random() - 0.5) * 40}px`);
+      fly.style.setProperty('--rot', `${(Math.random() - 0.5) * 50}deg`);
+      overlay.appendChild(fly);
+      setTimeout(() => fly.remove(), 900);
+    }
+
+    function pickNewPeerTarget(peer) {
+      const w = (typeof window !== 'undefined' && window.innerWidth) ? window.innerWidth : 1024;
+      const h = (typeof window !== 'undefined' && window.innerHeight) ? window.innerHeight : 768;
+
+      // 25% chance to approach user's cursor if active
+      if (Date.now() - userMouseActiveTime < 3000 && Math.random() < 0.25) {
+        return {
+          x: Math.max(30, Math.min(w - 100, userMouseX + (Math.random() - 0.5) * 120)),
+          y: Math.max(80, Math.min(h - 100, userMouseY + (Math.random() - 0.5) * 120)),
+          isSocial: true
+        };
+      }
+
+      // Pick an interactive element or random spot
+      if (typeof document !== 'undefined') {
+        const targets = document.querySelectorAll('.feed-sort-btn, .thread-card, #bento-vibe-card, #poll-options-container, .story-item, button.tab-btn');
+        if (targets.length > 0 && Math.random() < 0.5) {
+          const randEl = targets[Math.floor(Math.random() * targets.length)];
+          const rect = randEl.getBoundingClientRect();
+          if (rect.top >= 0 && rect.bottom <= h && rect.width > 0) {
+            return {
+              x: rect.left + Math.random() * rect.width,
+              y: rect.top + Math.random() * rect.height,
+              isSocial: false
+            };
+          }
+        }
+      }
+
+      return {
+        x: Math.random() * (w - 180) + 40,
+        y: Math.random() * (h - 220) + 80,
+        isSocial: false
+      };
+    }
+
+    function updateSwarmLoop() {
+      if (!swarmEnabled) return;
+
+      swarmPeersState.forEach(p => {
+        if (!p.el) return;
+
+        // LERP toward target
+        const dx = p.targetX - p.x;
+        const dy = p.targetY - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist > 3) {
+          p.x += dx * p.speed;
+          p.y += dy * p.speed;
+        }
+
+        p.el.style.transform = `translate(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px)`;
+
+        // State machine
+        p.timer--;
+        if (p.timer <= 0) {
+          if (p.state === 'move') {
+            // Arrived or pause
+            p.state = Math.random() < 0.4 ? 'click' : 'pause';
+            p.timer = Math.floor(Math.random() * 80) + 40;
+
+            if (p.state === 'click') {
+              triggerPeerClickEffect(p.x, p.y, p);
+            }
+
+            // Show thought bubble occasionally
+            if (p.bubbleEl && Math.random() < 0.45) {
+              const text = p.bubbles[Math.floor(Math.random() * p.bubbles.length)];
+              p.bubbleEl.textContent = text;
+              p.bubbleEl.classList.remove('opacity-0', 'scale-95');
+              p.bubbleEl.classList.add('opacity-100', 'scale-100');
+              p.bubbleTimer = 90; // ~1.5s
+            }
+          } else {
+            // Pick next target
+            p.state = 'move';
+            p.timer = Math.floor(Math.random() * 150) + 90;
+            const target = pickNewPeerTarget(p);
+            p.targetX = target.x;
+            p.targetY = target.y;
+            p.speed = 0.025 + Math.random() * 0.025;
+            if (target.isSocial && p.bubbleEl) {
+              p.bubbleEl.textContent = 'Chào bạn CVA nha! 👋';
+              p.bubbleEl.classList.remove('opacity-0', 'scale-95');
+              p.bubbleEl.classList.add('opacity-100', 'scale-100');
+              p.bubbleTimer = 80;
+            }
+          }
+        }
+
+        // Bubble hide countdown
+        if (p.bubbleTimer > 0) {
+          p.bubbleTimer--;
+          if (p.bubbleTimer === 0 && p.bubbleEl) {
+            p.bubbleEl.classList.remove('opacity-100', 'scale-100');
+            p.bubbleEl.classList.add('opacity-0', 'scale-95');
+          }
+        }
+      });
+
+      if (typeof requestAnimationFrame === 'function') {
+        swarmAnimId = requestAnimationFrame(updateSwarmLoop);
+      }
+    }
+
+    function startSwarmLoop() {
+      if (swarmAnimId && typeof cancelAnimationFrame === 'function') {
+        cancelAnimationFrame(swarmAnimId);
+      }
+      if (typeof requestAnimationFrame === 'function') {
+        swarmAnimId = requestAnimationFrame(updateSwarmLoop);
+      }
+    }
+
+    function toggleSwarmCursors() {
+      swarmEnabled = !swarmEnabled;
+      try { localStorage.setItem(SWARM_STORAGE_KEY, String(swarmEnabled)); } catch(e){}
+      if (typeof playCuteSound === 'function') playCuteSound('pop');
+
+      const overlay = document.getElementById('swarm-cursors-overlay');
+      if (overlay) {
+        overlay.style.display = swarmEnabled ? 'block' : 'none';
+      }
+
+      updateSwarmToggleButton();
+
+      if (swarmEnabled) {
+        if (swarmPeersState.length === 0) {
+          initSwarmCursors();
+        } else {
+          startSwarmLoop();
+        }
+        if (typeof showTeenToast === 'function') {
+          showTeenToast("Đã bật đàn con trỏ học sinh CVA cùng trực tuyến! 👥✨", "🎉");
+        }
+      } else {
+        if (swarmAnimId && typeof cancelAnimationFrame === 'function') {
+          cancelAnimationFrame(swarmAnimId);
+        }
+        if (typeof showTeenToast === 'function') {
+          showTeenToast("Đã tạm tắt đàn con trỏ CVA. (Nhấn Ctrl+M để bật lại)", "👥");
+        }
+      }
+    }
+    window.toggleSwarmCursors = toggleSwarmCursors;
+
+    function updateSwarmToggleButton() {
+      const btn = document.getElementById('swarm-toggle-btn');
+      const icon = document.getElementById('swarm-toggle-icon');
+      const label = document.getElementById('swarm-toggle-label');
+      if (!btn) return;
+
+      if (swarmEnabled) {
+        btn.className = "flex items-center gap-1.5 bg-[#CCFF00] text-black border-2 border-black px-2.5 py-1 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_#000000] transition-all cursor-pointer";
+        if (icon) icon.textContent = "👥";
+        if (label) label.textContent = "Swarm (5)";
+      } else {
+        btn.className = "flex items-center gap-1.5 bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-2 border-black dark:border-zinc-700 px-2.5 py-1 rounded-xl text-xs font-bold shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer opacity-70";
+        if (icon) icon.textContent = "👤";
+        if (label) label.textContent = "Swarm Tắt";
+      }
+    }
+    window.updateSwarmToggleButton = updateSwarmToggleButton;
+
+    /* =====================================================================
+       CVA MUSIC PLAYER (LO-FI CHILL BEATS)
+       ===================================================================== */
+
     window.addEventListener('DOMContentLoaded', () => {
       const safeRun = (fn, name) => {
         try { fn(); } catch(err) { console.warn(`Error running ${name}:`, err); }
@@ -6375,6 +6801,7 @@
       safeRun(renderStoriesBar, 'renderStoriesBar');
       safeRun(renderCvaPoll, 'renderCvaPoll');
       safeRun(safeCreateLucideIcons, 'safeCreateLucideIcons');
+      safeRun(initSwarmCursors, 'initSwarmCursors');
 
       // Click outside to close post dropdown menus
       document.addEventListener('click', (e) => {

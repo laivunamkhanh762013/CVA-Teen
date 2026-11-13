@@ -121,8 +121,8 @@ function verifyFiles() {
     let callMatch;
     while ((callMatch = funcCallRegex.exec(h.code)) !== null) {
       const fn = callMatch[1];
-      // ignore built-ins or common keywords
-      if (!['if', 'for', 'while', 'switch', 'console', 'alert', 'confirm', 'prompt', 'event', 'Date', 'parseInt', 'parseFloat', 'String', 'Number', 'Boolean', 'Array', 'Object', 'Math', 'JSON', 'setTimeout', 'setInterval', 'clearTimeout', 'clearInterval'].includes(fn)) {
+      // ignore built-ins or common keywords & native DOM APIs
+      if (!['if', 'for', 'while', 'switch', 'console', 'alert', 'confirm', 'prompt', 'event', 'Date', 'parseInt', 'parseFloat', 'String', 'Number', 'Boolean', 'Array', 'Object', 'Math', 'JSON', 'setTimeout', 'setInterval', 'clearTimeout', 'clearInterval', 'stopPropagation', 'preventDefault', 'getElementById', 'querySelector', 'querySelectorAll', 'click', 'focus', 'submit', 'reset'].includes(fn)) {
         calledFunctions.add(fn);
       }
     }
