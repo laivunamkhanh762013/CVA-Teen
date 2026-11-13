@@ -1166,7 +1166,7 @@
   </div>
 
   <!-- ==================== MAIN CONTENT (TABS) ==================== -->
-  <main class="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 mb-24">
+  <main class="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 mb-24 pb-32 sm:pb-36">
     
     <!-- ==================== TAB 0: LANDING PAGE (BENTO GRID + THREADS FEED) ==================== -->
     <section id="tab-landing" class="tab-view space-y-4">
@@ -2362,7 +2362,7 @@
   </main>
 
   <!-- ==================== FLOATING ACTION BUTTON (ĐĂNG TIN NHANH) ==================== -->
-  <div class="fixed right-4 bottom-20 z-40">
+  <div class="fixed right-4 bottom-20 z-[60]">
     <button 
       id="fab-button"
       onclick="toggleFabMenu()"
@@ -2404,7 +2404,7 @@
   </div>
 
   <!-- ==================== BOTTOM NAVIGATION (GEN Z NEOBRUTALISM - 5 TABS) ==================== -->
-  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 bg-[#FDFBF7] dark:bg-zinc-950 border-t-2 border-black dark:border-zinc-800 px-2 sm:px-4 py-2 sm:py-2.5 shadow-[0_-4px_0px_0px_#000000] dark:shadow-[0_-4px_0px_0px_#18181b] transition-colors">
+  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-[60] bg-[#FDFBF7] dark:bg-zinc-950 border-t-2 border-black dark:border-zinc-800 px-2 sm:px-4 py-2 sm:py-2.5 shadow-[0_-4px_0px_0px_#000000] dark:shadow-[0_-4px_0px_0px_#18181b] transition-colors">
     <div class="max-w-lg md:max-w-xl mx-auto grid grid-cols-5 gap-1.5 sm:gap-3 text-center">
       
       <!-- Tab 1: Trang Chủ -->
@@ -7022,26 +7022,34 @@
       setTimeout(() => fly.remove(), 900);
     }
 
+    function getBottomNavSafeY() {
+      const h = (typeof window !== 'undefined' && window.innerHeight) ? window.innerHeight : 768;
+      const nav = typeof document !== 'undefined' ? document.getElementById('bottom-nav') : null;
+      const navH = nav ? (nav.offsetHeight || 68) + 20 : 88;
+      return h - navH; // Luôn cao hơn mép trên thanh menu ít nhất 20px
+    }
+    window.getBottomNavSafeY = getBottomNavSafeY;
+
     function pickNewPeerTarget(peer) {
       const w = (typeof window !== 'undefined' && window.innerWidth) ? window.innerWidth : 1024;
-      const h = (typeof window !== 'undefined' && window.innerHeight) ? window.innerHeight : 768;
+      const safeY = getBottomNavSafeY();
 
-      // 25% chance to approach user's cursor if active
+      // 25% chance to approach user's cursor if active (strictly clamped above bottom nav)
       if (Date.now() - userMouseActiveTime < 3000 && Math.random() < 0.25) {
         return {
           x: Math.max(30, Math.min(w - 100, userMouseX + (Math.random() - 0.5) * 120)),
-          y: Math.max(80, Math.min(h - 100, userMouseY + (Math.random() - 0.5) * 120)),
+          y: Math.max(80, Math.min(safeY - 20, userMouseY + (Math.random() - 0.5) * 120)),
           isSocial: true
         };
       }
 
-      // Pick an interactive element or random spot
+      // Pick an interactive element or random spot (EXCLUDE button.tab-btn and any element inside bottom nav)
       if (typeof document !== 'undefined') {
-        const targets = document.querySelectorAll('.feed-sort-btn, .thread-card, #bento-vibe-card, #poll-options-container, .story-item, button.tab-btn');
+        const targets = document.querySelectorAll('.feed-sort-btn, .thread-card, #bento-vibe-card, #poll-options-container, .story-item');
         if (targets.length > 0 && Math.random() < 0.5) {
           const randEl = targets[Math.floor(Math.random() * targets.length)];
           const rect = randEl.getBoundingClientRect();
-          if (rect.top >= 0 && rect.bottom <= h && rect.width > 0) {
+          if (rect.top >= 70 && rect.bottom <= safeY && rect.width > 0) {
             return {
               x: rect.left + Math.random() * rect.width,
               y: rect.top + Math.random() * rect.height,
@@ -7053,7 +7061,7 @@
 
       return {
         x: Math.random() * (w - 180) + 40,
-        y: Math.random() * (h - 220) + 80,
+        y: Math.random() * (safeY - 140) + 70,
         isSocial: false
       };
     }
@@ -7073,6 +7081,11 @@
           p.x += dx * p.speed;
           p.y += dy * p.speed;
         }
+
+        // Hard clamp: Strict bottom nav exclusion zone
+        const loopSafeY = getBottomNavSafeY();
+        if (p.targetY > loopSafeY) p.targetY = loopSafeY - 25;
+        if (p.y > loopSafeY) p.y = loopSafeY - 15;
 
         p.el.style.transform = `translate(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px)`;
 
@@ -7151,7 +7164,7 @@
     }
 
     /* ==========================================================================
-       SCROLL-DRIVEN SWARM DRAW & REVEAL ENGINE
+       SCROLL-DRIVEN SWARM DRAW & REVEAL ENGINE (STRICT BOTTOM NAV EXCLUSION)
        ========================================================================== */
     let swarmDrawQueue = [];
     let swarmDrawTimer = null;
@@ -7190,24 +7203,23 @@
 
       const rect = el.getBoundingClientRect();
       const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
-      const h = typeof window !== 'undefined' ? window.innerHeight : 768;
+      const safeY = getBottomNavSafeY();
 
-      // Clamp coordinates to strictly keep cursor inside viewport
+      // Clamp coordinates to strictly keep cursor inside viewport and ABOVE bottom nav
       const startX = Math.max(16, Math.min(w - 40, rect.left));
-      const startY = Math.max(70, Math.min(h - 40, rect.top));
+      const startY = Math.max(70, Math.min(safeY - 12, rect.top));
       const targetX = Math.max(16, Math.min(w - 40, rect.left + rect.width - 24));
-      const targetY = Math.max(70, Math.min(h - 40, rect.top + rect.height - 24));
+      const targetY = Math.max(70, Math.min(safeY - 12, rect.top + rect.height - 24));
+
+      const peerObj = (swarmEnabled && swarmPeersState.length > 0) ? (swarmPeersState.find(p => p.id === peer.id) || swarmPeersState[0]) : null;
 
       // Dispatch assigned peer cursor toward card corner if enabled
-      if (swarmEnabled && swarmPeersState.length > 0 && !isSwarmBuildPlaying) {
-        const peerObj = swarmPeersState.find(p => p.id === peer.id) || swarmPeersState[0];
-        if (peerObj) {
-          peerObj.x = startX;
-          peerObj.y = startY;
-          peerObj.targetX = targetX;
-          peerObj.targetY = targetY;
-          peerObj.speed = 0.16;
-        }
+      if (peerObj && !isSwarmBuildPlaying) {
+        peerObj.x = startX;
+        peerObj.y = startY;
+        peerObj.targetX = targetX;
+        peerObj.targetY = targetY;
+        peerObj.speed = 0.16;
       }
 
       // Create neon dashed marquee overlay
@@ -7217,7 +7229,7 @@
       marquee.innerHTML = `<span class="swarm-size-pill">w: ${Math.round(rect.width || 360)}px  h: ${Math.round(rect.height || 200)}px</span>`;
       el.appendChild(marquee);
 
-      // Complete reveal after 160ms (dứt khoát, không trễ nải) or safety 280ms
+      // Clear, visible marquee drag rhythm (300ms) before spring bounce pop
       let completed = false;
       const revealCard = () => {
         if (completed) return;
@@ -7233,12 +7245,19 @@
           playCuteSound('pop');
         }
 
+        // Post-draw dispersal: Cursors disperse upward into content area, never clump at card bottom!
+        if (peerObj && !isSwarmBuildPlaying) {
+          peerObj.targetX = Math.random() * (w - 120) + 60;
+          peerObj.targetY = Math.random() * (safeY - 180) + 80;
+          peerObj.speed = 0.035;
+        }
+
         // SWARM BUTTON MICRO-DRAW: Đàn con trỏ tiếp tục chia nhau kéo vẽ từng nút bên trong!
         drawCardButtons(el);
       };
 
-      setTimeout(revealCard, 160);
-      setTimeout(revealCard, 280); // Hard safety net: never leave card stuck
+      setTimeout(revealCard, 300);
+      setTimeout(revealCard, 420); // Hard safety net: never leave card stuck
     }
 
     function drawCardButtons(cardEl) {
@@ -7256,19 +7275,19 @@
         btn.classList.add('swarm-btn-pending');
         btn.style.position = 'relative';
 
-        // Staggered peer cursor draw on each button (120ms marquee)
+        // Staggered peer cursor draw on each button (140ms marquee)
         setTimeout(() => {
           const bRect = btn.getBoundingClientRect();
           const peer = SWARM_PEERS[(idx + 1) % SWARM_PEERS.length];
           const peerObj = swarmPeersState.find(p => p.id === peer.id) || swarmPeersState[0];
+          const safeY = getBottomNavSafeY();
+          const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
 
           if (swarmEnabled && peerObj && !isSwarmBuildPlaying) {
-            const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
-            const h = typeof window !== 'undefined' ? window.innerHeight : 768;
             peerObj.x = Math.max(16, Math.min(w - 40, bRect.left));
-            peerObj.y = Math.max(70, Math.min(h - 40, bRect.top));
+            peerObj.y = Math.max(70, Math.min(safeY - 12, bRect.top));
             peerObj.targetX = Math.max(16, Math.min(w - 40, bRect.left + bRect.width - 15));
-            peerObj.targetY = Math.max(70, Math.min(h - 40, bRect.top + bRect.height - 15));
+            peerObj.targetY = Math.max(70, Math.min(safeY - 12, bRect.top + bRect.height - 15));
             peerObj.speed = 0.16;
           }
 
@@ -7284,10 +7303,17 @@
             if (btn.dataset) btn.dataset.btnRevealed = 'true';
 
             if (typeof triggerPeerClickEffect === 'function' && swarmEnabled && !isSwarmBuildPlaying) {
-              triggerPeerClickEffect(bRect.left + bRect.width - 10, bRect.top + bRect.height - 10, peer);
+              triggerPeerClickEffect(Math.max(16, Math.min(w - 40, bRect.left + bRect.width - 10)), Math.min(safeY - 12, bRect.top + bRect.height - 10), peer);
             }
-          }, 120);
-        }, idx * 60);
+
+            // Post-draw dispersal: Cursors float away after button draw
+            if (peerObj && !isSwarmBuildPlaying) {
+              peerObj.targetX = Math.random() * (w - 120) + 60;
+              peerObj.targetY = Math.random() * (safeY - 180) + 80;
+              peerObj.speed = 0.035;
+            }
+          }, 140);
+        }, idx * 70);
       });
     }
     window.drawCardButtons = drawCardButtons;
@@ -7619,9 +7645,16 @@
         }
       }, 680);
 
-      // Settle at 850ms
+      // Settle at 850ms: Disperse peers upward into content area
       setTimeout(() => {
         isSwarmBuildPlaying = false;
+        const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
+        const safeY = getBottomNavSafeY();
+        swarmPeersState.forEach(p => {
+          p.targetX = Math.random() * (w - 120) + 60;
+          p.targetY = Math.random() * (safeY - 200) + 90;
+          p.speed = 0.03;
+        });
         if (!swarmEnabled && overlay) {
           overlay.style.display = 'none';
         }

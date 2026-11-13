@@ -23,7 +23,7 @@ const html2 = fs.readFileSync('Tram_Hoc_Duong_Teen.html', 'utf8');
 const b1 = fs.readFileSync('index.html');
 const b2 = fs.readFileSync('Tram_Hoc_Duong_Teen.html');
 test('100% Bitwise buffer parity between index.html and Tram_Hoc_Duong_Teen.html', b1.equals(b2));
-test('Exact byte length match (475,158 bytes)', b1.length === 475158 && b2.length === 475158, `Length: ${b1.length}`);
+test('Exact byte length match (476,882 bytes)', b1.length === 476882 && b2.length === 476882, `Length: ${b1.length}`);
 
 // 2. CSS Selector: not hiding marquee or size pill
 const hasNotSelector = html1.includes('.swarm-draw-pending > *:not(.swarm-scroll-marquee):not(.swarm-size-pill)');
@@ -38,11 +38,11 @@ const hasGridCardTargets = html1.includes('#landing-problem-agitation .grid > di
                            html1.includes('#landing-testimonials .grid > div');
 test('Target selectors target .grid > div to protect section headers', hasGridCardTargets);
 
-// 4. Viewport Clamping
+// 4. Viewport Clamping & Bottom Nav Exclusion
 const hasViewportClamping = (html1.includes('w - 40') || html1.includes('window.innerWidth - 40')) && 
-                            (html1.includes('h - 40') || html1.includes('window.innerHeight - 40')) &&
-                            html1.includes('Clamp coordinates to strictly keep cursor inside viewport');
-test('executeSwarmDraw clamps cursor coordinates to viewport boundaries', hasViewportClamping);
+                            (html1.includes('safeY - 12') || html1.includes('getBottomNavSafeY()') || html1.includes('h - 40')) &&
+                            html1.includes('Clamp coordinates');
+test('executeSwarmDraw clamps cursor coordinates to viewport & bottom nav safe zone', hasViewportClamping);
 
 // 5. Fail-Safe on Tab Switch
 const hasTabSwitchFailSafe = html1.includes("Fail-safe tab switch: Reveal all pending cards") &&
