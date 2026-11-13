@@ -369,45 +369,36 @@
     /* ==========================================================================
        SCROLL-DRIVEN SWARM DRAW & REVEAL SYSTEM (CLS = 0 NEOBRUTALISM)
        ========================================================================== */
+    /* GRADUAL SWARM REVELATION: 100% INVISIBLE INITIAL CANVAS (CLS = 0) */
     .swarm-draw-pending {
       position: relative !important;
-      border: 2px dashed rgba(0, 0, 0, 0.12) !important;
-      background-color: rgba(0, 0, 0, 0.015) !important;
+      border: 2px dashed transparent !important;
+      background-color: transparent !important;
       box-shadow: none !important;
       border-radius: 24px !important;
-      transition: border-color 0.2s ease, background-color 0.2s ease !important;
     }
     html.dark .swarm-draw-pending,
     [data-theme="dark"] .swarm-draw-pending {
-      border-color: rgba(255, 255, 255, 0.12) !important;
-      background-color: rgba(255, 255, 255, 0.015) !important;
+      border-color: transparent !important;
+      background-color: transparent !important;
     }
 
-    /* Hide inner content during pending state with smooth spring-ready scale (DO NOT HIDE MARQUEE OR PILL) */
+    /* Hide inner content during pending state: 100% invisible (DO NOT HIDE MARQUEE OR PILL) */
     .swarm-draw-pending > *:not(.swarm-scroll-marquee):not(.swarm-size-pill) {
       opacity: 0 !important;
+      visibility: hidden !important;
       transform: scale(0.96) !important;
       pointer-events: none !important;
       transition: opacity 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     }
 
-    /* Crosshair watermark in center of empty frame */
+    /* Crosshair watermark removed completely for pure blank start */
     .swarm-draw-pending::before {
-      content: '+';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 22px;
-      font-family: monospace;
-      font-weight: 900;
-      color: rgba(0, 0, 0, 0.22);
-      pointer-events: none;
-      z-index: 5;
+      display: none !important;
     }
     html.dark .swarm-draw-pending::before,
     [data-theme="dark"] .swarm-draw-pending::before {
-      color: rgba(255, 255, 255, 0.22);
+      display: none !important;
     }
 
     /* Scroll-Driven Selection Marquee Overlay (100% VISIBLE & CYBER POP) */
@@ -471,17 +462,19 @@
       transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s ease !important;
     }
 
-    /* Trạng thái đang chờ vẽ: viền phác thảo nhẹ, mờ ảo */
+    /* Trạng thái ban đầu: Hoàn toàn trống trơn / tàng hình (CLS = 0) */
     .swarm-atomic-pending {
-      opacity: 0.18 !important;
-      transform: scale(0.94) !important;
-      outline: 1.5px dashed rgba(0, 0, 0, 0.25) !important;
-      outline-offset: 2px !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transform: scale(0.92) !important;
+      outline: none !important;
+      border-color: transparent !important;
       pointer-events: none !important;
     }
     html.dark .swarm-atomic-pending,
     [data-theme="dark"] .swarm-atomic-pending {
-      outline-color: rgba(255, 255, 255, 0.25) !important;
+      outline: none !important;
+      border-color: transparent !important;
     }
 
     /* Khung nét đứt mini dạ quang ôm sát phần tử khi con trỏ vẽ */
@@ -507,6 +500,7 @@
     /* Trạng thái phần tử con bung nở hoàn tất: Nảy bật spring pop-in */
     .swarm-atomic-revealed {
       opacity: 1 !important;
+      visibility: visible !important;
       transform: scale(1) !important;
       outline: none !important;
       pointer-events: auto !important;
@@ -1231,7 +1225,7 @@
       <!-- ==================== CVA 24H VIBE STORIES BAR (INSTAGRAM / THREADS STYLE) ==================== -->
       <div class="bg-white dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-3.5 sm:p-4 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] overflow-x-auto no-scrollbar select-none">
         <!-- Header Row -->
-        <div id="stories-header-row" class="swarm-atomic-item flex items-center justify-between px-1 mb-2.5 pb-2 border-b-2 border-black/10 dark:border-zinc-800">
+        <div id="stories-header-row" class="swarm-atomic-item swarm-atomic-pending flex items-center justify-between px-1 mb-2.5 pb-2 border-b-2 border-black/10 dark:border-zinc-800">
           <div class="flex items-center gap-2">
             <span class="text-sm">📸</span>
             <span class="text-xs font-black uppercase tracking-wider font-heading text-black dark:text-white">CVA 24H Vibe Stories</span>
@@ -1241,7 +1235,7 @@
         </div>
         <div id="stories-container" class="flex items-center gap-3.5 px-1 min-w-max">
           <!-- Story 0: Your Story (+) -->
-          <div id="story-item-0" onclick="openCreateStoryModal()" class="story-item-0 swarm-atomic-item flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+          <div id="story-item-0" onclick="openCreateStoryModal()" class="story-item-0 swarm-atomic-item swarm-atomic-pending flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
             <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-dashed border-black dark:border-[#CCFF00] bg-white dark:bg-zinc-800 p-0.5 flex items-center justify-center transition-transform hover:scale-105 shadow-[2.5px_2.5px_0px_0px_#000000]">
               <span class="text-2xl">🐱</span>
               <span class="absolute -bottom-1 -right-1 w-5 h-5 bg-[#CCFF00] text-black border-2 border-black rounded-full flex items-center justify-center text-xs font-black">+</span>
@@ -1250,7 +1244,7 @@
           </div>
 
           <!-- Story 1: 9A1 Ôn Thi -->
-          <div id="story-item-1" onclick="openStoryViewer(0)" class="story-item-1 swarm-atomic-item flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+          <div id="story-item-1" onclick="openStoryViewer(0)" class="story-item-1 swarm-atomic-item swarm-atomic-pending flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#FF007A] via-[#FFE600] to-[#00F0FF] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
               <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 🦊
@@ -1260,7 +1254,7 @@
           </div>
 
           <!-- Story 2: Căn-tin CVA -->
-          <div id="story-item-2" onclick="openStoryViewer(1)" class="story-item-2 swarm-atomic-item flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+          <div id="story-item-2" onclick="openStoryViewer(1)" class="story-item-2 swarm-atomic-item swarm-atomic-pending flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#CCFF00] to-[#00F0FF] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
               <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 🧋
@@ -1270,7 +1264,7 @@
           </div>
 
           <!-- Story 3: Sân Bóng Rổ -->
-          <div id="story-item-3" onclick="openStoryViewer(2)" class="story-item-3 swarm-atomic-item flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+          <div id="story-item-3" onclick="openStoryViewer(2)" class="story-item-3 swarm-atomic-item swarm-atomic-pending flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#FF007A] to-[#FFE600] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
               <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 🏀
@@ -1280,7 +1274,7 @@
           </div>
 
           <!-- Story 4: Capybara Chill -->
-          <div id="story-item-4" onclick="openStoryViewer(3)" class="story-item-4 swarm-atomic-item flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+          <div id="story-item-4" onclick="openStoryViewer(3)" class="story-item-4 swarm-atomic-item swarm-atomic-pending flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#00F0FF] to-[#CCFF00] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
               <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 🐻
@@ -1290,7 +1284,7 @@
           </div>
 
           <!-- Story 5: Sách 0đ -->
-          <div id="story-item-5" onclick="openStoryViewer(4)" class="story-item-5 swarm-atomic-item flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
+          <div id="story-item-5" onclick="openStoryViewer(4)" class="story-item-5 swarm-atomic-item swarm-atomic-pending flex flex-col items-center gap-1 cursor-pointer group flex-shrink-0">
             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#FFE600] to-[#FF007A] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#000000] flex items-center justify-center transition-transform hover:scale-105">
               <div class="w-full h-full rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center text-2xl border border-black">
                 📚
@@ -1308,31 +1302,31 @@
         <div id="bento-hero-banner" class="swarm-draw-target md:col-span-2 relative bg-white dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-6 sm:p-7 shadow-[6px_6px_0px_0px_#000000] dark:shadow-[6px_6px_0px_0px_#CCFF00] hover:-translate-y-0.5 hover:shadow-[8px_8px_0px_0px_#000000] dark:hover:shadow-[8px_8px_0px_0px_#CCFF00] transition-all overflow-hidden flex flex-col justify-between group">
           
           <!-- Top Right Floating Sticker Stamp -->
-          <div id="hero-floating-sticker" class="swarm-atomic-item absolute -top-1 -right-1 rotate-6 hidden sm:flex items-center gap-1 bg-[#FFE600] text-black border-2 border-black px-3 py-1 rounded-2xl shadow-[3px_3px_0px_0px_#000000] text-[10px] font-black uppercase tracking-widest z-0 pointer-events-none select-none">
+          <div id="hero-floating-sticker" class="swarm-atomic-item swarm-atomic-pending absolute -top-1 -right-1 rotate-6 hidden sm:flex items-center gap-1 bg-[#FFE600] text-black border-2 border-black px-3 py-1 rounded-2xl shadow-[3px_3px_0px_0px_#000000] text-[10px] font-black uppercase tracking-widest z-0 pointer-events-none select-none">
             <span>⚡</span> 100% CVA GEN Z
           </div>
 
           <div class="space-y-3 relative z-10">
             <!-- School Brand Tag -->
             <div class="flex items-center gap-2 flex-wrap">
-              <span id="hero-badge-school" class="swarm-atomic-item inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#CCFF00] border-2 border-black text-black text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">
+              <span id="hero-badge-school" class="swarm-atomic-item swarm-atomic-pending inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#CCFF00] border-2 border-black text-black text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#000000]">
                 <img src="logo.png" onerror="this.onerror=null; this.src=CVA_LOGO;" alt="CVA" class="w-3.5 h-3.5 rounded-full object-contain" />
                 <span>THCS Chu Văn An</span>
               </span>
-              <span id="hero-badge-tag" class="swarm-atomic-item retro-stamp bg-black text-[#FFE600] sticker-tilt-right">
+              <span id="hero-badge-tag" class="swarm-atomic-item swarm-atomic-pending retro-stamp bg-black text-[#FFE600] sticker-tilt-right">
                 #TRẠM_TEEN_2026
               </span>
-              <span id="hero-stamp-cva-hot" class="swarm-atomic-item retro-stamp bg-[#FF007A] text-white -rotate-2">🔥 #CVA_HOT</span>
-              <span id="hero-stamp-aura" class="swarm-atomic-item retro-stamp bg-[#FFE600] text-black rotate-1">⚡ #AURA_1000</span>
+              <span id="hero-stamp-cva-hot" class="swarm-atomic-item swarm-atomic-pending retro-stamp bg-[#FF007A] text-white -rotate-2">🔥 #CVA_HOT</span>
+              <span id="hero-stamp-aura" class="swarm-atomic-item swarm-atomic-pending retro-stamp bg-[#FFE600] text-black rotate-1">⚡ #AURA_1000</span>
             </div>
 
             <!-- Clean Hero Title -->
-            <h2 id="hero-main-title" class="swarm-atomic-item text-3xl sm:text-4xl md:text-5xl font-black text-black dark:text-white tracking-tight uppercase leading-tight font-display">
+            <h2 id="hero-main-title" class="swarm-atomic-item swarm-atomic-pending text-3xl sm:text-4xl md:text-5xl font-black text-black dark:text-white tracking-tight uppercase leading-tight font-display">
               TRẠM HỌC ĐƯỜNG TEEN <span class="inline-block bg-[#FFE600] text-black px-2 py-0.5 rounded-xl border-2 border-black shadow-[3px_3px_0px_0px_#000000] -rotate-1 text-2xl sm:text-3xl md:text-4xl">CVA</span>
             </h2>
 
             <!-- Editorial Subtitle -->
-            <p id="hero-subtitle-desc" class="swarm-atomic-item text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-semibold leading-relaxed max-w-2xl">
+            <p id="hero-subtitle-desc" class="swarm-atomic-item swarm-atomic-pending text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-semibold leading-relaxed max-w-2xl">
               Không gian kết nối học trò THCS Chu Văn An: tìm nhanh đồ thất lạc qua Check VAR chính chủ, chợ phiên sách 0đ truyền lửa và bốc quẻ may mắn học đường.
             </p>
           </div>
@@ -1341,28 +1335,32 @@
           <div class="pt-5 flex flex-wrap gap-2.5 relative z-10">
             <button 
               id="hero-btn-lost"
-              onclick="switchTab('lost-found')" 
+              onclick="switchTab('lost-found')"
+              class="swarm-atomic-item swarm-atomic-pending 
               class="bg-[#FF007A] text-white hover:bg-[#E6006E] border-2 border-black font-black text-xs sm:text-sm px-4 sm:px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
             >
               <span>🔍</span> Check VAR Tìm Đồ
             </button>
             <button 
               id="hero-btn-books"
-              onclick="switchTab('books')" 
+              onclick="switchTab('books')"
+              class="swarm-atomic-item swarm-atomic-pending 
               class="bg-[#CCFF00] text-black hover:bg-[#B8E600] border-2 border-black font-black text-xs sm:text-sm px-4 sm:px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
             >
               <span>📚</span> Chợ Phiên Sách 0đ
             </button>
             <button 
               id="hero-btn-conf"
-              onclick="switchTab('confessions')" 
+              onclick="switchTab('confessions')"
+              class="swarm-atomic-item swarm-atomic-pending 
               class="bg-[#FFE600] text-black hover:bg-[#FADB14] border-2 border-black font-black text-xs sm:text-sm px-4 sm:px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
             >
               <span>💌</span> Góc Tâm Sự CVA
             </button>
             <button 
               id="hero-btn-profile"
-              onclick="openProfileModal()" 
+              onclick="openProfileModal()"
+              class="swarm-atomic-item swarm-atomic-pending 
               class="bg-[#00F0FF] text-black hover:bg-[#00D6E6] border-2 border-black font-black text-xs sm:text-sm px-4 sm:px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center gap-2 uppercase tracking-wide cursor-pointer"
             >
               <span>🎟️</span> Thẻ Học Sinh CVA
@@ -1373,13 +1371,13 @@
         <!-- Bento 2: Mini-game "Bốc Quẻ Học Đường / Vibe Check" (Neobrutalism Edition) -->
         <div id="bento-vibe-card" class="swarm-draw-target bg-[#FFF8E7] dark:bg-zinc-900 border-2 sm:border-3 border-black dark:border-zinc-700 rounded-3xl p-5 shadow-[4px_4px_0px_0px_#000000] dark:shadow-[4px_4px_0px_0px_#FFE600] flex flex-col justify-between text-center relative overflow-hidden transition-all duration-300">
           <div class="space-y-2 relative z-10">
-            <div onclick="resetDailyVibeForTesting()" title="Click để reset bốc lại thử nghiệm (+10 Aura)" class="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border-2 border-black bg-[#FFE600] text-black shadow-[2px_2px_0px_0px_#000000] cursor-pointer hover:scale-105 transition active:scale-95 select-none" id="vibe-badge" class="swarm-atomic-item inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border-2 border-black bg-[#FFE600] text-black shadow-[2px_2px_0px_0px_#000000] cursor-pointer hover:scale-105 transition active:scale-95 select-none">
+            <div id="vibe-badge" onclick="resetDailyVibeForTesting()" title="Click để reset bốc lại thử nghiệm (+10 Aura)" class="swarm-atomic-item swarm-atomic-pending inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border-2 border-black bg-[#FFE600] text-black shadow-[2px_2px_0px_0px_#000000] cursor-pointer hover:scale-105 transition active:scale-95 select-none">
               <span>🥠</span> Quẻ May Mắn <span id="vibe-countdown-badge" class="text-[9px] bg-black text-[#FFE600] px-1.5 py-0.2 rounded-full font-black">RESET: --:--:--</span>
             </div>
             
-            <h3 class="swarm-atomic-item text-xs font-black uppercase tracking-tight text-black dark:text-white font-heading" id="vibe-title">Vibe Check Hôm Nay</h3>
+            <h3 id="vibe-title" class="swarm-atomic-item swarm-atomic-pending text-xs font-black uppercase tracking-tight text-black dark:text-white font-heading">Vibe Check Hôm Nay</h3>
             
-            <div id="vibe-check-display" class="swarm-atomic-item bg-white dark:bg-zinc-950 border-2 border-black dark:border-zinc-700 rounded-2xl p-3.5 text-xs font-bold min-h-[88px] flex items-center justify-center transition-all leading-snug shadow-[2px_2px_0px_0px_#000000] text-black dark:text-zinc-200">
+            <div id="vibe-check-display" class="swarm-atomic-item swarm-atomic-pending bg-white dark:bg-zinc-950 border-2 border-black dark:border-zinc-700 rounded-2xl p-3.5 text-xs font-bold min-h-[88px] flex items-center justify-center transition-all leading-snug shadow-[2px_2px_0px_0px_#000000] text-black dark:text-zinc-200">
               <span id="vibe-placeholder-text">Bấm nút bên dưới để bốc quẻ tâm linh hôm nay! ✨</span>
             </div>
           </div>
@@ -1388,8 +1386,7 @@
             <button 
               id="vibe-check-btn" 
               onclick="rollVibeCheck()"
-              class="swarm-atomic-item w-full bg-[#FFE600] 
-              class="w-full bg-[#FFE600] text-black hover:bg-[#FADB14] border-2 border-black font-black text-xs sm:text-sm py-3 px-4 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer"
+              class="swarm-atomic-item swarm-atomic-pending w-full bg-[#FFE600] text-black hover:bg-[#FADB14] border-2 border-black font-black text-xs sm:text-sm py-3 px-4 rounded-2xl shadow-[4px_4px_0px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer"
             >
               <span>Rút Quẻ Ngay (+10 Aura) ✨</span>
             </button>
@@ -7522,7 +7519,7 @@
       const stampAura = document.getElementById('hero-stamp-aura');
       const marquee = document.getElementById('swarm-selection-marquee');
 
-      // Manual replay: smoothly scroll to top and reset all targets & atomic elements
+      // Manual replay or load: smoothly scroll to top and reset all targets & atomic elements to blank
       if (isManual) {
         if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -7533,124 +7530,194 @@
           if (el.dataset) delete el.dataset.atomicRevealed;
         });
         if (bentoHero) {
+          bentoHero.classList.remove('swarm-draw-revealed');
+          bentoHero.classList.add('swarm-draw-pending');
+          if (bentoHero.dataset) delete bentoHero.dataset.swarmRevealed;
+        }
+        if (bentoVibe) {
+          bentoVibe.classList.remove('swarm-draw-revealed');
+          bentoVibe.classList.add('swarm-draw-pending');
+          if (bentoVibe.dataset) delete bentoVibe.dataset.swarmRevealed;
+        }
+      }
+
+      // =========================================================================
+      // TIẾN TRÌNH DẦN DẦN MỚI HIỆN RA (0.0s - 2.8s)
+      // Lúc đầu là KHÔNG CÓ GÌ CẢ (100% Trống trơn)
+      // =========================================================================
+
+      const bentoRect = bentoHero ? bentoHero.getBoundingClientRect() : { left: 160, top: 180, width: 520, height: 240 };
+      const heroLeft = bentoRect.left;
+      const heroTop = bentoRect.top;
+      const heroW = bentoRect.width || 520;
+      const heroH = bentoRect.height || 240;
+
+      // BƯỚC 1 (0.0s - 0.50s): Minh Trí (#FFE600) kéo khung Bento Hero trên nền trống trơn
+      if (p2) {
+        p2.x = heroLeft;
+        p2.y = heroTop;
+        p2.targetX = heroLeft + heroW;
+        p2.targetY = heroTop + heroH;
+        p2.speed = 0.08;
+      }
+
+      if (marquee) {
+        marquee.classList.remove('hidden');
+        marquee.style.display = 'block';
+        marquee.style.left = `${heroLeft}px`;
+        marquee.style.top = `${heroTop}px`;
+        marquee.style.width = '24px';
+        marquee.style.height = '24px';
+        marquee.innerHTML = `<span class="absolute bottom-1 right-1 bg-black text-[#FFE600] px-1.5 py-0.5 rounded text-[9px] font-mono font-black border border-black shadow-[1px_1px_0px_0px_#000000]">w: ${Math.round(heroW)}px  h: ${Math.round(heroH)}px</span>`;
+        setTimeout(() => {
+          if (marquee) {
+            marquee.style.width = `${heroW}px`;
+            marquee.style.height = `${heroH}px`;
+          }
+        }, 50);
+      }
+
+      // 0.50s: Vỏ Bento Hero bung nở (bên trong mọi chữ và nút vẫn tàng hình pending!)
+      setTimeout(() => {
+        if (marquee) {
+          marquee.classList.add('hidden');
+          marquee.style.display = 'none';
+        }
+        if (bentoHero) {
           bentoHero.classList.remove('swarm-draw-pending');
           bentoHero.classList.add('swarm-draw-revealed');
           if (bentoHero.dataset) bentoHero.dataset.swarmRevealed = 'true';
+          bentoHero.classList.add('swarm-bento-spring');
+          setTimeout(() => bentoHero.classList.remove('swarm-bento-spring'), 400);
         }
-        if (bentoVibe) {
-          bentoVibe.classList.remove('swarm-draw-pending');
-          bentoVibe.classList.add('swarm-draw-revealed');
-          if (bentoVibe.dataset) bentoVibe.dataset.swarmRevealed = 'true';
-        }
-      }
-
-      // Ensure outer Bento Hero and Bento Vibe containers are ready for atomic drawings
-      if (bentoHero) {
-        bentoHero.classList.remove('swarm-draw-pending');
-        bentoHero.classList.add('swarm-draw-revealed');
-        if (bentoHero.dataset) bentoHero.dataset.swarmRevealed = 'true';
-      }
-      if (bentoVibe) {
-        bentoVibe.classList.remove('swarm-draw-pending');
-        bentoVibe.classList.add('swarm-draw-revealed');
-        if (bentoVibe.dataset) bentoVibe.dataset.swarmRevealed = 'true';
-      }
-
-      // =========================================================================
-      // PHA 1 (0ms - 450ms): PARALLEL ATOMIC DRAWING (TIÊU ĐỀ, BADGES, STORIES, STICKER)
-      // =========================================================================
-
-      // Minh Trí (#FFE600) draws Hero main title
-      if (heroTitle) {
-        drawAtomicElement(heroTitle, p2, 0, () => {
+        if (p2) {
           showPeerChat(p2, 'Kéo khung Bento Hero chuẩn rồi nha! 📐', 2200);
-        });
-      }
+          triggerPeerClickEffect(heroLeft + heroW - 20, heroTop + heroH - 20, p2);
+        }
+        if (typeof playCuteSound === 'function') playCuteSound('pop');
+      }, 500);
 
-      // Linh Đan (#FF007A) draws Hero badges
-      const badgeSchool = document.getElementById('hero-badge-school');
-      const badgeTag = document.getElementById('hero-badge-tag');
-      if (badgeSchool) drawAtomicElement(badgeSchool, p1, 30);
-      if (badgeTag) drawAtomicElement(badgeTag, p1, 80);
-      if (stampHot) {
-        drawAtomicElement(stampHot, p1, 140, () => {
-          stampHot.style.transform = 'scale(1.25) rotate(-6deg)';
-          setTimeout(() => { stampHot.style.transform = ''; }, 200);
-        });
-      }
-      if (stampAura) {
-        drawAtomicElement(stampAura, p1, 200, () => {
-          stampAura.style.transform = 'scale(1.25) rotate(6deg)';
-          setTimeout(() => { stampAura.style.transform = ''; }, 200);
-          showPeerChat(p1, 'Set font Space Grotesk 900 cực cháy! ⚡', 2200);
-        });
-      }
-
-      // Hoàng Nam (#00F0FF) draws floating sticker "100% CVA GEN Z"
-      const floatSticker = document.getElementById('hero-floating-sticker');
-      if (floatSticker) {
-        drawAtomicElement(floatSticker, p4, 50);
-      }
-
-      // Bảo Anh (#CCFF00) glides across CVA 24H Stories row & avatars
-      const storiesHeader = document.getElementById('stories-header-row');
-      if (storiesHeader) drawAtomicElement(storiesHeader, p3, 20);
-
-      for (let s = 0; s <= 5; s++) {
-        const storyEl = document.getElementById(`story-item-${s}`);
-        if (storyEl) {
-          drawAtomicElement(storyEl, p3, 60 + s * 55, () => {
-            if (s === 2) showPeerChat(p3, 'Đóng dấu tem chính chủ Chu Văn An! 🏷️', 2200);
+      // BƯỚC 2 (0.50s - 0.90s): Kéo khung Tiêu đề lớn TRẠM HỌC ĐƯỜNG TEEN CVA
+      setTimeout(() => {
+        if (heroTitle) {
+          drawAtomicElement(heroTitle, p2, 0, () => {
+            showPeerChat(p1, 'Set font Space Grotesk 900 cực cháy! ⚡', 2200);
           });
         }
-      }
+      }, 550);
 
-      // =========================================================================
-      // PHA 2 (450ms - 950ms): HERO SUBTITLE & 4 ACTION BUTTONS SWARM DRAW
-      // =========================================================================
+      // BƯỚC 3 (0.90s - 1.30s): Kéo khung 4 Badge thương hiệu & Floating Sticker
+      setTimeout(() => {
+        const badgeSchool = document.getElementById('hero-badge-school');
+        const badgeTag = document.getElementById('hero-badge-tag');
+        const floatSticker = document.getElementById('hero-floating-sticker');
+
+        if (badgeSchool) drawAtomicElement(badgeSchool, p1, 0);
+        if (badgeTag) drawAtomicElement(badgeTag, p1, 60);
+        if (stampHot) {
+          drawAtomicElement(stampHot, p1, 120, () => {
+            stampHot.style.transform = 'scale(1.25) rotate(-6deg)';
+            setTimeout(() => { stampHot.style.transform = ''; }, 200);
+          });
+        }
+        if (stampAura) {
+          drawAtomicElement(stampAura, p1, 180, () => {
+            stampAura.style.transform = 'scale(1.25) rotate(6deg)';
+            setTimeout(() => { stampAura.style.transform = ''; }, 200);
+            showPeerChat(p3, 'Đóng dấu tem chính chủ Chu Văn An! 🏷️', 2200);
+          });
+        }
+        if (floatSticker) drawAtomicElement(floatSticker, p4, 80);
+      }, 920);
+
+      // BƯỚC 4 (1.30s - 1.60s): Kéo khung Đoạn văn mô tả (Subtitle)
       setTimeout(() => {
         const heroDesc = document.getElementById('hero-subtitle-desc');
         if (heroDesc) drawAtomicElement(heroDesc, p5, 0);
+      }, 1320);
 
+      // BƯỚC 5 (1.60s - 2.05s): Đàn chuột chia nhau kéo 4 nút hành động Hero
+      setTimeout(() => {
         const btnLost = document.getElementById('hero-btn-lost');
         const btnBooks = document.getElementById('hero-btn-books');
         const btnConf = document.getElementById('hero-btn-conf');
         const btnProf = document.getElementById('hero-btn-profile');
 
-        if (btnLost) drawAtomicElement(btnLost, p1, 60);
-        if (btnBooks) drawAtomicElement(btnBooks, p3, 120);
-        if (btnConf) drawAtomicElement(btnConf, p2, 180);
-        if (btnProf) drawAtomicElement(btnProf, p4, 240);
-      }, 450);
+        if (btnLost) drawAtomicElement(btnLost, p1, 0);
+        if (btnBooks) drawAtomicElement(btnBooks, p3, 60);
+        if (btnConf) drawAtomicElement(btnConf, p2, 120);
+        if (btnProf) drawAtomicElement(btnProf, p4, 180);
+      }, 1620);
 
-      // =========================================================================
-      // PHA 3 (950ms - 1550ms): BENTO VIBE CARD ATOMIC SWARM DRAW
-      // =========================================================================
+      // BƯỚC 6 (2.05s - 2.45s): Kéo dải Stories CVA 24H (tiêu đề + 6 avatar tròn)
       setTimeout(() => {
-        const vibeBadge = document.getElementById('vibe-badge');
-        const vibeTitle = document.getElementById('vibe-title');
-        const vibeDisplay = document.getElementById('vibe-check-display');
+        const storiesHeader = document.getElementById('stories-header-row');
+        if (storiesHeader) drawAtomicElement(storiesHeader, p3, 0);
 
-        if (vibeBadge) drawAtomicElement(vibeBadge, p1, 0);
-        if (vibeTitle) drawAtomicElement(vibeTitle, p2, 60);
-        if (vibeDisplay) drawAtomicElement(vibeDisplay, p4, 120);
-
-        if (vibeBtn) {
-          drawAtomicElement(vibeBtn, p5, 200, () => {
-            showPeerChat(p4, 'Xong kèo! Trang lên sóng toàn trường rồi anh em ơi! 🚀🎉', 2600);
-          });
+        for (let s = 0; s <= 5; s++) {
+          const storyEl = document.getElementById(`story-item-${s}`);
+          if (storyEl) {
+            drawAtomicElement(storyEl, p3, 40 + s * 45);
+          }
         }
-      }, 950);
+      }, 2080);
 
-      // =========================================================================
-      // PHA 4 (1550ms - 1850ms): CONFETTI CELEBRATION & COMPLETION
-      // =========================================================================
+      // BƯỚC 7 (2.45s - 2.80s): Kéo khung Bento Vibe Card & Nút Quẻ
+      setTimeout(() => {
+        if (bentoVibe) {
+          const vibeRect = bentoVibe.getBoundingClientRect();
+          const vibeLeft = vibeRect.left;
+          const vibeTop = vibeRect.top;
+          const vibeW = vibeRect.width || 280;
+          const vibeH = vibeRect.height || 260;
+
+          if (p4) {
+            p4.x = vibeLeft;
+            p4.y = vibeTop;
+            p4.targetX = vibeLeft + vibeW;
+            p4.targetY = vibeTop + vibeH;
+            p4.speed = 0.08;
+          }
+
+          let vibeMarquee = document.createElement('div');
+          vibeMarquee.className = 'swarm-scroll-marquee';
+          vibeMarquee.style.setProperty('--marquee-color', '#00F0FF');
+          vibeMarquee.innerHTML = `<span class="swarm-size-pill">w: ${Math.round(vibeW)}px  h: ${Math.round(vibeH)}px</span>`;
+          bentoVibe.appendChild(vibeMarquee);
+
+          setTimeout(() => {
+            if (vibeMarquee.parentNode) vibeMarquee.remove();
+            bentoVibe.classList.remove('swarm-draw-pending');
+            bentoVibe.classList.add('swarm-draw-revealed');
+            if (bentoVibe.dataset) bentoVibe.dataset.swarmRevealed = 'true';
+            bentoVibe.classList.add('swarm-bento-spring');
+            setTimeout(() => bentoVibe.classList.remove('swarm-bento-spring'), 400);
+
+            // Draw inner vibe elements
+            const vibeBadge = document.getElementById('vibe-badge');
+            const vibeTitle = document.getElementById('vibe-title');
+            const vibeDisplay = document.getElementById('vibe-check-display');
+
+            if (vibeBadge) drawAtomicElement(vibeBadge, p1, 0);
+            if (vibeTitle) drawAtomicElement(vibeTitle, p2, 40);
+            if (vibeDisplay) drawAtomicElement(vibeDisplay, p4, 80);
+
+            if (vibeBtn) {
+              drawAtomicElement(vibeBtn, p5, 120, () => {
+                showPeerChat(p4, 'Xong kèo! Trang lên sóng toàn trường rồi anh em ơi! 🚀🎉', 2600);
+              });
+            }
+          }, 320);
+        }
+      }, 2480);
+
+      // BƯỚC 8 (2.80s): Pháo hoa Confetti ăn mừng hoàn tất toàn bộ giao diện!
       setTimeout(() => {
         if (typeof confetti === 'function') {
           try {
             confetti({
-              particleCount: 50,
-              spread: 70,
+              particleCount: 55,
+              spread: 75,
               origin: { y: 0.55 },
               colors: ['#FFE600', '#CCFF00', '#FF007A', '#00F0FF', '#000000']
             });
@@ -7659,9 +7726,9 @@
         if (typeof playCuteSound === 'function') {
           playCuteSound('pop');
         }
-      }, 1550);
+      }, 2800);
 
-      // Settle at 1850ms: Peers disperse smoothly upward into content area
+      // Settle at 2950ms: Peers disperse smoothly upward into content area
       setTimeout(() => {
         isSwarmBuildPlaying = false;
         const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
@@ -7677,7 +7744,7 @@
         if (isManual && typeof showTeenToast === 'function') {
           showTeenToast("Hoàn thành dựng trang Swarm Landing Page! 🚀🎉", "⚡");
         }
-      }, 1850);
+      }, 2950);
     }
     window.triggerSwarmBuildIntro = triggerSwarmBuildIntro;
 
