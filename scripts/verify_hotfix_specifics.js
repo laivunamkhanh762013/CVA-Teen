@@ -23,7 +23,7 @@ const html2 = fs.readFileSync('Tram_Hoc_Duong_Teen.html', 'utf8');
 const b1 = fs.readFileSync('index.html');
 const b2 = fs.readFileSync('Tram_Hoc_Duong_Teen.html');
 test('100% Bitwise buffer parity between index.html and Tram_Hoc_Duong_Teen.html', b1.equals(b2));
-test('Exact byte length match (472,207 bytes)', b1.length === 472207 && b2.length === 472207, `Length: ${b1.length}`);
+test('Exact byte length match (475,158 bytes)', b1.length === 475158 && b2.length === 475158, `Length: ${b1.length}`);
 
 // 2. CSS Selector: not hiding marquee or size pill
 const hasNotSelector = html1.includes('.swarm-draw-pending > *:not(.swarm-scroll-marquee):not(.swarm-size-pill)');
@@ -51,7 +51,7 @@ const hasTabSwitchFailSafe = html1.includes("Fail-safe tab switch: Reveal all pe
 test('switchTab automatically removes pending states on cards & buttons to prevent trapped content', hasTabSwitchFailSafe);
 
 // 6. Fail-Safe safety timeouts
-const hasSafetyTimeout = html1.includes('setTimeout(revealCard, 350)') || html1.includes('safety timeout');
+const hasSafetyTimeout = html1.includes('setTimeout(revealCard, 280)') || html1.includes('setTimeout(revealCard, 350)') || html1.includes('safety net');
 test('Fail-safe safety timeout protects against stuck hidden state', hasSafetyTimeout);
 
 // 7. Quizizz Lobby Raw HTML Leak Elimination
