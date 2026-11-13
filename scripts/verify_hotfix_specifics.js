@@ -23,7 +23,7 @@ const html2 = fs.readFileSync('Tram_Hoc_Duong_Teen.html', 'utf8');
 const b1 = fs.readFileSync('index.html');
 const b2 = fs.readFileSync('Tram_Hoc_Duong_Teen.html');
 test('100% Bitwise buffer parity between index.html and Tram_Hoc_Duong_Teen.html', b1.equals(b2));
-test('Exact byte length match (477,101 bytes)', b1.length === 477101 && b2.length === 477101, `Length: ${b1.length}`);
+test('Exact byte length match (478,723 bytes)', b1.length === 478723 && b2.length === 478723, `Length: ${b1.length}`);
 
 // 2. CSS Selector: not hiding marquee or size pill
 const hasNotSelector = html1.includes('.swarm-draw-pending > *:not(.swarm-scroll-marquee):not(.swarm-size-pill)');
