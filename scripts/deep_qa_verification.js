@@ -206,7 +206,8 @@ function getOrCreateElem(id) {
       addEventListener: () => {},
       removeEventListener: () => {},
       appendChild: () => {},
-      remove: () => {}
+      remove: () => {},
+      getBoundingClientRect: () => ({ top: 100, left: 100, bottom: 340, right: 620, width: 520, height: 240 })
     };
   }
   return domStore[id];
@@ -445,6 +446,31 @@ if (runtimeInitOk) {
     }
   } catch (e) {
     check('Swarm Cursors engine verification', false, e.message);
+  }
+
+  // Test L: Swarm Build Animation & Figma Cursor Chat
+  try {
+    check('triggerSwarmBuildIntro is exposed on window', typeof sandbox.triggerSwarmBuildIntro === 'function');
+    check('openUserCursorChat is exposed on window', typeof sandbox.openUserCursorChat === 'function');
+    check('closeUserCursorChat is exposed on window', typeof sandbox.closeUserCursorChat === 'function');
+    check('submitUserCursorChat is exposed on window', typeof sandbox.submitUserCursorChat === 'function');
+
+    // Test user cursor chat workflow
+    sandbox.openUserCursorChat(350, 420);
+    check('openUserCursorChat sets chat box position and visibility', !domStore['user-cursor-chat-box'].classList.contains('hidden'));
+
+    domStore['user-cursor-chat-input'].value = 'Xin chào CVA! 🚀';
+    sandbox.submitUserCursorChat('Xin chào CVA! 🚀');
+    check('submitUserCursorChat submits message and creates active bubble', Boolean(vm.runInContext('userChatActiveBubble', context)));
+
+    sandbox.closeUserCursorChat();
+    check('closeUserCursorChat hides user-cursor-chat-box', domStore['user-cursor-chat-box'].classList.contains('hidden'));
+
+    // Test Swarm Build Intro invocation
+    sandbox.triggerSwarmBuildIntro();
+    check('triggerSwarmBuildIntro runs cleanly without error', true);
+  } catch (e) {
+    check('Swarm Build Animation & Figma Cursor Chat verification', false, e.message);
   }
 }
 
